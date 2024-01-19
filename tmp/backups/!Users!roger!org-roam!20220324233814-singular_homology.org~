@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       E13EAEDC-6882-471F-A654-0D2038447716
+:END:
+#+title: singular homology
+#+filetags: :topology:singular homology:
+
+* Definitions
+** algebraic
+   
+   We can define the singular [[id:5C65D275-0063-4000-8BA2-652B84716A25][chain complex]] of
+   a space \(X\in \textrm{Top}\) as
+   \[ C_n^{sing}(X) := \mathbb{Z} \textrm{Map}(\Delta^n, X) \]
+   where \(\Delta^n\) is the [[id:68899120-085D-4F0E-B52F-92AB0D2933A0][standard n-simplex]]. The boundary map is the
+   alternating sum of \(d_i\) where \(d_i\) is induced by precomposition
+   with \(\delta^i\),
+   \[ \partial_n:= \sum_{i=0}^n (-1)^i d_i. \]
+   /Singular homology/ is the homology of this chain complex:
+   \[ H_n(X):= H_n(C_\bullet^{sing}(X)). \]
+** geometric
+
+   Geometrically, singular homology of a space \(X\in\textrm{Top}\)
+   is defined as bordism but replacing \(n\)-manifolds with
+   \(n\)-dimensional ([[id:44E9ABC2-817D-40F7-8E69-458C22ECD0F4][oriented]]) )(\(\Delta\)-complexes. In
+   particular
+   \[H_n(X)=\{K\xrightarrow{f} X \quad| \quad K\textrm{ is an oriented }n-\textrm{dimensional }\Delta-\textrm{complex without boundary and }f\textrm{ is continuous.}\}/\sim\]
+   where the equivalence relation is bordism:
+   - \((K,f)\sim (K^\prime,f^\prime)\) if there exists an
+     oriented \((n+1)\)-dimensional \(\Delta\)-complex \(L\)
+     with boundary \(K\sqcup K^\prime\) and a continuous map
+     \(h:L\to X\) which restricts to \(f\sqcup f^\prime\)
+     on the boundary. 
+
+** equivalence of definitions
+
+   The idea is that we can find maps between the two showing that
+   they are isomorphic. For geometric -> algebraic
+   send an oriented \(n\)-simplex in
+   the geometric definition to the sum of maps in making up its
+   orientation class.
+
+   We can show that if there is a cobordism between two
+   \(n\)-simplexes, the this cobordism maps under \(\partial_{n+1}^{sing}\) to
+   the sum of the orientation class on one boundary component
+   minus the other. In particular the two complexes are equivalent
+   in the algebraic definition.
+
+   The map algebraic -> geometric wasn't given but we claimed
+   there exists a \((n+1)\)-complex with boundary the thing we need.
+
+*** TODO explain why the map algebraic -> geometric exists ^^
+
+* Properties
+
+** Functorality
+
+    Let \(f:X\to Y\) be continuous.
+    For the geometric picture, functorality is easy.
+    Simply post-compose and the boundary is preserved.
+
+    For the algebraic picture, we again postcompose.
+    We have to check though that the map \(f\) induces
+    a map of chain complexes. This is easy though since
+    \[ \partial_n f_n (x)= \sum_{i=0^n} d_i(f(x)), \]
+    and
+    \[ f_{n-1} \partial_n(x) = \sum_{i=0}^n f_{n-1}(d_i(x))
+    = \sum_{i=0}^n f(d_i(x)), \]
+
+** homotopy invariance
+    
+
+    
+
+    

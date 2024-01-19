@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inf1
+# key: inf1
+# --
+$(\infty,1)$-category

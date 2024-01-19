@@ -1,0 +1,4 @@
+## `trades.go` Documentation
+
+`GetAllTrades` gets (at most) the last /limit/ trades of /prodID/
+// since time /after/.

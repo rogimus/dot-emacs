@@ -1,14 +1,33 @@
 * basic
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message 't)
-  (tool-bar-mode 1)
+  (menu-bar-mode 1)
+  (tool-bar-mode 0)
 
   (setq mac-command-modifier 'meta)
 
-  (set-face-attribute 'default nil :height 180)
+  (set-face-attribute 'default nil :height 150)
+
+  (setq visible-bell 1)
+
+  (use-package flyspell
+    :ensure t
+    :config
+    (add-hook 'text-mode-hook 'flyspell-mode)
+    :bind ("C-c C-8" . ispell-buffer)
+    )
+
+    (use-package linum-relative
+      :ensure t
+      :config
+      (linum-relative-on)
+    )
+
+  (electric-pair-mode t)
 #+END_SRC
 
 #+RESULTS:
+: t
 
 * which-key
 #+BEGIN_SRC emacs-lisp
@@ -20,27 +39,55 @@
 
 * themes
 #+BEGIN_SRC emacs-lisp
-  (use-package alect-themes
-    :ensure t
-    :init
-   ; (load-theme 'alect-light t)
-    )
-  (use-package flatui-theme
-    :ensure t
-    :init
-    ;(load-theme 'flatui)
-    )
-  (use-package humanoid-themes
-    :ensure t
-    :init
-    ;(load-theme 'humanoid-light)
-    )
-  ;(load-theme 'leuven)
-  (use-package twilight-bright-theme
-    :ensure t
-    :init
-    (load-theme 'twilight-bright t)
-    )
+    ;; (set-frame-font "UbuntuMono Nerd Font-18:light" nil t)
+    ;; (set-face-attribute 'default nil :font "Consolas-14")
+    ;; (set-face-attribute 'mode-line nil :font "UbuntuMono Nerd Font-18:light")
+
+    ;; (set-frame-font "Iosevka Comfy 21" nil t)
+    ;; (set-face-attribute 'mode-line nil :font "Iosevka Comfy-25")
+
+
+    ;; (use-package alect-themes
+    ;;   :ensure t
+    ;;   :init
+    ;;  ; (load-theme 'alect-light t)
+    ;;   )
+    ;; (use-package flatui-theme
+    ;;   :ensure t
+    ;;   :init
+    ;;   ;(load-theme 'flatui)
+    ;;   )
+    ;; (use-package humanoid-themes
+    ;;   :ensure t
+    ;;   :init
+    ;;   ;(load-theme 'humanoid-light)
+    ;;   )
+    ;; ;(load-theme 'leuven)
+    ;; (use-package twilight-bright-theme
+    ;;   :ensure t
+    ;;   :init
+    ;;   ;(load-theme 'twilight-bright t)
+    ;;   )
+    (use-package gruvbox-theme
+      :ensure t
+      :init
+      (load-theme 'gruvbox-dark-hard t)
+      )
+  ;; (use-package doom-themes
+    ;;   :ensure t
+    ;;   :init
+    ;;   ;(load-theme 'doom-acario-dark)Z
+    ;;   )
+    ;; (use-package modus-themes
+    ;; :ensure t
+    ;; :init
+    ;; (load-theme 'modus-operandi t)
+    ;; )
+    (use-package ef-themes
+      :ensure t
+      :init
+					    ;(load-theme 'ef-cherie t)
+      )
 #+END_SRC
 
 * flycheck
@@ -62,7 +109,12 @@
     (company-mode)
     (add-hook 'after-init-hook 'global-company-mode))
 
+  (setq company-minimum-prefix-length 1
+	company-idle-delay 0.0)
 #+END_SRC
+
+#+RESULTS:
+: 0.0
 
 * org
 #+begin_src emacs-lisp
@@ -292,17 +344,14 @@
   (use-package yasnippet-snippets
     :ensure t)
 #+END_SRC
-* Jedi python
-#+begin_src emacs-lisp
-  ;; (use-package jedi
-  ;;   :ensure t
-  ;;   :init
-  ;;   (add-hook 'python-mode-hook 'jedi:setup)
-  ;;   (add-hook 'python-mode-hook 'jedi:ac-setup))
-
-#+end_src
 * python
 #+begin_src emacs-lisp
+  ;; (use-package python-mode
+  ;;   :ensure t
+  ;;   :custom
+  ;;   (python-shell-interpreter "python3")
+  ;;   )
+
   (use-package anaconda-mode
     :ensure t
     :init
@@ -314,9 +363,15 @@
 
   (eval-after-load "company"
    '(add-to-list 'company-backends 'company-anaconda))
+
+  (setq python-shell-interpreter '"python3")
 #+end_src
-*  LaTeX
+
+#+RESULTS:
+
+* LaTeX
 ** TODO figure out auto-fill-mode for latex and some sort of auto global templating
+TODO fix flyspell
 #+begin_src emacs-lisp
   (use-package :tex
     :ensure auctex
@@ -325,9 +380,6 @@
     (setq TeX-auto-save t)
     (setq TeX-parse-self t)
     (setq-default TeX-master nil)
-    (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-    (add-hook 'Latex-mode-hook 'auto-fill-mode) ;; doesnt work ?? 
-    (add-hook 'LaTeX-mode-hook 'flyspell-mode)
    ;; (setq Tex-Master "/Users/roger/_School/template.tex")
     )
 
@@ -371,7 +423,67 @@
 	    (set-window-margins nil (car current-margins))
 	  (set-window-margins nil (car current-margins)
 			      (- current-available visual-wrap-column))))))
+  (set-default 'preview-scale-function 1.2)
+
+  (setq-default TeX-engine 'luatex)
+
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (add-hook 'LaTeX-mode-hook 'auto-fill-mode) ;; doesnt work ?? 
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode) ;; also not working
+
+  (use-package evil-tex
+    :ensure t)
+  (use-package evil-surround
+    :ensure t)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; (add-hook 'LaTeX-mode-hook						   ;;
+  ;; 	(lambda () (set (make-local-variable 'TeX-electric-math)	   ;;
+  ;; 			(cons "\\(" "\\)"))))				   ;;
+  ;; (setq-default TeX-electric-sub-and-superscript nil)			   ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #+end_src
+
+#+RESULTS:
+
+
+Org-mode export settings
+#+begin_src emacs-lisp
+  ;; (add-to-list 'org-latex-classes
+  ;; 	     '("amsart"
+  ;; 	       "\\documentclass{amsart}"
+  ;;                ("\\section{%s}" . "\\section*{%s}")
+  ;;                ("\\subsection{%s}" . "\\subsection*{%s}")
+  ;;                ("\\subsubsection{%s}" . "\\subsubsection*{%des}"))
+  ;; 	     )
+
+
+  (setq org-latex-classes
+	'(("amsart"
+		 "\\documentclass{amsart}"
+		 ("\\section{%s}" . "\\section*{%s}")
+		 ("\\subsection{%s}" . "\\subsection*{%s}")
+		 ("\\subsubsection{%s}" . "\\subsubsection*{%des}"))
+	    ("article" "\\documentclass[11pt]{article}"
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+   ("report" "\\documentclass[11pt]{report}"
+    ("\\part{%s}" . "\\part*{%s}")
+    ("\\chapter{%s}" . "\\chapter*{%s}")
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+   ("book" "\\documentclass[11pt]{book}"
+    ("\\part{%s}" . "\\part*{%s}")
+    ("\\chapter{%s}" . "\\chapter*{%s}")
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+#+end_src
+
 * TODO clean backup files
 #+begin_src emacs-lisp
   ;; solution from https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-Cleaning.org
@@ -400,3 +512,232 @@
     (mood-line-mode))
 
 #+end_src
+* language server lsp
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :init
+    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+    (setq lsp-keymap-prefix "C-c l")
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+	   (python-mode . lsp)
+	   (c++-mode . lsp)
+	   (go-mode . lsp)
+	   (latex-mode . lsp)
+	   ;; if you want which-key integration
+	   (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) 
+  ;; (use-package lsp-pyright
+  ;;   :ensure t
+  ;;   :hook (python-mode . (lambda ()
+  ;; 			  (require 'lsp-pyright)
+  ;; 			  (lsp))))  ; or lsp-deferred
+
+  (add-to-list 'load-path "/Users/roger/lsp-latex-master")
+
+  ;; (use-package lsp-latex
+  ;;   :ensure t
+  ;;   :hook
+  ;;   (latex-mode . lsp)
+  ;;   (tex-mode . lsp)
+  ;;   :bind
+  ;;   ("C-c C-c" . lsp-latex-build)
+  ;;   ("C-c C-v" . lsp-latex-forward-search)
+  ;;   )
+
+  (require 'lsp-latex)
+  ;; "texlab" executable must be located at a directory contained in `exec-path'.
+  ;; If you want to put "texlab" somewhere else,
+  ;; you can specify the path to "texlab" as follows:
+  ;; (setq lsp-latex-texlab-executable "/path/to/texlab")
+
+  (with-eval-after-load "tex-mode"
+   (add-hook 'tex-mode-hook 'lsp)
+   (add-hook 'latex-mode-hook 'lsp))
+
+  ;; For YaTeX
+  (with-eval-after-load "yatex"
+   (add-hook 'yatex-mode-hook 'lsp))
+
+  ;; For bibtex
+  (with-eval-after-load "bibtex"
+   (add-hook 'bibtex-mode-hook 'lsp))
+
+  ;; from https://ianyepan.github.io/posts/emacs-ide/
+  (use-package lsp-ui
+    :commands lsp-ui-mode
+    :config
+    (setq lsp-ui-doc-enable nil)
+    (setq lsp-ui-doc-header t)
+    (setq lsp-ui-doc-include-signature t)
+    (setq lsp-ui-doc-border (face-foreground 'default))
+    (setq lsp-ui-sideline-show-code-actions t)
+    (setq lsp-ui-sideline-delay 0.05))
+#+end_src
+
+#+RESULTS:
+
+* debugging
+** TODO add dap mode
+* quality of life
+#+begin_src emacs-lisp
+  ;; (global-hl-line-mode t)
+
+  ;; (use-package beacon
+  ;;   :ensure t
+  ;;   :config
+  ;;   (beacon-mode 1)
+  ;;   )
+
+   ;; (use-package hungry-delete
+   ;;   :ensure t
+   ;;   :config
+   ;;   (global-hungry-delete-mode)
+   ;;   )
+
+   (use-package expand-region
+     :bind ("C-=" . er/expand-region)
+     )
+
+#+end_src
+
+* org-roam
+#+begin_src emacs-lisp
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory "~/org-roam")
+    (org-roam-node-display-template "${title} ${tags}") ;; uses the tags to search with org-roam-node-find
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+	   ("C-c n f" . org-roam-node-find)
+	   ("C-c n i" . org-roam-node-insert))
+    :config
+    (org-roam-setup)
+    )
+#+end_src
+
+and org-roam-ui
+#+begin_src emacs-lisp
+#+end_src
+
+** TODO figure out use-package org-roam-ui
+
+* golang
+#+begin_src emacs-lisp
+  (use-package go-mode
+    :ensure t)
+#+end_src
+
+* evil-mode
+  I'm caving in...
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1))
+#+end_src
+
+* GTD/org
+
+#+begin_src emacs-lisp
+  (setq org-agenda-files '("~/gtd/inbox.org"
+			   "~/gtd/today_block.org"
+			   "~/gtd/tomorrow_block.org"
+			   "~/gtd/gtd.org"
+			   "~/gtd/tickler.org"
+			   "~/orgfiles/gcal.org"))
+
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+				 (file+headline "~/gtd/inbox.org" "Tasks")
+				 "* TODO %i%?")
+				("a" "Appointment" entry
+				 (file "~/orgfiles/gcal.org")
+				 "\n\n* %i%?")
+				("T" "Tickler" entry
+				 (file+headline "~/gtd/tickler.org" "Tickler")
+				 "* %i%? \n %U")
+				("s" "Shopping list" item
+				 (file "~/orgfiles/shopping.org"))))
+
+  (setq org-refile-targets '(("~/gtd/gtd.org" :maxlevel . 3)
+			     ("~/gtd/someday.org" :level . 1)
+			     ("~/gtd/tickler.org" :maxlevel . 2)))
+  (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+
+  
+
+  ;; This bit of code is taken from the following stackexchange thread. It
+  ;; makes the agenda more readable by only showing the deepest task in a
+  ;; task tree.
+  ;; https://emacs.stackexchange.com/questions/28118/org-agenda-filter-by-headline-depth
+
+  (setq org-enforce-todo-dependencies t)
+  (setq org-agenda-dim-blocked-tasks 'invisible)
+#+end_src
+
+* synctex
+#+begin_src emacs-lisp 
+;; Tells emacs where to find LaTeX.
+(let ((my-path (expand-file-name "/usr/local/bin:/usr/local/texlive/2022/bin/universal-darwin")))
+(setenv "PATH" (concat my-path ":" (getenv "PATH")))
+(add-to-list 'exec-path my-path)) 
+
+;; AucTeX settings
+(setq TeX-PDF-mode t)
+
+(add-hook 'LaTeX-mode-hook
+(lambda ()
+  (push
+   '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+     :help "Run latexmk on file")
+    TeX-command-list)))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+(custom-set-variables
+     '(TeX-source-correlate-method 'synctex)
+     '(TeX-source-correlate-mode t)
+     '(TeX-source-correlate-start-server t))
+
+#+end_src
+
+* calendar
+#+begin_src emacs-lisp
+	(use-package calfw
+	  :ensure t
+	  :config
+	  (setq org-gcal-client-id "345983520373-m6q46kq5m7lit41rlicmg2uni7ao7glp.apps.googleusercontent.com"
+		org-gcal-client-secret "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"
+		org-gcal-file-alist '(("roger.h.murray@gmail.com" .  "~/orgfiles/gcal.org"))))
+
+
+	(setq org-agenda-include-diary t)
+
+	(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+	(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+#+end_src
+
+
+
+
+
+
+* Sage
+#+begin_src emacs-lisp 
+  (use-package sage-shell-mode
+    :ensure t)
+
+  (use-package auto-complete-sage
+    :ensure t
+    :config
+    ((add-hook 'sage-shell:sage-mode-hook 'ac-sage-setup)
+     (add-hook 'sage-shell-mode-hook 'ac-sage-setup)))
+#+end_src
+
+#+RESULTS:
+: t

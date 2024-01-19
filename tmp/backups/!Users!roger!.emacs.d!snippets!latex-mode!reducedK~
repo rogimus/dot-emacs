@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reduced K
+# key: redK
+# --
+\wildetilde{\K}$0

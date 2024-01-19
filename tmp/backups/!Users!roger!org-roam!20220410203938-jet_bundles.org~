@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       85D421AE-EED0-4D87-921B-75BD3DB1D814
+:END:
+#+title: Jet Bundles
+#+filetags: :topology:manifolds:differential topology:
+
+* Definition
+
+Given manifolds $X,Y$ the $r^{th}$-order Jet space
+$J^r(X,Y)$ is defined as the equivalence classes of
+triples $(x,U,f)$ where
+ - $x\in U\subset X$
+ - and $f:U\to Y$
+such that where $(x,U,f)\sim (y,V,g)$ if
+$x=y$, $f(x)=g(x)$ and the derivatives of
+$f|_{U\cap V}$ and $g|_{U\cap V}$ agree at $x$ up to order $r$.

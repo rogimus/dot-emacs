@@ -1,0 +1,23 @@
+package main
+
+import (
+	"time"
+	"os"
+	
+	"github.com/rogimus/coinjar"
+)
+
+func main() {
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for {
+		
+
+
+		
+		time.Sleep(1 * time.Minute)
+	}
+}

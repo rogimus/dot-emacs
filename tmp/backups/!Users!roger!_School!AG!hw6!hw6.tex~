@@ -1,0 +1,344 @@
+\documentclass[a4paper,11pt]{amsart}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents:             %
+% - packages            %
+% - Theorems            %
+% - Cat Stuff           %
+% - Rings/bbX           %
+% - Specific categories %
+% - topology            %
+% - AG                  %
+% - Homological Algebra %
+% - Random cal/scr      %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% 
+% packages %
+%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+\usepackage[protrusion=true,kerning=true,spacing=true,tracking=true]{microtype}
+\linespread{1.3}
+% \usepackage{geometry}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-1.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-1.5in}
+\calclayout
+\usepackage{mathtools}
+
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% parskip changes new paragraph formatting from 0space+1indent to 1space+0indent
+\usepackage[parfill]{parskip}
+
+%\usepackage{mathpazo}
+%\usepackage{XCharter} % Bitstream's Charter
+%\usepackage{paratype}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{berasans}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage{arev} 
+% \usepackage[T1]{fontenc}
+
+% \usepackage[T1]{fontenc}
+% %\usepackage[sfdefault,scale=1]{FiraSans}
+% \usepackage{newtxsf}
+
+\usepackage[sfdefault,lining]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+\usepackage[fakebold]{firamath-otf}
+\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+
+% \usepackage{pxfonts}
+
+% \usepackage{kmath,kerkis} \renewcommand{\familydefault}{\sfdefault}
+
+
+% \usepackage[sfdefault]{noto}
+% \usepackage[T1]{fontenc}
+
+% \usepackage{mathpazo}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage[lm]{sfmath}
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+%\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{answer}{Answer}
+
+\theoremstyle{remark}
+\newtheorem*{sketch}{Sketch}
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\coker}{coker}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\catname}[1]{{\mathsf{#1}}}
+\newcommand{\Ring}{\catname{Ring}}
+\newcommand{\CRing}{\catname{Ring}}
+\newcommand{\Alg}{\catname{Alg}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\sSet}{\catname{sSet}}
+\newcommand{\Mod}{\catname{Mod}}
+%\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Grp}{\catname{Grp}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Shv}{\catname{Shv}}
+\newcommand{\Sch}{\catname{Sch}}
+\newcommand{\Aff}{\catname{Aff}}
+\newcommand{\Fun}{\catname{Fun}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrH}{\mathscr{H}}
+
+\begin{document}
+\author{Roger Murray} \title{Assignment 6}
+
+\maketitle
+test
+\section*{Question}
+\begin{question}
+  Given an example of a scheme $X$, two affine open sets
+  $U_1 = \Spec A_1$ and $U_2 = \Spec A_2$ such that $U_1 \cap U_2$ is
+  not affine. In your example, find an explicit open cover of
+  $U_1 \cap U_2$ by affine open sets to verify that $U_1 \cap U_2$ is
+  a scheme. [Hint: A good place to start with is finding an affine
+  scheme with an open subscheme that is not affine.]
+\end{question}
+
+\begin{answer}
+  An example of an affine scheme with an open subscheme that is not
+  affine is $\bbA^{n}_k\setminus 0 \subset \bbA^n_k$ for $n\geq 2$ for
+  some (maybe algebraically closed) field. Thus let us take two copies
+  of $\bbA^2_k$ and glue them along $\bbA^2_k\setminus 0$. This gives
+  the plane with a double origin. The intersection of the two copies
+  of $\bbA^2$ is a copy of $\bbA^2\setminus 0$ which is not
+  affine. (The proof that $\bbA^2\setminus 0$ is not affine is the
+  same as the proof in the classical/variety sense, i.e. chapter 1.)
+  We may write $\bbA^2\setminus 0$ as the union of $D(x)\cup D(y)$,
+  i.e. the set
+  $\{(x,y)\in k^2\,|\,x\neq 0\} \cup \{(x,y)\in k^2\,|\,y\neq
+  0\}$. These are both affine (e.g. $D(x)\cong \Spec k[x,y]_{(x)}$).
+\end{answer}
+
+\textbf{Question 3.} (Hartshorne II.3.2)
+
+A morphism of schemes $f:X\to Y$ is \emph{quasi-compact} if there is a
+cover of $Y$ by open affines $V_i\cong \Spec A_i$ such that
+$f^{-1}(V_i)$ is quasi-compact for each $i$. Show that $f$ is
+quasi-compact if and only if for every open affine $V\subset Y$,
+$f^{-1}(V)$ is quasi-compact.
+
+
+\begin{answer}
+  \fbox{$\implies$}
+  
+  Since $V$ is affine, it is quasi-compact. Thus we may choose a
+  finite subcover among the $\{V_i\}$ which we (somewhat haphazardly)
+  denote by $\{V_i\}$. We wish to show that $f^{-1}(V)$ is
+  quasi-compact.  First observe that that we may write $V_i\cap V$ as
+  as union $\bigcup_j D(g_{ij})$ of distinguished opens in
+  $V_i\cong \Spec A_i$. But since the $V_i\cap V$ cover $V$, we have
+  that $\bigcup_{i,j} D(g_{ij})$ covers $V$. Since $V$ is affine, and
+  thus also quasi-compact, there is a finite subcover which we denote
+  by $\{D(g_{ij})\}$.  If $\{W_{k}\cong \Spec B_k\to f^{-1}(V_i)\}$
+  is a finite affine open cover for $f^{-1}(V_i)$ (which exists by
+  quasi-compactness of $f$) then we may cover
+  $f^{-1}(D(g_{ij}))$ by
+  $f|_{W_k}^{-1}(D(g_{ij}))$. But $f|_{W_k}: W_k\to V_i$ corresponds to a ring
+  homomorphism $\varphi_k:A_i\to B_k$, and in particular
+  $f|_{W_k}^{-1}(D(g_{ij}))= D(\varphi_k(g_{ij}))\subset \Spec
+  B_k$. Thus $f^{-1}(D(g_{ij}))$ is the finite union
+  $\bigcup_{k} D(\varphi_k (g_{ij}))$. So $f^{-1}(D(g_{ij}))$ is
+  quasi-compact and $f^{-1}(V)$ is the finite union of these such
+  sets. It's not hard to see that being the finite union of
+  distinguished opens means you are quasi-compact. 
+
+
+  \fbox{$\impliedby$} This direction is trivial. Take any affine open
+  cover for $Y$.
+\end{answer}
+
+
+\textbf{Question 6.}
+  
+\begin{enumerate}[(a)]
+\item Make the parametric curve from Hartshorne I.1.2 into a morphism
+  $f_1:\bbA^1_k\to \bbA^3_k$ of affine schemes (for $k$ a
+  field). Prove that $f_1$ is a closed immersion.
+\item Construct a similar morphism $f_2:\bbA^1_k\to \bbA^3_k$
+  corresponding to Hartshorne I.1.11. Prove that $f_2$ is not a closed
+  immersion.
+\item Find a factorisation of $f_2$ into a finite morphism
+  $\bbA^1_k\to X$ by a closed immersion $X\to \bbA_k^3$.
+\end{enumerate}
+
+
+\begin{answer}
+  \fbox{(a)} Constructing the morphism is incredibly easy. Use the
+  fact that $\Ring^{\op}\cong \Aff$ and consider the morphism of
+  schemes corresponding to the homomorphism $k[x,y,z]\to k[t]$ given
+  by $x\mapsto t$, $y\mapsto t^2$, and $z\mapsto t^3$. This map gives
+  a homeomorphism $\text{sp} (\bbA^1)\simeq
+  \text{sp}(Z(xy-z,y-x^2))$. Furthermore the map $f^\sharp$ of sheaves
+  is surjective on stalks since these are just localizations of
+  $k[x,y,z]\to k[t]$ and this map is surjective since $x\mapsto t$.
+
+  \fbox{(b)} The construction of this morphism is entirely
+  analogous. Define a map $k[x,y,z]\to k[t]$ by $x\mapsto t^3$,
+  $y\mapsto t^4$, and $z\mapsto t^5$. This is not a closed immersion
+  since the map $f^\sharp$ of sheaves is not always
+  surjective. Consider for example global sections. This gives us our
+  defining homomorphism which clearly isn't surjective since $t$ is
+  never hit (look at degrees).
+
+  \fbox{(c)} Consider $X=\Spec A$ for
+  $A= k[x,y,z]/(xz-y^2,x^3-yz, x^2y-z^2)$.  Then we may factor $f_2$
+  via the ring homomorphisms $ k[x,y,z] \to A \to k[t]$ where the
+  first homomorphism is the quotient, and the second is the map
+  $\overline{x}\mapsto t^3$, $\overline{y}\mapsto t^4$, and
+  $\overline{z}\mapsto t^5$. The first map is clearly surjective, and
+  thus the induced map of affine schemes is a closed immersion. The
+  second map is also clearly finite since $A\cong k[t]\{t^3\}$ as a
+  $k[t]$-module.
+\end{answer}
+
+\end{document}

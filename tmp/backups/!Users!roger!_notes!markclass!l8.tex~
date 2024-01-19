@@ -1,0 +1,256 @@
+\section{Lecture 8 -- Monoidal $\infty$-Categories}
+
+The ``foundations'' part of this course is nearing an end. All that is
+left for us to talk about is:
+\begin{enumerate}
+\item monoidal $\infty$-categories,
+\item and stable $\infty$-categories.
+\end{enumerate}
+
+Before we do that though let us revisit Bousfield localisation from
+last lecture and give some examples.
+\subsection{Examples of Bousfield Localisations}
+
+Recall that reflexive localisation of an $\infty$-category $\cC$
+consists of a pair of adjoint functors $
+\begin{tikzcd}
+  F:\cC\arrow[r,shift right]&{\cD:G}\arrow[l, shift right, hook']
+\end{tikzcd}$ such that $G$ is fully faithful. The idea is then that
+$\cD\simeq \cC[S^{-1}]$ where $S\subset \cC_1$ are the morphisms
+$f\in \cC$ such that $F(f)$ is an equivalence. Then
+$\cD\hookrightarrow\cC$ is the category of ``local objects'', i.e. the
+objects $x\in \cC$ such that given any $f:y\to z$ in $S$ then
+$f^*:\hom_\cC(z,x)\to\hom_\cC(y,x)$ is an equivalence. So from $x$'s
+perspective, it cannot see the difference between $y$ and $z$. We say
+that $F$ is the {\bf localisation functor}. Given a $z\in \cC$ then
+the unit of the adjunction gives us an $S$-equivalence $z\to GF(z)$
+and $GF(z)$ is an $S$-local object. {\color{red} S-equiv? huh..}
+
+\begin{example}
+  Let $R$ be a commutative ring and consider $\cC=D(R)$ the derived
+  category of $R$-modules. Given a subset $T\subset R$ then we can
+  consider the adjunction
+  \[\begin{tikzcd} D(R)\arrow[r,shift right]&{D(R[T^{-1}])}\arrow[l,
+      shift right, hook']
+    \end{tikzcd}\] where the left adjoint is the map
+  $C^\bullet\mapsto R[T^{-1}]\otimes_R C^\bullet$ and where the right
+  adjoint is the obvious map, i.e.  ``forget the extra structure'',
+  i.e. the map induced via the obvious homomorphism $R\to
+  R[T^{-1}]$. Then $S$ as described above is the set of all morphisms
+  which induce isomorphisms on $H^*(-)[T^{-1}]$.
+\end{example}
+\begin{example}
+  Consider $\cC=\Top$ and let $E_*(-)$ be an generalised homology
+  theory. Take $S$ to be the set of $E_*$-isomorphisms. (This was the
+  original example considered by Bousfield.) There is an adjunction
+  \[\begin{tikzcd} F:\Top\arrow[r,shift right]&{\Top_E:G.}\arrow[l,
+      shift right, hook']
+    \end{tikzcd}\] We refer to $\Top_E$ as the {\bf $E$-local spaces}
+  and $F(X)$ (denoted $X_E$) is the {\bf $E$-localisation} of $X$. We
+  have the following specific examples:
+  \begin{enumerate}
+  \item if $E_*=\HH(-;\bQ)$ then $\Top_{\HH\bQ}$ is rational spaces.
+  \item If $E_*=\HH_*(-;\bF_p)$ then $\Top_{\HH\bF_p}$ are
+    $p$-complete spaces.
+  \item If $E_*=\HH(-;\bZ_{(p)})$ then $\Top_{\HH\bZ_{(p)}}$ are
+    $p$-local spaces.
+  \end{enumerate}
+\end{example}
+
+\subsection{Monoidal Structures}
+According to Mark understanding why this story is the way that it is
+was difficult. You would like a simple definition of what a monoidal
+$\infty$-category might look like, but there are some fundamental
+foundational difficulties. There is a lot going on under the hood here
+that we are going to completely sweep under the rug, but as always
+there's \cite{GrothHandbook} and of course \cite{htt}. Here is a
+motivating story:
+
+Being with some monoid $M$ in a 1-category with product
+$(\cC,\times)$. We have the {\bf bar construction} for $\BB_\bullet M$
+in $\textrm{s}\cC$ which has $\BB_n M=M^{\times n}$ with face maps
+\begin{align*}
+  d^0(m_1,\ldots,m_n)&=(m_2,\ldots,m_n)\\
+  d^n(m_1,\ldots,m_n)&=(m_1,\ldots,m_{n-1})\\
+  d^i(m_1,\ldots,m_n)&=(m_1,\ldots, m_im_{i+1},\ldots,m_n)
+\end{align*}
+and the degeneracy maps $s^i$ are ``insert a 1 in position $i$''
+{\color{orange} (not repeat?)}.
+
+{\color{red} It turns out this gives a correspondence between monoids
+  of $\cC$ and simplicial objects of $\cC$. In one direction we have
+  the bar construction. In the other direction, if we have a
+  simplicial object in $\cC$ then it has a multiplication }
+
+Let $\simp\Top^{\textrm{mon}}$ denote the set of simplicial spaces
+$X_\bullet$ such that there is a weak equivalence
+$X_n\to X_1^{\times n}$. These are the spaces that sort of ``trying to
+be bar complexes''. The following lemma says these ``almost'' bar
+complexes are equivalent to topological monoids:
+
+\begin{lemma} The bar construction gives an equivalence
+  \[\simp\Top^{\mathrm{mon}}\xleftarrow{\simeq} \Top\mathrm{Mon}.\]
+\end{lemma}
+
+Next we want to define some sort of category $\Cat_{\infty}$ of
+$\infty$-categories.  Now we know that $\Fun(\cC,\cD)$ for $\cC$ and
+$\cD$ is an $\infty$-category, and thus we would to have some sort of
+$(\infty,2)$-category $\QCat$ where the $\Hom$ sets are
+$\infty$-categories to allow for non-trivial natural transformations,
+but that would require developing $(\infty,2)$-category theory, so
+instead we settle for an $\infty$-category of $\infty$-categories.
+
+\begin{definition}
+  Define $\Cat_{\infty}$ as the coherent nerve
+  \[ \Cat_{\infty} := \mathrm{N}_{\Delta}(\Cat_{\infty}^\Delta)\]
+  where $\Cat_{\infty}^\Delta$ is the simplicial category whose
+  objects are small $\infty$-categories and whose morphisms
+  $\Hom_{\Cat_{\infty}}(\cC,\cD)$ is the largest sub-Kan complex of
+  the mapping space $\Fun(\cC,\cD)$.
+\end{definition}
+
+\begin{definition}[Fake!]
+  A {\bf monoidal} $\infty$-category is a functor
+  \[
+    \cC:\mathrm{N}\Delta^{\textrm{op}}\to \Cat_{\infty}
+  \] such that the natural maps $\cC_n:=\cC([n])\to \cC_1^n$ are
+  equivalences for all $n$.
+\end{definition}
+
+To see why this is an appropriate definition of a monoid note that we
+get:
+\begin{enumerate}
+\item multiplication via
+  $X_1^2\xleftarrow{\simeq} X_2 \xrightarrow{d_1}X_1$;
+\item unit via
+  $\pt\simeq X_1^0\xleftarrow{\simeq} X_0\xrightarrow{s_0} X_1$.
+\end{enumerate}
+
+We often write $\cC^\otimes$ when discussing a monoidal
+$\infty$-category. If $\cC^\otimes$ and $\cD^\otimes$ are two monoidal
+$\infty$-categories then we obtain a notion of monoidal functors
+$\Fun^\otimes(\cC^\otimes,\cD^\otimes)$ as the natural transformations
+$\alpha:\cC^\otimes\Rightarrow \cD^\otimes$ {\color{orange}(draw
+  diag)} such that there is a map
+$\eta:F(x)\otimes F (y)\to F (x \otimes y)$ which is an
+equivalence. There is a {\bf big problem} with this model of monoidal
+$\infty$-category which is that there isn’t a way to define {\bf lax}
+monoidal functors, i.e. when we don't require $\eta$ to be an
+equivalence. It turns out these are kind of important... for examples
+let $(\Delta^0)^\otimes$ be the monoidal $\infty$-category which is
+${1}$ and with monoidal structure $1\otimes 1=1$. Then
+$\Mon(\cC^\otimes)$ is precisely
+$\Fun_{\mathrm{lax}}^\otimes((\Delta^0)^\otimes,\cC^\otimes)$ since a
+lax monoidal functor $F$ in here picks out an $M\in \cC$ as $F(1)$ and
+we have a multiplication $\eta:F(1)\otimes F(1)\to F(1)$. But we don't
+necessarily want to force multiplication to be a equivalence. Jacob
+Lurie fixes this issue with scary words like ``$p$-coCartesian
+fibrations'' and ``Grothendieck opfibrations'' but we don't dwell and
+like everyone else adopt this fix.
+
+Given a functor of 1-categories $F:\cA\to\Cat_1$ there is a classical
+consruction called the Grothendieck construction $p:\cF\to\cA$ where
+$p$ is a cocartesian fibration (whatever that means...) and where
+$p^{-1}(a)=:\cF_a=F(a)$. We do not dwell on what this construction is
+but Lurie gives an $\infty$-category analog. This analog has the
+property that there is a bijection:
+\[
+  \left\{\text{functors }\,\,\cA\xrightarrow{F}
+    \Cat_{\infty}\right\}\leftrightarrow\left\{\text{coCartesian
+      fibrations of }\infty\text{-cats }\,\, \cF\to\cA \right\}.
+\]
+Again, whatever all that means... But then we can define the correct
+notion of monoidal $\infty$-categories
+
+
+\begin{definition}
+  Define $\Mon(\Cat_{\infty})$ as the set of cocartesian fibrations
+  $\cC\to \mathrm{N}\Delta^{\textrm{op}}$ satisfying
+  $\cC_n\simeq \cC^{\times n}_1$ where $\cC_n$ is the fibre over $[n]$
+  and where $\cC:=\cC_1$.
+\end{definition}
+
+Then $\Fun^\otimes_{\textrm{lax}}(\cC,\cD)$ is the set of functors
+$\cC^\otimes\to\cD^\otimes$ making the following commute:
+\[
+  \begin{tikzcd}
+    \cC^\otimes\arrow[rr]\arrow[dr] &&
+    \cD\arrow[dl]\\&\textrm{N}\Delta^{\textrm{op}}
+  \end{tikzcd}
+\] which also have to satisfy certain conditions. We can also define
+$\Fun^{\otimes}(\cC,\cD)$ as the functors making that diagram commute
+which also satisfy some certain other condition.
+
+
+\subsection{Monoids}
+\begin{definition}
+  A {\bf monoid} in a monoidal $\infty$-category $\cC^\otimes$ is an
+  object of the $\infty$-category $\Fun^{\otimes}_{\textrm{lax}}\left((\Delta^0)^{\otimes},\cC^{\otimes}\right)$.
+\end{definition}
+
+We can construct a map $(\Delta^0)^\otimes\to
+\textrm{N}\Delta^{\textrm{op}}$ by sending $(\Delta^0)^{\times n}=\pt$
+to $[n]$. So we can replace $(\Delta^0)^\otimes$ with
+$\textrm{N}\Delta^{\textrm{op}}$ with the identity, i.e. a monoid is a
+commutative diagram
+\[
+  \begin{tikzcd}
+ \textrm{N}\Delta^{\textrm{op}} \arrow[rr]\arrow[dr, "\id"'] &&
+    \cC\arrow[dl]\\&\textrm{N}\Delta^{\textrm{op}}
+  \end{tikzcd}
+\]
+i.e. a section to the functor $\cD\to \textrm{N}\Delta^{\textrm{op}}$
+defining the monoidal structure $\cD^\otimes$.
+
+
+\subsection{Symmetric Monoidal Structures}
+There are multiple approaches to defining symmetric monoidal
+structures on $\infty$-categories. One such example is using {\bf
+  Segal $\Gamma$-spaces}. Let $\underline{n}_+$ be the pointed set
+$\{+,1,\ldots,n\}$ with basepoint $+$. Then a Segal $\Gamma$-space is a
+functor $X:\fin_*\to \Top$ where $\fin_*$ is the category of finite
+pointed sets and pointed functions between them. We denote $X(\underline{n}_+)$ by
+$X_n$. Consider the map $\pi_i:\underline{n}_+\to \underline{1}_+$
+for $1\leq i\leq n$ which sends $i\mapsto 1$ and sends everything else
+to $+$. We say $X$ is a {\bf special} $\Gamma$-space if the map $\Pi_i
+\pi_i:X_n\to X_1^{\times n}$ is an equivalence.
+
+\begin{theorem}[May-Thomason]
+
+  There is an equivalence $(\Gamma\text{-spaces})^{\normalfont\textrm{sp}}$ of
+  special $\Gamma$-spaces and
+  ${\normalfont\Alg_{\bE_{\infty}}(\Top,\times)}$ of $\bE_\infty$ spaces.
+\end{theorem}
+
+To define  symmetric monoidal $\infty$-categories we want to do the
+same business as before where we try to define them as an $\infty$-functors
+  $ \cC:\textrm{N}\fin_*\to \Cat_{\infty}$ such that the resulting map
+  $\cC_n\to\cC_1^{\times n}$ is an equivalence where $\cC_n$ denotes
+  $\cC(\underline{n}_+)$. But again instead we do the Grothendieck
+  construction and look at cocartesian fibrations $\cC\to
+  \textrm{N}\fin_*$ which allows us to get a notion of symmetric
+  monoidal structures $\cC^\otimes$ on $\cC$ and allows us to define (lax)
+  symmetric monoidal functors etc.
+  We can similarly define the $\infty$-category $\CMon(\cC^\otimes)$
+  of commutative monoid objects in a symmetric monoidal
+  $\infty$-category $\cC^\otimes$ as sections of the functor $\cC\to
+  \textrm{N}\fin_*$ which defines the symmetric monoidal structure
+  $\cC^\otimes$.
+
+  \begin{remark}
+    There have been a lot of times throughout this lecture where I
+    should have written ``straightening'' or ``unstraightening''.
+  \end{remark}
+  
+Using the same strange business of cocartesian fibration
+
+{\color{orange} what exactly are the equivalences you keep
+  mentioning. Categorical/DK? W.e?}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "class"
+%%% End:

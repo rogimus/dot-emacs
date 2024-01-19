@@ -1,0 +1,95 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("oral.tex"
+ (filename . "~/_School/oral/oral.tex")
+ (front-context-string . "\\documentclass[8")
+ (rear-context-string)
+ (position . 1))
+("week_goals.org"
+ (filename . "~/gtd/week_goals.org")
+ (front-context-string)
+ (rear-context-string . "out scheduling\n\n")
+ (position . 118))
+("schedule.org"
+ (filename . "~/_School/schedule.org")
+ (front-context-string . "\n\n| Monday      ")
+ (rear-context-string)
+ (position . 1))
+("today_block.org"
+ (filename . "~/gtd/today_block.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+("calc1"
+ (filename . "~/TA/f22.org")
+ (front-context-string)
+ (rear-context-string . "Info][dropbox]]\n")
+ (position . 368))
+("August22.org"
+ (filename . "~/todo/August22.org")
+ (front-context-string . "#+TITLE: Tasks f")
+ (rear-context-string)
+ (position . 1))
+("org-refile-last-stored"
+ (filename . "~/gtd/gtd.org")
+ (front-context-string . "** kan extension")
+ (rear-context-string . "\n\n* cat theory\n\n")
+ (position . 834))
+("inbox.org"
+ (filename . "~/gtd/inbox.org")
+ (front-context-string . " in my implement")
+ (rear-context-string . " to sorting them")
+ (position . 114))
+("gtd.org"
+ (filename . "~/gtd/gtd.org")
+ (front-context-string . "e\n#+author: Bing")
+ (rear-context-string . "GTD projects fil")
+ (position . 26))
+("BP.tex"
+ (filename . "~/_notes/math/BP/BP.tex")
+ (front-context-string)
+ (rear-context-string . "\n\\end{theorem}\n\n")
+ (position . 9013))
+("mark.org"
+ (filename . "~/orgfiles/meetings/mark.org")
+ (front-context-string . "\n\n* 06-05-2022\n\n")
+ (rear-context-string . "tings with Mark\n")
+ (position . 29))
+("org-capture-last-stored"
+ (filename . "~/gtd/inbox.org")
+ (front-context-string . "** TODO think ab")
+ (rear-context-string . "t in Question 4\n")
+ (position . 410))
+("templateorg.tex"
+ (filename . "~/_School/templateorg.tex")
+ (front-context-string . "\\newcommand{\\bbN")
+ (rear-context-string . "bbZ}{\\mathbb Z}\n")
+ (position . 1716))
+("questions.tex"
+ (filename . "~/_School/dg/HW4/questions.tex")
+ (front-context-string . "[Proposition 4.7")
+ (rear-context-string . "in{proposition*}")
+ (position . 767))
+("template.tex"
+ (filename . "~/template.tex")
+ (front-context-string . "\n\n\n\n\n%%%%%%\n% AG")
+ (rear-context-string . "or{\\pt}{pt}\n\\Del")
+ (position . 2666))
+("day7.py"
+ (filename . "~/_code/AoC21/python/day7.py")
+ (front-context-string)
+ (rear-context-string . "print(minfuel)\n\n")
+ (position . 415))
+("init.el"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "\n(require 'packa")
+ (rear-context-string)
+ (position . 1))
+("init"
+ (filename . "~/.emacs.d/myinit.org")
+ (front-context-string)
+ (rear-context-string . "up))\n\n#+end_src\n")
+ (position . 18912))
+)

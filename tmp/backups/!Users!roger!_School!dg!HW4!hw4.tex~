@@ -1,0 +1,100 @@
+\documentclass[a5,12pt]{amsart}
+\usepackage{latexsym, amscd, amsfonts,
+  eucal, mathrsfs, amsmath, amssymb, amsthm, xypic,xr, stmaryrd,
+  tikz-cd, hyperref} %, euler, mathpazo}
+\usepackage{adjustbox}
+\usepackage[shortlabels]{enumitem}
+
+\setcounter{MaxMatrixCols}{20}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \oddsidemargin=0in \evensidemargin=0in
+% \textwidth=6.5in % % \textheight=8.5in % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                        %
+\newtheorem{theorem}{Theorem}[subsection] %
+\newtheorem{problem}{Problem}[subsection] %
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{problem*}{Problem}
+\newtheorem{lemma}[theorem]{Lemma} %
+\newtheorem*{lemma*}{Lemma} %
+\newtheorem{proposition}[theorem]{Proposition} %
+\newtheorem*{proposition*}{Proposition} %
+\newtheorem{principle}[theorem]{Principle} %
+\newtheorem{corollary}[theorem]{Corollary} %
+\newtheorem{fact}[theorem]{Fact} %
+                                                        %
+\theoremstyle{definition} %
+\newtheorem{convention}[theorem]{Convention} %
+\newtheorem{definition}[theorem]{Definition} %
+\newtheorem{construction}[theorem]{Construction} %
+\newtheorem{example}[theorem]{Example} %
+\newtheorem{counterexample}[theorem]{Counterexample} %
+\newtheorem{conjecture}[theorem]{Conjecture} %
+\newtheorem{notation}[theorem]{Notation} %
+\newtheorem{postulate}[theorem]{Postulate} %
+\newtheorem{warning}[theorem]{Warning} %
+\newtheorem*{warning*}{Warning} %
+\newtheorem{remark}[theorem]{Remark} %
+\newtheorem{variant}[theorem]{Variant} %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+
+\newcommand{\rings}{\mathcal{R}ng}
+\DeclareMathOperator{\id }{id}
+\DeclareMathOperator{\op }{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\Top}{\mathcal{T}\text{op}}
+\newcommand{\sets}{\mathcal{S}et}
+\newcommand{\Ab}{\mathcal{A}b}
+\newcommand{\groups}{\mathcal{G}rp}
+\newcommand{\VS}{\mathcal{V}S}
+\newcommand{\Sch}{\mathcal{S}ch}
+\newcommand{\Aff}{\mathcal{A}ff}
+\DeclareMathOperator{\Shv}{Shv}
+\DeclareMathOperator{\PShv}{PShv}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\tr}{tr}
+
+\DeclareMathOperator{\Pic}{Pic}
+
+\makeindex
+
+\begin{document}
+
+\title{Assignment  4}
+\author{Roger Murray}
+
+\maketitle
+
+\input{questions.tex}
+
+
+\end{document}

@@ -1,0 +1,195 @@
+\subsection*{Question 1}
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Question 2}
+
+
+
+
+
+
+
+
+
+
+\subsection*{Question 3}
+\phantom{ } \\
+\noindent
+(a)
+By Corollary 5.11.b we have
+\[ \widetilde{\Gamma}_{ij}^k = \frac{1}{2} \widetilde{g}^{kl}
+  \left( \partial_i \widetilde{g}_{jl}
+    + \partial_j \widetilde{g}_{il} - \partial_l
+    \widetilde{g}_{ij}\right).\]  
+
+Subbing in $\widetilde{g} = e^{2w}g$ gives
+\begin{align*}
+\widetilde{\Gamma}_{ij}^k = & \frac{1}{2} e^{-2w}g^{kl}
+  \left( \partial_i e^{2w}g_{jl}
+    + \partial_j e^{2w}g_{il} - \partial_l
+                              e^{2w}g_{ij}\right) \\
+  = &  \frac{1}{2} e^{-2w}g^{kl}
+  \big( 2 \partial_iw e^{2w}g_{jl} + e^{2w}\partial_i g_{jl} \\ 
+                            &+ 2\partial_j w e^{2w}g_{il} +
+                              e^{2w}\partial_j g_{il} \\ 
+  & - 2\partial_l w e^{2w} g_{ij} - e^{2w}\partial_l g_{ij}\big)  
+\end{align*}
+Multiplying through and collecting terms gives
+\begin{align*}
+  \widetilde{\Gamma}_{ij}^k = & \Gamma_{ij}^{k}+g^{kl}g_{jl}
+                                \partial_i w
+                                + g^{kl}g_{il}\partial_j w -
+                                g^{kl}g_{ij}\partial_l w \\
+  =& \Gamma_{ij}^{k}+ \delta_{kj} \partial_i w + \delta_{ki}
+     \partial_j w - g^{kl}g_{ij}\partial_l w. 
+\end{align*}
+
+Finally, since $\widetilde{\nabla}_{\partial_i} \partial_j =
+\widetilde{\Gamma}_{ij}^k\partial_k$, we have precisely that
+\begin{align*}
+  \widetilde{\Gamma}_{ij}^k\partial_k = &
+  \Gamma_{ij}^{k}\partial_k+ \partial_i w \partial_j+ 
+                                          \partial_j w \partial_i-
+                                          g^{kl}g_{ij}\partial_l w
+                                          \partial_k  \\ 
+  = & \nabla_{\partial_i}\partial_j + \partial_i w \partial_j+ 
+                                          \partial_j w \partial_i-
+      g^{kl}g_{ij}\partial_l w \partial_k.
+\end{align*}
+\\
+\noindent
+(b)
+We have
+\begin{align*}
+  \widetilde{\textrm{Rm}}(\partial_1,\partial_2,\partial_2,\partial_1)
+  = & \widetilde{R}_{1221} \\ = & \widetilde{g}_{1m}(\partial_1
+      \widetilde{\Gamma}_{22}^m - \partial_2
+      \widetilde{\Gamma}_{12}^m +
+                                  \widetilde{\Gamma}_{22}^p\widetilde{\Gamma}_{1p}^m
+                                  -
+                                  \widetilde{\Gamma}_{12}^p\widetilde{\Gamma}_{2p}^m).
+\end{align*}
+Using the fact that we are working in normal coordinates for $g$,
+we have that $\Gamma_{ij}^{k}=0$ at $p$, and $g_{ij} = \delta_{ij}$ at
+$p$. In particular $\widetilde{\Gamma}_{ij}^k$ simplify to
+$\delta_{kj}\partial_i w + \delta_{ki}\partial_j w -
+\delta_{kl}\delta_{ij}\partial_l w$ and $\widetilde{g}_{ij} =
+e^{2w}\delta_{ij}$. Furthermore, we get
+\begin{align*}
+  \partial_l \widetilde{\Gamma}_{ij}^k =
+  \partial_l \Gamma_{ij}^k + \delta_{kj} \partial_l\partial_i w +
+  \delta_{ki} \partial_l\partial_j w
+  - \delta_{km}\delta_{ij} \partial_l\partial_m w
+\end{align*}
+
+Substituting these gives
+\begin{align*}
+\widetilde{R}_{1221}
+  = & e^{2w} g_{11}\Big(\partial_1 \Gamma_{22}^1
+      -  \partial_1\partial_1 w
+      - \partial_2 \Gamma_{12}^1 - \partial_2\partial_2 w \\
+  &
+      + (\delta_{p2}\partial_2 w + \delta_{p2}\partial_2 w -
+      \delta_{pl}\partial_l w)(
+      \delta_{mp}\partial_1 w + \delta_{m1}\partial_p w -
+    \delta_{ml}\delta_{1p}\partial_l w) \\ &
+    -(\delta_{p2}\partial_1 w + \delta_{p1}\partial_2 w)
+    (
+      \delta_{mp}\partial_2 w + \delta_{m2}\partial_p w -
+                                             \delta_{ml}\delta_{2p}\partial_l w) \Big).
+\end{align*}
+It's straightforward to check that the terms in the last two lines
+cancel out, and we are left with 
+\[ \widetilde{R}_{1221} =  e^{2w}g_{11}\Big (\partial_1 \Gamma_{22}^1 - \partial_2 \Gamma_{12}^1
+  - \partial_1^2 w - \partial_2^2 w\Big). \]
+Using what we already knew about $R$ and $g$ since we are in normal
+coordinates around $p$ tells us that this is
+\[ \widetilde{R}_{1221}= e^{2w}R_{1221} - e^{2w}(\partial_1^2 w +\partial_2^2 w). \]
+
+\noindent
+(c)
+We showed in previous homeworks that in a local frame we have $\Delta w =
+\partial_1^2 w + \partial_2^2 w$. Thus part (b) says that
+$\widetilde{Rm}(\partial_1,\partial_2,\partial_2,\partial_1) =
+e^{2w}(K-\Delta w)$.
+
+Simply plugging in and using our
+normal coordinates gives
+\[ \widetilde{Rm}(\partial_1,\partial_2,\partial_2,\partial_1)
+  = \widetilde{K}(e^{4w}-0). \]
+Equating these gives \[ \Delta w + \widetilde{K} e^{2w} = K. \]
+
+
+
+
+
+
+
+
+\subsection*{Question 4}
+
+Let $p$ be some point in $M$. Let $\kappa$ be the sectional curvature
+of $(M,g)$ at $p$. By (b) it is enough to find $w$ in some
+small geodesic ball $U$ around $p$ such that $\Delta w = \kappa$ since then
+we must have $\widetilde{\kappa}e^{2w(p)}=0$ and since
+$e^{2w(p)}\neq 0$, we must have that $\widetilde{\kappa}^\prime =
+0$. This would then say that $(U,e^{2w}g)$ is flat, as required.
+Since $\kappa$ is smooth on $M$, then proposition 1 given in the
+problem says that such a $w$ exists. Thus any two-dimensional
+Riemannian manifold is locally conformally flat!
+
+
+
+
+
+
+
+\subsection*{Question 5}
+\phantom{ }\\
+\noindent
+(a) For identity, simply take $c$ to be the constant curve on a point
+$p\in M$. This follows since composing a smooth curve with $c$ gives
+back the original smooth curve (where we can compose on either side).
+
+The group $\textrm{Hol}(M,p)$ is clearly closed since if $c_1$ and
+$c_2$ are closed piecewise smooth curves with endpoints $p$, then
+$c_1 * c_2$ is also a piecewise smooth closed curve with endpoints
+$p$. (There is some messing with the interval of definition that one
+should probably do here, i.e. $c_1*c_2$ is defined on
+$[a_1,b_1+(b_2-a_2)]$ where we do $c_1(t)$ for $a_1\leq t\leq b_1$
+and $c_2(t-b_1+a_2)$ on $b_1\leq t\leq b_1+(b_2-a_2)$.)
+
+Associativity follows since $c_1*(c_2*c_2)=(c_1*c_2)*c_3$. 
+
+Finally, for inverse, we observed in class (see page 108 of Lee) that
+parallel transport $P_{t_0t_1}^\gamma(v)$ has an inverse
+(namely $P_{t_1t_0}^\gamma(v)$). Now if $c$ is a closed piecewise
+smooth curve with endpoints at $p$, then it's reverse path $-c$ is
+too. Thus, since $P_{t_1t_0}^c(v) = P_{t_0t_1}^{-c}(v)$ we have that
+$P_{-c}$ is the inverse to $P_c$ (under both left and right
+composition).\\
+\\
+\noindent
+(b)
+Parallel transport along a curve is linear. This follows by looking at
+equation 4.19 of Lee, the equation of parallelism in local
+coordinates. Furthermore it's an isomorphism, and is hence an element
+of $GL_n(T_pM)$. By (a) this means $\textrm{Hol}(M,p)$ is a subgroup
+of $GL_n(T_pM)$. Finally observe that Prop 5.5.f of Lee says that
+parallel transport is actually an isometry. Hence $\textrm{Hol}(M,p)$
+is actually a subgroup of $O(T_pM)$.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "exam"
+%%% End:

@@ -1,0 +1,135 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+%In order to "hide" the solutions, comment the line below
+%\printanswers
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+\framedsolutions 
+\renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+
+
+%--- Load packages------
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{mathtools}
+%\usepackage{Matrix}
+\usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+\newcommand{\ii}{\ensuremath{\textbf{i}}}
+\newcommand{\jj}{\ensuremath{\textbf{j}}}
+\newcommand{\kk}{\ensuremath{\textbf{k}}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+%Display cross product formula
+\def\crossproduct<#1,#2,#3><#4,#5,#6>{
+	\left\vert\,\begin{matrix}
+		\hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+		\hfill#1&\hfill#2&\hfill#3\\
+		\hfill#4&\hfill#5&\hfill#6\\
+	\end{matrix}\, \right\vert} 
+%Display the minor matrix
+\def\minor<#1,#2><#3,#4>{
+	\left\vert\,\begin{matrix}
+		\hfill#1&\hfill#2\\
+		\hfill#3&\hfill#4\\
+	\end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+
+%--- Set up the header ---
+\pagestyle{head}
+\header{Name: }{}{Date: 09/14/2023}
+
+%Header for Solution--------------
+%\header{Name: SOLUTIONS}{}{Date: }
+%---------------------------------
+
+\headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+\parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+	
+\centerline{\bf Math 20580 L.A. and D.E. Tutorial}
+\centerline{\bf Quiz 3}
+\vskip .2in
+\noindent
+ CALCULATORS ARE NOT ALLOWED.
+ \vskip .1 in
+	
+\begin{questions}
+	%%%%%%%%%%%%%%%%%
+	%
+	%
+	%Question 1.
+	%
+	%
+	%%%%%%%%%%%%%%%%%
+  \question True or False:
+  Given three \textbf{linearly independent} vectors ${\bf v}_1, {\bf v}_2,$
+and ${\bf v}_3$, then any vector in $\mathrm{Span}({\bf v}_1,{\bf
+  v}_2,{\bf v}_3)$ is in the $\mathrm{Span}({\bf v}_1,{\bf
+  v}_2)$.
+
+\vskip5cm
+	%%%%%%%%%%%%%%%%%
+	%
+	%
+% Question 2.
+	%
+	%
+	%%%%%%%%%%%%%%%%%	
+\question Consider the matrix:
+\[ A = \begin{bmatrix*}[r]
+    1 & -1 & 0 \\
+    2 & 3 & 1
+  \end{bmatrix*}
+\]
+\begin{parts}
+   \part Find a basis for $\mathrm{Col}(A)$.
+   \part Is the vector
+   $\begin{bmatrix}
+     1 \\ 4
+   \end{bmatrix}$
+   in $\textrm{Col}(A)$?
+   
+   \part Is the vector
+   $\begin{bmatrix}
+     1 & 3 & 4
+   \end{bmatrix}$
+   in $\textrm{Row}(A)$?
+   
+   \part Is the vector 
+   $\begin{bmatrix}
+     1 \\ 1 \\ -5
+   \end{bmatrix}$ in $\textrm{Null}(A)$?
+
+ \end{parts}
+\end{questions}
+\end{document}

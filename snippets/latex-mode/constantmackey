@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: constant mackey
+# key: cm
+# --
+\underline{$1}$0

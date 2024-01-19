@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       5C65D275-0063-4000-8BA2-652B84716A25
+:END:
+#+title: chain complex
+#+filetags: :algebra:topology:
+
+A chain complex \( (C_\bullet, d_\bullet)\)
+is a sequence \(\ldots,C_0,C_1,C_2,\ldots\)
+

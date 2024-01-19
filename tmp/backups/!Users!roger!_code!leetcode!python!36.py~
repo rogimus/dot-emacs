@@ -1,0 +1,42 @@
+# VALID SUDOKU
+
+        
+        for r in range(9):
+            row = set()
+            col = set()
+            for c in range(9):
+                if board[r][c] != ".":
+                    if board[r][c] not in row:
+                        row.add(board[r][c])
+                    else:
+                        return False
+                if board[c][r] != ".":
+                    if board[c][r] not in col:
+                        col.add(board[c][r])
+                    else:
+                        return False
+                
+                    
+                
+                col = set()
+                for r2 in range(9):
+                    if board[r2][c] != ".":
+                        if board[r2][c] not in col:
+                            col.add(board[r2][c])
+                        else:
+                            return False
+
+
+                                
+        for h in range(3):
+            for v in range(3):
+                box = set()
+                for r in range(3):
+                    for c in range(3):
+                        pt = board[3*h+r][3*v+c]
+                        if pt != ".":
+                            if pt not in box:
+                                box.add(pt)
+                            else:
+                                return False
+        return True

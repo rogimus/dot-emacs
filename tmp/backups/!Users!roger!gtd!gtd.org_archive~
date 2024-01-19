@@ -1,0 +1,367 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /Users/roger/gtd/gtd.org
+
+
+* DONE read documents
+DEADLINE: <2022-08-22 Mon>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-22 Mon 17:31
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: week 1 TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+ - [X] general info
+ - [X] HW schedule
+ - [X] schedule
+ - [X] HW info
+ - [X] info for tutors
+
+* DONE week 1 TA
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-24 Wed 14:53
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+** DONE print class list for attendance
+
+* DONE directed reading added
+DEADLINE: <2022-08-30 Tue>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-24 Wed 20:06
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+** DONE email tori.
+
+
+* DONE email algebra review
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-08-24 Wed 20:08
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE email felix
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 21:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE register/roll cal
+DEADLINE: <2022-08-30 Tue>
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 21:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE email Felix clarrifying about algebraic set in Question 4
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 21:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE think about I.2.9 hartshorne
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 21:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE [#A] review GC notes from W1L1
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 22:23
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: Group Cohom
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE Find out about why free actions are needed?
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 22:23
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: Group Cohom
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE [#A] review G+T notes from W1L1 
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-18 Sun 22:24
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: intG+T
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE enroll in directed readings
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE enroll in AG
+DEADLINE: <2022-08-30 Tue>
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+
+* TODO [#A] read ch4 of RavGreen
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: BP
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: TODO
+:ARCHIVE_ITAGS: @math @mark
+:END:
+** 4.1 (Quillen's Theorem)
+*** [X] Complex orientation
+*** [X] MU
+*** [X] E^*(CP^\infty) and FGLs from complex orientation
+*** [X] Quillen's Theorem
+*** [X] Hopf Algebroid structure for (L,LB)
+*** [X] localization at p and existence of BP
+*** [X] structure of (pi*(BP),BP*BP) and (V,VT).
+
+
+* TODO schedule TA stuff
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: TODO
+:END:
+
+* TODO compile TA stuff into one file
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: TODO
+:END:
+
+* Group Cohom
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_CATEGORY: gtd
+:END:
+** TODO [#B] reread GC notes from W1L1
+
+* TODO show pi_n(X) is the same as pi_n(\widetilde{X}) for n>=2.
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:25
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: BP
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: TODO
+:ARCHIVE_ITAGS: @math @mark
+:END:
+
+* review W2
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: intG+T
+:ARCHIVE_CATEGORY: gtd
+:END:
+
+* review W3
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: intG+T
+:ARCHIVE_CATEGORY: gtd
+:END:
+
+* review W4
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: intG+T
+:ARCHIVE_CATEGORY: gtd
+:END:
+
+* talk on steenrod operations
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: intG+T
+:ARCHIVE_CATEGORY: gtd
+:END:
+** research
+** plan outline/things I want to talk about
+** write talk
+
+* review Ass2 feedback
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:END:
+
+* review morphisms
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:26
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: AG
+:ARCHIVE_CATEGORY: gtd
+:END:
+
+* TODO [#A] think about the shearing isomorphism for Hopf Algebras
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:28
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: BP
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: TODO
+:ARCHIVE_ITAGS: @math @mark
+:END:
+
+* DONE read app2 of RavGreen 
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-07 Sat 18:34
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: BP
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: @math @mark
+:END:
+** [X] structure of L\otimes Q.
+** [ ] Comparison lemma (full generality)
+** [X] Lazard's theorem.
+** [X] Structure of LB.
+** [ ] Hopf algebroid structure for (L,LB).
+** [ ] p-typical formal group laws
+** [ ] Structure of (V,VT)
+** [ ] Hopf algebroid structure of (V,VT)
+
+* DONE do worksheet
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-17 Tue 15:13
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+
+* DONE email Lauwry
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-17 Tue 15:13
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: Oral
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: @math @mark
+:END:
+
+* DONE Read Arthur's Emails
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE make a sylabus
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE gradescope setup
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE Publish canvas
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE print roll
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE print 11 syllabi for class
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE bring sheets
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE tutorial !
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE Mark readiness
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-01-19 Thu 14:00
+:ARCHIVE_FILE: ~/gtd/gtd.org
+:ARCHIVE_OLPATH: TA
+:ARCHIVE_CATEGORY: gtd
+:ARCHIVE_TODO: DONE
+:END:
+

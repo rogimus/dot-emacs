@@ -1,0 +1,60 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Equivariant Stable Homotopy Theory}
+\maketitle
+
+
+\tableofcontents
+
+\section{Preliminaries}
+
+Let $G$ be a group. A \textbf{universe} is a countably
+infinite-dimensional real inner product space $U$ equipped with an
+action by $G$ such that $G$ acts via isometries, and such that $U$
+contains: the trivial representation; and countably many copies of
+each irreducible representation of $G$.
+
+A universe is \textbf{trivial} if it contains only the trivial
+representation. A universe is \textbf{complete} if it contains each
+irreducible $G$-representation. (Andy Blumberg mentions this allows us
+to dualize orbits? Is this referring to the fact that $U$ has to
+contain all dual reps?)
+
+Let $S^V$ denote the one-point-compactification for a subset
+$V\subset U$. Let $\Sigma^V X$ denote $S^V\smash X$, and let
+$\Omega^V X$ denote the mapping space $\Map(S^V,X)$. $($Note that
+function spaces are somewhat subtle. We take continuous maps, and put
+the compact open topology on it, or more specifically like the
+$k$-ification of the compact open? This gives us the adjoint
+$X^{Y\times Z}\cong (X^Y)^Z$.$)$
+
+A $G$-\textbf{prespectrum} (indexed on $U$) is a collection of
+$G$-spaces $\{E_V\}$ indexed on subspaces $V\subset U$, together with
+structure maps $\Sigma^{W-V}E_V\to E_W$ for each pair $W$ and $V$,
+where $W-V$ is the orthogonal complement of $V$ inside
+$W$. Equivalently the structure maps are of the form
+$\Sigma^W E_V\to E_{V\oplus W}$.  A $G$-\textbf{spectrum} is a
+$G$-prespectrum for which all the adjoints of the structure maps
+$E_V\to \Omega^{W-V}E_W$ are homeomorphisms.
+
+The positive \textbf{equivariant homotopy groups} of a
+$G$-(pre)spectrum are defined to be
+$\pi_n^H E = \colim_V \pi_{n}^H \Omega^V E_V$ where $H$ is a subgroup
+of $G$, and $\pi_{i}^H X := [S^i\wedge (G/H)_+, X]^G$
+\,\,$($i.e. $G$-equivariant maps that land in $X^H)$. The advantage of
+spectra over prespectra is that we don't need to compute a colimit
+since, by assumption,
+\[ \pi_{n}^H \Omega^V E_V \cong \pi_n^H E_0.\] The negative homotopy
+groups are instead defined as $\pi_{-n}^H E:= \colim_V \pi_0^H
+\Omega^V E_{V+n}$.  $($ i.e. positive homotopy groups shift degree
+down, but negative ones shift it up.$)$
+
+
+
+
+
+
+
+\end{document}

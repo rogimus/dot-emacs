@@ -1,0 +1,186 @@
+\documentclass{amsart}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents:             %
+% - packages            %
+% - Theorems            %
+% - Cat Stuff           %
+% - Rings/bbX           %
+% - Specific categories %
+% - topology            %
+% - AG                  %
+% - Homological Algebra %
+% - Random cal/scr      %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% 
+% packages %
+%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+\usepackage{microtype}
+\usepackage{geometry}
+% parskip changes new paragraph formatting from 0space+1indent to 1space+0indent
+\usepackage[parfill]{parskip}
+
+
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+
+
+\begin{document}
+\author{Roger Murray}
+
+\maketitle
+
+\input{questions.tex}
+
+
+\end{document}

@@ -1,0 +1,612 @@
+\documentclass{amsart}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents:             %
+% - packages            %
+% - Theorems            %
+% - Cat Stuff           %
+% - Rings/bbX           %
+% - Specific categories %
+% - topology            %
+% - AG                  %
+% - Homological Algebra %
+% - Random cal/scr      %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% 
+% packages %
+%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+\usepackage{microtype}
+\usepackage{geometry}
+% parskip changes new paragraph formatting from 0space+1indent to 1space+0indent
+\usepackage[parfill]{parskip}
+
+
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{answer}{Answer}
+
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+% \DeclareMathOperator{\ker}{ker}
+% \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+
+
+\begin{document}
+\title{Intro to AG - Homework 1} \author{Roger Murray}
+
+\maketitle
+
+\begin{question}
+  Give an example of a non-noetherian topological space.
+\end{question}
+\begin{answer}
+  Take the space $\bbR$ with the usual topology. Consider the
+  descending chain defined by
+  $$\bbR= X_0\supsetneq X_1 \supsetneq X_2 \supseteq \cdots$$ where
+  $X_i$ is defined as the interval $[-\frac{1}{i},\frac{1}{i}]$ for
+  $i\geq 1$. This chain does not stabilize, i.e. given an arbitrary
+  $n\in \mathbb{N}$
+  $$ \left[-\frac{1}{n},\frac{1}{n}\right] \supsetneq
+  \left[-\frac{1}{n+1},\frac{1}{n+1}\right]. $$
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 2 %
+%%%%%%%%%%%%%%
+\begin{question}
+  Let $k$ be a field which is not algebraically closed. Prove that
+  there is some $n$ and an ideal
+  $\mathfrak{a}\subseteq k[x_1, \ldots , x_n] $ such that
+  $I(Z(\mathfrak{a})) \neq \sqrt{\mathfrak{a}}$.
+\end{question}
+\begin{answer}
+  Since $k$ is not algebraically closed there exists a polynomial
+  $f(x)\in k[x]$ of degree strictly greater than 1 which has no roots
+  in $k$.  Then in $\bbA^1$ we have that
+  $I(Z(f))=I(\emptyset)=k[x]$. Note that since $f(x)$ is irreducible,
+  the ideal $(f(x))$ is maximal. In particular it is prime, and thus
+  also radical. Finally, we observe that $(f(x))\neq k[x]$ since
+  $f(x)$ has degree $>0$, i.e. it is not invertible.
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 3 %
+%%%%%%%%%%%%%%
+\begin{question} (I.1.2) \emph{The Twisted Cubic Curve.}  Let
+  $Y\subseteq \bbA^3$ be the set
+  $Y = \{(t,t^2,t^3 )\,\,|\,\,t\in k\}$.  Show that $Y$ is an affine
+  variety of dimension 1. Find generators for the ideal $I(Y)$. Show
+  that $A(Y)$ is isomorphic to a polynomial ring in one variable over
+  $k$. We say that $Y$ is given by the parametric representation
+  $x = t, y = t^2, z = t^3$.
+\end{question}
+\begin{answer}
+  
+  First observe that $Y=Z(x^2-y,x^3-z)$. Taking the ideal of both
+  sides gives
+  \[I(Y) = \sqrt{(x^2-y,x^3-z)}.\] We will prove that
+  $k[x,y,z]/ (x^2-y,x^3-z)\cong k[t]$. This is a domain and this will
+  allow us to conclude that $(x^2-y,x^3-z)$ is prime and therefore
+  also radical. This will imply that $Y=Z(x^2-y,x^3-z)$ is an affine
+  variety and that $I(Y)=(x^2-y,x^3-z)$.
+
+  To see that $k[x,y,z]/ (x^2-y,x^3-z)\cong k[t]$ consider two
+  homomorphisms. The first
+  $$\varphi:k[x,y,z]/ (x^2-y,x^3-z)\to k[t]$$ is defined by
+  \begin{align*}
+    x\mapsto t
+    \quad\quad y\mapsto t^2
+    \quad\quad z\mapsto t^3.
+  \end{align*}
+  The second $$\psi:k[t]\to k[x,y,z]/ (x^2-y,x^3-z)$$ is defined by
+  $t\mapsto x$. Then
+  \[ \psi\circ\varphi(f(x,y,z)) = \psi (f(t,t^2,t^3)) = f(x,x^2,x^3)\]
+  where the last polynomial is congruent to $f(x,y,z)$ in
+  $k[x,y,z]/ (x^2-y,x^3-z)$.  Similarly
+  \[ \varphi\circ\psi(f(t)) = \varphi(f(x)) = f(t). \] They're also
+  clearly well-defined and ring homomorphisms. Thus they are ring
+  isomorphisms.
+
+  The final thing to show is that $\dim Y=1$. This follows from
+  Proposition I.1.7 of Hartshorne which says that $\dim Y=\dim A(Y)$
+  and the fact that $\bbA^1_k$ has dimension 1 (which we showed in
+  class on Friday week 1).
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 4 %
+%%%%%%%%%%%%%%
+
+\begin{question}
+  Let $X$ be an algebraic set. Prove that the dimension of $X$ is the
+  maximum dimension of an irreducible component of $X$.
+\end{question}
+\begin{answer}
+  Consider an arbitrary descending chain
+  $X_1\supseteq X_2 \supseteq \cdots$ contained in $X$. Since $X$ is
+  an algebraic set we can write $X$ uniquely as the finite union of
+  closed irreducible affine varieties $Z_1,\ldots, Z_n$ none of which
+  are contained in any other.
+
+  We immediately have that $\max_i\{\dim Z_i\}\leq \dim X$. To see
+  this observe that any descending chain contained entirely in one of
+  the $Z_i$ is also a descending chain in $X$. In particular a
+  descending chain in $Z_i$ of length greater than $\dim X$ would
+  contradict the maximality of $\dim X$.
+
+  We now prove the reverse inequality.  The descending chain
+  $X_1\supseteq X_2 \supseteq \cdots$ gives rise to $n$ descending
+  chains, $Y_1^i\supseteq Y_2^i\supseteq \cdots$ where
+  $Y^i_j=X_j\cap Z_i$. Note that each $Y_j^i$ is closed in $X$
+  (intersection of two closed sets is closed). Since the $Z_i$ cover
+  $X$ we have that $\cup_i Y^i_j = X_j$. Thus, clearly, if all the
+  $Y^i_j$ stabilize for every $i$ then $X_j$ must stabilize too. In
+  particular $\dim X\leq \max_i\{\dim Z_i\}$.
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 5 %
+%%%%%%%%%%%%%%
+
+\begin{question} (I.1.3+\emph{extra}) Let $Y$ be the algebraic set in
+  $\bbA^3$ defined by the two polynomials $x^2 -yz$ and $xz - x$. Show
+  that $Y$ is a union of three irreducible components. Describe them
+  and find their prime ideals.
+
+  \emph{Extra.} In addition, find the dimension of Y.
+\end{question}
+
+\begin{answer}
+  Observe that $xz-x = x(z-1)$. In particular a point in $\bbA^3$
+  vanishes on $xz-z$ precisely if it vanishes on $x$ or on $z-1$, i.e.
+  $Z(x(z-1))= Z(x)\cup Z(z-1)$. Hence we wish to find
+  \[ Z(x^2-yz)\cap (Z(x)\cup Z(z-1))=\left(Z(x^2-yz)\cap Z(x)\right)
+    \cup \left(Z(x^2-yz)\cap Z(z-1)\right).\]
+
+  Consider first $Z(x^2-yz)\cap Z(x)$. This is equal to
+  $Z((x^2-yz,x)) = Z(yz,x)$ since the ideal generated by $x^2-yz$ and
+  $x$ is equivalent to the ideal generated by $yz$ and $x$. Next
+  observe that
+  $Z(x^2-yz)\cap Z(z-1) = Z((x^2-yz,z-1)) = Z((x^2-y,z-1))$.  This
+  last equality follows since $x^2-yz+y(z-1)=x^2-y$.
+
+  The next step is to observe that
+  $Z(yz,x)=Z(yz)\cap Z(x) = Z(x)\cap(Z(y)\cup Z(z))$. Thus we may
+  write $Y$ as
+  \[ Y = Z(x,y)\cup Z(x,z)\cup Z(x^2-y, z-1). \] These look like the
+  sets $\{(0,0,z)\},$ $\{(0,y,0)\}$, and $\{(x,x^2,1)\}$ respectively.
+
+  To show each of these three algebraic sets are irreducible we find
+  their ideals and show that they are prime. Since
+  $I(Z(\mathfrak{a})) = \sqrt(\mathfrak{a})$ we can reduce our problem
+  to finding the radicals of the ideals $(x,y)$, $(x,z)$, and
+  $(x^2-y,z-1)$. Since being prime implies being radical, and since we
+  want to show primeness anyway, we instead just prove primeness.
+
+  % Seeing that $(x,y)$ and $(x,z)$ are radical is easy. Indeed if
+  % $f^r$ is in $(x,y)$ then $f^r = g\cdot x^iy^j$ for $i,j$ not both
+  % zero. WLOG we may assume that $g$ is not divisible by either $x$
+  % nor $y$.  Since $k[x,y]$ is a UFD we can write
+  % $f=x^sy^tp_1\cdots p_n$ for some irreducible polynomials
+  % $p_1,\ldots,p_n$ such that neither $x$ nor $y$ divides any of the
+  % $p_i$. Then $f^r = x^{rs}y^{rt}p_1^r\cdots p_n^r$. Since neither
+  % $g$ nor any of the $p_i$ are divisible by $x$ or $y$ we have that
+  % $i=rs$ and $j=rt$. Thus we must have $rs$ and $rt$ are not both
+  % zero, i.e. $s,t$ cannot both be zero. Thus $f\in (x,y)$. The proof
+  % for $(x,z)$ is identical.
+
+  The quotient ring $k[x,y,z]/(x,y)$ is isomorphic to $k[z]$ which is
+  a domain. In particular $(x,y)$ is prime and thus also
+  radical. Similarly for $(x,z)$.
+
+  Next consider $(x^2-y,z-1)$. The quotient $k[x,y,z]/(x^2-y,z-1)$ is
+  isomorphic to $k[t]$ via the isomorphism $x\mapsto t$,
+  $y\mapsto t^2$, $z\mapsto 1$ with inverse $t\mapsto x$. Again since
+  $k[t]$ is a domain, we have that $(x^2-y,z-1)$ is prime, and thus
+  also radical.
+  
+  By Question 4 we only need to find the the dimensions of $Z(x,y)$,
+  $Z(x,z)$ and $Z(x^2-y,z-1)$. Proposition I.1.7 of Hartshorne says
+  that we can compute these dimensions by considering their coordinate
+  ring. By our previous discussion we saw that each coordinate ring is
+  isomorphic to $k[t]$. Since $k[t]$ is a principal ideal domain, the
+  maximum height of a prime ideal is $1$. (This is easy to see
+  algebraically, but we've already seen $\bbA^1$ has dimension 1 so
+  Prop I.1.7 again implies this.)
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 6 %
+%%%%%%%%%%%%%%
+
+\begin{question}
+  Let $X$ be an irreducible topological space, and let $U$ be a
+  non-empty open subset. Show that $U$ is dense in $X$.
+\end{question}
+
+\begin{answer}
+  If $U=X$, we're done. Hence suppose $U\neq X$.
+  
+  We have that $U^c \cup \overline{U}=X$ where $U^c$ denotes the
+  complement of $U$ in $X$ and $\overline{U}$ denotes the closure of
+  $U$ in $X$. Suppose that $U$ is not dense in $X$. Then
+  $\overline{U}\neq X$. Similarly, since $U$ is proper $U^c\neq X$.
+  Thus $X$ can be written as the union of two proper and closed
+  subspaces. This contradicts the fact that $X$ is irreducible. Thus
+  $U$ must be dense in $X$.
+\end{answer}
+
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 7 %
+%%%%%%%%%%%%%%
+
+\begin{question}
+  Let $Y$ be an irreducible subspace of a topological space $X$. Then,
+  $\overline{Y}$ is also irreducible.
+\end{question}
+\begin{answer}
+  Suppose not. Then there exist closed proper subspaces
+  $Y_1,Y_2\subseteq \overline{Y}$ (closed in the subspace topology)
+  such that $Y_1\cup Y_2=\overline{Y}$. By the subspace topology these
+  correspond to closed subsets $X_1,X_2\subseteq X$, i.e.
+  $Y_i=X_i\cap \overline{Y}$. But then the sets $Z_1,Z_2$ defined by
+  $Z_i=X_i\cap Y$ are closed in $Y$ and $Z_1\cup Z_2=Y$. We next show
+  that each $Z_i$ is actually proper in $Y$ to get a contradiction.
+
+  Suppose that they aren't proper, i.e.  suppose (WLOG) that
+  $Z_1=Y$. Then $Y\subseteq X_1$. Since $X_1$ is closed, and
+  $\overline{Y}$ is the minimal closed subspace of $X$ containing $Y$,
+  we therefore have that $\overline{Y}\subseteq X_1$. But then
+  $Y_1=\overline{Y}$ which contradicts our initial assumption that
+  $Y_1$ and $Y_2$ were proper in $\overline{Y}$.  Thus $Z_1$ and $Z_2$
+  must be proper in $Y$. This contradicts our assumption that $Y$ is
+  irreducible. Thus $\overline{Y}$ must be irreducible.
+
+  
+\end{answer}
+
+
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 8 %
+%%%%%%%%%%%%%%
+\begin{question}
+  (I.1.11) Let $Y\subseteq \bbA^3$ be the curve given parametrically
+  by $x = t^3, y = t^4, z = t^5$. Show that $I(Y)$ is a prime ideal of
+  height 2 in $k[x,y,z]$ which cannot be generated by 2 elements. We
+  say $Y$ is not a local complete intersection - \emph{cf.}
+  (Ex. 2.17).
+
+  [Hint: You may find the following non-standard degree on
+  $k[x, y, z]$ useful: Set the degree of a monomial $x^iy^jz^k$ to be
+  $3i + 4j + 5k$. For example, with this definition, $x^4 + xyz + y^3$
+  would be homogeneous of degree 12.]
+\end{question}
+
+\begin{answer}
+  $Y=\{(t^3,t^4,t^5)\,\,|\,\,t\in k\}$. Consider a map
+  $\varphi:k[x,y,z]\to k[t]$ given by $x\mapsto t^3$, $y\mapsto t^4$,
+  and $z\mapsto t^5$. The kernel of this map is $I(Y)$. To see this
+  observe that if $f\in I(Y)$ then $f(t^3,t^4,t^5)=0$ for all
+  $t\in k$. In other words $\varphi(f)$ has infinitely many roots in
+  $k$ (since $k$ is algebraically closed, and thus infinite), and thus
+  must be the zero polynomial.  Conversely if $f\in \ker\varphi$ then
+  $\varphi(f)(\alpha)=f(\alpha^3,\alpha^4,\alpha^5)=0$ for all
+  $\alpha\in k$. Thus $f\in I(Y)$.
+
+  The image of $\varphi$ is the set of polynomials
+  \[ \{ a_nt^n+\cdots+a_3t^3+a_0 \,\,|\,\, a_i\in k\}. \] This
+  inherits an obvious ring structure from $k[t]$, and it is also
+  clearly integral domain. In particular we have that $I(Y)$ must be
+  prime.
+
+  We next show that $I(Y)$ cannot be generated by two elements.
+  Consider the polynomials $xz-y^2$, $x^3-yz$, and $z^2-x^2y$. These
+  are clearly in $I(Y)$. Observe also that they have homogeneous
+  degree 8,9, and 10 respectively, using the grading from the hint. We
+  will show that these polynomials are somehow minimal in $I(Y)$ with
+  respect to the grading. Let us consider all monomials of degree
+  $\leq 10$. We have the following table:
+
+  \begin{center}
+    \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+      \hline
+      \text{degree} & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+      \hline
+      \text{monomials} & $x$ & $y$ & $z$ & $x^2$ & $xy$ & $xz$, $y^2$
+                                            & $x^3$, $yz$ & $z^2$,
+                                                            $x^2y$
+      \\\hline
+    \end{tabular}
+  \end{center}
+
+  Next consider some polynomial $f=\sum_{i,j,k} a_{i,j,k}
+  x^iy^jz^k$. The image of $f$ is
+  $\sum_{i,j,k} a_{i,j,k} t^{3i+4j+5k}$.  If $f\in I(Y)$ then
+  $\varphi(f)=0$ and we must have that for every $n$,
+  \begin{equation}
+    \label{eq:sumtozero}
+    \sum_{3i+4j+5k=n} a_{i,j,k}=0.
+  \end{equation}
+  This implies than any polynomial $f\in I(Y)$ has minimum degree $8$,
+  i.e. \[ f=a_0+\sum_{n\geq 8} F_n \] where $F_n$ is a homogeneous
+  polynomial of degree $n$. To see this note that in degrees less then
+  8 there is only one possible coefficient which is forced to be
+  0. For example, in degree 6, equation \ref{eq:sumtozero} says that
+  $a_{2,0,0}=0$.  We also get that these are the only polynomials in
+  these degrees in $I(Y)$, up to scaling by an element of $k$, since
+  equation \ref{eq:sumtozero} gives the relations
+  \begin{align*}
+    a_{1,0,1}&=-a_{0,2,0}, \\
+    a_{3,0,0}&=-a_{0,1,1},\\
+    a_{0,0,2}&=-a_{2,1,0}.
+  \end{align*}
+  Finally observe that multiplication by an arbitrary non-constant
+  polynomial increases degree by at least 3. In particular, for degree
+  reasons, we have that any minimal set of generators contains at
+  least these three polynomials.  Thus $I(Y)$ cannot be generated by
+  two polynomials.
+
+\end{answer}
+
+
+
+
+%%%%%%%%%%%%%%
+% Question 9 %
+%%%%%%%%%%%%%%
+
+\begin{question}
+  Let $R\to S$ be a morphism of (commutative) rings. Let $\Mod_R$ and
+  $\Mod_S$ be the categories of $R$-modules and $S$-modules,
+  respectively. Define a functor $F : \Mod_R \to \Mod_S$ on objects
+  via $M \mapsto M \otimes_R S$, and a forgetful functor
+  $G : \Mod_S\to \Mod_R$. Prove that $F$ is a left adjoint to $G$
+  (i.e. for any $M \in \Mod_R$ and $N \in \Mod_S$, there is a
+  isomorphism between the $\Hom$-sets
+  $\Hom_{\Mod_S}(FM,N)\cong \Hom_{\Mod_R}(M, GN)$ natural in $M$ and
+  $N$ ).
+\end{question}
+
+\begin{answer}
+
+  Let $N_R$ denote $GN$. This is the restriction of scalars.
+
+  First we define a map $\alpha:\Hom_S(FM,N)\to\Hom_R(M,N_R)$.  Given
+  $\varphi:M\otimes_R S\to N$, define a map $M\to N_R$ by
+  $m\mapsto \varphi(m\otimes 1)$.  This is $R$-linear since $\varphi$
+  is $S$-linear (and thus also $R$-linear).
+
+  Next define a map $\beta:\Hom_R(M,N_R)\to \Hom_S(FM,N)$. Given an
+  $R$-linear homomorphism $\psi:M\to N$ define a map
+  $M\otimes_R S\to N$ via $m\otimes s\mapsto s\cdot\psi(m)$. This is
+  clearly an $S$-linear homomorphism.
+
+  Let us show these are mutually inverse to one another. Firstly,
+  \begin{align*}
+    \alpha\left(\beta(\psi)\right)(m) &= \beta(\psi)(m\otimes 1)\\
+                                      &= 1\cdot \psi(m) = \psi(m).
+  \end{align*}
+  Next,
+  \begin{align*}
+    \beta(\alpha(\varphi))(m\otimes s) & = s\cdot \big(\alpha(\varphi)(m)\big) \\
+                                       &= s\cdot \varphi(m\otimes 1) \\
+                                       &= \varphi(m\otimes s).
+  \end{align*}
+
+  It's easy to see that $\alpha$ and $\beta$ are group
+  homomorphisms. All that is left to check is naturality.
+
+  Given a $R$-linear map $f:M\to M^\prime$, naturality amounts to
+  commutativity of the following:
+  \[\begin{tikzcd}
+      \Hom_R(M^\prime,N_R)\arrow[d, "f^*"']\arrow[r, "\beta"] &
+      \Hom_S(FM^\prime,N)\arrow[d, "f^*\otimes_R \id_S"] \\
+      \Hom_R(M,N_R)\arrow[r, "\beta"] & \Hom_S(FM,N)
+    \end{tikzcd}\] where $f^*$ denotes precomposition with $f$.  Let
+  $\psi\in \Hom_R(M^\prime, N_R)$, and let $m\in M$, and $s\in S$.
+  Then
+  \begin{align*}
+    \beta\circ f^*(\psi) (m\otimes s)  &= s\cdot f^*(\psi)(m)\\ 
+                                       &= s\cdot \psi(f(m))
+  \end{align*}
+  On the other hand,
+  \begin{align*}
+    (f^*\otimes \id_S)\big(\beta (\psi)\big)(m\otimes s)
+    & = \beta(\psi)(f(m)\otimes s) \\
+    &= s \cdot \psi(f(m)).
+  \end{align*}
+  Thus $\beta$ is natural in $M$.
+
+  To see naturality in $N$ suppose we have an $S$-linear homomorphism
+  $g: N\to N^\prime$.  We wish to show that
+  \[\beta\circ g_*(\psi)(m^\prime \otimes s)
+    = g_*\circ \beta(\psi)(m^\prime \otimes s)\] where $g_*$ denotes
+  post-composition with $g$ and where $\psi\in \Hom_R(M,N_R)$.  The
+  RHS equates to
+  $g(\beta(\psi)(m^\prime\otimes s)) = g(s\cdot \psi(m^\prime))$. The
+  LHS meanwhile equates to
+  $s\cdot g_*(\psi)(m^\prime)= s\cdot g(\psi(m^\prime))$. By
+  $S$-linearity of $g$ we have LHS=RHS.
+
+  Next we check naturality of $\alpha$. %aaaaaaaaaaaaaa
+  Naturality in $M$ is equivalent to the following equality holding:
+  \[ f^*\circ \alpha (\phi)(m) = \alpha\circ (f^*\otimes \id_S)
+    (\phi)(m).\] The LHS becomes
+  $\alpha(\phi)(f(m))=\phi(f(m)\otimes 1)$.  Meanwhile the RHS becomes
+  $(f\otimes\id_S)^*(\phi)(m\otimes 1) = \phi(f(m)\otimes 1)$.
+
+  Naturality in $N$ is equivalent to the following equality holding:
+  \[ g_*\circ \alpha(\phi)(m) = \alpha\circ g_*(\phi)(m).\] The LHS
+  comes out to be $g(\alpha(\phi)(m))=g(\phi(m\otimes 1))$, meanwhile
+  the RHS is $g_*(\phi)(m\otimes 1) = g(\phi(m\otimes 1))$.
+\end{answer}
+
+\end{document}

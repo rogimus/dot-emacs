@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       44E9ABC2-817D-40F7-8E69-458C22ECD0F4
+:END:
+#+title: oriented delta complex
+#+filetags: :topology:simplicial homology:
+
+An /oriented [[id:6FB59C11-FE7F-41B9-9BF8-08D77BD8AEB5][\(\Delta\)-complex]]/ \(X\) is \(\Delta\)-complex with an
+/orientation class/ which is a choice of sign for even \(n\)-simplex:
+\[ [X] = \sum_{\sigma\in X_n} \pm \sigma \]
+such that \(\partial[X] = 0\).

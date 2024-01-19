@@ -1,0 +1,316 @@
+\subsection*{Question 1} {\bf [Lee 4-2]}
+
+\noindent
+One way of taking the ``directional derivatives of vector fields'' is
+the Lie derivative $\calL_X Y = [X,Y]$. Suppose $M$ is a smooth
+manifold of positive dimension.
+
+\begin{enumerate}[(a)]
+\item Show that the map
+  $\calL:\frakX(M) \times \frakX(M) \to \frakX(M)$ is not a connection
+\item Show that there are smooth vector fields $X$ and $Y$ on $\bbR^2$
+  such that $X=Y =\partial_1$ along the $x^1$-axis, but the Lie
+  derivatives $\calL_X(\partial_2)$ and $\calL_Y(\partial_2)$ are not
+  equal on the $x^1$-axis.
+\end{enumerate}
+
+\begin{proof}
+  {\bf (a)} $\calL$ fails linearity in the $X$ component. Recall
+  $[X,Y]$ is the vector field defined by
+  \[ [X,Y]f = XYf - YXf. \] If $f_1,f_2\in C^\infty(M)$ then we have
+  the following:
+  \begin{align*}
+    [f_1 X_1 + f_2X_2,Y]f =& (f_1X_1+f_2X_2) Yf - Y(f_1X_1+f_2X_2)f \\
+    =&
+       f_1X_1Yf+f_2X_2Yf-(f_1YX_1f+(Yf_1)Xf\\
+                           &+f_2YX_2f + (Yf_2)X_2f)\\
+    =&f_1(X_1Yf-YX_1f)+f_2(X_2Yf-YX_2f)\\&-(Yf_1)X_1f-(Yf_2)X_2f \\
+    =& f_1[X_1,Y]f+f_2[X_2,Y]f-(Yf_1)X_1f-(Yf_2)X_2f
+  \end{align*}
+
+  \noindent
+  {\bf (b)} Take $X=1\partial_1+x^2\partial_2$ and take
+  $Y= \partial_1$. Then along the $x^1$-axis $X=Y= \partial_1$. It's
+  important here to note that the Lie bracket at a point is defined by
+  \[ [X,Y]_p f = X_p(Yf)- Y_p(Xf). \] Now consider $f=x^1x^2$ and
+  $X=\partial_1+x^2\partial_2$. Then, at $p$ on the $x^1$-axis,
+  \[ \calL_X(\partial_2)_pf = X_p\partial_2f - \partial_2|_p Xf =
+    \partial_1\partial_2f - \partial_2 (x^2+x^1x^2) = -x^1.\] If we
+  take $Y=\partial_1$ then
+  \[ \calL_X(\partial_2)_p =
+    \partial_1\partial_2-\partial_2\partial_1 =0. \] Hence
+  $\calL_X(\partial_2)\neq \calL_Y(\partial_2)$ along the $x^1$-axis.
+\end{proof}
+
+
+
+\subsection*{Question 2} {\bf [Lee 4-3]}
+
+\noindent
+Prove proposition 4.7. Explain how your proof of Proposition 4.7 can
+be used to prove Proposition 4.13.
+
+\begin{proposition*}[Proposition 4.7]
+  Let $M$ be a smooth manifold with or without boundary, and let
+  $\nabla$ be a connection in $TM$. Suppose we are given two smooth
+  local frames $(E_i)$ and $(\tilde{E}_j)$ for $TM$ on an open subset
+  $U\subset M$, related by $\tilde{E}_i = A_i^j E_j$ for some matrix
+  of functions $(A_i^j)$. Let $\Gamma_{ij}^k$ and
+  $\tilde{\Gamma}_{ij}^k$ denote the connection coefficients of
+  $\nabla$ with respect to these two frames. Then
+  \[ \tilde{\Gamma}_{ij}^k = (A^{-1})^k_p A^q_i A^r_j \Gamma^p_{qr} +
+    (A^{-1})^k_p A_i^q E_q (A_j^p). \]
+\end{proposition*}
+
+\begin{proof}
+  Recall that the connection coefficients are defined via
+  \[ \nabla_{E_i} E_j = \Gamma_{ij}^k E_k, \] and similarly for
+  $\tilde{\Gamma}_{ij}^k$.  Using this, the deifning properties of
+  $\nabla$ as a connection, and our formula relating the frames, we
+  obtain
+  \begin{align*}
+    \nabla_{\tilde{E}_i}\tilde{E}_j &= \nabla_{A_i^q E_q} A_j^r E_r \\
+                                    &= \sum_{r=1}^{n}
+                                      \nabla_{A_i^qE_q} A^r_jE_r \\
+                                    &= \sum_{r=1}^{n} (A_j^r
+                                      \nabla_{A_i^q E_q} E_r + A_i^q
+                                      E_q (A_j^r)E_r ) \\
+                                    &= \sum_{r=1}^{n} (A_i^qA_j^r
+                                      \nabla_{E_q} E_r + A_i^q
+                                      E_q (A_j^r)E_r ) \\
+                                    &= A_i^qA_j^r
+                                      \Gamma_{qr}^pE_p + A_i^q
+                                      E_q (A_j^p) E_p
+  \end{align*}
+  where in the last line we performed a sneaky change of variables in
+  the second term. Equate this now with
+  $\nabla_{\tilde{E}_i}\tilde{E}_j =
+  \tilde{\Gamma}_{ij}^k\tilde{E}_k$ to obtain
+  \begin{align*}
+    \tilde{\Gamma}_{ij}^k\tilde{E}_k & = A_i^qA_j^r
+                                      \Gamma_{qr}^pE_p + A_i^q
+                                       E_q (A_j^p)E_p \\
+    \implies \tilde{\Gamma}_{ij}^k A^p_k E_p & = A_i^qA_j^r
+                                      \Gamma_{qr}^pE_p + A_i^q
+                                       E_q (A_j^p)E_p
+  \end{align*}
+Multiplying through by $(A^{-1})_p^k$ then gives the result.
+
+
+    
+\end{proof}
+
+\subsection*{Question 3} {\bf [Lee 4-5]}
+
+\noindent
+Prove proposition 4.16.
+
+\begin{proposition*}
+  Let $M$ be a smooth manifold with or without boundary, and let
+  $\nabla$ be a connection in $TM$. Suppose $(E_i)$ is a local frame
+  for $M$, $(\varepsilon^j)$ is its dual fram, and $\{\Gamma_{ij}^k\}$
+  are the connection coefficients of $\nabla$ with respect to this
+  frame. Let $X$ be a smooth vector field, and let $X^iE_i$ be its
+  local expression in terms of this frame.
+
+  \begin{enumerate}[(a)]
+  \item The covariant derivative of a 1-form
+    $\omega = \omega_i \varepsilon^i$ is given locally by
+    \[ \nabla_X(\omega) = \left(X(\omega_k) - X^j \omega_i
+        \Gamma^i_{jk}\right) \varepsilon^k. \]
+  \item If $F\in \Gamma(T^l_k TM)$ is a smooth mixed tensor field of
+    any rank, expressed locally as
+    \[ F = F^{i_1\cdots i_k}_{j_1\cdots j_l} E_{i_1} \otimes \cdots
+      \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{jl},\] then the covariant derivative of $F$ is
+    given locally by
+    \begin{align*}
+      \nabla_X F =\left( X(F^{i_1\cdots i_k}_{j_1\cdots j_l}) +
+      \sum_{s=1}^{k}X^m F^{i_1\cdots p\cdots i_k}_{j_1\cdots
+      j_l}\Gamma_{mp}^{i_s} - \sum_{s=1}^{l}X^m F^{i_1\cdots
+      i_k}_{j_1\cdots p \cdots j_l}\Gamma_{mj_s}^p\right)\times\\
+      E_{i_1} \otimes \cdots \otimes E_{i_k} \otimes \varepsilon^{j_1}
+      \otimes \cdots \otimes \varepsilon^{jl}.
+    \end{align*}
+  \end{enumerate}
+\end{proposition*}
+
+\begin{proof}
+  {\bf (a)} Since $E_i$ is a local frame, $\nabla_X\omega$ is
+  determined by what it does to the $E_i$. Hence consider
+  \begin{align*}
+    \nabla_X(\omega)E_i =& X(\omega(E_i)) - \omega(\nabla_X E_i) \\
+    =& X(\omega^i)- \omega(\nabla_{X^jE_j}E_i) \\
+    =& X(\omega^i)- \omega(X^j\Gamma_{ij}^kE_k) \\
+    =& X(\omega^i)- \omega_kX^j\Gamma_{ij}^k \\
+    % \nabla_X( \omega_i \varepsilon^i) \\
+    % =& \omega_i \nabla_X(\varepsilon^i)+X(\omega_i)\varepsilon^i \\
+    % =& X(\omega_i)\varepsilon^i + \omega_i
+  \end{align*}
+  Swapping $i$ and $k$ (whoops) gives the result.
+
+  \noindent
+  {\bf (b)} Observe that, by linearity, we need only consider
+
+  \begin{align*}
+    & \nabla_{X^iE_i} ( F^{i_1\cdots i_k}_{j_1\cdots j_l} E_{i_1} \otimes \cdots
+      \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{jl}) \\
+    =& X^i \bigg(\nabla_{E_i} (F^{i_1\cdots i_k}_{j_1\cdots j_l}) E_{i_1} \otimes \cdots
+       \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+       \varepsilon^{jl}\\
+    & +F^{i_1\cdots i_k}_{j_1\cdots j_l} \nabla_{E_i}( E_{i_1} \otimes \cdots
+      \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{jl})\bigg) \\
+    =& X^i \bigg( E_i(F^{i_1\cdots i_k}_{j_1\cdots j_l}) E_{i_1} \otimes \cdots
+      \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{j_l}\\
+    &  + F^{i_1\cdots i_k}_{j_1\cdots j_l}\cdot\big( \sum_{s=1}^{k}
+      E_{i_1}\otimes \cdots\otimes \nabla_{E_i}E_{i_s}\otimes\cdots
+      \otimes  E_{i_k}
+      \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{j_l}\\
+    &  + \sum_{s=1}^{l}E_{i_1}\otimes \cdots \otimes E_{i_k} \otimes
+      \varepsilon^{j_1} \otimes \cdots \otimes
+      \nabla_{E_i}\varepsilon^{j_s}\otimes \cdots \otimes
+      \varepsilon^{j_l}\big)\bigg) \\
+    =& X^i \bigg( E_i(F^{i_1\cdots i_k}_{j_1\cdots j_l})E_{i_1} \otimes \cdots
+      \otimes E_{i_k} \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{j_l} \\
+    & + F^{i_1\cdots i_k}_{j_1\cdots j_l}\cdot\big( \sum_{s=1}^{k}
+      \Gamma_{i i_s}^p E_{i_1}\otimes \cdots \otimes  E_p \otimes \cdots\otimes E_{i_k}
+      \otimes \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{j_l} \\
+    & - \sum_{s=1}^{l}  \Gamma_{i p}^{j_s} E_{i_1}\otimes
+      \cdots \otimes E_{i_k} \otimes 
+      \varepsilon^{j_1} \otimes \cdots \otimes
+      \varepsilon^{p}\otimes \cdots \otimes
+      \varepsilon^{j_l} \big)\bigg).
+  \end{align*}
+  The last equality follows by part (a).
+  Once we perform a change of variables, swapping $p$ with $i_s$ in
+  the second sum and $p$ with $j_s$ in the second sum, we obtain the
+  result. 
+
+\end{proof}
+
+
+\subsection*{Question 4} {\bf [Lee 4-6]}
+
+\noindent
+Let $M$ be a smooth manifold and let $\nabla$ be a connection in
+$TM$. Define a map $\tau:\frakX(M) \times \frakX(M) \to \frakX(M)$ by
+\[ \tau(X,Y) = \nabla_X Y - \nabla_Y X - [X,Y]. \]
+
+\begin{enumerate}[(a)]
+\item Show that $\tau$ is a $(1,2)$-tensor field, called the
+  {\bf\emph{torsion tensor of $\nabla$}}.
+\item We say that $\nabla$ is {\bf\emph{symmetric}} if its torsion
+  vanishes identically. Show that $\nabla$ is symmetric if and only if
+  its connection coefficients w.r.t every coordinate fram are
+  symmetric: $\Gamma_{ij}^k = \Gamma_{ji}^k$. [Warning: they might not
+  be symmetric w.r.t other frames.]
+\item Show that $\nabla$ is symmetric if and only if the covariant
+  Hessian $\nabla^2 u$ of every smooth function $u\in C^\infty(M)$ is
+  a symmetric 2-tensor field. (See example 4.22.)
+\item Show that the Euclidean connection $\overline{\nabla}$ on
+  $\bbR^n$ is symmetric.
+\end{enumerate}
+
+\begin{proof}
+  {\bf (a)} By Homework 1, we only need show that $\tau$ is
+  $C^\infty(M)$-multilinear. If $f_1,f_2\in C^\infty(M)$ and
+  $X_1,X_2,Y\in \frakX(M)$, then
+  \begin{align*}
+    \tau(f_1X_1+f_2X_2,Y) =& \nabla_{f_1X_1+f_2X_2}Y -
+                             \nabla_Y(f_1X_1+f_2X_2)
+                             -[f_1X_1+f_2X_2,Y] \\
+    =& f_1\nabla_{X_1}Y+f_2\nabla_{X_2}Y
+       - (f_1\nabla_{Y}X_1 +Y(f_1)X_1)\\
+                           & - (f_2\nabla_{Y}X_2
+                             +Y(f_2)X_2)-(f_1X_1Y-Y(f_1X_1))\\
+                           &-(f_2X_2Y-Y(f_2X_2))\\
+    =& f_1\nabla_{X_1}Y+f_2\nabla_{X_2}Y
+       - (f_1\nabla_{Y}X_1 +Y(f_1)X_1)\\
+                           & - (f_2\nabla_{Y}X_2
+                             +Y(f_2)X_2) - (f_1X_1 Y - Y(f_1)X_1-f_1YX_1)\\
+                           & - (f_2X_2Y - Y(f_2)X_2 - f_2YX_2) \\
+    =& f_1\nabla_{X_1}Y - f_1 \nabla_Y X_1 + f_1(YX_1 - X_1Y)\\
+                           &+ f_2\nabla{X_2}Y - f_2 \nabla_Y X_2 + f_2(YX_2 - X_2Y)
+  \end{align*}
+  which says that $\tau$ is $C^\infty(M)$-linear in the $X$
+  coordinate.
+
+  Linearity in the $Y$ coordinate then follows from the this, and from
+  the claim that $\tau(X,Y)= -\tau(Y,X)$. To see this claim observe
+  that $[X,Y] = - [Y,X]$ and thus
+  \begin{align*}
+    -\tau(X,Y) =& -\nabla_XY+\nabla_YX +[X,Y] \\
+    =& \nabla_YX - \nabla_XY -[Y,X] \\
+    =& \tau(Y,X)
+  \end{align*}
+  \\
+  \noindent
+  {\bf (b)} Let $\{E_i\}$ be an arbitrary coordinate frame. Then by
+  definition we have $\nabla_{E_i} E_j = \Gamma_{ij}^k E_k$.  Since we
+  just showed $ C^\infty(M)$-linearity of $\tau$, it is determined at
+  the $E_i$. In particular, the torsion vanishes if and only if
+  $\tau(E_i,E_j)$ vanishes for all $1\leq i,j \leq n$ where $n$ is the
+  dimension of $M$.
+
+  Begin by observing that the commutator $[E_i,E_j]=E_iE_j - E_jE_i$
+  which evaluated on $C^\infty(M)$ is 0. Thus we have that
+  \begin{align*}
+    \tau(E_i,E_j) =& \nabla_{E_i} E_j -\nabla_{E_j}E_i \\
+    =& \Gamma_{ij}^k E_k - \Gamma_{ji}^kE_k
+  \end{align*}
+  Thus $\tau$ vanishes for all $i,j$ between $1$ and $n$ if and only
+  if $\Gamma_{ij}^j = \Gamma_{ji}^k$.
+
+  {\bf N.B.} the reason that this might fail for any local frame is
+  that we aren't guarenteed an arbitrary local frame commutes
+  (i.e. the commutator might not vanish). In fact, after some digging,
+  it turns out that a local frame can be written in the form of a
+  coordinate frame if and only if it is commuting (this is Theorem
+  9.46 from the latest edition of Lee's Smooth Manifolds).
+  \\
+  \\
+  \noindent
+  {\bf (c)} By example 4.22 we know that, in local coordinates, we can
+  write $\nabla^2u$ as the matrix
+  \[\nabla^2 u = (\partial_j\partial_i u - \Gamma_{ji}^k\partial_k u)
+    dx^i\otimes dx^j. \] Since $u$ is smooth,
+  $\partial_j\partial_i u = \partial_i \partial_j u$. Thus all that we
+  need to check for symmetry to hold is that
+  \[\Gamma_{ji}^k\partial_k u= \Gamma_{ij}^k\partial_k u. \]
+  Since $u$ was arbitrary, this says that
+  $\Gamma_{ij}^k = \Gamma_{ji}^k$ for all $1\leq i,j,k\leq n$, since
+  we can choose $u=x^k$ for example.
+  \\
+  \\
+  \noindent
+  {\bf (d)} The Euclidean connection is given by the formula
+  \[ \overline{\nabla}_X Y = X(Y^1)\frac{\partial}{\partial x^1}+
+    \cdots + X(Y^n)\frac{\partial }{\partial x^n}. \] Let us compute
+  the connection coefficients for $\overline{\nabla}$.
+
+  \[ \nabla_{\partial_i}{\partial_j} = \partial_i(\delta_{ij})
+    \frac{\partial}{\partial x^j} = 0 . \]
+
+  Thus $\tau(\partial_p,\partial_q) =0$. Next suppose we have any
+  local coordinate $E_i = A_i^j \partial_j$.  Then observe that, by
+  $C^\infty(M)$-linearity of $\tau$, we have
+  \begin{align*}
+    \tau(E_i,E_j) =& A_i^p(A_j^q\cdot \tau(\partial_p,\partial_q)) \\
+                   =& 0.
+  \end{align*}
+  
+\end{proof}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw4"
+%%% End:

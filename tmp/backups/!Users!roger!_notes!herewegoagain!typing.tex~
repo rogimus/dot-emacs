@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[parfill]{parskip}
+\linespread{1.1}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\GG}{\bG}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\Einf}{\bE_\infty}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bR}{\mathbf{R}}
+
+
+\newcommand{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\BU}{BU}
+\newcommand{\MUMU}{\MU_*\MU}
+\newcommand{\MUR}{\MU_\bR}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\HH}{H}
+\DeclareMathOperator{\BP}{BP}
+
+\newcommand{\Gal}{\mathrm{Gal}}
+
+
+
+
+
+
+
+\begin{document}
+\title{\bf Hill-Shi-Wang-Xu} \author{Notes by Roger Murray}
+\date{\today}
+
+\maketitle
+
+$\BP^{((C_4))}\langle 1 \rangle$.
+
+According to the slice theorem, the slices for
+$\BP^{((C_4))}\langle 1 \rangle$ are given by
+\begin{align*}
+  &\HH\underline{\bZ}\wedge S^{n\rho} &
+                                        \text{                                         corresponding
+                                        to
+                                        }
+                                        r_1^n\gamma
+                                        r_1^n
+  \\
+  \text{and }\phantom{...}
+  &\HH\underline{\bZ}\wedge\left(C_4\phantom{}_+\wedge_{C_2} S^{(m+n)\rho_2}\right)
+                                      &\text{corresponding to }(r_1^m\gamma r_1^n,\gamma r_1^mr_1^n)
+\end{align*}
+where $\rho$ denotes the regular representation for $C_4$ and $\rho_2$
+denotes the regular representation for $C_2$. Define classes
+$\mathfrak{d}_1:=N_{C_2}^{C_4}(\overline{r}_1)$ and
+$s_1^i:=tr(\overline{r}_1^i)$ in
+$\pi^{C_4}_\star \BP^{((C_4))}\langle 1 \rangle$. Observe that
+$res(\mathfrak{d}_1^i)=r_1^i\gamma r_1^i$ and
+$res(s_1^i)=\overline{r}_1^i+\gamma\overline{r}_1^i$. In particular
+$s_1^i\neq (s_1)^i$. We may label our slices by
+$\mathfrak{d}_1^i s_1^j$.
+
+
+There are a few main strategies for computing differentials in the
+$C_4$-SSS for $\BP^{((C_4))}\langle 1 \rangle$:
+\begin{itemize}
+\item The Slice Differentials Theorem of HHR. (Note that this is
+  proven by passing to the geometric fixed points, comparing geometric
+  fixed points of $ \MUR$ and $\HH\underline{\bZ}$ to say that a class
+  has to die and then making a
+  degree argument.)
+\item Leverage the fact that the SSS is a SS of Mackey functors. For
+  example in particular if the restriction of class dies on the
+  $E_r$-page in the the $C_2$-SSS, then it must die on or before the
+  $E_r$-page of the $C_4$-SSS.
+\item Using the Leibniz rule on known differentials for products of
+  things.
+\item 
+\end{itemize}
+
+\end{document}

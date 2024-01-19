@@ -1,0 +1,9 @@
+import sys
+
+inp = sys.stdin.read().split("\n")
+data = []
+for r in range(len(inp)):
+    row = []
+    for c in range(len(inp[r])):
+        row.append(inp[r][c])
+    data

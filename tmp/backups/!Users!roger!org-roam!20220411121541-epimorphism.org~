@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       F11C5097-615A-4680-AD00-8B55CB2F41E0
+:END:
+#+title: epimorphism
+#+filetags: :category theory:
+
+An epimorphism $u\in \mathcal{C}(X,Y)$ is a morphism such that
+for any $f,g\in \mathcal{C}(Y,Z)$ we have $f\circ u = g\circ u$ implies
+$f=g$. 
+

@@ -1,0 +1,42 @@
+% Created 2022-04-11 Mon 12:29
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikzcd}
+\author{Roger Murray}
+\date{\today}
+\title{project object}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={project object},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+A projective object \(P\in\mathcal{C}\)
+is one such that for any \href{20220411121541-epimorphism.org}{epimorphism}
+\(u:X\to Y\) and map \(f:P\to Y\) there exists a map
+\(g:P\to X\) such that \(u\circ g = f\), i.e. 
+making the following commute
+
+\[ \begin{tikzcd}
+& P \arrow[dl, dotted, "g"] \arrow[d,f] \\
+X\arrow[r, "u"] & Y
+\end{tikzcd}
+\]
+\end{document}

@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[parfill]{parskip}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+
+\newcommand{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\MU}{MU}
+\newcommand{\MUMU}{\MU_*\MU}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\HH}{H}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\GG}{\bG}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\Einf}{\bE_\infty}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+
+\newcommand{\Gal}{\mathrm{Gal}}
+
+
+
+
+
+
+
+\begin{document}
+\title{\bf Goerss Conference 2023}
+\author{Notes by Roger Murray}
+\date{\today}
+
+\maketitle
+
+\section{Mike Hill}
+
+\begin{theorem}
+  The $E_2$ page of the ANSS for $L_{K(n)}X$ has the form
+  \[
+    \Ext_{\MUMU}(\MU_*,\MU_* (L_{K(n)}X))\cong \HH^*(\GG_n;
+    \pi_*(E_n\wedge X)).
+  \]
+  Here $\GG_n$ is the extended Morava stabilizer group, i.e. it is
+  $\bS_n\rtimes \Gal(\bF_{p^n}/\bF_{p})$ where $\bS_n$ is automorphism
+  group of the Honda FGL over $\bF_{p^n}$.
+\end{theorem}
+\begin{theorem}[Goerss-Hopkins-Miller]
+  $\bG_n$ acts on $E_n$ via $\Einf$ ring maps.
+\end{theorem}
+``$\implies$ Devinatz-Hopkins
+$L_{K(n)}X\simeq (E_n\wedge X)^{h\GG_n}$.''  \footnote{What is
+  Devinatz-Hopkins theorem, and what is the meaning of the statement
+  that follows? Does this result imply the original result, or does
+  this result combine with DH to give the latter
+  expression?\label{DHQuestion}}
+
+Let $U$ be an open normal subgroup of $\bG_n$, and let $G$ be finite
+in $\bG_n$. The following diagram presents how to get at $L_{K(n)}S^0$
+and $E_n$.
+\[
+  \begin{tikzcd}[column sep=huge]
+    (E_n)^{h\GG_n}\simeq L_{K(n)}S^0\arrow[r,"\GG_n/U\text{ Galois}"']
+    \arrow[rrrr,out=25,in=155, "\GG_n\text{ Galois}"]& E_n^{h
+      U}&&E_n^{hG}\arrow[r, "G \text{ Galois}"']& E_n
+  \end{tikzcd}
+\]
+Q!\footnote{What does the Galois business mean here? They're galois
+  extensions of fields? They're Galois extensions of
+  groups??\label{GaloisQuestion}}
+
+
+The case that $n=1$ is classical:
+\begin{theorem}[Adams-Baird, Ravenel]\footnote{Is this a cofibre/fibre
+    seq? I think $\mu$ is the rotation group, i.e. cyclic group, but
+    double check. Also what is this group action?\label{KU}}
+  \[L_{K(1)}S^0\to E_1^{hG}\xrightarrow{\psi^r-1}E_1^{hG},\] and
+  \[
+    \begin{tikzcd}[ampersand replacement=\&]
+      E_1=(\KU)_p^{\vee}\arrow[loop right, distance=30] \&
+      \bZ/p^\times =
+      \begin{cases}
+        \mu_{p-1}\times \bZ_p &\\
+        \mu_2\times \bZ_2 &
+      \end{cases}
+    \end{tikzcd}
+  \]
+
+\end{theorem}
+
+At \textbf{odd primes} we have,
+\begin{theorem}[Hill-Hopkins-Ravenel]
+  We understand the action of $\bG_n$ on
+  \[ \pi_* E_n = \bW(\bF_{p^n})[[u_1,\ldots,u_{n-1}]][u^{\pm 1}] \]
+\end{theorem}
+and something something about of $\bZ_p[\zeta_{p^n-1}]$.\footnote{Find
+out more.\label{odd prime theorem}}
+
+At $\bold{p=2}$, the $C_2\subseteq \bG_2$ acts via the identity, and
+formal inversion for FGLs. Formal inversion comes from the conjugation
+map on $\MU$.
+
+  
+\subsection{Questions}
+What is the Honda FGL?
+
+What does the $\bG_n$ look like in simple cases?
+
+Bousfield localization? Who is she?
+
+See \ref{DHQuestion}.
+
+See \ref{GaloisQuestion}.
+
+See \ref{KU}.
+
+See \ref{odd prime theorem}.
+
+\end{document}

@@ -1,0 +1,17 @@
+package main
+
+import (
+	"time"
+	"os"
+	
+	"github.com/rogimus/coinjar"
+)
+
+func main() {
+
+	for {
+		orderbook.AddToData("BTCAUD", "2")
+		orderbook.AddToData("ETHAUD", "2")
+		time.Sleep(5 * time.Minute)
+	}
+}

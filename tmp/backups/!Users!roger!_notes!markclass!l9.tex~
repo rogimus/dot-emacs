@@ -1,0 +1,32 @@
+\section{Lecture 9 -- Stable $\infty$-Categories}
+Today truly marks the final day of foundations as we set out to define
+stable $\infty$-categories. But first we want to discuss symmetric
+monoidal $\infty$-categories and localisations.
+
+\subsection{Symmetric Monoidality and Localisation}
+Let $\cC$ and $\cD$ be presentable $\infty$-categories and suppose we
+have a reflexive localisation
+\[\begin{tikzcd} F:\cC\arrow[r,shift right]&{\cD:G}\arrow[l,
+    shift right, hook']
+  \end{tikzcd}\] i.e. such that $G$ is fully faithful and $\cD$ is
+$\cC[S^{-1}]$ for some set $S\subset \cC_1$.
+\begin{question}
+  If $\cC^\otimes$ is a symmetric monoidal structure on $\cC$, when
+  does it descend to $\cD$?
+\end{question}
+\begin{answer}
+  If for every $x\xrightarrow{f}y\in S$ and for every $z\in \cC$ the
+  corresponding map $x\otimes z\to y\otimes z$ is in $S$ then the
+  adjunction $F$ is monoidal and $G$ is lax monoidal.
+\end{answer}
+
+\begin{example}
+  Let consider $\cC=\Ab$ and $\cD=\Ab_p^{\wedge}$ and suppose $M,N\in
+  \Ab$. Define $F(M)=M_p^{\wedge}$. Then define a symmetric monoidal
+  structure on $\cD$ by $(M\otimes N)_p^{\wedge}:=(M_p^\wedge\otimes N_p^\wedge)$
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "class"
+%%% End:

@@ -1,0 +1,98 @@
+\subsection*{Question 1} {\bf [Hatcher 2.2.9 (a), and (b)]}
+\\ \noindent Compute the homology groups of the following 2-complexes:
+\begin{enumerate}[(a)]
+\item The quotient of $S^2$ obtained by identifying north and south
+  poles to a point.
+\item $S^1\times (S^1\vee S^1)$.
+\end{enumerate}
+
+\begin{proof}
+  {\bf (a)} We can identify the quotient of $S^2$ that identifies the
+  north and south poles with the quotient space made by collapsing a
+  subspace $A=S^1\times \{a\}\subset T$ to a point, where $T$ is the
+  torus and $a$ is some point in $S^1$. Observe that $(T, A)$ is an
+  NDR-pair, since we can choose some small $\varepsilon$ such that the
+  open set $S^1\times[a-\varepsilon, a+\varepsilon]$ deformation
+  retracts onto $A$. Thus, the quotient map $q$ induces an isomorphism
+  $H_n(T,A)\cong \tilde{H}_n(T/A)$. This allows us to compute the
+  homology groups of $T/A$ via the LES of a pair.  (I guess I should
+  tikz this at least once...)
+  \begin{center}
+    \begin{tikzcd}
+      0 \rar& H_2(A) \rar & H_2(T) \rar & H_2(T,A) \ar[out=-20, in=160]{dll} \\
+      & H_1(A) \rar & H_1(T) \rar & H_1(T,A) \ar[out=-20, in=160]{dll} \\
+      & H_0(A) \rar & H_0(T) \rar & H_0(T,A) \rar & 0.
+    \end{tikzcd}
+  \end{center}
+  Using the fact $A\simeq S^1$, and our computations of the homology
+  groups of spheres and the torus, we can fill in our LES.
+  \begin{center}
+    \begin{tikzcd}
+      0 \rar& 0 \rar & \bbZ \rar & H_2(T,A) \ar[out=-20, in=160, "(1)"']{dll} \\
+      & \bbZ \arrow[r, "(2)"] & \bbZ\{a,b\} \arrow[r, "(3)"] &
+      H_1(T,A)
+      \ar[out=-20, in=160, "(4)"']{dll} \\
+      & \bbZ \arrow[r, "(5)"] & \bbZ \arrow[r, "(6)"] & H_0(T,A) \rar
+      & 0.
+    \end{tikzcd}
+  \end{center}
+  First observe that the map $(2)$ sends the generator of $\bbZ$ to
+  the the generator $a$ where $a$ is the meridian of the torus. In
+  particular the kernel of $(2)$ is trivial, and thus the map $(1)$ is
+  the zero map. Hence $H_2(T,A)\cong \bbZ$. Furthermore, the kernel of
+  $(3)$ must be $\bbZ\{a\}$, hence $\im(3) = \bbZ \subset H_1(T,A)$.
+  By considering the connected components of $A$ and $T$, we see that
+  $(5)$ is an isomorphism, i.e. it sends 1 to $\pm 1$, hence $(4)$ and
+  $(6)$ are both the zero maps. Thus we can conclude that
+  $H_1(T,A)\cong \im(3) = \bbZ$ and $H_0(T,A) = 0$.
+
+  Finally, we use the fact that, for a general space $X$,
+  \[ H_i(X) \cong
+    \begin{cases}
+      \widetilde{H}_i(X) & i>0,\\
+      \widetilde{H}_i(X)\oplus \bbZ & i = 0
+    \end{cases}
+  \]
+  to conclude that
+  \[ H_i(T/A) \cong
+    \begin{cases}
+      \bbZ & i=0,1,2,\\
+      0 & i > 2.
+    \end{cases}
+  \]
+  \\
+  \\
+  \noindent
+  {\bf (b)} Next we consider the space $X= S^1 \times(S^1\vee
+  S^1)$. This space is homotopy equivalent to the space that is two
+  2-tori stacked on top of one another, i.e. glued along their
+  longitudinal circle.
+\end{proof}
+
+\subsection*{Question 2}
+{\bf [Hatcher 2.2.12]} \\ \noindent
+Show that the quotient map $S^1\times S^1\to S^2$ collapsing the
+subspace $S^1\wedge S^1$ to a point is not nullhomotopic by showing
+that it induces an isomorphism on $H_2$. On the other hand, show via
+covering spaces that any map $S^2\to S^1\times S^1$ is nullhomotopic.
+
+\begin{proof}
+  
+\end{proof}
+
+
+\subsection*{Question 3}
+\phantom{ }
+\\\noindent
+Show for a $\Delta$-complex $X$ which is the union of two
+$\Delta$-subcomplexes $A$ and $B$ that
+\[ \chi(X) = \chi(A)+\chi(B)-\chi(A\cap B). \]
+
+\begin{proof}
+  
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw4a"
+%%% End:

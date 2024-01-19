@@ -1,0 +1,134 @@
+% Created 2022-05-24 Tue 23:31
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\author{Roger Murray}
+\date{\today}
+\title{23-05-2022}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={23-05-2022},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Convergence of Spectral Sequences}
+\label{sec:orgd728fd8}
+
+Mark mentioned a beautiful paper by Boardman on this. I think the
+paper he's referring to is called "Conditionally Convergent Spectral
+sequences.
+
+This arose after I mentioned we had to make certain assumptions about
+our staircase diagram to make sure it converges (assumptions like all
+but finitely many of the vertical maps being isomoprhisms and not
+going off to infinity in both directions for example).
+
+
+\section{{\bfseries\sffamily TODO} Serre fibrations and fiber bundles}
+\label{sec:org3a90557}
+
+Mark proved that fibre bundles were Serre fibrations. In particular,
+you can locally trivialize, and then it's easy to prove it for trivial
+fiber bundles.
+
+\section{Proof of the description of the \$E\textsuperscript{2}\$-page for the Serre spectral sequence.}
+\label{sec:orgb4547c3}
+
+Mark gave a really nice description of this proof. In particular, he
+used a particular fact that the pullback of a pushforward is again a
+pushforward.
+
+We have a pullback diagram
+\[ \begin{tikzcd}
+\coprod S^{p-1} \arrow[r] \arrow[d] & B^{p-1} \arrow[d] \\
+\coprod D^p \arrow[r, "f_i"] & B^p.
+\end{tikzcd}
+\]
+This gives rise to another pullback diagram
+\[ \begin{tikzcd}
+\coprod f_i^*X_p |_{\partial D^p}  \arrow[r] \arrow[d] & X_{p-1} \arrow[d] \\
+\coprod f_i^* X_p \arrow[r, "f_i"'] & X_p.
+\end{tikzcd}
+\]
+The left vertical map is a Serre fibration (pullbacks of Serre
+fibation are again a Serre fibration).
+Then you have some fact about how Serre fibrations over spheres are
+trivial ???? Thus we could write \(f_i^* X_p\) as \(D^p\times F\) and \(f_i^*
+X_p |_{\partial D^p}\) as \(S^{p-1}\times F\).
+Thus we end up with an isomorphism
+\[\bigoplus_{p-\text{cells}} H_*(D^p\times F, S^{p-1}\times
+F)\cong H_*(X_p,X_{p-1}).\]
+Using a relative version of the Kunneth theorem we get that the LHS is
+\[ \bigoplus_{p-\text{cells}} H_*(D^p,S^{p-1}) \otimes H_*(F) \cong
+H_*(B^{p},B^{p-1})\otimes H_*(F). \]
+
+I think the reason we need simply connectedness (or trivial \(\pi_1\)
+action) is that if we don't have this then taking coefficients in
+\(H_*(F)\) becomes tricky\ldots{} since following some loop back to the same
+point may change this homology. Instead what we do is take local
+coefficients, which is basically taking a \(\mathbb{Z}[\pi]\) for every
+\(H_*(B^{p}, B^{p-1})\) instead of \(\mathbb{Z}\) where
+\(\pi\) is the fundamental group of \(B\). I need to figure this stuff out
+more\ldots{}.
+
+
+\section{HOSS and HFPSS}
+\label{sec:orgf561dbe}
+
+We mentioned/talked about the Homotopy Orbit SS and the Homotopy Fixed
+Point SS. This came up in relation to the proof of Lemma A.1 in
+Miller's cobordism notes.
+
+If we had some unpointed \$G\$-space \(Y\), we can define the homotopy orbits of \(Y\)
+as \(Y_{hG} := EG\times_G Y\). Since \(EG\simeq *\) we get that this is a
+"fattened up" version of \(*\times_G Y\). We get a fiber bundle \(Y_{hG}\to
+BG\) with fiber \(Y\) and the Serre SS applied to this gives something
+called the \emph{homotopy orbit spectral sequence}.
+
+Similarly we can dualize everything to get the homotopy fixed point
+spectral sequence. Somehow the dual of \(EG\times_G Y\) is instead to
+take \(Y^{hG}:= \textrm{Map}_G(EG,Y)\). Call \(Y^{hG}\) the homotopy fixed
+points (which is again a "fattened up" version of \(\textrm{Map}_G(*,Y)
+= Y^G\)).
+
+Another thing that came up is the fact that \[H^p(BG; H^q(F))= H^p(G;
+H^q(F)). \]
+i.e. taking group cohomology. This makes the proof fairly easy since
+\(H^0\) is then just fixed points of \(H^q(F)\).
+
+
+
+
+\section{{\bfseries\sffamily TODO} Goals}
+\label{sec:org967b9e5}
+
+\begin{itemize}
+\item[{$\square$}] Write some notes on everything\ldots{}
+\item[{$\square$}] Do some calculations of the Serre SS
+\begin{itemize}
+\item[{$\boxtimes$}] Hopf fibration
+\item[{$\boxtimes$}] \(S^1\to S^\infty \to \mathbb{C} P^\infty\)
+\item[{$\boxtimes$}] \(S^1 \to S^{2n+1} \to \mathbb{C} P^n\)
+\item[{$\boxtimes$}] \(K(\mathbb{Z},2)\to P\to K(\mathbb{Z},3)\)
+\item[{$\square$}] \(K(\mathbb{Z},n-1)\to P\to  K(\mathbb{Z},n)\) with coefficients in
+\(\mathbb{Q}\).
+\end{itemize}
+\end{itemize}
+\end{document}

@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       62FFE7B2-C74D-46B5-BA8D-A17AA2AE3242
+:END:
+#+title: simplicial object
+#+filetags: :category theory:topology:
+
+A /simplicial object/ of \(\mathcal{C}\) is a functor
+\(\Delta\to \mathcal{C}\) where \(\Delta\) is the [[id:DEDEDE84-65C6-4A0B-858A-60C39BFCA8AD][simplex category]].
+
+See: [[id:BB0A0A20-63BE-4DE1-A032-E4B058F23119][semisimplicial object]] 
+

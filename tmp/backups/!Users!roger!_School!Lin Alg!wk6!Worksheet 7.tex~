@@ -1,0 +1,374 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+\newif\ifsoln    % establishes conditional
+\solnfalse       % defaults to false 
+
+%In order to "hide" the solutions, comment the line below
+%\solntrue
+
+\ifsoln
+\printanswers    % what it says on the tin
+\fi
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+%--- Load packages------
+ \usepackage{amssymb}
+ \usepackage{amsmath}
+ \usepackage{color}
+ \usepackage{amsfonts}
+ \usepackage{graphicx}
+ \usepackage{enumerate}
+ %\usepackage{Matrix}
+ \usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+ \newcommand{\ii}{\ensuremath{\textbf{i}}}
+ \newcommand{\jj}{\ensuremath{\textbf{j}}}
+ \newcommand{\kk}{\ensuremath{\textbf{k}}}
+ \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+ \def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+ %Display cross product formula
+ \def\crossproduct<#1,#2,#3><#4,#5,#6>{
+   \left\vert\,\begin{matrix}
+   \hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+   \hfill#1&\hfill#2&\hfill#3\\
+   \hfill#4&\hfill#5&\hfill#6\\
+   \end{matrix}\, \right\vert} 
+ %Display the minor matrix
+ \def\minor<#1,#2><#3,#4>{
+   \left\vert\,\begin{matrix}
+   \hfill#1&\hfill#2\\
+   \hfill#3&\hfill#4\\
+   \end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+   
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+ \DeclareMathOperator{\arcsec}{arcsec}
+ \DeclareMathOperator{\arccot}{arccot}
+ \DeclareMathOperator{\arccsc}{arccsc}
+ \DeclareMathOperator{\sech}{sech}
+ \DeclareMathOperator{\csch}{csch}
+ \DeclareMathOperator{\Sp}{span}
+
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 10/05/2023}
+ 
+ %Header for Solution--------------
+  %\header{Name: SOLUTIONS}{}{Date: }
+ %---------------------------------
+ 
+ \headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+ \parindent 0pt
+
+
+%--- Content ---
+ \begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial} \centerline{\bf
+   Worksheet 7}
+ % \centerline{Sections 1.5, 1.7--1.9}
+ \vskip .2in
+ \noindent
+
+ \begin{questions}
+
+%%%%%%%%%%%%%%%%%
+%
+%
+   % Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%
+   \question Let $T:\mathcal{P}_1\to\mathcal{P}_1$ be
+   the linear transformation defined by $T(p(x))=p(x-1)$ and let
+   $S:\mathcal{P}_1\to\mathcal{P}_2$ be the linear transformation
+   defined by $S(q(x))=q(x^2+x)$. Consider the bases
+   $\mathcal{B}=\{1,x\}$ and $\mathcal{C}=\{1,x,x^2\}$ be the standard bases for
+   $\mathcal{P}_1$ and $\mathcal{P}_2$  respectively.
+   Compute $[S\circ T]_{\mathcal{C}\leftarrow\mathcal{B}}$ in two
+   ways:
+   \begin{parts}
+   \item By finding directly and then computing its matrix;
+   \item and by finding the matrices of $S$ and $T$ separately and
+     using the fact that
+     \[[S\circ
+       T]_{\mathcal{C}\leftarrow\mathcal{B}}=[S]_{\mathcal{C}\leftarrow\mathcal{B}}[T]_{
+         \mathcal{B}}.\]
+   \end{parts}
+   Hint: make sure your answers for (a) and (b) agree.
+
+
+   \begin{solution}
+     For (a)
+     note that $S\circ T(1) = 1$ and $S\circ T(x) = S(x-1)=(x^2+x)-1$.
+     Thus 
+     \[
+     [S\circ T]_{\mathcal{C}\leftarrow\mathcal{B}} = \left[
+         \begin{array}{c c c}
+           [S\circ T(1)]_{\mathcal{C}}&:&[S\circ T(x)]_{\mathcal{C}}
+         \end{array}\right]=
+       \begin{bmatrix}
+         1 & -1\\
+         0 & 1 \\
+         0& 1 
+       \end{bmatrix}
+     \]
+
+     For (b) We have 
+     \[
+       [T]_{\mathcal{B}} = \left[
+         \begin{array}{c c c}
+           [T(1)]_{\mathcal{B}}&:&[T(x)]_{\mathcal{B}}
+         \end{array}\right] =
+       \begin{bmatrix}
+         1 & -1\\
+         0& 1
+       \end{bmatrix}
+     \]
+     and 
+     \[
+       [S]_{\mathcal{C}\leftarrow\mathcal{B}} = \left[
+         \begin{array}{c c c}
+           [S(1)]_{\mathcal{C}}&:&[S(x)]_{\mathcal{C}}
+         \end{array}\right] =
+       \begin{bmatrix}
+         1&0\\
+         0&1\\
+         0&1
+       \end{bmatrix}.
+     \]
+
+     Multiplying $[S]_{\mathcal{C}\leftarrow\mathcal{B}}$ with $[T]_{
+       \mathcal{B}}$ gives
+     \[ \begin{bmatrix}
+         1&0\\
+         0&1\\
+         0&1
+       \end{bmatrix}
+       \begin{bmatrix}
+         1 & -1\\
+         0& 1
+       \end{bmatrix}
+       =
+       \begin{bmatrix}
+         1&-1\\
+         0&1\\
+         0&1
+       \end{bmatrix}.
+       \]
+   \end{solution}
+
+   
+   \newpage
+
+   \question Consider the linear transformation
+   $T:\mathcal{P}_2\to \mathbb{R}^3$ defined by \[T(p(x))=
+     \begin{bmatrix}
+       p(0)\\ p(1)\\p(-1)
+     \end{bmatrix}.\]
+   Determine whether $T$ is invertible as a linear
+   transformation by considering its matrix with respect to the
+   standard bases $\mathcal{B}=\{1,x,x^2\}$ and
+   $\mathcal{C}=\{{\bf e}_1,{\bf e}_2,{\bf e}_3\}$ respectively.
+
+   If it is
+   invertible find it's inverse in terms of these standard bases, and
+   also find a polynomial in $p(x)=a+bx+cx^2$ such that $T(p(x))=
+   \begin{bmatrix}
+     1&2&4
+   \end{bmatrix}^T$.
+
+   Hint: recall that if $T$ is invertible then
+   $([T]_{\mathcal{C}\leftarrow\mathcal{B}})^{-1}=[T^{-1}]_{\mathcal{B}\leftarrow\mathcal{C}}$.
+
+   \begin{solution}
+     Recall that we have
+     \[
+       [T]_{\mathcal{C}\leftarrow\mathcal{B}} = \left[
+         \begin{array}{c c c c c}
+           [T(1)]_{\mathcal{C}}&:&[T(x)]_{\mathcal{C}}&:&[T(x^2)]_\mathcal{C}
+         \end{array}\right].
+     \]
+     Computing gives
+     \[
+       [T]_{\mathcal{C}\leftarrow\mathcal{B}} =
+       \begin{bmatrix}
+         1&0&0\\
+         1&1&1\\
+         1&-1&1\\
+       \end{bmatrix}.
+     \]
+     Calculating the inverse gives
+     \[
+       [T^{-1}]_{\mathcal{B}\leftarrow\mathcal{C}}=
+       \begin{bmatrix}
+         1&0&0\\
+         0&1/2&-1/2\\
+         -1&1/2&1/2
+       \end{bmatrix}.
+     \]
+     Multiplying this last matrix by $
+     \begin{bmatrix}
+       1&2&4
+     \end{bmatrix}^T$ gives
+     \[
+       \begin{bmatrix}
+         1\\-1\\2
+       \end{bmatrix}
+     \]
+     and thus $p(x)=1-x+2x^2$ satisfies $T(p(x))=
+     \begin{bmatrix}
+       1&2&4
+     \end{bmatrix}^T$.
+   \end{solution}
+
+   \newpage
+   \question Let $\mathcal{E} := \{ e^{2x}, e^{-2x}\}$ and let
+   $M:= \Sp \mathcal{E}$ be a space spanned by $\mathcal{E}$. Consider
+   another basis $\mathcal{B}:= \{\sinh(2x), \cosh(2x)\}$ of $M$,
+   where
+   \[
+     \sinh(2x) = \frac{e^{2x}-e^{-2x}}{2}, \ \ \ \cosh(2x) =
+     \frac{e^{2x}+e^{-2x}}{2}.
+   \]
+   \begin{enumerate}[a)]
+   \item Find the change of basis matrix
+     $P_{\mathcal{E}\leftarrow \mathcal{B}}$.
+   \item Find the standard matrix $[D]_{\mathcal{E}}$ of the linear
+     transformation $D:M \rightarrow M$ given by
+     $D(f(x)) = \frac{d f}{d x}$.
+   \item Find the standard matrix $[D]_{\mathcal{B}}$. {\bf Hint:}
+     recall that
+     $[D]_{\mathcal{B}}=P_{\mathcal{B}\leftarrow\mathcal{E}}[D]_\mathcal{E}
+     P_{\mathcal{E}\leftarrow\mathcal{B}}$.
+   \end{enumerate}
+   \begin{solution}
+     Let us pick $\mathcal{E}$ as the standard basis of $M$. In terms
+     of $\mathcal{E}$, the basis $\mathcal{B}$ is
+     \[
+       \mathcal{B} = \{ [\sinh(2x)]_{\mathcal{E}}, \
+       [\cosh(2x)]_{\mathcal{E}}\} = \{ \begin{bmatrix}
+         1/2\\-1/2 \end{bmatrix}, \ \begin{bmatrix} 1/2 \\
+         1/2 \end{bmatrix} \}.
+     \]
+     Accordingly, the change of basis matrix
+     $P_{\mathcal{E}\leftarrow \mathcal{B}}$ is simply a concatenation
+     of the latter columns:
+     \[
+       P_{\mathcal{E}\leftarrow \mathcal{B}} = \begin{bmatrix} 1/2 &
+         1/2 \\ -1/2 & 1/2 \end{bmatrix} =
+       \frac{1}{2}\begin{bmatrix}1&1\\-1&1\end{bmatrix};
+     \]
+     its inverse is
+     \[
+       P_{\mathcal{B} \leftarrow \mathcal{E}} = 2\begin{bmatrix}1/2 &
+         -1/2 \\ 1/2 & 1/2 \end{bmatrix} = \begin{bmatrix}1 & -1 \\ 1
+         & 1 \end{bmatrix}.
+     \]
+     Now, the operator $D$ acts upon $e^{2x}$ and $e^{-2x}$ as
+     \[
+       D(e^{2x}) = 2e^{2x}, \ \ D(e^{-2x}) = -2e^{-2x},
+     \]
+     hence
+     \[ [D]_{\mathcal{E}} = \begin{bmatrix} 2 & 0 \\ 0 &
+         -2\end{bmatrix}
+     \]
+     Therefore,
+     \[ [D]_{\mathcal{B}} = \begin{bmatrix}1 & -1 \\ 1 &
+         1 \end{bmatrix}\begin{bmatrix} 2 & 0 \\ 0 &
+         -2\end{bmatrix}\frac{1}{2}\begin{bmatrix}1&1\\-1&1\end{bmatrix}
+       = \begin{bmatrix}0 & 2\\ 2 & 0\end{bmatrix}.
+     \]
+     A more direct way of computing $[D]_{\mathcal{B}}$ would be to
+     notice that $D(\sinh(2x)) = 2\cosh(2x)$ and
+     $D(\cosh(2x)) = 2\sinh(2x)$, which gives the columns of
+     $[D]_{\mathcal{B}}$.
+   \end{solution}
+
+   \newpage
+
+
+
+
+   
+
+   
+   \question Let $T:M_{2\times 2}\rightarrow M_{2\times 2}$ be a
+   linear transformation defined by
+   \[
+     T(A):= AB - B A, \ \ \ \text{where} \ \ \ B = \begin{bmatrix} -1
+       & 1 \\ 1 & -1\end{bmatrix}.
+   \]
+   \begin{enumerate}[a)]
+   \item Find the matrix $[T]_{\mathcal{E}}$ of $T$ in the standard
+     basis
+     \[
+       \mathcal{E} = \left \{ E_1:=\begin{bmatrix} 1 & 0 \\ 0 &
+           0\end{bmatrix}, \ E_2 :=\begin{bmatrix} 0 & 1\\ 0 &
+           0\end{bmatrix}, \ E_3 :=\begin{bmatrix} 0 & 0\\0 &
+           1 \end{bmatrix}, \ E_4 :=\begin{bmatrix} 0 & 0 \\ 0 &
+           1\end{bmatrix}\right\}.
+     \]
+   \item Use $[T]_{\mathcal{E}}$ to compute the null space of $T$.
+   \end{enumerate}
+   \begin{solution}
+     The action of $T$ upon
+     $A=\begin{bmatrix} a & b\\ c & d\end{bmatrix}$ is given by
+     \[
+       T(A) = \begin{bmatrix} -a+b & a-b\\-c+d & c-d\end{bmatrix}
+       - \begin{bmatrix} -a+c & d-b\\a-c&b-d\end{bmatrix}
+       = \begin{bmatrix} b-c & a-d\\d-a & c-b\end{bmatrix}.
+     \]
+     Therefore, the matrix of $T$ in $\mathcal{E}$ is
+     \[ [T]_{\mathcal{E}} = \begin{bmatrix}
+         0 & 1 & -1 & 0\\ 1 & 0 & 0 & -1\\
+         -1 & 0 & 0 & 1\\
+         0 & -1 & 1 & 0
+       \end{bmatrix}.
+     \]
+     Row reducing gives the matrix
+     \[ \begin{bmatrix} 1 & 0 & 0 & -1\\ 0 & 1 & -1 & 0\\ 0 & 0 & 0 &
+         0\\ 0 & 0 & 0 & 0\end{bmatrix}.
+     \]
+     Now solving for $0$ gives two free variables, $c=s$ and $d=t$ and
+     we have the solutions
+     \[
+       \begin{bmatrix}
+         a\\b\\c\\d
+       \end{bmatrix} = s
+       \begin{bmatrix}
+         0\\-1\\1\\0
+       \end{bmatrix}+t
+       \begin{bmatrix}
+         -1\\0\\0\\1
+       \end{bmatrix}.
+     \]
+     i.e. the null space is $\textrm{Span}\left(
+       \begin{bmatrix}
+         1&0\\0&1
+       \end{bmatrix},
+       \begin{bmatrix}
+         0&1\\1&0
+       \end{bmatrix}
+     \right)$.
+   \end{solution}
+ \end{questions}
+\end{document}

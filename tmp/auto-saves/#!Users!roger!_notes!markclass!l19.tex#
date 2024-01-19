@@ -1,0 +1,134 @@
+\section{L19 -- Towards Trace Methods}
+
+In our previous computations of $\KK(R)$ we made use of three
+strategies: (1) use group cohomology; (2) have a guess to compare
+with; (3) AHSS and $l$-complete away from $p$ {\color{orange} ``or
+  SHg but might not work at $p$''}. These all have problems though
+going forward: group cohomology is too hard; we might not always have
+a guess; and we might need to be able to work at $p$.
+
+The {\bf idea} is if $R\in \CAlg(\Sp)$ then consider a map called the
+{\bf cyclotomic trace} \[\KK(R)\longrightarrow\TC(R)\]
+where $\TC(R)$ is the {\bf topological cyclic homology} of $R$. This
+trace map will be ``almost an equivalence'' and $\TC(R)$ will be farm
+more computable than $\KK(R)$.
+
+\begin{notation}
+for us we will always be working $p$-complete for some
+prime $p$.
+\end{notation}
+
+
+\subsection{Motivation}
+
+
+{\color{orange} Perhaps the best person to ask about where the
+  motivation for this stuff came from is Thomas Goodwillie, who
+  figured out a lot of this stuff while studying the geometry of loop
+  spaces. Mark thinks a good comparison is that of the Chern
+  character.  }
+
+
+The Chern character is a ring homomorphism
+\[
+  \begin{tikzcd}
+    \mathrm{ch}:\KU^0(X)\ar[r]& \HH^{\mathrm{ev}}(X;\bQ)
+  \end{tikzcd}
+\]
+where the ring structure on the LHS is the tensor product, and on the
+right it is the cup product. To get something in cohomology the map
+ought to pick out some kind of characteristic class, i.e. like the
+first Chern class for a line bundle. But since
+$c_1(L\otimes L^\prime)=c_1(L)+c_1(L^\prime)$ we should
+exponentiate. Thus the Chern character is determined (by the splitting
+principle) by:
+\[L\longmapsto \exp(c_1(L))=\sum \frac{c_1(L)^i}{i!}\] for $L$ a line
+bundle over $X$.
+
+\begin{theorem}
+  The Chern character $\mathrm{ch}$ is a rational isomorphism.
+\end{theorem}
+
+On to algebraic $\KK$-theory. Let $X=\Spec(R)$ for a classical ring
+$R$. We need something analogous to the even cohomology of $X$. For
+this we take de Rham cohomology $\HH_{\mathrm{dR}}^*(X)$ which is the
+cohomology of the complex $\Omega^*(X)$ of differential forms on $X$
+which is related to the cotangent complex $\mathrm{T}^*X$. For $M$ a
+manifold the tangent bundle $\mathrm{T}M$ is the normal bundle $
+\begin{tikzcd}
+  \nu(M\arrow[r,hook,"\Delta"]&M\times M).
+\end{tikzcd}
+$ Now if we further assume $X$ is a $k$-scheme for some ring $k$ then
+we have the diagonal
+\[
+  \Spec R\to X\times_k X=\Spec (R\otimes_k R)
+\]
+which corresponds to the multiplication homomorphism
+$R\otimes_k R\to R$. Denote the kernel of this map by $I_R$. Then the
+1-forms/are K\"ahler differentials are defined as
+\[
+  \Omega^1(X/k) = I_R/I_R^2.
+\]
+One path forward is to simply define a complex
+$\Omega_{\mathrm{dR}^*}$ as exterior powers
+$\Lambda^*_R \Omega^1(X/k)$. That's a perfectly reasonable thing to do
+and this is called {\bf algebraic de Rham cohomology} of $X$. This
+isn't what we are going to do.
+
+Instead we are going to take the derived intersection of the diagonal
+with itself: $X\dtenssch{X\times_k X}X$. In terms of rings we get the
+derived tensor product:
+\[
+  R\dtens{R\otimes_kR}R.
+\]
+Why is this the thing we want to consider? One of the key advantages
+of working in the derived setting is the ability to see intersection
+data, i.e. multiplicities. Consider a transverse intersection, versus
+a quadratic intersection, versus a cubic intersection. In the derived
+setting each of these is somehow richer than the previous. So taking
+the derived intersection of something with itself should be very rich!
+``And the claim is that very rich things should be like functions on
+the normal bundle''. Thus we give this thing a name:
+
+\begin{definition}
+  The {\bf Hochschild homology} of $R$ relative to $k$ is
+  \[\HH\HH(R/k):=R\dtens{R\otimes_k R}R\]
+  in $\in \CAlg(\cD(k)^\otimes)$.
+\end{definition}
+
+This is supposed to be like ``(derived) functions on the normal
+bundle''. As motivation to see why consider a classical commutative
+ring $R$ and suppose we have a finitely generated projective
+$R$-module $M\in \Mod_R^{\mathrm{fg,\,proj}}$. Then we obtain a
+quasi-coherent sheaf/vector bundle $\widetilde{M}$ over $X$. Then
+$\Sym_R(M)$ is an $R$-algebra and thus we have a map
+\[\Spec(\Sym_R(M))\longrightarrow\Spec(R)\]
+and we think of the LHS as the total space $V$ and the RHS the base
+$X$. The de Rham complex is an exterior algebra, which we can also
+write as $\Sym(\Omega^1(X/k)[1])$ where we shift the 1-forms into an
+odd degree. This is somehow meant to model (shifted) functions on the
+normal bundle.
+
+\begin{definition}
+  If $R$ is flat over $k$ then define the {\bf Hochschild homology
+    groups} of $R$ relative to $k$ are given by
+  \[ \Tor_*^{R\otimes_k R}(R,R).\]
+\end{definition}
+In $\CAlg(\cD(k))$ Hochschild homology $\HH\HH(R/k)$ is given by
+\[
+    \varinjlim\left( 
+  \begin{tikzcd}
+    R\otimes_k R\ar[r]\ar[d]& R\\R
+  \end{tikzcd}\right)
+\]
+
+\begin{figure}
+  \centering
+  \label{fig:test}
+\end{figure}
+\ref{}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "class"
+%%% End:

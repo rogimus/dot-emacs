@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       6DE10C28-23C2-40CB-AF3E-9EF6995384E9
+:END:
+#+title: principles of OOP
+
+* Abstraction
+
+
+* Encapsulation
+
+* Inheritance
+  
+  Extending base class. i.e. shape -> 4-gon -> rectangle
+  It's the "is a" test. i.e. "rectangle is a 4-gon is a shape"
+  
+* Polymorphism
+
+  An object pasts

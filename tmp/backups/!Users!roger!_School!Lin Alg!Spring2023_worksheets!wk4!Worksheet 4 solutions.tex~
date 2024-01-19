@@ -1,0 +1,403 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+\newif\ifsoln    % establishes conditional
+\solnfalse       % defaults to false 
+
+%In order to "hide" the solutions, comment the line below
+\solntrue
+
+\ifsoln
+%\printanswers    % what it says on the tin
+\fi
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+%--- Load packages------
+ \usepackage{amssymb}
+ \usepackage{amsmath}
+ \usepackage{color}
+ \usepackage{amsfonts}
+ \usepackage{graphicx}
+ \usepackage{enumerate}
+ %\usepackage{Matrix}
+ \usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+ \newcommand{\ii}{\ensuremath{\textbf{i}}}
+ \newcommand{\jj}{\ensuremath{\textbf{j}}}
+ \newcommand{\kk}{\ensuremath{\textbf{k}}}
+ \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+ \def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+ %Display cross product formula
+ \def\crossproduct<#1,#2,#3><#4,#5,#6>{
+   \left\vert\,\begin{matrix}
+   \hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+   \hfill#1&\hfill#2&\hfill#3\\
+   \hfill#4&\hfill#5&\hfill#6\\
+   \end{matrix}\, \right\vert} 
+ %Display the minor matrix
+ \def\minor<#1,#2><#3,#4>{
+   \left\vert\,\begin{matrix}
+   \hfill#1&\hfill#2\\
+   \hfill#3&\hfill#4\\
+   \end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+   
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+ \DeclareMathOperator{\arcsec}{arcsec}
+ \DeclareMathOperator{\arccot}{arccot}
+ \DeclareMathOperator{\arccsc}{arccsc}
+ \DeclareMathOperator{\sech}{sech}
+ \DeclareMathOperator{\csch}{csch}
+
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 09/14/2023}
+ 
+ %Header for Solution--------------
+  %\header{Name: SOLUTIONS}{}{Date: }
+ %---------------------------------
+ 
+ \headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+ \parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial}
+ \centerline{\bf Worksheet 4}
+ %\centerline{Sections 1.5, 1.7--1.9}
+ \vskip .2in
+ \noindent
+
+\begin{questions}
+
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%	
+\question 
+\vskip.1in
+\noindent
+Let ${\bf b}_1=
+\begin{bmatrix}
+  5\\4
+\end{bmatrix}$, ${\bf b}_2=
+\begin{bmatrix}
+  2\\3
+\end{bmatrix}$; and ${\bf c}_1 =
+\begin{bmatrix}
+  3 \\ 2 
+\end{bmatrix}$, ${\bf c}_2=
+\begin{bmatrix}
+  1\\1
+\end{bmatrix}$ be two bases for $\mathbb{R}^2$. Find
+$P_{\mathcal{C}\leftarrow\mathcal{B}}$.
+\begin{solution}
+  One method to solve is by putting the matrix $
+  \left[\begin{array}{c c | c c}
+    {\bf c}_1&{\bf c}_2& {\bf b}_1&{\bf b}_2
+  \end{array}\right]$ in reduced row echelon form. Another solution is
+to recall that $P_{\mathcal{C}\leftarrow\mathcal{B}}=
+P_{\mathcal{C\leftarrow\mathcal{E}}}P_{\mathcal{E}\leftarrow
+  \mathcal{B}}$ where $\mathcal{E}$ is the standard basis. We know
+that $P_{\mathcal{E}\leftarrow\mathcal{B}}=
+\begin{bmatrix}
+  5 & 2 \\4 & 3
+\end{bmatrix}$ and $P_{\mathcal{E}\leftarrow\mathcal{C}}=
+  \begin{bmatrix}
+    3&1\\2&1
+  \end{bmatrix}$. Calculate
+  $P_{\mathcal{C}\leftarrow\mathcal{E}}=P_{\mathcal{E}\leftarrow\mathcal{C}}^{-1}$
+  as $
+  \begin{bmatrix}
+    1&-1\\-2&3
+  \end{bmatrix}$. Bringing it all together gives
+  $P_{\mathcal{C}\leftarrow\mathcal{B}}=
+  \begin{bmatrix}
+    1&-1\\2&5
+  \end{bmatrix}.$
+\end{solution}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--QUESTION 3------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question 
+\vskip.1in
+\noindent
+Given the set of vectors 
+$\left\{ {\bf v}_1=\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix},{\bf v}_2 =\begin{bmatrix}
+3 \\ 0 \\ 0
+\end{bmatrix},{\bf v}_3 =\begin{bmatrix}
+1 \\ -2 \\ -2
+\end{bmatrix} \right\}$ and letting $\mathbf{v}$ denote the vector $\mathbf{v}= \begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}$, write $\mathbf{v}$ as a linear combination of the
+given vectors. Does the given set span $\mathbb{R}^3$? What is the
+dimension of the span of these vectors?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--SOLUTION 3------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{solution}
+
+We have to try to solve the linear system with augmented matrix
+\[\left[ \begin{array}{ccc|c}
+1 &3 &1 &0\\
+1 &0 &-2 &1\\ 
+1 &0 &-2 &0
+\end{array}\right]
+\linebreak\sim 
+\left[ \begin{array}{ccc|c}
+1 &3 &1 &0\\
+0 &-3 &-3 &1\\ 
+0 &-3 &-3 &0
+\end{array}\right]
+\sim 
+\left[ \begin{array}{ccc|c}
+1 &3 &1 &0\\
+0 &-3 &-3 &1\\
+0 &0 &0 &-1 
+\end{array}\right].\] Therefore the system is inconsistent and thus
+there is a no way to write ${\bf v}$ as a linear combination of the
+given vectors.
+
+Thus the given set does not span $\mathbb{R}^3$ since ${\bf v}$ is in
+$\mathbb{R}^3$ but ${\bf v}$ is not in the span.
+
+
+Let us check if the vectors are linearly dependent.
+\[\left[ \begin{array}{ccc|c}
+1 &3 &1 &0\\
+1 &0 &-2 &0\\ 
+1 &0 &-2 &0
+\end{array}\right]\sim
+\left[ \begin{array}{ccc|c}
+1 &3 &1 &0\\
+0 &-3 &-3 &0\\
+0 &0 &0 &0 
+       \end{array}\right]\sim
+\left[ \begin{array}{ccc|c}
+1 &0 &-2 &0\\
+0 &1 &1 &0\\
+0 &0 &0 &0 
+       \end{array}\right]
+     .\] This tells us that $a_1{\bf v}_1+a_2{\bf v}_2+a_3{\bf v}_3=0$`
+   where $a_3$ is free, $a_2=-a_3$, and $a_1=2a_3$. So for example
+   $2{\bf v}_1-{\bf v}_2+{\bf v}_3=0$. Thus  ${\bf v}_3={\bf
+     v}_2-2{\bf v}_1$. Thus the span of the original three vectors is
+   the same as the vectors ${\bf v}_1$ and ${\bf v}_2$. These two are
+   linearly independent, and thus they form a basis. Thus the
+   dimension is 2.
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--QUESTION 3------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\question
+\begin{parts}
+  \part 
+Suppose that ${\mathcal B}=\{ {\bf b}_1, {\bf b}_2 \}$ and ${\mathcal C}=\{ {\bf c}_1, {\bf c}_2 \}$ are two bases for a vector space $V$.  Also suppose that the change-of-basis matrix {\bf from $\mathcal{B}$ to $\mathcal{C}$} is given as
+\[P_{\mathcal{C}\leftarrow\mathcal{B}}= \left[ \begin{array}{rr}
+2 & 1 \\
+3 & 2
+\end{array} \right].\]
+For ${\bf v} = 2{\bf b}_1 + {\bf b}_2$, what is $[{\bf
+  v}]_\mathcal{C}$, the $\mathcal{C}$-coordinate for ${\bf v}$?
+
+\begin{solution}
+
+${\bf v} = 2{\bf b}_1 +{\bf b}_2$ means that $[{\bf v}]_\mathcal{B}=\left[\begin{array}{r}
+2\\
+1
+\end{array}\right].$ 
+
+So
+\[[{\bf v}]_\mathcal{C} = P_{\mathcal{C}\leftarrow\mathcal{B}} \ [{\bf v}]_\mathcal{B}= \left[ \begin{array}{rr}
+2 & 1 \\
+3 & 2
+\end{array} \right] \left[\begin{array}{r}
+2\\
+1
+\end{array}\right] = \left[\begin{array}{r}
+5\\
+8
+\end{array}\right]
+.\] i.e. $[{\bf v}]_{\mathcal{C}} = 5{\bf c}_1+8{\bf c}_2$.
+\end{solution}
+
+\part
+Find $\mathcal{C}$ if $\mathcal{B}=\left\{
+  \begin{bmatrix}
+    1\\3
+  \end{bmatrix},
+  \begin{bmatrix}
+    1\\5
+  \end{bmatrix}\right\}$.
+Suppose that $P_{\mathcal{E}\leftarrow\mathcal{B}}=
+\begin{bmatrix}
+  1&1\\3&5
+\end{bmatrix}$. Find $[{\bf b}_1]_{\mathcal{E}}$ and
+$[{\bf b}_2]_{\mathcal{E}}$.
+\begin{solution}
+  We compute
+  $P_{\mathcal{B}\leftarrow\mathcal{C}}=P_{\mathcal{C}\leftarrow\mathcal{B}}^{-1}
+  =
+  \begin{bmatrix}
+    2 & -1\\-3 & 2
+  \end{bmatrix}.$ So \[[{\bf c}_1]_{\mathcal{B}} =
+  P_{\mathcal{B}\leftarrow\mathcal{C}}[{\bf c}_1]_{\mathcal{C}} = P_{\mathcal{B}\leftarrow\mathcal{C}}
+  \begin{bmatrix}
+    1\\0
+  \end{bmatrix} =
+  \begin{bmatrix}
+    2\\-3
+  \end{bmatrix}\] So ${\bf c}_1 = 2{\bf b}_1-3{\bf b}_3=
+  \begin{bmatrix}
+    -1\\-9
+  \end{bmatrix}.$
+  
+  
+  Similarly \[[{\bf c}_2]_{\mathcal{B}} =
+  P_{\mathcal{B}\leftarrow\mathcal{C}}[{\bf c}_2]_{\mathcal{C}} = P_{\mathcal{B}\leftarrow\mathcal{C}}
+  \begin{bmatrix}
+    0\\1
+  \end{bmatrix} =
+  \begin{bmatrix}
+    -1\\2
+  \end{bmatrix}\] So ${\bf c}_1 = -{\bf b}_1+2{\bf b}_3=
+  \begin{bmatrix}
+    1\\7
+  \end{bmatrix}.$
+
+\end{solution}
+\part Calculate coordinates for ${\bf v}$ from (a) using the basis $\mathcal{B}$ given
+in (b) and also using the basis $\mathcal{C}$ from your answers in (a)
+and (b) and check that they agree.
+
+\begin{solution}
+  Using $\mathcal{B}:$
+  \[ 2
+    \begin{bmatrix}
+      1\\ 3
+    \end{bmatrix}+
+    \begin{bmatrix}
+      1 \\ 5
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      3\\11
+    \end{bmatrix}.\]
+  Using $\mathcal{C}$:
+  \[ 5
+    \begin{bmatrix}
+      -1\\ -9
+    \end{bmatrix}+8
+    \begin{bmatrix}
+      1 \\ 7
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      3\\11
+    \end{bmatrix}.\]
+\end{solution}
+
+\end{parts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--SOLUTION 3------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--QUESTION 5------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--SOLUTION 5------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--QUESTION 6------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question
+
+Consider the basis $\mathcal{B}=\left\{
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix},
+\begin{bmatrix}
+3 \\ 4 \\ 3
+\end{bmatrix}.
+\begin{bmatrix}
+1 \\ 3 \\ 0
+\end{bmatrix}
+\right\}$ for $\mathbb{R}^3.$
+\begin{parts}
+ \part 
+If $[\mathbf{x}]_\mathcal{B}=\begin{bmatrix}
+2\\ -1 \\ 4
+\end{bmatrix},$ find $\mathbf{x}$ (its coordinate representation in the standard basis).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--SOLUTION 6------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{solution}
+
+$[\mathbf{x}]_\mathcal{B}=\begin{bmatrix}
+2 \\ -1 \\ 4
+\end{bmatrix}$ means that the coordinates of $\mathbf{x}$ relative to the $\mathcal{B}$ basis is $\begin{bmatrix}
+2\\ -1 \\ 4
+\end{bmatrix}$, so \[ \mathbf{x}= 2\cdot\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}+(-1)\cdot
+\begin{bmatrix}
+3 \\ 4 \\ 3
+\end{bmatrix}+ 4\cdot
+\begin{bmatrix}
+1 \\ 3 \\ 0
+\end{bmatrix}=\begin{bmatrix}
+3 \\ 10 \\ -1
+\end{bmatrix}.\]
+
+\end{solution}
+\part What is $P_{\mathcal{B}\leftarrow\mathcal{E}}$ where
+$\mathcal{E}$ is the standard basis?
+\begin{solution}
+  We know that $P_{\mathcal{E}\leftarrow\mathcal{B}}=
+  \begin{bmatrix}
+    1 & 3 &1 \\1 & 4 &3 \\ 1 & 3 & 0
+  \end{bmatrix}
+  $ and that
+  $P_{\mathcal{B}\leftarrow\mathcal{E}}=P_{\mathcal{E}\leftarrow\mathcal{B}}^{-1}$. Computing
+  (using Gauss-Jordan elimination) gives
+  $\begin{bmatrix}
+    9 & -3&-5\\-3&1&2\\1&0&-1
+  \end{bmatrix}$.
+\end{solution}
+\end{parts}
+\end{questions}
+\end{document}

@@ -3,7 +3,5 @@
 # key: ali*
 # --
 \begin{align*}
-\label{$2}
-$1
-\end{align*}
 $0
+\end{align*}

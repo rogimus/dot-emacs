@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Christoffel Symbols
+# key: chr
+# --
+\Gamma_{$1}^{$2}$0

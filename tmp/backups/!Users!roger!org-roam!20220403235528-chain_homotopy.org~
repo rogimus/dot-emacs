@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       E835B8CA-4223-4158-854D-5D78A441D6B0
+:END:
+#+title: chain homotopy
+#+filetags: :topology:algebra:homology:
+
+
+Given two [[id:5C65D275-0063-4000-8BA2-652B84716A25][chain complex]]es \((C_\bullet,d_C)\) and \((D_\bullet, d_D)\)
+a /chain homotopy/
+is a map
+

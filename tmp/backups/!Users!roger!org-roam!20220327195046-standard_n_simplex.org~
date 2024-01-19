@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       68899120-085D-4F0E-B52F-92AB0D2933A0
+:END:
+#+title: standard n-simplex
+#+filetags: :topology:category theory:simplicial sets:
+
+
+The /standard \(n\)-simplex \(\Delta^n\)/ is simplicial set which is the presheaf
+represented by \(\underline{n}\).
+

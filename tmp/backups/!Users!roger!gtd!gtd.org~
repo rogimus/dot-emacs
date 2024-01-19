@@ -1,0 +1,47 @@
+#+title: GTD projects file
+#+author: Bingus Murray
+#+description: This is the main project file in my implementation of GTD.
+
+For more info, this is based on [[https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html][this blog post]] by Nicolas Petton.
+
+
+
+
+* Prismatic Cohomology                                               :@math:
+** Read 9weeks 3 and 4
+
+
+* cat theory
+** kan extensions
+** Adjoint functor existence
+*** adjoint functor theorem
+** limit preservation
+*** adjoints preserve limits
+
+* infinity cats
+** read handbook of homotopy theory
+** stable things
+** triangulated categories
+** t-structures
+** hearts of t-structures and blah blah
+
+* equivariant stuff
+** hill's handbook notes
+** localising subcategory
+** (DHK) homotopy colimit
+** (Hovey) model cats
+** slice spectral sequence
+*** what is the slice spectral sequence?
+** Read BHSZ models paper
+** HHR_arxiv_v1 periodicity theorem
+
+* DAG
+** Dustin Clausen's notes
+** Callum's notes
+** Gaitsgory's notes ??
+** Drinfeld's notes ??
+** Hartshorne (oh fuck)
+
+
+
+

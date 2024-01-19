@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bpc2n
+# key: bpc2n
+# --
+\BP^{((C_{2^n}))}

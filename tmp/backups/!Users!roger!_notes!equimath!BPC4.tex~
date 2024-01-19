@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[parfill]{parskip}
+\linespread{1.1}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{slogan}[theorem]{Slogan}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\GG}{\bG}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\Einf}{\bE_\infty}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bQ}{\mathbf{Q}}
+
+
+\newcommand{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\BU}{BU}
+\newcommand{\MUMU}{\MU_*\MU}
+\newcommand{\MUR}{\MU_\bR}
+\DeclareMathOperator{\BP}{BP}
+\newcommand{\BPBP}{\BP_*\BP}
+\newcommand{\BPR}{\BP_\bR}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\hmmH}{H}
+\newcommand{\HH}{\hmmH\! }
+\DeclareMathOperator{\Sp}{Sp}
+
+\DeclareMathOperator{\tmf}{tmf}
+\DeclareMathOperator{\TMF}{TMF}
+
+\DeclareMathOperator{\RO}{RO}
+\newcommand{\ROG}{\RO(G)}
+\newcommand{\Gal}{\mathrm{Gal}}
+
+
+
+
+
+
+
+\begin{document}
+\title{\bf \(\BP^{C_4}\langle 1 \rangle\)}
+\author{Notes by Roger Murray}
+\date{\today}
+\maketitle
+
+\section{\(C_{4}\) equivariant \(\HH\bZ\) \(a_{V}\) and \(u_{V}\)}
+
+Given a \(G\)-representation \(V\) here is an obvious class \(a_{V}\in \pi_{-V}^{G}S\) coming from the
+inclusion of the north and south poles \(S^0\to S^{V}\). We can
+promote this to a class \(a_V\in \pi_{-V}\)
+
+
+
+\end{document}

@@ -1,0 +1,174 @@
+(setq inhibit-startup-message t)
+
+
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1) 
+;;(tooltip-mode -1)
+(set-fringe-mode 10)
+
+(global-display-line-numbers-mode)
+(setq display-line-numbers 'relative)
+
+(setq column-number-mode t)
+
+;; escape plzz
+
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+
+;; Font
+
+(set-face-attribute 'default nil :font "Consolas" :height 160)
+
+
+(load-theme 'wombat)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")
+			 ("org" . "https://orgmode.org/packages/")
+			 ))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+
+;; use-package
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package ivy
+  :bind (("C-s". swiper)
+	 :map ivy-minibuffer-map
+	 ("TAB" . ivy-alt-done)
+	 ("C-k" . ivy-previous-line)
+	 ("C-j" . ivy-next-line)
+	 :map ivy-switch-buffer-map
+	 ("C-k" . ivy-previous-line)
+	 ("C-l" . ivy-done)
+	 ("C-d" . ivy-switch-buffer-kill)
+	 :map ivy-reverse-i-search-map
+	 ("C-k" . ivy-previous-line)
+	 ("C-d" . ivy-reverse-i-search-kill))
+  :config (ivy-mode 1)
+  )
+
+(use-package counsel
+  :bind (("M-x". counsel-M-x))
+  )
+
+(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
+(global-set-key (kbd "C-[") 'yas-expand)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+(use-package doom-themes)
+;; :init (load-theme 'doom-Iosvkem t))
+(load-theme 'adwaita t)
+
+;; M-x all-the-icons-install-fonts
+(use-package all-the-icons) 
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0))
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
+
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :hook (evil-mode . rm/evil-hook)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+
+(use-package mode-line-bell
+  :config
+  (mode-line-bell-mode))
+
+(use-package yasnippet
+  :config
+  (yas-global-mode))
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable)) 
+(setq py-python-command "python3")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (use-package tex				    ;;
+;;   :defer t					    ;;
+;;   :ensure auctex				    ;;
+;;   :config					    ;;
+;;   (setq TeX-auto-save t)			    ;;
+;;   (setq preview-gs-command "/usr/local/bin/gs")) ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package company
+  :config
+  (global-company-mode t)
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 2)) 
+
+(use-package company-auctex)
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+
+;; Auctex configurations
+(setenv "PATH" "/usr/local/bin:/Library/TeX/texbin/:$PATH" t)
+(setq exec-path (append exec-path '("/Library/TeX/texbin")))
+(setq preview-gs-command "/usr/local/bin/gs")
+(setq preview-scale-function '1.2)
+;; reftex
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+
+
+
+;; Yasnippet configuration
+
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "C-c i") #'yas-expand)
+
+
+;; org todo
+(setq org-agenda-files '("~/-org/todo.org"))

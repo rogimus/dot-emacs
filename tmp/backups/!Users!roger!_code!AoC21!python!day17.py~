@@ -1,0 +1,39 @@
+import sys
+
+inp  = sys.stdin.readline().replace("\n","")
+inp = inp.replace("target area: x=", "")
+inp = inp.replace("y=", "")
+t = inp.split(",")
+xran = list(map(int,t[0].split("..")))
+yran = list(map(int,t[1].split("..")))
+
+# y(t) = y(0)-t
+# where y(0) is the first non-zero y value (i.e. dy/dt)
+# the heigh of is completely determined by it's y(0).
+# Indeed it will have height y(0)+y(0)-1+y(0)-2+...+1+0 
+# since d^2y/dt^2 = -1.
+# We assume that the trench is below our launch point.
+# Then maximizing the height is equivalent to maximizing
+# the height between y=0 and our patch. To see this
+# note that we have to pass through y=0 (at t=2*y(0)),
+# and that maximizing t maximizes our height
+# (since it means we can go heigher before coming down).
+
+y0 = -yran[0]-1
+print(int((y0*(y0+1))/2))
+
+
+# part2
+
+#for x in range(xran[0], xran[1]+1):
+for y in range(yran[0], yran[1]-1):
+    ymax = -ymin-1
+    ymin = ymin
+    ypossible = []
+    for i in range(1,ymax):
+        if (ymax-i+1)%i == 0:
+            ypossible.append(int((ymax-i+1)/i))
+    for i in range(-1, ymin)
+    
+        
+# want dy s.t. -(y+1)+(y+2)+(y+3)+...(y+k) = ymin

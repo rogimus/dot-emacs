@@ -1,0 +1,150 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+%In order to "hide" the solutions, comment the line below
+%\printanswers
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+\framedsolutions 
+\renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+
+
+%--- Load packages------
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{mathtools}
+%\usepackage{Matrix}
+\usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+\newcommand{\ii}{\ensuremath{\textbf{i}}}
+\newcommand{\jj}{\ensuremath{\textbf{j}}}
+\newcommand{\kk}{\ensuremath{\textbf{k}}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+%Display cross product formula
+\def\crossproduct<#1,#2,#3><#4,#5,#6>{
+	\left\vert\,\begin{matrix}
+		\hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+		\hfill#1&\hfill#2&\hfill#3\\
+		\hfill#4&\hfill#5&\hfill#6\\
+	\end{matrix}\, \right\vert} 
+%Display the minor matrix
+\def\minor<#1,#2><#3,#4>{
+	\left\vert\,\begin{matrix}
+		\hfill#1&\hfill#2\\
+		\hfill#3&\hfill#4\\
+	\end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+
+%--- Set up the header ---
+\pagestyle{head}
+\header{Name: }{}{Date: 11/09/2023}
+
+%Header for Solution--------------
+%\header{Name: SOLUTIONS}{}{Date: }
+%---------------------------------
+
+\headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+\parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+	
+\centerline{\bf M20580 L.A. and D.E.}  \centerline{\bf Quiz 8} \vskip
+.2in
+\noindent
+	
+\begin{questions}
+  \question Find an orthonormal basis for \[ \mathrm{span}\left\{x_1=
+      \begin{bmatrix}
+        1\\2
+      \end{bmatrix},x_2=
+      \begin{bmatrix}
+        3\\1
+      \end{bmatrix}\right\}.
+  \]
+
+  % \noindent {\small \emph{(don't be tempted by $x_1 =
+  % -1$)}}% The least squares solution may have a different value assigned to $x_1$, so that it's optimal with respect to the other equations.} }
+
+  \begin{solution}
+    Apply Gram-Schmidt.  Our first basis element
+    is \[e_1=\frac{1}{\sqrt{1+4}}
+      \begin{bmatrix}
+        1\\2
+      \end{bmatrix}=\frac{1}{\sqrt{5}}
+      \begin{bmatrix}
+        1\\2
+      \end{bmatrix}.
+    \]
+    Next note that
+    $e_1\cdot x_2=\frac{1}{\sqrt 5}(3+2)=5/\sqrt 5= \sqrt 5$ and thus
+    the second basis element is
+    \[v_2=x_2-(e_1\cdot x_2)e_1= x_2-\sqrt{5}e_1=
+      \begin{bmatrix}
+        3\\1
+      \end{bmatrix}-
+      \begin{bmatrix}
+        1\\2
+      \end{bmatrix}=
+      \begin{bmatrix}
+        2\\-1
+      \end{bmatrix}.
+    \]
+    Normalizing gives \[e_2=\frac{1}{\sqrt{5}}
+    \begin{bmatrix}
+      2\\-1
+    \end{bmatrix}.\]
+
+  So $\{e_1,e_2\}$ give an orthonormal basis for $\mathrm{span}\{x_1,x_2\}$.
+      
+    
+    
+  \end{solution}
+
+   \vspace{2.8in}
+  \question Find a basis for the orthogonal complement of a subspace
+  $V$ of $\mathbb{R}^3$ given by
+  \[
+    V =
+    \text{span}\left\{\begin{bmatrix}1\\0\\3\end{bmatrix},\ \begin{bmatrix}2\\1\\0\end{bmatrix}\right\}.
+  \]
+  \begin{solution}
+    If $A$ is a matrix obtained by concatenating basis columns of $V$,
+    then $V^\perp = \text{null}(A^T)$. So,
+    \[
+      A^T = \begin{bmatrix} 1 & 0 & 3\\ 2 & 1 & 0\end{bmatrix}
+      \sim \begin{bmatrix} 1 & 0 & 3\\ 0 & 1 & -6\end{bmatrix}.
+    \]
+    From the last RREF, we see that
+    \[ V^\perp = \text{null}(A^T) =
+      \text{span}\left\{\begin{bmatrix}-3\\6\\1\end{bmatrix}\right\}.\]
+  \end{solution}
+\end{questions}
+\end{document}

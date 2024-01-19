@@ -1,0 +1,341 @@
+\documentclass[11pt]{amsart}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents:             %
+% - packages            %
+% - Theorems            %
+% - Cat Stuff           %
+% - Rings/bbX           %
+% - Specific categories %
+% - topology            %
+% - AG                  %
+% - Homological Algebra %
+% - Random cal/scr      %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% 
+% packages %
+%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+\usepackage{microtype}
+%\usepackage{geometry}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2.5in}
+\calclayout
+
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+
+% parskip changes new paragraph formatting from 0space+1indent to 1space+0indent
+\usepackage[parfill]{parskip}
+
+\usepackage{XCharter} % Bitstream's Charter
+
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{answer}{Answer}
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+%\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrH}{\mathscr{H}}
+
+\begin{document}
+\author{Roger Murray} \title{Assignment 5}
+
+\maketitle
+
+\begin{question}
+  Let $k$ be an algebraically closed field, and let
+  $X = \Spec\left( k[x, y]/(xy)\right)$.
+  \begin{enumerate}[(a)]
+  \item Classify the points and closed sets in $X$. What is the
+    dimension of $X$?
+  \item Show that the local rings at all except for one closed point
+    $p_0$ are DVRs.
+  \item What are the residue fields of the points in $X$?
+  \item Describe $\Spec \calO_{X,p_0}$ .
+  \item Describe all points in $\Proj k[x_0, x_1]$ explicitly.
+  \end{enumerate}
+\end{question}
+
+\begin{answer}
+  \textbf{(a)} \fbox{Points}
+
+  {\color{blue} For [Points] I forgot that $k$ was algebraically
+    closed. I'm aware that maximal ideals in $k[x,y]$ for
+    algebraically closed things look like $(x-a,y-b)$ but I didn't
+    change my type up for [Points] because I think it works regardless
+    and is nice because we get points like $(x,y^2+1)$ in
+    $\Spec(\bbR[x,y]/(xy)$.}
+
+  A point in $X$ corresponds to a maximal ideals of
+  $A=k[x,y]/(xy)$. These are all going to be of the form $(x,f(x,y))$
+  or $(y,g(x,y))$ for some polynomials $f(x,y),g(x,y)$ such that
+  either
+  \begin{itemize}
+  \item $f(0,y)=0$ (resp. $g(x,0)=0$),
+  \item or $f(0,y)$ is irreducible in $k[y]$ (resp. $g(x,0)$ is
+    irred. in $k[x]$).
+  \end{itemize}
+  To see why observe an ideal $\fraka\subset A$ is prime iff the
+  quotient $A/\fraka$ is an integral domain. Since $xy=0$ in
+  $A/\fraka$ this is only true if $x=0$ or $y=0$ in $A/\fraka$,
+  i.e. either $x\in \fraka$ or $y\in\fraka$ (or possibly
+  both). Observe that $A/(x)\cong k[y]$ and $A/(y)\cong k[x]$, and
+  prime ideals in here correspond to irreducible polynomials in $y$
+  and $x$ respectively.
+
+  Geometrically $X$ is the union of the $y$-axis with the $x$-axis,
+  and so a point $(x,f(x,y))$ for example is telling you it's on the
+  $x$-axis and it's $y$ component is determined by $f(0,y)=0$. For
+  example a closed point might look like $(x,y-a)$ for some $a\in k$,
+  or if $k=\bbR$ you might consider the point $(x,y^2+1)$. The point
+  $(x)$ in $X$ corresponds to the generic point of
+  $\bbA^1\cong \Spec (k[y])\cong \Spec(k[x,y]/(xy,x))$, i.e. $(x)$ is
+  a point whose closure is the whole $y$-axis.
+
+  \fbox{Closed Sets}
+
+  Intuition says that closed sets $Y$ are going to be the union of
+  closed sets of the $x$-axis and $y$-axis, i.e. finite unions of
+  points.  To make this precise, observe that prime ideals in $k[x,y]$
+  containing $(xy)$ correspond to prime ideals of $k[x,y]/(xy)$,
+  i.e. $X=V(xy)$. But $(xy)=(x)(y)$ implies $V(xy)=V(x)\cup V(y)$. So
+  a closed subset $Z$ of $X$ can be classified by
+  $Z=(Z\cap V(x))\cup (Z\cap V(y))$.  Another way of thinking about
+  this follows from our discussion about how prime ideals in
+  $k[x,y]/(xy)$ must contain either $x$ or $y$.
+
+  Thus closed subsets of $\Spec A$ correspond to the union of closed
+  subsets of $V(x)$ and $V(y)$, which are finitely many points in
+  each. Let us turn this topological argument into an algebraic one.
+
+  If $Z=V(\fraka)$ for some ideal $\fraka \subset k[x,y]/(xy)$ then we
+  have that $Z\cap V(x)=V((\fraka,x))$. Explicitly these are prime
+  ideals in $k[x,y]/(xy)$ containing both $x$ and $\fraka$. But this
+  is the same as prime ideals of $k[x,y]$ containing $x$ and $\fraka$
+  since $(xy)\subset (x)$. Explicitly we have isomorphisms
+  \[ \big(k[x,y]/(xy)\big)/(x, \fraka) \cong
+    \big(k[x,y]/(xy,x)\big)/\fraka = \big(k[x,y]/(x)\big)/\fraka \cong
+    k[y]/\overline{\fraka},\] where $\overline{\fraka}$ is the image
+  of $\fraka$ under the quotient by $(x)$ map. So prime ideals in
+  $V(xy)$ correspond to prime ideals of $k[y]/\overline{\fraka}$. But
+  observe that since $k[y]$ is a PID, we have $\overline{\fraka}=(f)$
+  for some polynomial $f$. So prime ideals of $k[y]/\overline{\fraka}$
+  correspond to prime ideals of $k[y]$ containing $(f)$, but we know
+  exactly what these are. These are the ideals $(f_i)$ where $f_i$ is
+  an irreducible polynomial of $k[y]$ that divide $f$. Since $k[y]$ is
+  a UFD we know that there are finitely many such polynomials. Thus
+  $Z\cap V(x)$ consists of finitely many points. Similarly for
+  $Z\cap V(y)$.
+
+  \fbox{Dimension}
+
+  Observe that a chain $\fraka_0\subset \fraka_1\subset\cdots$ in
+  $k[x,y]/(xy)$ corresponds to a chain
+  $(xy)\subset \overline{\fraka_0}\subset\overline{\fraka_1}\subset
+  \cdots$ in $k[x,y]$ where $\overline{\fraka_0}=\fraka_0+(xy)$.
+  Since $k[x,y]$ has Krull dimension 2 any such chain stabilizes by
+  $\overline{\fraka_1}$, i.e. the Krull dimension of $k[x,y]/(xy)$ is
+  $\leq 1$. To see that this is an equality, consider the chain
+  $(xy)\subsetneq (x) \subsetneq (x,y)$. Thus $k[x,y]/(xy)$ has Krull
+  dimension 1.  I don't think we've proven that Krull dimension equals
+  the topological dimension, but it is the same proof since we're
+  using the Zariski topology.
+  
+  \qedsymbol
+
+  {\textbf{(b)}} Recall that $X_{p}\cong A_\frakp$ where $\frakp$ is
+  the prime ideal corresponding to $p$. We know that points correspond
+  to primes that look like $(x)$, $(y)$, $(x,y-b)$, and $(x-a,y)$ for
+  $a,b\in k$. In the case of $(x)$ and $(y)$ it is easy since
+  $A_{(x)}\cong k[x,y]_{(x)}/(xy)\cong k[x,y]_{(x)}/(y)\cong
+  (k[x,y]/(y))_{(x)}\cong k[x]_{(x)}$ which is a PID, is local, and is
+  not a field. Similarly for $(y)$.
+
+  Next we consider the case of $(x,y-b)$ and $(x-a,y)$. This is
+  similar to the last paragraph. Suppose $(x,y-b)$ for $b\neq
+  0$. Since localisation is an exact funtor (i.e. commutes with
+  quotients), we know that $A_\frakp\cong
+  (k[x,y]_{{\frakp}})/(xy)$. Thus $(xy)=(x)$ in the localization
+  $k[x,y]_{\frakp}$. Then again using that localisation is exact we
+  have that
+  $A_\frakp=(k[x,y]/(x))_{(x,y-b)}\cong
+  k[y]_{(0,y-b)}=k[y]_{(y-b)}$. This is a DVR since it is a PID, it is
+  local (with unique prime $(y-b)$) and is not a field (the element
+  $(y-b)$ is not invertible). The argument is mirrored for $(x-a,y)$
+  for $a\neq 0$.
+
+  The only case left is when $\frakp=(x,y)$. Since
+  $k[x,y]_{(x,y)}\cong k[x,y]$ we have that
+  $$A_{(x,y)}\cong (k[x,y]_{(x,y)})/(xy)\cong k[x,y]/(xy).$$ This is not
+  a DVR since it isn't even an integral domain.
+
+  \qedsymbol
+
+
+  \textbf{(c)} By (b) the residue field away from $p_0$ is isomorphic
+  to $k$. At $p_0$ the unique maximal ideal is $(x,y)$ so the residue
+  field is again just $k$.
+
+
+
+  \textbf{(d)} By our discussion in (b) we have that $A_{(x,y)}\cong A$. Since
+  $\calO_{X,p_0}\cong A_{(x,y)}$ we have that
+  $\Spec \calO_{X,p_0}\cong \Spec A=X$.
+
+  \qedsymbol
+  
+\end{answer}
+
+\end{document}

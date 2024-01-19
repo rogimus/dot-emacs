@@ -1,0 +1,428 @@
+\documentclass[12pt]{amsart}
+%%original
+% \gdef\exs{../styles}
+%\usepackage{\exs/pinlabel}
+%\usepackage{\exs/exams}
+%%end original
+%\modified
+%\gdef\exs{../styles}
+\usepackage{pinlabel}
+\usepackage{exams}
+\usepackage{tabularx}
+\usepackage{cancel}
+%\usepackage{epsf}
+%\usepackage{enumerate}
+%end modified\\
+\usepackage{multicol}
+\usepackage{Matrix}
+\usepackage{fancyhdr} 
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{pdfsync}
+\def\Fbox#1#2{\fbox{\parbox{#1}{\includegraphics[width=#1]{#2}}}}
+
+
+
+\begin{document}
+\begin{exam}[1.21.0]
+
+\begin{before pdf problem}{1}
+\centerline{\textbf{Multiple Choice}}
+\end{before pdf problem}
+
+\gdef\dxd{\displaystyle}
+
+%Q 1
+\begin{problem}
+If $\displaystyle f(x) = \sin(x)$ and $g(x) = 4x$, which of the following is the graph of 
+$$\displaystyle y = \frac{1}{2}g(f(x)) =  \frac{1}{2}(g\circ f)(x)?$$
+(Make sure you  look carefully at the labels on both axes.)
+
+Solution: Note that $y=\frac{1}{2}\times 4 \sin(x)=2\sin(x)$. The only two plots with the correct range are (a) and (d), and (a) is $2\sin(x)$ and (d) is $2\cos(x)$, so the answer is (a).
+
+
+
+\begin{answers}
+\Fbox{2.2in}{A12.jpg}\\
+\Fbox{2.2in}{B12.jpg}\\
+\Fbox{2.2in}{C12.jpg}\\
+\Fbox{2.2in}{D12.jpg}\\
+\Fbox{2.2in}{E12.jpg}\\
+\end{answers}
+\end{problem}
+
+
+%Q2
+\begin{problem}
+What is the domain of the following function?
+$$f(x) = \sqrt{\frac{x -1}{x - 2}}$$
+
+Solution: $\frac{x-1}{x-2}$ is nonnegative on $(-\infty,1]$, negative between $(1,2)$, undefined at 2, and positive for $(2,\infty)$. Since the square root function $g(x)=\sqrt{x}$ is only defined for non-negative numbers, it follows that the domain of $f(x)$ is $(-\infty,1]\cup(2,\infty)$.
+
+\begin{answers}
+$\dxd (-\infty, 1] \cup (2, \infty)$\\
+$\dxd (-\infty, 1) \cup [2, \infty)$\\
+$\dxd [1, 2)$\\
+$\dxd (1, 2)$\\
+$\dxd (2, \infty)$\\
+\end{answers}
+\end{problem}
+
+%Q3
+\begin{problem}
+The height (in feet) of a ball thrown vertically upwards on the planet Pilko at time $t = 0$(sec.) is given by 
+$$\dxd h(t) = 15 - t^2 + 2t, \ \ t \geq 0$$
+At what time  does the ball first hit the ground?
+
+Solution: The ball hits the ground when $h(t)=0$. The easiest way to solve this equation is to factor: 
+$$h(t)=15-t^2+2t=-(t^2-2t-15)=-(t-5)(t+3)=0$$
+Therefore the solution is $t=5$ (we discard $t=-3$ since $h(t)$ is defined only for $t\geq0$ and it makes no sense to consider the ball hitting the ground at a negative time).
+
+
+\begin{answers}
+$\dxd t = 5$\\
+$\dxd t = 3$\\
+$\dxd t = 6$\\
+$\dxd t = 4$\\
+$\dxd t = 2$\\
+\end{answers}
+\end{problem}
+
+
+%Q4
+\begin{problem}
+Consider the piecewise defined function:
+
+$$ p(x) = \begin{cases}
+\dxd \ \  x^2 &\mbox{if } -\infty < x < -1 \\
+\dxd \ \ x &\mbox{if } -1 \leq x < 1 \\[6pt]
+\dxd \frac{1}{x -2} & \mbox{if } 1 \leq x < \infty\\
+ \end{cases} $$
+ 
+ 
+Which of the following statements are true?
+\vskip .1in
+\noindent
+\begin{enumerate}
+\item $\dxd \lim_{x \to 1^-}p(x) = \lim_{x \to 1^+}p(x)$.\\
+\item $\dxd \lim_{x \to -1^-}p(x) = p(-1)$.\\
+\item The domain $P(x)$ is all real numbers.\\
+\item $\dxd \lim_{x \to 2^-}p(x) = +\infty$.
+\end{enumerate}
+\vskip .1in
+\noindent
+Hint: You should be able to determine the validity of the statements  from  a sketch of the graph. 
+
+Solution:
+
+ $\lim_{x \to 1^-}p(x)=1$ and $\lim_{x \to 1^+}p(x)=\frac{1}{1-2}=-1$, so (1) is false.
+
+$\lim_{x\to-1^-}p(x)=1$ and $p(-1)=-1$, so (2) is false.
+
+$p(x)$ is defined for all real numbers $x$, so (3) is true.
+
+As $x\to2^-$, the denominator $x-2$ approaches 0, but stays negative, so $ \lim_{x \to 2^-}p(x)=-\infty$. Therefore (4) is false, and thus the answer is (a).
+
+
+\begin{answers}
+Only statement  (3) is  true.\\
+None of the  statements are true. \\
+Only statements (3) and (4) are true. \\
+Only statements (1) and  (2) are true.\\
+Only statement  (2) is true.\\
+\end{answers}
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+%Q5
+\begin{problem}
+Evaluate the following limit:
+$$\lim_{x\to2}\frac{3 - \sqrt{x^2+ 5}}{x - 2}.$$
+
+Solution: The function is discontinuous at $x=2$ because the denominator evaulates to 0 at $x=2$, so to find the limit we multiply numerator and denominator by the conjugate of $3-\sqrt{x^2+5}$:
+$$\lim_{x\to2}\frac{3 - \sqrt{x^2+ 5}}{x - 2}=\lim_{x\to2}\frac{3 - \sqrt{x^2+ 5}}{x - 2}\left(\frac{3 +\sqrt{x^2+ 5}}{3 + \sqrt{x^2+ 5}}\right)=\lim_{x\to2}\frac{9-(x^2+5)}{(x-2)(3+\sqrt{x^2+5})}$$
+$$=\lim_{x\to2}\frac{4-x^2}{(x-2)(3+\sqrt{x^2+5})}=\lim_{x\to2}\frac{(2-x)(2+x)}{(x-2)(3+\sqrt{x^2+5})}=\lim_{x\to2}\frac{-(2+x)}{(3+\sqrt{x^2+5})}=\frac{-4}{3+\sqrt{2^2+5}}$$
+$$=\frac{-4}{6}=\frac{-2}{3}$$
+\begin{answers}
+$\dxd - \frac{2}{3}$\\
+$- 4$\\
+$\displaystyle \frac{1}{3}$\\
+$- \infty$\\
+$4$\\
+\end{answers}
+\end{problem}
+
+
+
+%Q6
+
+\begin{problem}
+Compute 
+$$\displaystyle{\lim_{x\to1^-}\frac{x - 2}{x^2 - 2x + 1}}.$$
+
+Solution: To find the limit we can factor the denominator:
+$$\lim_{x\to1^-}\frac{x - 2}{x^2 - 2x + 1}=\lim_{x\to1^-}\frac{x-2}{(x-1)^2}$$
+Note that the numerator goes to $-1$ as $x\to1^-$ and the denominator goes to 0 as $x\to1^-$, but is positive for all $x\neq 1$. Therefore the limit is $-\infty$ (you can think of it as being of the form $\frac{-1}{+0}$, although this is obviously not formal terminology).
+
+
+
+\begin{answers}
+$-\infty$\\
+$0$\\
+$\infty$\\
+$1$\\
+Does not exist and is not $+\infty$ or $-\infty$\\
+\end{answers}
+\end{problem}
+
+
+
+
+%Q7
+
+\begin{problem}
+For what value of  $c$ is the function $f$ given by
+$$f(x)=\begin{cases}\dxd cx^2&\dxd  x < 1\\[10pt]
+\dxd  x + c &\dxd x \geq 1\\
+\end{cases}$$
+continuous at $x = 1$?
+
+For $f$ to be continuous at 1, we need to left and right limits to match and equal $f(1)$. Note that $\lim_{x\to1^-}f(x)=c(1)^2=x$ and $\lim_{x\to1^+}f(x)=1+c=f(1)$. These two limits therefore equal when $c=1+c$. Cancelling $c$ gives $0=1$, a contradiction, so there is no $c$ making the left and right limits equal and therefore no value of $c$ makes $f$ continuous at 1.
+
+\begin{answers}
+No value of $c$ makes $f$ continuous at $1$.\\
+$\dxd c = 1$\\
+$\dxd c = -\frac{1}{2}$\\
+$\dxd c = \frac{1}{2}$\\
+$\dxd c = 2$\\
+\end{answers}
+\end{problem}
+
+
+
+%Q8
+
+\begin{problem}
+Let $\dxd f(x) = \cos(x\pi)$. 
+Which of the following limits gives the value of $f'(1)$?\\
+\vskip .1in
+\noindent
+Note: Pay careful attention to the $h \to ...$ part.
+
+Solution: By the definition of the derivative, the answer is $$\lim_{h\to0}\frac{f(1+h)-f(1)}{h}=\lim_{h\to0}\frac{\cos(\pi+h\pi)-\cos(\pi)}{h}=\lim_{h\to0}\frac{\cos(\pi+h\pi)+1}{h}$$
+
+
+\begin{answers}
+$\displaystyle \lim_{h \to 0}\frac{\cos(\pi + h\pi) + 1}{h}$\\
+$\displaystyle \lim_{h \to 0}\frac{\cos(\pi + h\pi) - 1}{h}$\\
+$\displaystyle \lim_{h \to 1}\frac{\cos(\pi + h\pi) - 1}{h}$\\
+$\displaystyle \lim_{h \to 0}\frac{\cos(\pi + h) + 1}{h}$\\
+$\displaystyle \lim_{h \to 1}\frac{\cos(\pi + h) + 1}{h}$\\
+\end{answers}
+\end{problem}
+
+
+%Q9
+
+\begin{problem}
+If $k(x)$ is a function with $x^4 - x^2  \geq k(x) \geq x^3 - 3x + 10$ for all $x$ in the interval $2 \leq x \leq 3$, 
+which of the following gives the value of $\dxd \lim_{x \to 2^+}k(x)$?
+
+Solution: Note that $\lim_{x\to2^+}x^4-x^2=2^4-2^2=16-4=12$ and $\lim_{x\to2^+}x^3-3x+10=2^3-3\times2+10=8-6+10=12$. By the squeeze theorem it follows that $\lim_{x\to2^+}k(x)$=12.
+
+\begin{answers}
+$ 12$ \\
+$-1$ \\
+$0$ \\
+$4$ \\
+$\dxd \lim_{x \to 2^+}k(x)$ does not exist.\\
+\end{answers}
+\end{problem}
+
+
+\begin{problem}
+The graph of $f(x)$ is shown below:\\
+
+\centerline{\Fbox{2.5in}{f.jpg}}
+\vskip .1in
+\noindent
+Which of the following is the graph of $f'(x)$?
+
+Solution: $f(x)$ is decreasing from negative infinitity to about -0.2, increasing from about -0.2 to about 1.6, and decreasing from 1.6 to infinity. Therefore the graph of $f'(x)$ should be negative on $(-\infty,-0.2)$, positive on $(-0.2,1.6)$, and negative again on $(1.6,\infty)$, with roots at -0.2 and 1.6 (again, decimal values are estimated). The only graph satisfying those conditions is (a).
+
+\begin{answers}
+\Fbox{2.3in}{A.jpg}\\
+\Fbox{2.3in}{B.jpg}\\
+\Fbox{2.3in}{C.jpg}\\
+\Fbox{2.3in}{D.jpg}\\
+\Fbox{2.3in}{E.jpg}\\
+\end{answers}
+\end{problem}
+
+
+
+
+
+\begin{before pdf problem}{11}
+\centerline{\textbf{Partial Credit}}
+\centerline{For full credit on partial credit problems, make sure you justify your answers.}
+\end{before pdf  problem}
+
+%Q11
+\begin{problem}
+A  particle  moving along a straight line has velocity given by a degree 2 polynomial, $\dxd v(t) = at^2 + bt + c$,
+at time $t \geq 0$. 
+The particle is moving forward when $v(t) > 0$ and is moving backwards when $v(t) < 0$. 
+We have the following information about the velocity:
+$$v(1) = v(2)  = 0, v(0) = -2$$
+\vskip .1in
+\noindent
+(a) Use the information given above to find an expression for $v(t)$. 
+
+Solution: $v(1)=0$ implies that $v(1)=a+b+c=0$. $v(2)=0$ implies that $v(2)=4a+2b+c=0$. Finally, $v(0)=-2$ implies that $c=-2$. Plugging in $c=-2$ into the other two equations gives $a+b-2=0$ and $4a+2b-2=0$. The first equation implies $a=2-b$, and plugging that into the second gives $4(2-b)+2b-2=0$, or $-2b=-6$. Therefore $b=3$ and $a=2-3=-1$. Therefore $v(t)=-t^2+3t-2$.
+
+
+\vskip 0.5in
+\noindent
+(b) What is the velocity of the particle when $t = 3$.
+
+Solution: The velocity of the particle at $t=3$ is $v(3)=-3^2+3\times3-2=9+9-2=16$.
+
+
+\vskip 0.5in
+\noindent
+(c) On which time intervals is the particle moving forwards?  (make sure you justify your answer).
+
+Solution: The particle is moving forwards when the velocity is positive. Since the velocity is a quadratic polynomial, this is easily found by finding the roots of $v(t)$ (which are at $t=1$ and $t=2$ as given in the problem statement), and observing the $a=-1$, so the graph looks like an upside-down U, meaning that the function is positive in between the two roots. Therefore the particle is moving forwards on the interval $(1,2)$.
+\vskip 0.5in
+\noindent
+(d) On which time intervals is the particle moving backwards?  (make sure you justify your answer).
+
+Solution: Following the solution of part (c), the velocity is negative (i.e. the particle is moving backwards) on the time intervals $[0,1)\cup(2,\infty)$.
+
+
+\end{problem}
+
+
+
+
+
+%Q12
+\begin{problem}
+(a)  Find the derivative of
+$$f(x)=\frac{1}{2x + 1}$$
+using \underline{ the limit definition} of the derivative.
+
+Solution:
+\begin{equation*} 
+\begin{split}
+f'(x)&=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to0}\frac{\frac{1}{2(x+h)+1}-\frac{1}{2x+1}}{h}=\lim_{h\to0}\frac{\frac{1}{2(x+h)+1}-\frac{1}{2x+1}}{h}\left(\frac{(2(x+h)+1)(2x+1)}{(2(x+h)+1)(2x+1)}\right)\\
+&=\lim_{h\to0}\frac{2x+1-(2x+2h+1)}{h(2x+2h+1)(2x+1)}=\lim_{h\to0}\frac{-2h}{h(2x+2h+1)(2x+1)}=\lim_{h\to0}\frac{-2}{(2x+2h+1)(2x+1)}\\
+&=\frac{-2}{(2x+1)^2}
+\end{split}
+\end{equation*}
+\vskip 1in
+\noindent
+(b) use your answer from part (a)  to find  the equation of the tangent line to the graph of $y = f(x)$ at $x = 1$. 
+
+Solution: The tangent line is the to $f(x)$ at $x=1$ is the line that touches the graph of $f(x)$ at $x=1$ and has the same slope as $f(x)$ at $x=1$. The slope is given by $f'(x)=\frac{-2}{(2(1)+1)^2}=\frac{-2}{9}$, so the line is of the form $y=\frac{-2}{9}+b$. To intersect the graph, note that $f(1)=1/3$, so $1/3=-2/9+b$, so $b=5/9$. Therefore the tangent line to $f(x)$ at $x=1$ is $$y=\frac{-2}{9}x+\frac{5}{9}.$$
+\vfill\eject
+\end{problem}
+
+
+
+%Q13
+\begin{problem}
+(a)  Show that there is at least 1 solution to the equation
+\begin{displaymath}
+x^6 + 2x^4 - x^2 -1 = 0
+\end{displaymath}
+in the interval $0 < x < 1$.\\
+Justify your answer, identify any theorems you use and verify that the required conditions for their use hold true.\\
+%
+
+Solution: Let $f(x)=x^6+2x^4-x^2-1$ for convenience. Note that $f(0)=0^6+2(0)^4-0^2-1=-1$ and $f(1)=1^6+2(1)^4-1^2-1=1$. Since $f(x)$ is a polynomial and hence is continuous, by the Intermediate Value Theorem we can conclude that $f(x)$ has at least one root between 0 and 1, or in other words the equation $
+x^6 + 2x^4 - x^2 -1 =0$ has a solution in the interval $0<x<1$.
+\vskip 1in
+\noindent
+(b) Is $f(x) = x^6 + 2x^4 - x^2 -1$ an even function, or an odd function, or neither?\\
+Justify your answer.
+
+Solution: Every power of each term the polynomial is an even power, so the function $f(x)$ is even.
+\vskip 1in
+\noindent
+(c) Use your results from parts (a) and (b) to show that the equation $\dxd x^6 + 2x^4 - x^2 -1 = 0$ has at least two solutions.
+
+Solution: From part (a) the equation $x^6 + 2x^4 - x^2 -1 = 0$ has some solution in the interval $0<x<1$, call it $c$ for instance. Because $f(x)$ is even, $f(c)=0$ implies that $f(-c)=f(c)=0$. Therefore  $x^6 + 2x^4 - x^2 -1 = 0$ has at least two solutions.
+
+
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+\begin{problem}
+You will be awarded  these  two points if you write your name in  CAPITALS on the front page and you mark your 
+answers on the front page  with an X through your answer choice like so: \xcancel{(a)}  (\underline{not} an O around your answer choice) . You may also use this page for 
+
+\begin{center}
+{\bf ROUGH WORK}
+\end{center}
+\vskip .1in
+\noindent
+\end{problem}
+
+%\begin{after pdf problem}{14}
+%\newpage
+%\begin{center}
+%{\bf ROUGH WORK}
+%\end{center}
+%\end{after pdf problem}
+%
+
+%\begin{after pdf problem}{14}
+%\newpage
+%\begin{center}
+%{\bf The following is the list of useful trigonometric formulas:}
+%
+%$$\sin^2x+\cos^2x=1$$
+%
+%$$1+\tan^2x=\sec^2x$$
+%
+%$$\sin^2x=\frac12(1-\cos2x)$$
+%
+%$$\cos^2x=\frac12(1+\cos2x)$$
+%
+%$$\sin2x=2\sin x\cos x$$
+%
+%$$\sin x\cos y=\frac12\big(\sin(x-y)+\sin(x+y)\big)$$
+%
+%$$\sin x\sin y=\frac12\big(\cos(x-y)-\cos(x+y)\big)$$
+%
+%$$\cos x\cos y=\frac12\big(\cos(x-y)+\cos(x+y)\big)$$
+%
+%$$\int \sec\theta = \ln|\sec \theta + \tan \theta| + C$$
+%
+%$$\int \csc\theta = \ln|\csc \theta - \cot \theta| + C$$
+%\end{center}
+%\end{after pdf problem}
+
+\end{exam}
+%\WriteNewVersion{2.21.0}
+%\WriteNewVersion{3.21.0}
+\end{document}

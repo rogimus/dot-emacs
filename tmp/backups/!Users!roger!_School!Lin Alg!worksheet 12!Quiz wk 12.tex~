@@ -1,0 +1,163 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+%\ifsoln
+\printanswers    % what it says on the tin
+%\fi
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+\framedsolutions 
+\renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+
+
+%--- Load packages------
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{Matrix}
+\usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+\newcommand{\ii}{\ensuremath{\textbf{i}}}
+\newcommand{\jj}{\ensuremath{\textbf{j}}}
+\newcommand{\kk}{\ensuremath{\textbf{k}}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+%Display cross product formula
+\def\crossproduct<#1,#2,#3><#4,#5,#6>{
+	\left\vert\,\begin{matrix}
+		\hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+		\hfill#1&\hfill#2&\hfill#3\\
+		\hfill#4&\hfill#5&\hfill#6\\
+	\end{matrix}\, \right\vert} 
+%Display the minor matrix
+\def\minor<#1,#2><#3,#4>{
+	\left\vert\,\begin{matrix}
+		\hfill#1&\hfill#2\\
+		\hfill#3&\hfill#4\\
+	\end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+
+%--- Set up the header ---
+\pagestyle{head}
+\header{Name: }{}{Date: 11/30/2023}
+
+%Header for Solution--------------
+%\header{Name: SOLUTIONS}{}{Date: }
+%---------------------------------
+
+\headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+\parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+	
+	\centerline{\bf M20580 L.A. and D.E. Tutorial}
+	\centerline{\bf Quiz 9}
+	%\centerline{Sections 1.5, 1.7--1.9}
+	\vskip .2in
+	\noindent
+	
+	CALCULATORS ARE NOT ALLOWED.	
+	\begin{questions}
+
+	
+		%%%%%%%%%%%%%%%%%
+		%
+		%
+		%Question 1.
+		%
+		%
+		%%%%%%%%%%%%%%%%%	
+		\question % Zill Exercise 1.1(4)
+		\vskip .1in
+		\noindent
+		Consider the following differential equation:
+		
+		$$\dfrac{d^2 u}{d r^2} + r^2\dfrac{du}{dr} + u = \ln(r)$$
+		
+		Which of the following statements are true?
+		
+		\begin{enumerate}[I]
+		    \item The differential equation is second order.
+		    \item The differential equation is linear.
+		\end{enumerate}
+		
+		\hfill\break
+		\textbf{(a)} 
+		Neither statement is true
+		 \quad 
+		\textbf{(b)} 
+		Only $I$ is true
+		\quad 
+		\textbf{(c)} 
+        Only $II$ is true
+		\hfill\break
+		\textbf{(d)} 
+		$I$ and $II$ are both true 
+		\quad
+		\textbf{(e)} Not enough information 
+		
+		\begin{solution}
+			Answer choice {\bf (d)}. 
+			The highest-order derivative appearing is
+                        $\frac{d^2 u}{dr^2}$ in the first term, so the
+                        equation is 2nd-order, i.e. $I$ holds. The
+                        differential equation is of the form
+                        $$f_2(r)\frac{d^2u}{dr^2}+f_1(r)\frac{du}{dr}+f_0(r)u=g(r)$$
+                        for some functions $f_i(r)$ and $g(r)$, and is
+                        thus linear, i.e. $II$ holds.
+		\end{solution}
+		
+		
+		
+		\hfill\break
+		%\vskip 5em
+		
+		%%%%%%%%%%%%%%%%%
+		%
+		%
+		%Question 2. 
+		%
+		%
+		%%%%%%%%%%%%%%%%%
+		\question % Zill Exercise 2.2(6)
+Which of the following is an integrating factor of the differential
+equation? $$x^2y'-2y=x\ln(x), \quad (x>0).$$
+
+\textbf{(a)} $e^{-2x}$ \quad\quad \textbf{(b)} $e^{2/x}$ \quad\quad \textbf{(c)} $e^{\ln x}$ \quad\quad \textbf{(d)} $\frac{\ln(x)}{x}$ \quad \quad \textbf{(e)} $-2/x$
+		
+		%--SOLUTIONS------------------------
+		\begin{solution}
+		Dividing by $x^2$, the standard form of the given DE
+                is $$y'-\frac{2}{x^2}y=x\ln(x).$$ From this form we
+                identify $P(x) = -2/x^2$. Hence the integrating factor
+                is $$e^{-\int \frac{2}{x^2}\,dx}=e^{2/x}.$$ Thus the
+                answer is \textbf{(b)}. 
+		\end{solution}
+	\end{questions}
+\end{document}
+

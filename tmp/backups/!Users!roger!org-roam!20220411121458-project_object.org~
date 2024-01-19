@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       D9B4D37C-E898-4972-8BDE-A33A2A3B854B
+:END:
+#+title: project object
+#+filetags: :category theory:algebra:
+
+A projective object $P\in\mathcal{C}$
+is one such that for any [[id:F11C5097-615A-4680-AD00-8B55CB2F41E0][epimorphism]]
+$u:X\to Y$ and map $f:P\to Y$ there exists a map
+$g:P\to X$ such that $u\circ g = f$.
+
+making the following commute
+
+\[ \begin{tikzcd}
+& P \arrow[dl, dotted, "g"] \arrow[d,f] \\
+X\arrow[r, "u"] & Y
+\end{tikzcd}
+\]
+

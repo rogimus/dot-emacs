@@ -1,0 +1,182 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+\newif\ifsoln    % establishes conditional
+\solnfalse       % defaults to false 
+
+%In order to "hide" the solutions, comment the line below
+\solntrue
+
+\ifsoln
+\printanswers    % what it says on the tin
+\fi
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+%--- Load packages------
+ \usepackage{amssymb}
+ \usepackage{amsmath}
+ \usepackage{color}
+ \usepackage{amsfonts}
+ \usepackage{graphicx}
+ \usepackage{enumerate}
+ %\usepackage{Matrix}
+ \usepackage{tikz}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+ \newcommand{\ii}{\ensuremath{\textbf{i}}}
+ \newcommand{\jj}{\ensuremath{\textbf{j}}}
+ \newcommand{\kk}{\ensuremath{\textbf{k}}}
+ \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+ \def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+ %Display cross product formula
+ \def\crossproduct<#1,#2,#3><#4,#5,#6>{
+   \left\vert\,\begin{matrix}
+   \hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+   \hfill#1&\hfill#2&\hfill#3\\
+   \hfill#4&\hfill#5&\hfill#6\\
+   \end{matrix}\, \right\vert} 
+ %Display the minor matrix
+ \def\minor<#1,#2><#3,#4>{
+   \left\vert\,\begin{matrix}
+   \hfill#1&\hfill#2\\
+   \hfill#3&\hfill#4\\
+   \end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+   
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+ \DeclareMathOperator{\arcsec}{arcsec}
+ \DeclareMathOperator{\arccot}{arccot}
+ \DeclareMathOperator{\arccsc}{arccsc}
+ \DeclareMathOperator{\sech}{sech}
+ \DeclareMathOperator{\csch}{csch}
+
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 10/07/2021}
+ 
+ %Header for Solution--------------
+  %\header{Name: SOLUTIONS}{}{Date: }
+ %---------------------------------
+ 
+ \headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+ \parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial}
+ \centerline{\bf Quiz 5}
+ %\centerline{Sections 1.5, 1.7--1.9}
+ \vskip .2in
+ \noindent
+
+\begin{questions}
+
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%
+  \question A linear transformation $T:\mathbb{R}^2\rightarrow\mathbb{R}^2$ has out puts
+\[T \begin{bmatrix}
+    1\\3
+\end{bmatrix}=\begin{bmatrix}
+    2\\4
+\end{bmatrix},\quad\quad\quad\quad T \begin{bmatrix}
+    2\\2
+\end{bmatrix}=\begin{bmatrix}
+    1\\3
+\end{bmatrix}.
+\]
+Find $T \begin{bmatrix}
+    3\\1
+\end{bmatrix}$.
+\begin{solution}
+ The augmented matrix $\left[\begin{array}{cc|c}
+    1&2&3\\
+    3&2&1
+    \end{array}\right]$ has REF$\left[\begin{array}{cc|c}
+    1&0&-1\\
+    0&1&2
+    \end{array}\right]$.Thus, 
+    \[\begin{bmatrix}
+    3\\1
+\end{bmatrix}=-\begin{bmatrix}
+    1\\3
+\end{bmatrix}+2\begin{bmatrix}
+    2\\2
+\end{bmatrix}.
+\]
+Thus
+    \[T \begin{bmatrix}
+    3\\1
+\end{bmatrix}=-T \begin{bmatrix}
+    1\\3
+\end{bmatrix}+2T \begin{bmatrix}
+    2\\2
+\end{bmatrix}=-\begin{bmatrix}
+    2\\4
+\end{bmatrix}+2\begin{bmatrix}
+    1\\3
+\end{bmatrix}=\begin{bmatrix}
+  0\\2
+\end{bmatrix}.
+\]
+\end{solution}
+
+
+
+\question
+Let $B=\{1 -t+t^2,\,\, t-t^2,\,\, t+t^2\}$ be a basis for the space
+$\mathcal{P}_2$ of polynomials of degree at
+most 2. Find the coordinate vector $[p]_B$ of $p(t) = 2 + t +4t^2$.
+
+\begin{solution}
+  We have that the augmented matrix in terms of the standard basis
+  $\{1,x,x^2\}$ is
+  \[\left[
+    \begin{array}{c c c|c}
+      1&-1&1&2\\
+      0&1&-1&1\\
+      0&1&1&3
+    \end{array}
+  \right].
+\]
+Putting in RREF gives
+  \[\left[
+    \begin{array}{c c c|c}
+      1&0&0&3\\
+      0&1&0&2\\
+      0&0&1&1
+    \end{array}
+  \right].
+\]
+
+Hence $[p]_B=
+\begin{bmatrix}
+  3\\2\\1
+\end{bmatrix}$, i.e. $p(t)=3(1-t+t^2)-2(t-t^2)+(t+t^2)$.
+\end{solution}
+
+
+\end{questions}
+\end{document}

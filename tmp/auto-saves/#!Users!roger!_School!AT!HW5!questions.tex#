@@ -1,0 +1,345 @@
+\subsection*{Question 1}
+{\bf [Hatcher 3.1.5]}
+
+Regarding a cochain $\varphi\in C^1(X;G)$ as a function from paths in
+$X$ to $G$, show that if $\varphi$ is a cocycle, then
+\begin{enumerate}[(a)]
+\item $\varphi(f\sqcdot g) = \varphi(f)+\varphi(g)$,
+\item $\varphi$ takes the value 0 on constant paths,
+\item $\varphi(f) = \varphi(g)$ if $f\simeq g$,
+\item $\varphi$ is a coboundary iff $\varphi(f)$ depends only on the
+  endpoints of $f$ for all $f$.
+\end{enumerate}
+[In particular, (a) and (c) give a map $H^1(X;G)\to \Hom(\pi_1(X),G)$,
+which the UCT says is an isomorphism if $X$ is path-connected.]
+
+\begin{proof}
+  {\it (a)}
+  We begin by describing a 2-simplice $K$ in $X$. First we glue the
+  vertices via 
+  $(0,1,2)\mapsto (v_0,v_1,v_2)$ where $f$ starts at $v_0$ and ends at
+  $v_1$ and $g$ starts at $v_1$ and ends at $v_2$. We then glue the
+  1-simplices via $d_0K = g$, $d_1K = f\sqcdot g$ and $d_2 K = f$.
+  The interior glues to the path $f\sqcdot g$ (do something like projection
+  onto $d_1 K$ if you want an explicit map).
+
+  In the singular chain for $X$, we have $\partial_2 K = f+g-f\sqcdot
+  g$. Since $\varphi$ is a cocycle, we have
+  $\varphi\circ\partial=0$. In particular
+  \[ \varphi(f)+\varphi(g)-\varphi(f\sqcdot g)=0.\]
+  \\
+  \noindent
+  {\it (b)}
+  Let $c$ denotes a constant path in $X$. By (a) we have
+  $\varphi(c)=\varphi(c)+\varphi(c)$.
+  So $\varphi(c)=2\varphi(c)$ and thus $\varphi(c)=0$.
+  \\
+  \\
+  \noindent
+  {\it (c)}
+  Let $H:I\times I\to X$ be a homotopy with $H(t,0)=f(t)$
+  and $H(t,1)=g$. Note that $H$ determines two 2-simplices $K_0$ and
+  $K_1$ in $X$. Let $v_0,v_1$ denote the start and endpoint of $f$
+  respectively, and similarly $w_0,w_1$ for $g$.
+  The first simplex $K_0$ has vertices $v_0,v_1,w_1$. The faces are
+  given by $d_0K_0 = H(1,t)$ (the path between endpoints),
+  $d_1 K_0 = H(t,t)$ (the diagonal map from $w_1$ to $v_0$), and $d_2
+  K_0 =f$. The second simplex $K_1$ has vertices $v_0,w_0,w_1$ and
+  faces $d_0 K_1 = g$, $d_1 K_1 = H(t,t)$, $d_2 K_1 = H(0,t)$ (the
+  path between start points).
+
+  Then $\partial K_0 = H(1,t)-H(t,t)+f$ and $\partial
+  K_1=g-H(t,t)+H(0,t)$. Thus $\partial(K_0-K_1) =
+  f-g+(H(1,t)-H(0,t))$. If $f$ and $g$ are homotopic relative
+  endpoints we are done (since then $H(1,t)$ and $H(0,t)$ are
+  constant).
+  \\
+  \\
+  \noindent
+  {\it (d)}
+  Suppose $\varphi$ is a coboundary. Let  $\rho$ be a 0-cocycle in $X$ 
+  such that $\rho\circ \partial = \varphi$. Then certainly $\varphi$
+  depends only on endpoints ($\partial$ sends a 1-simplex $f$ to $v_1-v_0$
+  where $v_1$ is the endpoint and $v_0$ is the start point of $f$).
+
+  Conversely, suppose $\varphi$ is a cocycle which only depends on end
+  points. For every path component of $X$ pick some point $v$. We will
+  define a 0-cycle $\rho$ by specifying $\rho(w)=\varphi(f)$ where $f$
+  is any path from $v$ to $w$. This is well-defined since $\varphi$
+  depends only on endpoints. We wish to show that $\rho \circ \partial
+  = \varphi$. Suppose $f$ is a 1-cell from $w_0$ to $w_1$.
+  Then
+  \begin{align*}
+    \rho\circ \partial (f) = &\rho (w_1)-\rho(w_0) \\
+    =& \varphi(h_1)-\varphi(h_0) 
+  \end{align*}
+  where $h_i$ is the chosen path from $v$ to $w_i$. By (a),
+  $\varphi(h_1)-\varphi(h_0)=\varphi(-h_0\sqcdot h_1)$. But
+  $-h_0\sqcdot h_1$ is a path from $w_0$ to $w_1$. In particular
+  \[ \varphi(-h_0\sqcdot h_1) = \varphi(f).\]
+  Thus $\varphi = \delta(\rho)$.
+  
+  % where $v_0$ and $v_1$ is the start and endpoint, and where $w_0$
+
+  
+  % It suffices to show that if $f\simeq c$ where $c$ is a constant
+  % path, then $\varphi(f)=0$. To see why observe that if $f\simeq g$
+  % then $f\sqcdot -g \simeq c$ so \emph{(a)} gives the result. 
+
+  % Note that a homotopy $H:I\times I\to X$ with $H(t,0)=f(t)$ and
+  % $H(t,1)=c$ defines
+  % a 2-simplex $K$ in $X$. It has vertices $(0,1,2)\mapsto (v_0,v_1,c)$
+  % where $f$ starts at $v_0$ and ends at $v_1$ and $c$ is the point
+  % that the constant map is at. It has edges $d_0 K = H(1,t)$, $d_1
+  % K=H(0,t)$, and $d_2 K= f$. The interior is determined by extending
+  % linearly. We then have $
+  
+\end{proof}
+
+
+
+
+
+
+
+\subsection*{Question 2}
+Show that if two smooth maps $f,g:M\to N$ between smooth manifolds
+$M,N$ are smoothly homotopic by a smooth homotopy $H:M\times I\to N$,
+then the induced maps
+\[ f^*,g^*:\Omega^\bullet(N)\to \Omega^\bullet(M)\]
+are chain homotopic. Hint: consider the chain homotopy described in
+class
+\[ h(\alpha) = \int_I H^*(\alpha). \]
+
+\begin{proof}
+  Given an $(n+1)$-form $\beta\in \Omega^{n+1}(M\times I)$ we have, in
+  local coordinates,
+  \[ \beta= \sum \beta_{i_1i_2\ldots i_{n+1}}dx_{i_1}\wedge \cdots
+    \wedge dx_{i_{n+1}} + \sum \beta_{j_1j_2\ldots
+      j_n}dt(dx_{j_1}\wedge \cdots \wedge dx_{j_n}) \]
+  where $\beta_{I},\beta_J \in C^\infty(X\times I)$ (where
+  $I=i_1\ldots i_{n+1}$ and $J=j_1\ldots j_n$).
+  Then
+  \[ \int_I \beta = \sum \left(\int_0^1 \beta_J dt\right) dx_J. \]
+  If $\alpha\in \Omega^{n+1}(N)$ then the above discussion allows us
+  to make sense of $h(\alpha)= \int_I H^*(\alpha)$. We wish to show
+  that $h$ is a chain homotopy $f^*\simeq g^*$. To do that we need to
+  show that $hd+dh=g^*-f^*$. 
+
+  Using the fundamental theorem of calculus we have that $g^*-f^*$ is
+  $\int_0^1 \frac{d}{dt}(H^*(\alpha)) dt$. Let us try to show that
+  $dh(\alpha)+hd(\alpha) = \int_0^1 \frac{d}{dt}(H^*(\alpha)) dt$...
+  Write $h(\alpha) = \sum \left(\int_0^1 H^*(\alpha_J)
+    dt\right) dx_J$ (this is a slight abuse of notation with the $dx_J$
+  but we'll roll with it). Then
+  \[ dh(\alpha) = \sum \partial_i\left(\int_0^1 H^*(\alpha_J)
+      dt\right) dx_i\wedge dx_J.\]
+  Next let us calculate $hd(\alpha)$.
+  We have
+  \begin{align*}
+    h(d\alpha) =& -\sum \left(\int_0^1 H^*(\partial_i \alpha_J) dt
+    \right) (dx_i\wedge dx_J) + \sum\left(\int_0^1
+    \frac{d}{dt}H^*(\alpha_I)dt\right) dx_I \\
+    =& -dh(\alpha)+(g^*-f^*).
+  \end{align*}
+  Note the negative follows from $d(dt\wedge \omega) =
+  0 - dt\wedge d\omega$. This precisely says that
+  \[ h(d\alpha)+ d(h\alpha) = g^*-f^*. \]
+  Of course, here we've been incredibly sloppy with our coordinates,
+  using the same coordinates for both $M$ and $N$. It doesn't even
+  really make sense to sat $d(dt\wedge \omega)$ when $dt\wedge\omega$
+  is presumed to a subform of $\alpha$. We ignore these
+  technicalities, for the sake of our personal happiness.
+  
+  % we see that $hd(\alpha)$ is
+  % \[ H^*(d\alpha) + \sum_{i=1}^n\intH^*(\frac{\partial \beta_J}{\partial
+  %     x_i}dx_i\wedge dx_J = dH(\alpha) = 
+  %   \alpha(H(1,x_1,\ldots,x_n))-\alpha(H(0,x_1,\ldots,x_n) =
+  %   dg(\alpha)-df(\alpha).\]
+  
+
+  
+\end{proof}
+
+
+
+
+
+
+
+
+\subsection*{Question 3}
+Compute the cohomology of the Klein bottle $K$ directly, and with the
+UCT. Interpret the result geometrically.
+
+\begin{proof}
+  We have the following cellular chain complex for $K$:
+  \begin{align*}
+    0\to \bbZ\{K\}\to \bbZ\{a,b\}\to  \mathbb{Z}\{v\} \to 0
+  \end{align*}
+  where the boundary maps are defined via $\partial K = a+b-a+b=2b$
+  and $\partial(a)=\partial(b)=0$. Dualizing gives:
+  \begin{align*}
+    0\leftarrow \Hom(\bbZ\{K\},\bbZ)\leftarrow \Hom(\bbZ\{a,b\},\bbZ) \leftarrow
+    \Hom(\mathbb{Z}\{v\},\bbZ) \leftarrow 0
+  \end{align*}
+  The 0th coboundary map remains 0. In particular $H^0(K)=\bbZ$.
+  The kernel of the 1st coboundary map are the homomorphisms
+  $\varphi:\bbZ\{a,b\}\to \bbZ$ such that $\varphi(2b)=0$.
+  Since $\varphi$ is determined on generators, and since $\bbZ$ is
+  torsion free, these are all map such that $\varphi(b)=0$.
+  In other words $H^1(K)$ is isomorphic to all homomorphisms
+  $\bbZ\{a\}\to \bbZ$, i.e. $H^1(K)\cong \bbZ$. The image of
+  $\delta^1$ are the maps $\varphi:\bbZ\{K\}\to \bbZ$ determined by
+  $\varphi(K)=2d$ for some $d\in \bbZ$. To see this, observe that
+  $\varphi$ factors through a map $\rho:\bbZ\{a,b\}\to\bbZ$
+  via $\varphi(K) = \rho(0a+2b)=2\rho(b)=2d$. So the 2nd cohomology group is
+  isomorphic to $\bbZ/2$.
+
+  Next let us use the UCT. Recall the UCT says the following is exact:
+  \[ 0\to \Ext^1_\bbZ(H_{i-1}(X),\bbZ) \to H^i(X) \to
+    \Hom(H_i(X),\bbZ)\to 0.\]
+  Recall the homology for $K$ is as follows:
+  \[ H_i(K) =
+    \begin{cases}
+      \bbZ & i=0,\\
+      \bbZ\oplus \bbZ/2 & i=1,\\
+      0 & \textrm{else}.
+    \end{cases}
+  \]
+  This immediately allows us to read off $H^0(K)=\bbZ$.
+  Next, for $i=1$ we have
+  \[ 0\to \Ext^1_\bbZ(\bbZ,\bbZ) \to H^1(K) \to
+    \Hom(\bbZ\oplus\bbZ/2,\bbZ)\to 0.\]
+  Now $\bbZ$ is free, so $\Ext^1_{\bbZ}(\bbZ,\bbZ)=0$.
+  Next \[\Hom(\bbZ\oplus\bbZ/2,\bbZ)\cong
+    \Hom(\bbZ,\bbZ)\oplus\Hom(\bbZ/2,\bbZ)=\{0\}\oplus \bbZ=\bbZ.\]
+  Thus $H^1(K)\cong \bbZ$.
+  Finally, for $i=2$ we have
+   \[ 0\to \Ext^1_\bbZ(\bbZ\oplus\bbZ/2,\bbZ) \to H^2(K) \to
+     \Hom(0,\bbZ)\to 0.\]
+   In particular $H^2(K)\cong \Ext^1_\bbZ(\bbZ\oplus\bbZ/2,\bbZ)$.
+   By $\bbZ$-linearity, we have
+   \[\Ext^1_\bbZ(\bbZ\oplus\bbZ/2,\bbZ)\cong
+     \Ext^1_\bbZ(\bbZ,\bbZ)\oplus
+     \Ext^1_\bbZ(\bbZ/2,\bbZ). \]
+   Since $\bbZ$ is free, $\Ext^1_\bbZ(\bbZ,\bbZ)=0$.
+   Thus all that is left is to calculate $\Ext^1_\bbZ(\bbZ/2,\bbZ)$.
+   For this we have a free resolution
+   \[ 0 \to \bbZ \xrightarrow{2} \bbZ \to \bbZ/2\to 0. \]
+   After chopping off $\bbZ/2$ and dualizing by taking $\Hom(-,\bbZ)$,
+   we can calculate $Ext^1$ as $\bbZ/2$.
+   Thus $H^2(K)=\bbZ/2$. Thus both calculations agree:
+   \[ H^i(K) =
+     \begin{cases}
+       \bbZ & i =0,1,\\
+       \bbZ/2 & i = 2,\\
+       0 &\textrm{else}.
+     \end{cases}
+   \]
+
+   Finally we interpret these results geometrically. We have that
+   $H^i$ corresponds to codimension $i$ subspaces. For codimension 0
+   we have $H^0(K)=\bbZ$. We have a generator that corresponds to the
+   2-cell $K$. For codimension 1 we have two non-collapsible
+   loops. (Look at the fundamental parallelogram.)
+   If we choose an orientation on each of these loops and then
+   traverse along the surface, one of these loops returns to its
+   original orientation. This loops corresponds to the $\bbZ$. The
+   other loop returns to the same spot but is going in the other
+   direction. Hence we end up equating the original loop with minus
+   itself, and hence this loop must be 0 in cohomology. 
+   Finally for the codimension 2 we consider any point in $K$.
+   If with two copies of the same point and a choice of frame at that
+   point then we can move the second point around so that it is on the
+   ``interior'', and the other point is at the same spot but on the
+   ``exterior''. These will have different orientations and
+   will ``cancel out''. Hence we obtain the $\bbZ/2$ in degree 2.
+
+ \end{proof}
+
+
+
+
+
+
+
+
+
+
+ 
+\subsection*{Question 4} {\bf [Hatcher 3.1.11]}
+
+Let $X$ be a Moore space $M(\bbZ/m,n)$ obtained from $S^n$ by
+attaching a cell $e^{n+1}$ by a map of degree $m$.
+\begin{enumerate}[(a)]
+\item Show that the quotient map $X\to X/S^n=S^{n+1}$ induces the
+  trivial map on $\widetilde{H}_i(-;\bbZ)$ for all $i$ but not on
+  $H^{n+1}(-;\bbZ)$. Deduce that the splitting in the UCT for
+  cohomology cannot be natural.
+
+\item Show that the inclusion $S^n\hookrightarrow X$ induces the
+  trivial map on $\widetilde{H}^i(-;\bbZ)$ for all $i$, but not on
+  $H_n(-;\bbZ)$.
+\end{enumerate}
+\begin{proof}
+  {\it (a)} To see that the quotient map induces the trivial map on
+  reduced homology, consider the LES associated to the quotient map in
+  reduced homology. Using the fact that $S^n$ is a subcomplex of the
+  CW-complex $X$, we have
+  \[ \cdots\to\widetilde{H}_i(S^n)\to\widetilde{H}_i(X)\to
+    \widetilde{H}_i(X/S^n)\to H_{i-1}(S^n)\to\cdots \] Since we know
+  the homology for spheres, we have that the quotient map is trivial
+  away from $i=n+1$. But at $i=n+1$, since $X$ is a Moore space, we
+  have that $\widetilde{H}_{n+1}(X)=0$ and so the quotient map is
+  again trivial.
+
+  Next we show that the quotient map is not trivial on
+  $H^{n+1}(-;\bbZ)$. By the UCT we have
+  $H^{n+1}(X) = \Ext^1(H_n(X),\bbZ)=\bbZ/m$ and is 0 otherwise. So our
+  LES in cohomology 
+  gives 
+  \[ \cdots \to 0 \to \widetilde{H}^{n+1}(X/S^n)\to
+    \widetilde{H}^{n+1}(X)\to \widetilde{H}^{n+1}(S^n)\to 
+    \cdots \] Since $\widetilde{H}^{n+1}(S^n)=0$ and
+  $\widetilde{H}^{n+1}(X)=\bbZ/m$ we must 
+  have, by exactness, that $H^{n+1}(X/S^n)=\bbZ/m$ and the map induced
+  by the quotient map is the identity on $\bbZ/m$.
+
+  From this we conclude that the splitting in the UCT cannot be
+  natural since the quotient map at $i=n+1$ induces the identity on
+  cohomology (the middle term in UCT), but is trivial on the left and
+  right terms (terms defined in terms of homology).
+  \\
+  \\
+  \noindent
+  {\it (b)} Similarly to our proof for (a) consider the LESes for the
+  CW-pair $(X,S^n)$. In homology we have:
+  \[ 0\to \widetilde{H}_{n+1}(X/S^n)\to \widetilde{H}_n(S^n)\to
+    \widetilde{H}_n(X)\to 0. \] Filling in what we know gives
+  \[ 0 \to \bbZ \to \bbZ \to \bbZ/m \to 0. \] In particular the
+  boundary map must be multiplication by $m$ and the inclusion
+  $S^n\hookrightarrow X$ must be the quotient map -- in particular it
+  is not trivial.
+
+  Next for cohomology. Using our calculation that the cohomology of
+  $X$ is 0 away from $i=n+1$, and $\bbZ/m$ at $i=n+1$, we get that the
+  map induced by the inclusion must be trivial everywhere except
+  possibly when
+  $i=n+1$. At $i=n+1$ we have
+  \[ \cdots\to 0 \to H^{n+1}(X/S^n)\to \widetilde{H}^{n+1}(X) \to
+    \widetilde{H}^{n+1}(S^n)\to \cdots \]
+  But
+  $\widetilde{H}^{n+1}(S^n)=0$ and so the map induced by the inclusion
+  must be trivial here too.
+\end{proof}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "hw5"
+%%% End:

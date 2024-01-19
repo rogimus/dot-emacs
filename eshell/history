@@ -1,0 +1,7 @@
+cd ./todo
+cp taskGame.org August22.org
+exit
+cp template.tex templateNew.tex
+exit
+mkdir ~/gtd/
+exit

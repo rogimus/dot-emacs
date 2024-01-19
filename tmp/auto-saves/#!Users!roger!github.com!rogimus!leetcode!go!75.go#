@@ -1,0 +1,12 @@
+// Name: Sort Colours
+// Tags: Hashmaps, Boyer-Moore
+// Stats: 12ms-97.65%, 6mb-90.75%
+
+func sortColors(nums []int) {
+
+	count := make(map[int]int, 0)
+	count[
+	for _,n := range nums {
+		
+	}
+}

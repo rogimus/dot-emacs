@@ -1,0 +1,244 @@
+\documentclass{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+% \usepackage[protrusion=true,kerning=true,spacing=true,tracking=true]{microtype}
+\usepackage{microtype}
+\linespread{1.4}
+
+
+\usepackage[margin=1.5in]{geometry}
+% \setlength{\textwidth}{\paperwidth}
+% \addtolength{\textwidth}{-3in}
+% \setlength{\textheight}{\paperheight}
+% \addtolength{\textheight}{-1.5in}
+% \calclayout
+
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\textbf\thepage}
+\fancyhead[L]{ \nouppercase\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+\makeatother
+\renewcommand{\sectionmark}[1]{%
+\markboth{\thesection.\ #1}{}}
+%\pagestyle{fancy}
+
+\parindent 0pt
+\parskip 10pt
+
+%\usepackage{mathpazo}
+%\usepackage{XCharter} % Bitstream's Charter
+%\usepackage{paratype}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{berasans}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage{arev} 
+% \usepackage[T1]{fontenc}
+
+\usepackage[T1]{fontenc}
+% %\usepackage[sfdefault,scale=1]{FiraSans}
+% \usepackage{newtxsf}
+
+%\usepackage[sfdefault,lining,scale=.9]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+%\usepackage{firamath-otf}
+%\setmathfont{cmr}[range={\bigcap,\bigcup,\setminus}]
+
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\bfdefault}{ppl}
+
+\newcommand{\colonafter}[1]{#1:\,\,}
+\usepackage{titlesec}
+\titleformat{\title}{\center\Huge\rmfamily}{\thesection}{1em}{}
+\titleformat{\section}{\center\large\rmfamily}{\thesection.}{0.5em}{}{}
+\titleformat{\subsection}[runin]{\normal\bfseries}{\thesubsection.}{0.5em}{\colonafter}{}
+% \titleformat*{\subsubsection}{\normalsize\rmffamily}
+
+%\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+
+% \usepackage{pxfonts}
+
+% \usepackage{kmath,kerkis} \renewcommand{\familydefault}{\sfdefault}
+
+
+\usepackage[sfdefault,scale=.9]{noto}
+\usepackage[mathrm=sym]{unicode-math}
+
+
+
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{answer}{Answer}
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakp}{\mathfrak{p}}
+
+
+\begin{document}
+\author{Roger Murray}
+\title{$E_*(\MU)$ and $E_*(\bbC P^\infty)$}
+
+\maketitle
+
+\section{The result}
+
+\begin{proposition}
+  Let $E$ be an oriented ring spectrum. Then
+  \begin{enumerate}[{\normalfont(i)}]
+  \item $E_*(\bbC P^\infty)\cong \Hom_{\pi_*E}(E^*(\bbC P^\infty),\pi_*E)$
+  \item $E_*(\MU)\cong \Hom_{\pi_*E}(E^*(\MU),\pi_*E)$
+  \end{enumerate}
+\end{proposition}
+
+\end{document}

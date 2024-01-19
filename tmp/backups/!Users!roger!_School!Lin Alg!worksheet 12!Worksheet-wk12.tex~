@@ -1,0 +1,283 @@
+\documentclass[12pt]{exam}
+
+
+%----------- Showing Solution or Not ----------------------
+%In order to "hide" the solutions, comment the line below
+
+\printanswers
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+%--- Load packages------
+ \usepackage{amssymb}
+ \usepackage{amsmath}
+ \usepackage{color}
+ \usepackage{amsfonts}
+ \usepackage{graphicx}
+ \usepackage{enumerate}
+ %\usepackage{Matrix}
+ \usepackage{tikz}
+ \usepackage{float}
+%----------------------- 
+
+
+%--------- Define new command ---------------------------
+ \newcommand{\ii}{\ensuremath{\textbf{i}}}
+ \newcommand{\jj}{\ensuremath{\textbf{j}}}
+ \newcommand{\kk}{\ensuremath{\textbf{k}}}
+ \newcommand{\lam}{\lambda}
+  \newcommand{\al}{\alpha}
+ \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+ \def\mvec<#1,#2,#3>{\left\langle #1,#2,#3 \right\rangle}
+ %Display cross product formula
+ \def\crossproduct<#1,#2,#3><#4,#5,#6>{
+   \left\vert\,\begin{matrix}
+   \hfill\textbf{i}&\hfill\textbf{j}&\hfill\textbf{k}\\
+   \hfill#1&\hfill#2&\hfill#3\\
+   \hfill#4&\hfill#5&\hfill#6\\
+   \end{matrix}\, \right\vert} 
+ %Display the minor matrix
+ \def\minor<#1,#2><#3,#4>{
+   \left\vert\,\begin{matrix}
+   \hfill#1&\hfill#2\\
+   \hfill#3&\hfill#4\\
+   \end{matrix}\, \right\vert} 
+%--------------------------------------------------------
+   
+
+%Declare math operators for the missing inverse trig functions and for hyperbolic functions
+ \DeclareMathOperator{\arcsec}{arcsec}
+ \DeclareMathOperator{\arccot}{arccot}
+ \DeclareMathOperator{\arccsc}{arccsc}
+ \DeclareMathOperator{\sech}{sech}
+ \DeclareMathOperator{\csch}{csch}
+ 
+ \newcommand{\R}{\mathbb R}
+ \newcommand{\tnm}{\textnormal}
+ \newcommand{\tbf}{\textbf}
+ \newcommand{\mbf}{\mathbf}
+
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 11/30/2023}
+ 
+ %Header for Solution--------------
+  %\header{Name: SOLUTIONS}{}{Date: }
+ %---------------------------------
+ 
+ \headrule
+%-------------------------
+
+% Force paragraphs not to indent.  This eliminates the need to have \noindent everywhere.
+ \parindent 0pt
+
+
+%--- Content ---
+\begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial}
+ \centerline{\bf Worksheet 12}
+
+ \vskip .2in
+ \noindent
+
+\begin{questions}
+
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question 
+Solve the following homogeneous linear differential equations with
+constant coefficient.
+\begin{parts}
+  \part $y^{\prime\prime}-8y^\prime+16y=0$,\,\, with initial values $y(0)=1/4$,\,\, $y^\prime(0)=0.$
+  \part $y^{\prime\prime}+y^\prime-6y=0$.
+  \part $y^{\prime\prime\prime}-3y^{\prime\prime}+2y^\prime=0$.
+\end{parts}
+
+
+
+\begin{solution}
+  (a) The auxiliary equation is $m^2-8m+16=(m-4)^2$. Thus we have a
+  repeated real root, and we obtain
+  the general solution $$y=c_1e^{4x}+c_2xe^{4x}.$$
+
+  Since $y(0)=1/4$ we see that $c_1=1/4$. We find \[y^\prime =
+    4c_1e^{4x}+4c_2xe^{4x}+c_2e^{4x}.\]
+  Since $y^\prime(0)=0$ we see that $4c_1+c_2=0$ and thus $c_2=-1$. So
+  our unique solution is
+  \[y=\frac{1}{4}e^{4x}-xe^{4x}. \]
+
+  (b) The auxiliary equation is $m^2+m-6=(m-2)(m+3)$. Thus the general
+  solution is $$y=c_1e^{2x}+c_2e^{-3x}.$$
+
+  (c) The auxiliary equation is
+  $m^3-3m^2+2m=m(m^2-3m+2)=m(m-1)(m-2)$. Since these are distinct
+  roots a general solution is given by
+  $$y=c_1+c_2e^{x}+c_3e^{2x}.$$
+\end{solution}
+
+\break
+\question
+Each of the following is a differential equation and a set of
+solutions for them. Determine whether they are linearly independent by
+calculating their Wronskian.
+\begin{parts}
+  \part $y^{\prime\prime\prime}-y^{\prime\prime}=0$,\,with solutions $\{0,x+1\}$.
+  \part $y^{\prime\prime\prime}=0$,\,with solutions $\{1,x,x^2\}$.
+  \part $y^{\prime\prime}-10y^\prime+16y=0$,\,with solutions
+  $\{e^{2x},e^{8x}\}$.
+\end{parts}
+
+\begin{solution}
+  The Wronskian for each part is (a) 0, \,\,(b) 2, and (c) $6e^{10x}$.
+  Thus the solutions for (a) are linearly dependent, while the others
+  are independent since they are not identically zero.
+  
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%
+%
+%
+% Question 4.
+%
+%
+%%%%%%%%%%%%%%%%%
+\break \question A tank contains 180 liters of fluid in which 20 grams
+of salt is dissolved. Brine containing 1 gram of salt per liter is
+then pumped into the tank at a rate of 3 L/min; the well-mixed
+solution is pumped out at a rate of 4L/min. Find the number $y(t)$ of
+grams of salt in the tank at time $t$.
+
+\begin{solution}
+  We the formula for the volume is $180+(3-4)t=180-t$. Thus the
+  concentration of salt at time $t$ is $\frac{y(t)}{180-t}$. We thus
+  have
+  \begin{align*}
+    \frac{dy}{dt}&=\tnm{natural increase rate}-\tnm{rate
+                   of decrease}\\
+                 &=3-4\frac{y(t)}{180-t}
+  \end{align*}
+  This is a first order linear differential equation. Solving gives
+  \begin{align*}
+    y(t)&=(t-180)^4((180-t)^{-3}+C)\\&=180-t+C(t-180)^4.
+  \end{align*}
+  Using the given initial condition $y(0)=20$ we see that
+  \begin{align*}
+    &20 = 180+C(180)^4
+    \\
+    \implies & C=\frac{-160}{180^4}
+  \end{align*}
+\end{solution}
+
+
+\break \question The function $\displaystyle y_1(x)=x^2\cos(\ln x)$ is
+a solution of the given differential equation
+\[\displaystyle x^2y^{\prime\prime}-3xy^{\prime}+5y=0.
+\]
+Use reduction of order or the formula
+		$$\displaystyle y_2(x)=y_1(x)\int\frac{e^{\int-P(x)dx}}{y_1^2(x)}\,dx$$
+		to find a second solution $y_2(x)$ that is linearly
+                independent with $y_1(x)$.
+		 
+		
+		\begin{solution}
+                  First obtain standard form of the second order
+                  differential equation:
+		$$\displaystyle y^{\prime\prime}-\frac{3}{x}y^{\prime}+\frac{5}{x^2}y=0,$$
+                hence $P(x)=\frac{-3}{x}$. Now use the formula:
+			$$\displaystyle y_2(x)=y_1(x)\int\frac{e^{\int-P(x)dx}}{y_1^2(x)}dx$$
+			$$\displaystyle =x^2\cos(\ln x)\int\frac{e^{\int\frac{3}{x}dx}}{(x^2\cos(\ln x))^2}dx$$
+			$$\displaystyle =x^2\cos(\ln x)\int\frac{x^3}{(x^2\cos(\ln x))^2}dx$$
+			$$\displaystyle =x^2\cos(\ln
+                        x)\int\frac{1}{x\cos^2(\ln x)}dx$$
+                        $$\displaystyle = x^2\cos(\ln
+                        x)\int\frac{1}{\cos^2(u)}du$$
+			$$\displaystyle =x^2\cos(\ln x)(\tan(\ln x))$$
+			$$\displaystyle =x^2\sin(\ln x)$$
+                      \end{solution}
+
+
+               
+                      \break \question Suppose a population of rabbits
+                      on a meadow initially has the size $10,000$ and
+                      natural increase of $10\%$ of the population per
+                      year. A pack of $20$ wolves just migrated in
+                      recently and as a result, each wolf hunts for
+                      two rabbits each month for food. Suppose the
+                      population of wolves grows by $2$
+                      wolves/year. Set up a differential equation
+                      describing the population of rabbits over
+                      time. Will the population of rabbits eventually
+                      flourish, stay the same, or die out?
+                      \begin{solution}
+                        Let $y(t)$ denote the population of rabbits
+                        after $t$ years, then
+                        \begin{align*}
+                          \frac{dy}{dt}=\text{natural increase rate}-\text{rate of decrease}
+                        \end{align*}
+                        In this case, the decreasing rate of rabbits
+                        are determined by the hunting rate of the
+                        wolves. After $t$ years, the wolf population
+                        is $20+2t$, so the rabbit population
+                        additionally decreases by a rate of
+                        $2\times 12 \times (20+2t)=48(t+10)$. Hence,
+                        we have
+                        \begin{align*}
+                          \frac{dy}{dt}=0.1y-48(t+10).
+                        \end{align*} 
+                        This is just a 1st order linear DE, solving
+                        which we get
+                        \begin{align*}
+                          y(t)=48(10t+200)+Ce^{0.1t}.
+                        \end{align*}
+                        With the initial condition $y(0)=10,000$, we
+                        have $C=400$. Hence
+                        \begin{align*}
+                          \fbox{$y(t)=480t+9600+400e^{0.1t}$}.
+                        \end{align*}
+                        Since $y'(t)=480+40e^{0.1t}>0$, the population
+                        of rabbits will keep increasing so it will
+                        eventually flourish.
+                      \end{solution}
+                    \end{questions}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

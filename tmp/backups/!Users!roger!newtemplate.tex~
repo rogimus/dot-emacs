@@ -1,0 +1,251 @@
+\documentclass{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+% \usepackage[protrusion=true,kerning=true,spacing=true,tracking=true]{microtype}
+\usepackage{microtype}
+\linespread{1.4}
+
+
+\usepackage[margin=1.5in]{geometry}
+% \setlength{\textwidth}{\paperwidth}
+% \addtolength{\textwidth}{-3in}
+% \setlength{\textheight}{\paperheight}
+% \addtolength{\textheight}{-1.5in}
+% \calclayout
+
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\textbf\thepage}
+\fancyhead[L]{ \nouppercase\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+\makeatother
+\renewcommand{\sectionmark}[1]{%
+\markboth{\thesection.\ #1}{}}
+%\pagestyle{fancy}
+
+\parindent 0pt
+\parskip 10pt
+
+%\usepackage{mathpazo}
+%\usepackage{XCharter} % Bitstream's Charter
+%\usepackage{paratype}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{berasans}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage{arev} 
+% \usepackage[T1]{fontenc}
+
+\usepackage[T1]{fontenc}
+% %\usepackage[sfdefault,scale=1]{FiraSans}
+% \usepackage{newtxsf}
+
+%\usepackage[sfdefault,lining,scale=.9]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+%\usepackage{firamath-otf}
+%\setmathfont{cmr}[range={\bigcap,\bigcup,\setminus}]
+
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\bfdefault}{ppl}
+
+\newcommand{\colonafter}[1]{#1:\,\,}
+\usepackage{titlesec}
+\titleformat{\title}{\center\Huge\rmfamily}{\thesection}{1em}{}
+\titleformat{\section}{\center\large\rmfamily}{\thesection.}{0.5em}{}{}
+\titleformat{\subsection}[runin]{\normal\bfseries}{\thesubsection.}{0.5em}{\colonafter}{}
+% \titleformat*{\subsubsection}{\normalsize\rmffamily}
+
+%\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+
+% \usepackage{pxfonts}
+
+% \usepackage{kmath,kerkis} \renewcommand{\familydefault}{\sfdefault}
+
+
+\usepackage[sfdefault,scale=.9]{noto}
+\usepackage[mathrm=sym]{unicode-math}
+% \usepackage[T1]{fontenc}
+
+% \usepackage{mathpazo}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage[lm]{sfmath}
+
+
+
+
+\DeclareMathOperator*{\holim}{holim}
+\DeclareMathOperator*{\hocolim}{hocolim}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator*{\Tot}{Tot}
+
+%%%%%%% for numbered theorems %%%%%%%%%
+ \newtheorem{thm}[equation]{Theorem}
+ \newtheorem{cor}[equation]{Corollary}
+ \newtheorem{lem}[equation]{Lemma}
+ \newtheorem{prop}[equation]{Proposition}
+ \newtheorem{ques}[equation]{Question}
+
+\theoremstyle{definition}
+
+ \newtheorem{defn}[equation]{Definition}
+ \newtheorem{ex}[equation]{Example}
+ \newtheorem{exs}[equation]{Examples}
+ \newtheorem{rmk}[equation]{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{cor*}{Corollary}
+\newtheorem*{lem*}{Lemma}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{defn*}{Definition}
+\newtheorem*{ex*}{Example}
+\newtheorem*{exs*}{Examples}
+\newtheorem*{rmk*}{Remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{conventions}{Conventions}
+
+\setcounter{tocdepth}{1}
+
+\title{A $C_2$-equivariant analog of Mahowald's Thom spectrum theorem}
+\author{Mark Behrens and Dylan Wilson}
+
+\begin{document}
+
+\begin{abstract}
+We prove that the $C_2$-equivariant Eilenberg-MacLane spectrum associated with the constant Mackey functor $\underline{\mathbb{F}}_2$ is equivalent to a Thom spectrum over $\Omega^\rho S^{\rho + 1}$.
+\end{abstract}
+
+\maketitle
+% \begin{center}
+% \Large\rmfamily\bfseries\MakeUppercase{\shorttitle}
+% \end{center}
+% \begin{center}
+%   \large \rmfamily{\authors}
+% \end{center}
+% \makeatletter
+% \@setabstract
+% \makeatother
+
+\section{Introduction}
+
+Let $\mu$ be the M\"obius bundle over $S^1$, regarded as a virtual bundle of dimension $0$.  The mod $2$ Moore spectrum is the Thom spectrum
+\[M(2) \simeq (S^1)^\mu. \]
+The classifying map for $\mu$ extends to a double loop map
+$$ \widetilde{\mu} : \Omega^2S^3 \rightarrow BO. $$
+Mahowald proved the following theorem \cite{Mahowald}:
+
+\begin{thm}[Mahowald]
+There is an equivalence of spectra
+$$ (\Omega^2S^3)^{\td{\mu}} \simeq H\mathbb{F}_2. $$
+\end{thm}
+
+The bundle $\mu$ may also be regarded as a $C_2$-equivariant virtual bundle over $S^1$, by endowing both $S^1$ and the bundle with the trivial action.  Since $B_{C_2}O$ is an equivariant infinite loop space \cite{Atiyah}, the classifying map for $\mu$ extends to an
+$\Omega^{\rho}$-map
+$$ \td{\mu}: \Omega^{\rho}S^{\rho+1} \rightarrow B_{C_2}O. $$
+Here, $\rho$ is the regular representation of $C_2$. 
+The purpose of this paper is to prove the following.
+
+\begin{thm}\label{thm:Mahowald}
+There is an equivalence of $C_2$-spectra
+$$ (\Omega^\rho S^{\rho+1})^{\td{\mu}} \simeq H\ul{\FF}_2. $$
+\end{thm} 
+
+(Here, $\ul{\FF}_2$ denotes the constant Mackey functor with value $\FF_2$.)
+
+\subsection*{Acknowledgements}
+
+Many tricks in this paper have been independently discovered by Doug Ravenel, and the first author's involvement in this project is an outgrowth of mathematical discussions with Agn\'es Beaudry, Prasit Bhattacharya, Dominic Culver, Doug Ravenel, and Zhouli Xu.  The authors also benefited from valuable input from Mike Hill, and the comments of the referee.  The first author was supported by NSF grant DMS-1611786.
+
+\subsection*{Conventions}
+Equivariant objects in this paper either live in $\Top^{C_2}$, the category of $C_2$-spaces, or $\Sp^{C_2}$, the category of genuine $C_2$-spectra.  In both of these categories, the equivalences are those equivariant maps which induce equivalences on both the $C_2$-fixed points spectrum and the underlying spectrum.
+We let $\HH$ denote the Eilenberg-Maclane spectrum $H\ul{\FF}_2$, with underlying spectrum $H := H\FF_2$.  We use $\HH_\star$ and $\pi^{C_2}_\star$ to denote $RO(C_2)$-graded homology and homotopy \emph{groups} (i.e. \emph{not} the Mackey functors) of $C_2$-equivariant spaces and spectra, and $H_*$ and $\pi_*$ to denote the ordinary homology and homotopy groups of non-equivariant spaces and spectra. We let $\sigma$ denote the sign representation of $C_2$, and let $\rho = 1+\sigma$ denote the regular representation.  For a representation $V$, $S(V)$ denotes the unit sphere in $V$, and $S^V$ denotes its one point compactification, and $\abs{V}$ denotes its dimension.
+
+\section{Equivariant preliminaries}
+
+\subsection*{Euler class}
+
+Let $a$ denote the Euler class in $\pi^{C_2}_{-\sigma}S$, given geometrically by the inclusion
+$$ S^0 \hookrightarrow S^\sigma. $$
+There is a cofiber sequence
+\begin{equation}\label{eq:cofiber}
+{C_2}_+ \rightarrow S^0 \hookrightarrow S^\sigma
+\end{equation}
+so the cofiber of $a$ is stably given by
+\begin{equation}\label{eq:Ca}
+Ca \simeq \Sigma^{1-\sigma} {C_2}_+. 
+\end{equation}
+The equivalence of underlying spectra
+\begin{equation}\label{eq:ulSsig}
+ (S^1)^e \simeq (S^\sigma)^e
+\end{equation}
+induces an equivalence of $C_2$-spectra
+$$ {C_2}_+ \wedge S^1 \simeq {C_2}_+ \wedge S^\sigma. $$
+Therefore, the equivalence (\ref{eq:Ca}) can actually be regarded as giving an equivalence
+$$ Ca \simeq {C_2}_+. $$
+It follows that $Ca$ is a commutative ring spectrum.
+The adjoint of the equivalence (\ref{eq:ulSsig}) gives a $C_2$-equivariant map
+$$ {C_2}_+ \wedge S^1 \rightarrow S^\sigma $$
+which, by the self-duality of ${C_2}_+$, gives a map
+$$ u : S^1 \rightarrow {C_2}_+\wedge S^\sigma \simeq Ca \wedge S^\sigma $$   
+which serves as a Thom class for the representation $\sigma$.
+For $X \in \Sp^{C_2}$, we have
+\begin{align*}
+\pi^{C_2}_{k}(X) & \cong \pi_k(X^{C_2}), \\
+\pi^{C_2}_{V}(X \wedge Ca) & \cong \pi_{\abs{V}}(X^e).
+\end{align*}
+Said differently,
+\begin{equation}\label{eq:pistarCa}
+\pi^{C_2}_{\star} (X \wedge Ca) \cong \pi_* (X^e) [u^\pm].
+\end{equation}
+
+\subsection*{Tate square}
+
+We will let
+\begin{align*}
+X^h & := F({EC_2}_+, X), \\
+X^\Phi & := X \wedge \td{EC}_2
+\end{align*}
+denote the homotopy completion and geometric localization of $X$, respectively.  The fixed points of $X^h$ are the homotopy fixed points of $X$, and the fixed points of $X^\Phi$ are the geometric fixed points of $X$.
+$X$ is recovered from these approximations by the pullback (``Tate square'') \cite{GreenleesMay}
+$$
+\xymatrix{
+X \ar[r] \ar[d] & X^\Phi \ar[d] \\
+X^h \ar[r] & X^t
+}
+$$
+where the spectrum $X^t$ is the equivariant Tate spectrum
+$$ X^t := (X^h)^{\Phi}. $$
+
+Note that a generalization of the argument establishing (\ref{eq:Ca}) yields an equivalence
+$$ \Sigma^{k\sigma-1}C(a^k) \simeq S(k\sigma)_+. $$
+Taking a colimit, we see that we have
+\begin{align*}
+\hocolim_k \Sigma^{k\sigma-1}C(a^k) & \simeq {EC_2}_+, \\
+\hocolim_k S^{k\sigma} & \simeq \td{EC}_2. 
+\end{align*}
+It follows that homotopy completion and geometric localization can be reinterpreted as $a$-completion and $a$-localization:
+\begin{align*}
+ X^h & \simeq X^\wedge_a, \\
+ X^\Phi & \simeq X[a^{-1}].
+\end{align*}
+\end{document}

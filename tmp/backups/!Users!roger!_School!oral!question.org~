@@ -1,0 +1,45 @@
+* Explain why the ANSS is strictly stronger than the ASS
+
+(Spareness+Miller square?)
+
+There is a trigraded Cartan-Eilenberg/Mahowald spectral sequence
+converging to the Adams E_2 page. Likewise there is a trigraded
+spectral sequence called the algebraic Novikov spectral sequence
+converging to the AN E_2 page. The E_2 page of the former coincides
+with the E_1 page for the latter.  Moreover when p>2 the
+Cartan-Eilenberg collapses at the E_2 page, and thus is simply a
+re-indexed version of the Adams E_2 page. Thus the ANSS is a refinement
+of the ASS along the algNSS.
+
+** TODO p=2?
+** TODO understand CESS and algNSS
+
+* why homotopy groups of spheres
+
+non-trivial attaching maps for CW.
+
+* why BP > MU?
+
+_MU_
+
+For formal reasons we know $\eta_R:\pi_* MU\to MU_*MU$ exists, and we
+even know what it looks like on generators when we pass to
+$\pi_* MU\otimes \mathbf{Q}$. However we don't know what $\eta_R$ looks
+like on the generators for $\pi_* MU$ as a
+$\mathbf{Z}-\text{algebra}$.
+
+_BP_
+
+Using the Araki (or Hazewinkel) formulas we can explicitly describe
+the generators for $v_i$ for $\pi_* BP$ in terms of the generators for
+$\pi_*BP \otimes \mathbf{Q}$.  Then since we have explicit formulas for
+$\eta_R$ on these generators over $\mathbf{Q}$, we get explicit
+formulas for the $v_i$. This allows us to easily find differentials in
+the cobar complex for $BP$ and $BP/I_n$, etc. For example the first
+differential in the cobar complex for $BP/I_1$ 
+
+* computing with cohomology instead
+
+* pi_* MU
+** why can we bring C outside?
+ 

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       4A57AEB6-8BE4-49D4-94F8-0A5F01F91FF7
+:END:
+#+title: simplicial homology
+#+filetags: :homology:topology:simplicial homology:
+
+
+Given a [[id:6FB59C11-FE7F-41B9-9BF8-08D77BD8AEB5][\(\Delta\)-complex]] we can define a 
+a [[id:5C65D275-0063-4000-8BA2-652B84716A25][chain complex]] by taking \(C_n^{simp}=\mathbb{Z}X_n\)

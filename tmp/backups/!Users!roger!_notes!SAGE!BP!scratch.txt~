@@ -1,0 +1,6 @@
+b823 = ((1/8)*D1((mod2n(D0(v2^8),3)/(v1^2)).expand()+4*v1^3*v2*t1^16+4*v1^11*v2*t1^8)).expand()
+
+limpbun = mod2n(vw_to_tgt(minresvw(b823)),2)
+
+
+#b126 = (1/2*(D1(((1/v1^6)*(mod2n(D0(v2^12+v1^4*v2^6*v3^2+v1^3*v2^11+v1^5*v2^8*v3),1))).expand())).expand())

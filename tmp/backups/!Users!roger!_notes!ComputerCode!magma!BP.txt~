@@ -1,0 +1,4 @@
+Z := Integers();
+BP := PolynomialRing(Z,2);
+v1 := BP.1;
+v2 := BP.2;

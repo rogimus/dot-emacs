@@ -1,0 +1,59 @@
+\documentclass[8pt]{beamer}
+\input{gross}
+
+\usepackage{tcolorbox}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+%\setmainfont{TeX Gyre Schola}
+\setmathfont[FakeBold=0.5]{Latin Modern Math}
+%\setmathfont{Latin Modern Math}
+%\usepackage[default, scale=0.85]{droidsans}
+\setsansfont{Roboto}
+
+\title{The Adams and Adams-Novikov Spectral Sequences}
+\subtitle{Or: how to compute homotopy groups of spheres}
+\author{Roger Murray}
+
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=Homotopy groups of Spheres, colback=white,
+    colframe=darkgray, colbacktitle=red, coltitle=black]
+    
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=Test title, colback=white,
+    colframe=darkgray, colbacktitle=red, coltitle=black]
+    $\mathcal{A}$ is a $\mathbf{F}_p$-algebra of the following form:
+    For $p=2$, \[\mathcal{A}_*=P(\xi_0,\xi_1,\xi_2,\xi_3,\ldots)\]
+    where $|\xi_i|= 2^i-1$.  For $p>2$,
+    \[\mathcal{A}_*=P(\xi_0,\xi_1,\xi_2,\ldots)\otimes
+      E(\tau_1,\tau_2,\ldots)\] where $|\xi_i|=2(p^i-1)$ and
+    $|\tau_i|=2p^i-1$, and where $\xi_0=1$ in both cases.
+
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}
+  \begin{tcolorbox}
+    [title=Test title, colback=white, colframe=darkgray,
+    colbacktitle=red, coltitle=black] Testing this lol
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \setbeamercolor{block title}{bg=green,fg=black}
+  \begin{block}{This is a green test Block}
+    asdjlkdj
+  \end{block}
+\end{frame}
+\end{document}

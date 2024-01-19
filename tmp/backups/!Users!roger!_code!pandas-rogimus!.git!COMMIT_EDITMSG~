@@ -1,0 +1,11 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch add-test-43599
+# Changes to be committed:
+#	modified:   pandas/tests/indexing/multiindex/test_loc.py
+#
+# Untracked files:
+#	pandas/tests/indexing/multiindex/flycheck_test_loc.py
+#

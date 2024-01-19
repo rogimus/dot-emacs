@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vector fields
+# key: vfM
+# --
+\fracX(M) $0

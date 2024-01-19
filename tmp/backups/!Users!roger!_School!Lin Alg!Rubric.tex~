@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[parfill]{parskip}
+
+\begin{document}
+
+\title{{\huge \bf Math 20580 Tutorials} \\
+  {\LARGE (Linear Algebra and Differential Equations)} \\
+  {\LARGE Fall 2023}} \date{}
+
+\maketitle
+\begin{description}
+\item[Course Webpage:]
+  \url{http://www3.nd.edu/∼craicu/20580Fall2023/math20580.html}
+\item[Grade:] The tutorials for Math 20580 are worth 40 points out of
+  the total 550 points available for the class. These points come from
+  {\bf quizzes} (10pts) and {\bf worksheets} (30pts).
+\item[Quiz:] There will be a quiz every week starting from week two,
+  except for the weeks in which there is an exam (week five and
+  twelve). The quiz is 10 minutes long and will take place at the
+  beginning of class. Typically the quiz will cover content from the
+  previous week's worksheet. The quizzes are worth 25\% of your
+  tutorial grade. Each quiz is worth 1 point, with the lowest grade
+  being dropped from the total at the end of the semester.
+\item[Worksheet:] In the remaining 40 minutes of class, students will
+  split into small groups and work collaboratively together on a
+  worksheet. The worksheet covers recent material from the
+  lectures. One worksheet from each group is to be handed in to the TA
+  by 5pm the following Friday (with the overall goal for the worksheet
+  to be finished by class end). This is to allow for extra time if
+  needed while also hopefully preserving your weekend. The worksheets
+  are worth 75\% of the tutorial grade. Each worksheet is worth 2.5
+  points, with the lowest score being dropped from the total at the
+  end of the semester.
+
+\item[Attendance:] This is all mentioned in the general information
+  sheet (on the website). To rehash, attendance to tutorials is
+  mandatory. An excused absence from class will result in that quiz
+  and worksheet not being counted (i.e. they will be considered to be
+  worth 0 points).
+\end{description}
+
+\end{document}

@@ -1,0 +1,41 @@
+% Created 2022-03-02 Wed 23:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[a5, 14pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{/Users/roger/_School/template.tex}
+\author{Roger Murray}
+\date{2022-03-02}
+\title{Test Doc}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={Test Doc},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{this is a test}
+\label{sec:org89e0d8a}
+testing testing
+\subsection*{Question 2}
+\label{sec:org394eca6}
+This is a question
+\begin{proof}
+this is a proof
+\end{proof}
+\end{document}

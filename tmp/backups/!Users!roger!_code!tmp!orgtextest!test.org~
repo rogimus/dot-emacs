@@ -1,0 +1,9 @@
+#+LATEX_CLASS: amsart
+#+LATEX_CLASS: [a5, 14pt]
+#+LATEX_HEADER: \input{header.tex}
+#+TITLE: Test Doc
+#+AUTHOR: Roger Murray
+#+DATE: 2022-03-02
+
+* this is a test
+  testing testing

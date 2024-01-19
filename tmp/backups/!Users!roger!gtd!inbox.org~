@@ -1,0 +1,7 @@
+#+title: GTD inbox file
+#+author: Bingus Murray
+#+description: This is where I record tasks prior to sorting them in my implementation of GTD.
+
+For more info, this is based on [[https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html][this blog post]] by Nicolas Petton.
+
+* add hook for auto-fill-mode in LaTex and Org

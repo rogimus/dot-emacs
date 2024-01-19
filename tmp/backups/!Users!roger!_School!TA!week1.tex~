@@ -1,0 +1,42 @@
+% Created 2022-08-22 Mon 13:32
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Roger Murray}
+\date{\today}
+\title{Questions for Annette}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={Questions for Annette},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{itemize}
+\item What is the structure of the tutorials?
+\item Exam solutions?
+\item Who is the head tutor?
+\item How do we ensure we'll all using the same grading scheme?
+\item WebAssign login?
+\item Should I mention attendance won't be taken on Thanksgiving Tuesday?
+\item Final grades: 11 total but drop 2 for total of 100? Doesn't add up.
+\item just read out loud the general information or just highlight the
+what can be found there?
+\item How does it work with Kathryn/Annette? Am I working with the other tutors?
+\end{itemize}
+\end{document}

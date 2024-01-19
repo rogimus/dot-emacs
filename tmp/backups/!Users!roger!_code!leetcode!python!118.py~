@@ -1,0 +1,8 @@
+numsRows = 5
+
+def soln():
+
+    res = []
+    for i range(numRows):
+        
+    l = [[1]]

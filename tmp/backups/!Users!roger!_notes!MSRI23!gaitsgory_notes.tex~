@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[parfill]{parskip}
+\linespread{1.1}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\GG}{\bG}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\Einf}{\bE_\infty}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\cC}{\mathcal{C}}
+
+
+\newcommand{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\BU}{BU}
+\newcommand{\MUR}{\MU_\bR}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\HH}{H}
+\DeclareMathOperator{\BP}{BP}
+\DeclareMathOperator{\Ab}{Ab}
+
+\newcommand{\Gal}{\mathrm{Gal}}
+
+
+
+
+
+
+
+\begin{document}
+\title{\bf DG Cats prep notes} \author{Notes by Roger Murray}
+\date{\today}
+
+\maketitle
+
+\begin{definition}
+  A category $\cC$ is \emph{additive} if: it is enriched in $\Ab$; it
+  has a zero object; for every $A,B\in \cC$ there is a product
+  $A\times B$.
+\end{definition}
+For additive categories, finite products are the same as finite
+coproducts.
+
+Recall that the kernel of $f:B\to C$ is a map $i:A\to B$ with $fi=0$
+and which is universal w.r.t. this property. Dually for cokernels.
+
+\begin{definition}
+  A category $\cC$ is \emph{abelian} if: it is additive; all kernels and
+  cokernels exist; all monomorphisms are kernels and all epimorphisms
+  are cokernels.
+\end{definition}
+
+
+\end{document}

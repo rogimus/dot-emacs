@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: DeclareMathOperator
+# key: DMO
+# --
+\DeclareMathOperator{$1}$0

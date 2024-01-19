@@ -1,0 +1,547 @@
+\documentclass{amsart}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents:             %
+% - packages            %
+% - Theorems            %
+% - Cat Stuff           %
+% - Rings/bbX           %
+% - Specific categories %
+% - topology            %
+% - AG                  %
+% - Homological Algebra %
+% - Random cal/scr      %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% 
+% packages %
+%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+\usepackage{microtype}
+\usepackage{geometry}
+% parskip changes new paragraph formatting from 0space+1indent to 1space+0indent
+\usepackage[parfill]{parskip}
+
+
+
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{answer}{Answer}
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakm}{\mathfrak{m}}
+
+
+\begin{document}
+\author{Roger Murray} \title{Assignment 3}
+\maketitle
+
+
+%%%%%%%%%
+% 1 ONE %
+%%%%%%%%%
+
+\begin{question}
+  Let $Y$ be an algebraic variety over $k$.
+  \begin{enumerate}[(a)]
+  \item Prove that for any $P \in Y$, the local ring $\calO_{P,Y}$ is
+    a local $k$-algebra (i.e. a $k$-algebra with a unique maximal
+    ideal).
+  \item Prove that the function field $K(Y)$ is a field extension of
+    $k$.
+  \item Make the assignments $Y \mapsto \calO(Y)$,
+    $Y \mapsto \calO_{P,Y}$ and $Y\mapsto K(Y)$ into functors. More
+    specifically, given a morphism $\varphi: Y \to Z$ of varieties,
+    construct homomorphisms $\varphi^*: \calO(Z) \to \calO(Y )$,
+    $\varphi^*_P : \calO_{\varphi(P),Z}\to \calO_{P,Y}$ and
+    $\varphi^* : K(Z) \to K(Y)$ (which are the identity when $\varphi$
+    is the identity, and which are compatible with compositions).
+  \item Find injective homomorphism
+    $\calO(Y) \to \calO_{P,Y} \to K(Y)$ natural in $Y$, i.e. fit into
+    a commutative diagram with the homomorphisms from the previous
+    part.
+  \item Conclude that $\calO(Y)$, $\calO_{P,Y}$ and $K(Y )$ are
+    invariants. In particular, $\dim Y$ is a (discrete) invariant of
+    $Y$. (For example, if $\varphi: Y \to Z$ is an isomorphism with
+    $\varphi(P) = Q$, then $\calO_{P,Y} \cong \calO_{Q,Z}$.)
+  \end{enumerate}
+\end{question}
+
+
+\begin{answer}\phantom{}
+  
+  (a) As per the discussion the discussion in Harshorne it has a
+  maximal ideal $\frakm$ generated by $(U,f)$ where $f(P)=0$.
+
+  We first prove that $\frakm$ is maximal.  Suppose that
+  $(U,f)\in \calO_P$ such that $f(P)\neq 0$. Then
+  $V = U\cap (U\setminus Z(f))$ is an open set containing $P$ on which
+  $f$ doesn't vanish. Thus $(V,1/f)$ is an element of $\calO_P$. Since
+  open sets are dense because $Y$ is irreducible, we have that
+  $(V,1/f)$ is an inverse for $(U,f)$.  In particular if $\frakm$ is
+  the ideal generated by $(W,g)$ for which $g(P)=0$ then
+  $\calO_P/\frakm$ is a field.
+
+  Next we prove that $\calO_P/\frakm\cong k$. Indeed observe that, in
+  $\calO_P/\frakm$, the equivalence class $(U,f)$ is entirely
+  determined by $f(P)$ since if $f(P)=g(P)$ then $f-g\in \frakm$.
+
+  Finally we wish to show that it is the unique maximal ideal. To do
+  this we observe that every element not in $\frakm$ is invertible,
+  i.e. if we had some maximal ideal $\frakm^\prime\neq \frakm$ then
+  there would be some $(U,f)\in \frakm^\prime$ which isn't in
+  $\frakm$. But by our earlier argument we have that $(U,f)$ has some
+  inverse $(V,1/f)$ in $\calO_P$ and then $\calO_P/\frakm^\prime = 0$,
+  a contradiction. (Side remark: I am a fan of the field of 1
+  element!)
+
+  (b) This follows again from Hartshorne's discussion and our
+  discussion for (a). In particular we have that $(V,1/f)$ is an
+  inverse for $(U,f)$ in $K(Y)$ with $V=U\setminus (U\setminus Z(f))$
+  using density of opens. We can embed $k$ as a subfield using the
+  constant functions, $f_c(P) = c$ for all $P\in Y$.
+
+  (c) Given $(U,f)\in \calO(Z)$ let
+  $\varphi^*(U,f) = (\varphi^{-1}(U),f\circ \varphi)\in
+  \calO(Y)$. Since $\varphi$ is a morphism, $f\circ\varphi$ is a
+  regular function $\varphi^{-1}(U)\to k$.
+
+  You can do very similar things for $\calO_{P,Y}$ and $K(Y)$. These
+  are clearly well-defined again since $\varphi$ is a morphism and
+  since the equivalence classes have similar definitions. Furthermore
+  this is clearly the identity when $\varphi=\id$, and composition of
+  morphisms also clearly works.
+
+  (d) The map $\calO(Y)\to \calO_{P,Y}$ is obvious. By definition $f$
+  is regular on $Y$ means that $f$ is regular at $P$. It is injective
+  since if $r$ is another regular function on $Y$ such that $r=f$ on
+  some open subset $P\in V\subset Y$, i.e. $r-f=0$ on $V$. But $V$ is
+  dense, and regular functions are determined on dense open
+  subsets. To see this observe that $r-f$ is regular, i.e. continous,
+  so the inverse image of 0 $\{q\in Y\,\, | \,\, r(q)-f(q)=0\}$ is
+  closed, i.e. it is closed and contains a dense open, so it is the
+  whole of $Y$. Thus $r=f$ on $Y$.
+
+  The map $\calO_{P,Y}\to K(Y)$ is also obvious. Indeed send $(U,f)$
+  to $(U,f)$. The equivalence relation is defined in the same way so
+  it is clearly well-defined. It might, however, not be injective
+  since we are adding more classes of morphisms, i.e. there could be
+  $(U,f)$ and $(V,g)$ in $\calO_{P,Y}$ which suddenly get identified
+  by a new class $(W,h)\not\in \calO_{P,Y}$. However this would imply
+  that $f-g=0$ on the dense open $V\cap U\cap W$. By an argument
+  similar for above this would imply that $f-g=0$ on $V\cap U$ (view
+  $V\cap U$ as a quasi-affine, and $V\cap U \cap W$ as a dense open
+  subset on which these agree, then the inverse image of $0$ is a
+  closed set in $V\cap U$ containing the dense open, i.e. it is the
+  whole of $V\cap U$).
+
+  Naturality is easy to check using the maps from (c).
+\end{answer}
+
+
+
+
+
+%%%%%%%%%
+% 2 TWO %
+%%%%%%%%%
+
+\begin{question}\phantom{}
+  \begin{enumerate}[(a)]
+  \item Prove that any non-empty open set $U$ of a variety $X$ is a
+    variety, and the inclusion map $\iota: U \to X$ is a morphism of
+    varieties.
+  \item Prove that the morphisms $\iota^*: K(X) \to K(U)$ and
+    $\iota^*_P : \calO_{X,P} \to \calO_{U,P}$ from the previous
+    exercise are isomorphisms. Find an example where
+    $\iota^*: \calO(X) \to\calO(U)$ is not an isomorphism.
+  \item Use this to compute the function field of $\bbP^n$ (without
+    using Theorem I.3.4).
+  \end{enumerate}
+\end{question}
+
+\begin{answer}
+  (a) The first part is an easy definition chase using some basic
+  pointset topology.  The second part is easy since if $f$ is regular
+  on $V\subset X$ is open then $\iota^{-1}(V)=V\cap U$ and
+  $f|_{V\cap U}$ is regular.
+
+  (b) $K(X)\to K(U)$ is clearly surjective. Injectivity is easy too
+  since if $(W,f)$ and $(V,g)$ are two regular functions such that
+  $(U\cap W\cap V, f) = (U\cap W\cap V, g)$ (where we're omitting
+  abusing notation for the restriction maps) then $(W,f)\sim (V,g)$ in
+  $K(X)$ by definition.
+
+  A similar argument can be made for $\calO_{P,X}\to \calO_{P,U}$.
+
+  The problem with $\calO(X)\to \calO(U)$ is that these are global
+  sections, and global sections can be very restrictive. What allowed
+  us to get the previous isomorphisms was only defining things on some
+  open set, which doesn't work here. In particular the map might not
+  be surjective because we might not be able to realise all sections
+  on $U$ as a global section.  Take $U=\bbA^1\setminus 0$ and
+  $X=\bbA^1$. We've already seen that $\Gamma(X,\calO)=k[x]$. We have
+  also observed that $x^{-1}$ is a section of $U$. It's not hard to
+  see that $\Gamma(U,\calO)=k[x,x^{-1}]$, and thus these are not
+  isomorphic.
+\end{answer}
+
+
+
+
+
+
+%%%%%%%%%%%
+% 3 THREE %
+%%%%%%%%%%%
+
+\begin{question}
+  Fill out the details in the proof of Proposition I.3.3.
+\end{question}
+
+
+
+
+
+
+
+%%%%%%%%%%
+% 4 FOUR %
+%%%%%%%%%%
+
+\begin{question}
+  Let $Y$ be a quasi-affine variety. Prove that all morphisms
+  $\bbP^1 \to Y$ are constant, i.e. map all points in $\bbP^1$ to a
+  single point in $Y$.
+\end{question}
+
+\begin{answer}
+  Recall from I.3.4.a (or from problem 6) that $\calO(\bbP^1)=k$. Then
+  by I.3.6 a map $\psi:\bbP^1\to Y\subset \bbA^n$ is a morphism if an
+  only if $x_i\circ \psi$ is a regular function on $\bbP^1$ for each
+  $i$ where $x_i$ are the coordinate functions on $\bbA^n$. Since
+  $\calO(\bbP^1)=k$ we must have that $x_i\circ \psi = c_i$ for some
+  constant $c_i\in k$. Thus $\psi$ is regular iff it's constant of the
+  form $(c_1,\ldots,c_n)$.
+  
+\end{answer}
+
+
+
+
+
+%%%%%%%%%%%
+% 5 FIVE %
+%%%%%%%%%%%
+
+\begin{question}\phantom{}
+  \begin{enumerate}[(a)]
+  \item Prove that $\bbA^1 \setminus 0$ is affine, i.e. isomorphic to
+    an affine variety. What is the homomorphism of $k$-algebras
+    induced by the inclusion $\bbA^1\setminus 0 \to\bbA^1$?
+  \item (Hartshorne I.3.6.) (Prove that $\bbA^2 \setminus 0$ is
+    quasi-affine but not affine.)
+  \item Prove that $\bbP^2 \setminus [0 : 0 : 1]$ is quasi-projective,
+    but neither projective nor quasi-affine (i.e. not isomorphic to a
+    quasi-affine or projective variety).
+  \end{enumerate}
+\end{question}
+
+\begin{answer}
+  (a) Consider the map
+  $\varphi:\bbA^1\setminus 0 \to Z(xy-1)\subset \bbA^2$ given by
+  $t\mapsto (t,t^{-1})$. Then this is an isomorphism. There is an
+  obvious inverse $(x,y)\mapsto x$. All we need to check is that these
+  are morphisms. We give more of a discussion than a proof.
+
+  Let $f$ be a regular function in $\calO(Z(xy-1))$. On some open
+  subset $U$ we have $f=g/h$ for $g,h$ polynomials in $x$ and $y$ such
+  that $h\neq 0$ on $U$. The pullback of this is
+  $g(x,x^{-1})/h(x,x^{-1})$. This is well-defined on $\varphi^{-1}$
+  since $h(t,t^{-1})=0$ if and only if $h(x,y)=0$ for
+  $(x,y)=\varphi(t)$. One can similarly check that the inverse is a
+  morphism.
+  
+  The inclusion $\bbA^1\setminus 0 \hookrightarrow \bbA^1$ corresponds
+  to a homomorphism $\varphi\in \Hom_{\Alg_k}(k[t],k[x,y]/(xy-1))$ by
+  I.3.5. But $k[x,y]/(xy-1)\cong k[x,x^{-1}]$ so the morphism just
+  sends $f(t)\mapsto f(x)$.
+
+
+  (b) Consider $X=\bbA^2\setminus 0 =\bbA^2\setminus Z(x,y)$. A
+  regular function on $X$ looks like $f(x,y)/g(x,y)$ with the property
+  that $g(s,t)\neq 0$ for all $(s,t)\in X$. But $g(x,0)$ is a
+  polynomial in $x$. Since it cannot vanish on any point $(s,0)$ we
+  must have that $g(s,0)\neq 0$ for all $s\in k$. This implies
+  $g(s,0)$ must be constant. In particular $g(x,y)$ must be a
+  polynomial purely in $y$. But, by the same reasoning it must again
+  be constant. Thus $g(x,y)$ is constant. From this we can conclude
+  that $\calO(X)= k[x,y]$. {\color{red} From this we can conclude that
+    $X$ is affine if and only if $X$ isomorphic to $\bbA^2$ (by I.3.7
+    which says affine varieties are isomorphic iff their coordinate
+    rings are and I.3.2.a which says for affine varieties
+    $\calO(Y)\cong A(Y)$). This is clearly not true, since they aren't
+    homemorphic.}
+  
+\end{answer}
+
+
+
+
+
+%%%%%%%%%
+% 6 SIX %
+%%%%%%%%%
+
+\begin{question}
+  Prove that regular functions on $\bbP^1$ are regular functions on
+  the two basic affine open sets $U_0$ and $U_1$ which agree on the
+  overlap $U_0 \cap U_1$. Use this to give a proof of the fact that
+  all regular functions on $\bbP^1$ are constant.
+\end{question}
+
+\begin{answer}
+  This is a special case of Theorem I.3.4.a. The proof is
+  straightforward. I think the hardest part of the proof of this theorem is convincing yourself
+  that $A=k[X_0,X_1]_{(X_1)}\cong k[t]$. One direction
+  ($k[t]\to k[X_0,X_1]_{(X_1)}$) is easy. The other direction follows
+  because if we have some polynomial $f\in A$ then, if $d$ is the
+  highest degree of $X_0$ occurring, we may homogenize $f$
+  w.r.t. $X_1$ to get $F$ of degree $d$ (we can use highest degree of
+  $X_0$ since we have $X_1^{-1}$). Then $F/X_1^d$ is a polynomial in
+  $X_0/X_1$. To see this observe that any term $X_0^mX_1^n$ goes to
+  $X_0^m X_1^{d-m}$ and thus
+  \[ \frac{X^m_0 X_1^{d-m}}{X_1^d} = \frac{X_0^m}{X_1^m}.\] Then we
+  may write $f=X_0^d+f(X_0,X_1) + X_1^d$. Thus we may send
+  $f(X_0,X_1)$ to the polynomial $G(t)$ where $G$ is the polynomial
+  $F/X_1^d$ in $X_0/X_1$. It isn't hard to see that this is a
+  bijection, moreover an isomorphism.
+
+  The final ingredient is to show that if $f$ is regular on $U_0$ and
+  $g$ is regular on $U_1$ and they agree on $U_1\cap U_0$, then
+  $f=g=c$ for some constant $c\in k$. To see this simply observe that
+  on the overlap we must have
+  $f(t)=f(X_1/X_0)=g(X_0/X_1)=g(t^{-1})$. Then the statement follows
+  for degree reasons. 
+\end{answer}
+
+
+
+
+
+
+%%%%%%%%%%%
+% 7 SEVEN %
+%%%%%%%%%%%
+
+\begin{question}
+  (Hartshorne I.3.17. - \emph{Normal Varieties}) A variety is
+  \emph{normal at a point} $P\in Y$ if $\calO_P$ is an integrally
+  closed ring. $Y$ is \emph{normal} if it is normal at every point.
+
+  \begin{enumerate}[(a)]
+  \item Show that every conic in $\bbP^2$ is normal.
+  \item Show that the quadric surfaces $Q_1,Q_2$ in $\bbP^3$ given by
+    equations $Q_1: xy=zw;$ $Q_2:xy=z^2$ are normal (cf (ex II.6.4)).
+  \item Show that the cuspidal cubic $y^2=x^3$ in $\bbA^2$ is not
+    normal.
+  \item If $Y$ is affine, then $Y$ is normal $\iff$ $A(Y)$ is
+    integrally closed.
+  \item Let $Y$ be an affine variety. Show that there is a normal
+    affine variety $\widetilde{Y}$, and a morphism
+    $\pi:\widetilde{Y}\to Y$ with the property that, whenver $Z$ is a
+    normal variety and $\varphi:Z\to Y$ is a \emph{dominant} morphism
+    (i.e. $\varphi(Z)$ is dense in $Y$), then there is a unique
+    morphism $\theta:Z\to \widetilde{Y}$ such that
+    $\varphi = \pi\circ \theta$. We call $\widetilde{Y}$ the
+    \emph{normalization} of $Y$. (This needs (ex I.3.9A).)
+  \end{enumerate}
+\end{question}
+
+\begin{answer}
+  (a) what is a conic?
+
+  (b)
+
+  (c) We have $A(Y)= k[x,y]/(x^3-y^2)$.
+  
+  (d) $Y$ is normal $\iff$ $\calO_P$ integrally closed for all $P\in
+  Y$. By I.3.2.b this is true $\iff$ $A(Y)_{\frakm_P}$ is integrally
+  closed where $\frakm_P$ is the maximal ideal corresponding to $P$
+  under the nullstellensatz. Thus we have reduced our problem to the
+  equivalent statement: $A(Y)$ integrally closed $\iff$
+  $A(Y)_{\frakm_P}$ integrally closed for all maximal ideals $\frakm_P\in A(Y)$.
+\end{answer}
+
+
+
+
+
+%%%%%%%%%%%
+% 8 EIGHT %
+%%%%%%%%%%%
+
+\begin{question}
+  (Hartshorne I.3.19(a) - \emph{Automorphisms of }$\bbA^n$. Part (b)
+  is the famous Jacobian conjecture.)
+
+  Let $\varphi:\bbA^n\to\bbA^n$ be a morphism given by polynomials
+  $f_1,\ldots, f_n$ in $n$ variables $x_1,\ldots, x_n$. Let
+  $J=\det [\partial f_i/\partial x_j]$ be the \emph{Jacobian}
+  polynomial of $\varphi$.
+
+  \begin{enumerate}[(a)]
+  \item If $\varphi$ is an isomorphism (i.e. an automorphism) show
+    that $J$ is a nonzero constant polynomial.
+  \item The converse is unsolved even for $n=2$.
+  \end{enumerate}
+  
+\end{question}
+
+\end{document}

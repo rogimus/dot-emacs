@@ -1,0 +1,411 @@
+
+\documentclass{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+% \usepackage[protrusion=true,kerning=true,spacing=true,tracking=true]{microtype}
+%\usepackage{microtype}
+\linespread{1.4}
+\AtBeginDocument{%
+  \addtolength\abovedisplayskip{-0.1\baselineskip}%
+  \addtolength\belowdisplayskip{-0.1\baselineskip}%
+  \addtolength\abovedisplayshortskip{-0.1\baselineskip}%
+  \addtolength\belowdisplayshortskip{-0.1\baselineskip}%
+}
+\raggedbottom
+
+
+
+
+
+\usepackage[margin=1.4in]{geometry}
+% \setlength{\textwidth}{\paperwidth}
+% \addtolength{\textwidth}{-3in}
+% \setlength{\textheight}{\paperheight}
+% \addtolength{\textheight}{-1.5in}
+% \calclayout
+
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\textbf\thepage}
+\fancyhead[L]{ \nouppercase\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+\makeatother
+\renewcommand{\sectionmark}[1]{%
+\markboth{\thesection.\ #1}{}}
+%\pagestyle{fancy}
+
+\parindent 0pt
+\parskip 10pt
+
+%\usepackage{mathpazo}
+%\usepackage{XCharter} % Bitstream's Charter
+%\usepackage{paratype}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{berasans}\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage{arev} 
+% \usepackage[T1]{fontenc}
+
+\usepackage[T1]{fontenc}
+% %\usepackage[sfdefault,scale=1]{FiraSans}
+% \usepackage{newtxsf}
+
+%\usepackage[sfdefault,lining,scale=.9]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+%\usepackage{firamath-otf}
+%\setmathfont{cmr}[range={\bigcap,\bigcup,\setminus}]
+
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\bfdefault}{ppl}
+
+\newcommand{\colonafter}[1]{#1:\,\,}
+\usepackage{titlesec}
+\titleformat{\title}{\center\Huge\rmfamily}{\thesection}{1em}{}
+\titleformat{\section}{\center\large\rmfamily}{\thesection.}{0.5em}{}{}
+\titleformat{\subsection}[runin]{\normal\bfseries}{\thesubsection.}{0.5em}{\colonafter}{}
+% \titleformat*{\subsubsection}{\normalsize\rmffamily}
+
+%\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+
+% \usepackage{pxfonts}
+
+% \usepackage{kmath,kerkis} \renewcommand{\familydefault}{\sfdefault}
+
+
+\usepackage[sfdefault,scale=.9]{noto}
+\usepackage[mathrm=sym]{unicode-math}
+% \usepackage[T1]{fontenc}
+
+% \usepackage{mathpazo}\renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage[lm]{sfmath}
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} \mathrm{P}}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BU}{\mathrm{BU}}
+\newcommand{\BP}{\mathrm{BP}}
+\newcommand{\bbS}{\mathbb{S}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+
+
+\begin{document}
+\author{Roger Murray}
+\title{$\BP$-Theory and Formal Group Laws}
+
+\maketitle
+
+\section{Complex Oriented Spectra}
+
+\begin{definition}
+  A \emph{complex orientation} for a ring spectrum $E$ is a class $x_E\in
+  \widetilde{E}^2(\CP^\infty)$ such that $x_E$ restricts to the multiplicative
+  identity 1 via
+  \[ \widetilde{E}^2(\CP^\infty)\to \widetilde{E}^2(\CP^1)\cong
+    \widetilde{E}^2(S^2) \cong \widetilde{E}^0(S^0) = \pi_0(E) \]
+  where the leftmost map is the map induced by the inclusion
+  $\CP^1\hookrightarrow \CP^\infty$.
+\end{definition}
+
+\begin{lemma}
+  Given a complex oriented ring spectrum $E$ with orientation $x_E$ we
+  have
+  \begin{enumerate}[(a),topsep=-15pt,botsep=-15pt]
+  \item $E^*(\CP^\infty)\cong E^*[[x_E]].$
+  \item $E^*(\CP^\infty\times \CP^\infty) \cong E^*[[x_E\otimes 1,
+    1\otimes x_E]]$.
+  \item Let $\mu:\CP^\infty\times\CP^\infty\to\CP^\infty$ be the map
+    classifying the vector bundle $\pi_1(\gamma)\otimes \pi_2(\gamma)$
+    where $\pi_i:\CP^\infty\times\CP^\infty\to\CP^\infty$ is the
+    obvious projection map, and where $\gamma$ is the universal line
+    bundle over $\CP^\infty$. Then $\mu^*(x_E)\in E^*[[x_E\otimes 1,
+    1\otimes x_E]]$ is a formal group law.
+  \end{enumerate}  
+\end{lemma}
+\begin{proof}
+  For (a) and (b) we use the Atiyah-Hirzebruch Spectral
+  Sequence.
+  \marginpar{{\color{orange} Need to read/write about the
+      AHSS (in full generality too). See EKMM}}
+  We have a spectral sequence $E_2^{s,t}=H^s(X;E^*)\implies
+  E^{s+t}(X)$. For $X=\CP^\infty$ the $E_2$ page is easy to describe -
+  we have $E_2 = E^*[[x_H]]$ where $x_H$ is the usual generator
+  for $H^2(\CP^\infty)$. The AHSS turns out to be multiplicative,
+  i.e. the multiplication is $E^*$-linear and the differentials $d_r$
+  are $E^*$-derivation.  Thus $d_r(E^*)=0$ for all $r$. Furthermore
+  for degree reasons (recall $d_r:E_2^{s,t+s}\to E_2^{s+r,t+s+1}$) the
+  $x_H^i$ cannot support differentials.
+  \marginpar{{\color{orange} In the picture, I assume assume that our
+      spectrum $E$ 
+      cannot have anything in negative degrees, i.e. $E_{-n}=\pt$. We
+      don't need to thought because $E_\infty$-linearity works
+      regardless. I like the picture though.}}
+  % \begin{center}
+  %   \begin{tikzpicture}
+  %     \fill[blue] (0,0) -- (5,5) -- (5,0);
+  %     \draw[thick] (0,0) -- (5,5);
+  %     \draw[step=1cm,gray,very thin] (0,0) grid (5,5);
+  %     \draw[thick,->] (0,0) -- (5,0);
+  %     \draw[thick,->] (0,0) -- (0,5);
+  %     \draw [-stealth, red] (2,2) -- (3,4); 
+  %     \node[draw] at (2,2) [fill=white] {$x_H$};
+  %     \node[draw] at (4,4) [fill=white] {$x_H^2$};
+  %   \end{tikzpicture}
+  % \end{center}
+  Finally we know that $x_E$ must be represented by a unit multiple of
+  $x_H$ in $E_\infty$. To see this observe that $x_E$ is represented
+  by $a x_H$ for some $a\in E^*$ by our description of $E_\infty$, and the induced map
+  $i^*:E^*(\CP^\infty )\to  E^*(\CP^1)$ is an $E^*$-algebra
+  homomorphism. In particular we have
+  \[ 1 = i^*(x_E) = a i^*(x_H)\]
+  and thus $a$ must be a unit in $E^*$.
+
+  The proof of (b) is similar.
+
+  For (c) recall that $\CP^\infty\cong
+  \Big(\bbC[[t]]\setminus\{0\}\Big)\Big/\sim$ where the equivalence
+  relation is defined by
+  $f(t)\sim \lambda g(t)$ for any $\lambda\in \bbC^\times$. Then
+  polynomial multiplication $m$ is associative
+  and commutative with 
+  unique identity $(1,0,0,\ldots)$. Modding out by the equivalence
+  relation induces a commutative and associative H-space structure on
+  $\CP^\infty$ which corresponds to $\mu$, and we are done.
+\end{proof}
+
+Thus given any complex oriented ring spectrum $E$ we obtain an obvious
+ring homomorphism $\theta_E:L\to E^*$ classifying the formal group law
+$\mu^*(x_E)$.
+
+\begin{construction}[Constructing $\MU$]
+  Let us construct the complex cobordism spectrum $\MU$. Recall that
+  we have classifying spaces $\mathrm{BU}(n)$ for the unitary group
+  $\mathrm{U}(n)$ of $n\times n$ unitary matrices
+  (i.e. $A^*=A^{-1}$). For $n=0$ we may take $\BU(0):=\pt$.
+  A construction for $\mathrm{BU}(n)$ for $n>0$
+  is as the colimit of the Grassmanian manifolds $G_n(\bbC^m)$ which
+  is the $n$-dimensional linear subspaces of $\bbC^m$. In particular
+  $\mathrm{BU}(1)=\CP^\infty$. 
+  There is a universal vector bundle $\gamma_n$ over $\mathrm{BU}(n)$
+  classifying $n$-dimensional complex vector bundles. In particular
+  \[ [X,\mathrm{BU}(n)]\cong \mathrm{VB}^n_{\bbC} (X),\]
+  where the isomorphism is given by pulling back $\gamma_n$, and where
+  $\mathrm{VB}_{\bbC}^n(X)$ denotes the collection of isomorphism
+  classes of $n$-dimensional complex vector
+  bundles above $X$. By some partition of unity argument (see
+  \cite{VBKT}) $\mathrm{BU}(n)$ is paracompact, and thus has 
+  an inner product. We can therefore consider the disk bundle
+  $B(\gamma_n)$ and sphere bundle $S(\gamma_n)$. Define $\MU(n)$ to
+  be Thom space $Th(\gamma_n)$, i.e. the quotient bundle
+  $D(\gamma_n)/S(\gamma_n)$. Note that $\gamma_0$ is the trivial
+  bundle $\BU(0)\times \bbC^0$, and that the Thom space of a trivial
+  bundle $X\times \bbC^n$ is equivalent to $\Sigma^{2n}X_+$. Thus
+  $\MU(0)\simeq S^0$.
+
+  The canonical inclusions $G_n(\bbC^m)\hookrightarrow
+  G_{n+1}(\bbC^{m+1})$ induce a canonical inclusion
+  $\mathrm{BU}(n)\xhookrightarrow{i} \mathrm{BU}(n+1)$. This in turn
+  induces a natural
+  map $\Sigma^2\MU(n)\to \MU(n+1)$ via the pullback of $\gamma_{n+1}$
+  since $i^*(\gamma_{n+1})\cong \gamma_n\oplus \epsilon_1^{\bbC}$. This
+  structure allows us to define a (sequential pre-)spectrum $\MU$ with
+  \begin{align*}
+    &\MU_{2n} = \MU(n), \\
+    &\MU_{2n+1} = \Sigma\MU(n).
+  \end{align*}
+\end{construction}
+
+Our next task is to show that $\MU$ is a ring spectrum, and that it
+has a complex orientation.
+
+\begin{lemma}
+  $\MU(1)$ is isomorphic to $\CP^\infty$.
+\end{lemma}
+\begin{proof}
+  Clearly the zero section and the projection $p_D:D(\gamma)\to
+  \BU(1)$ of the disk bundle are weak homotopy equivalences since
+  $D(\gamma)$ has contractible fibers.
+
+  Next observe that $\mathrm{U}(1)\simeq S^1\in \bbC$ and that
+  $\gamma= \mathrm{EU}(1)\times_{\mathrm{U}(1)}\bbC$ where
+  $\mathrm{EU}(1)$ is the universal $\mathrm{U}(1)$-principle bundle
+  (i.e. the colimit of Stiefel manifolds).  Thus 
+  \begin{align*}
+    S(\gamma)&=\mathrm{EU}(1)\times_{\mathrm{U}(1)}S(\bbC) \\
+             &\simeq \mathrm{EU}(1)\times_{\mathrm{U}(1)}U(1) \\
+             &\simeq \mathrm{EU}(1).
+  \end{align*}
+  But $\mathrm{EU}(1)$ is contractible. Thus
+  $\MU(1)=D(\gamma)/S(\gamma)$ is weakly homotopy equivalent to
+  $D(\gamma)$, which is weakly homotopy equivalent to $\BU(1)=\CP^\infty$.
+\end{proof}
+
+There is a multiplication map $\BU(n)\times
+\BU(m)\to \BU(n+m)$ corresponding to taking the direct sum of vector
+bundles. It has a unit coming from $\BU(0)$. This induces a
+multiplication map $\MU(n)\times\MU(m)\to 
+\MU(n+m)$ with unit $\MU(0)= S^0$. This unit induces a map $\bbS\to \MU$. 
+
+
+The map $\CP^\infty=\mathrm{BU}(1)\xrightarrow{\sim} \MU(1)\hookrightarrow
+\Sigma^2 \MU$ induces a complex orientation $x_{\MU}$ for $\MU$. To
+see that this is infact a complex orientation observe that, by
+definition, the structure map $\Sigma^2\MU(0)\to \MU(1)$ is the canonical
+inclusion $S^2\hookrightarrow \CP^\infty$. In particular, the
+restriction of our map $\CP^\infty\cong \MU(1)$ given by $S^2\to
+\CP^\infty\to\MU(1)$ induces a map $\Sigma^2\bbS\to \Sigma^2\MU$,
+equivalently $\bbS\to \MU$. Since $\bbS$ is initial among ring
+spectra, this much correspond to the unit map, i.e. $x_{\MU}$
+restricts to the unit map.
+
+The complex orientation $x_{\MU}$ induces a map $\theta_{\MU}:L\to \MU^*$.
+\begin{theorem}[Lazard]
+  The map $\theta_{\MU}$ is an isomorphism.
+\end{theorem}
+
+\end{document}

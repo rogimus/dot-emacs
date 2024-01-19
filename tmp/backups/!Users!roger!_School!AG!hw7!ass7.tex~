@@ -1,0 +1,500 @@
+\documentclass{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+%\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{upgreek}
+% microtype performs a number of micro typesetting adjustments such as margin
+% kerning and character protrusion. Very cool
+% \usepackage[protrusion=true,kerning=true,spacing=true,tracking=true]{microtype}
+\usepackage{microtype}
+\usepackage[english]{babel}
+% hehe heart emoji as QED symbol
+\usepackage{graphicx,txfonts}
+\newcommand{\heart}{\ensuremath\varheartsuit}
+\renewcommand{\qedsymbol}{\hfill{\Large\heart}}
+% spacing
+\linespread{1.4}
+\usepackage[margin=1.5in]{geometry}
+\parindent 0pt
+\parskip 10pt
+% header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\nouppercase\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd{\@sect}{\csname #1mark\endcsname{#7}}{}{}
+\makeatother
+\renewcommand{\sectionmark}[1]{%
+\markboth{\thesection.\ #1}{}}
+% font stuff
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,scale=.9]{noto}
+\renewcommand{\rmdefault}{ppl}
+\usepackage[math-style=TeX]{unicode-math}
+%\setmathfont{Neo Euler}
+% \setmathfont{Erewhon-Math.otf}
+%\setmathfont{texgyrepagella-math.otf}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\DeclareMathAlphabet{\mathbb}{U}{bbold}{m}{n}
+% headings
+\newcommand{\colonafter}[1]{#1:\,\,}
+\usepackage{titlesec}
+\titleformat{\title}{\center\Huge\rmfamily}{\thesection}{1em}{}
+\titleformat{\section}{\center\large\rmfamily}{\thesection.}{0.5em}{}{}
+\titleformat{\subsection}[runin]{\normalsize\bfseries}{\thesubsection.}{0.5em}{\colonafter}{}
+% \titleformat*{\subsubsection}{\normalsize\rmffamily}
+
+\setcounter{tocdepth}{1}
+
+%%%%%%%%%%%%
+% Theorems %
+%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{answer}{Answer}
+
+
+
+%%%%%%%%%%%%%
+% Cat Stuff %
+%%%%%%%%%%%%%
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\colim}{colim}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Fun}{Fun}
+
+
+
+
+%%%%%%%%%%%%%
+% Rings/bbX %
+%%%%%%%%%%%%%
+
+\newcommand{\bbZ}{\mathbb Z}
+\newcommand{\bbN}{\mathbb N}
+\newcommand{\bbC}{\mathbb C}
+\newcommand{\bbF}{\mathbb F}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbQ}{\mathbb Q}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\bbA}{\mathbb A}
+\newcommand{\bbH}{\mathbb H}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Specific categories %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\sSet}{\mathrm{sSet}}
+% \newcommand{\Tops}{\text{\rmfamily \textbf{Top}}}
+\newcommand{\Tops}{\mathcal{T}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Shv}{\mathrm{Shv}}
+
+
+
+
+%%%%%%%%%%%%
+% topology %
+%%%%%%%%%%%%
+
+\newcommand{\RP}{\mathbb{R} P}
+\newcommand{\CP}{\mathbb{C} P}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\pt}{pt}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+
+
+
+
+%%%%%%
+% AG %
+%%%%%%
+
+\newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Aff}{\mathrm{Aff}}
+%\newcommand{\Spec}{\mathrm{Spec}\,}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Pic}{Pic}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Homological Algebra %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+% Random cal/scr %
+%%%%%%%%%%%%%%%%%%
+
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calL}{\mathcal L}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakp}{\mathfrak{p}}
+
+
+
+
+
+\title{Assignment 7}
+\author{Roger Murray}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsection*{Question 2}
+
+\begin{enumerate}[(a),topsep=-10pt]
+\item Let $X$ be a scheme. Prove that points in $X$ are in direct
+  correspondence to equivalence classes of morphisms $\Spec k \to X$
+  for fields $k$, where $\Spec k \to X$ and $\Spec k^\prime \to X$ are
+  equivalent if there is a morphism $\Spec k \to \Spec k^\prime$ or
+  $\Spec k^\prime \to \Spec k$ fitting into the obvious commutative
+  triangle.
+\item Let $f: X \to Y$ be a morphism, $y\in Y$ a point, and let
+  $f^{-1}(y) = \Spec \kappa(y)\times_Y X$ be the scheme-theoretic
+  fiber. Prove that the underlying set of $f^{−1}(y)$ is the preimage
+  of $\{y\}$.
+\item Let $X$ and $Y$ be schemes over $S$. Prove that the image of
+  $X\times_S Y$ is the set of all $s ∈ S$ such that there are $x ∈ X$
+  and $y ∈ Y$ over $s$ in $S$. In particular, the underlying set of
+  the schemes theoretic intersection of two closed subschemes is the
+  intersection of the two underlying sets.
+\end{enumerate}
+\begin{proof}
+  \emph{(a)} It suffices to show this is true for affine $X$ since any
+  point in $X$ is contained in some affine open. Let $X=\Spec
+  R$. Topologically $\Spec k$ is just a single point $\eta$ for any
+  field $k$, thus topologically a point certainly corresponds to a map
+  $\Spec k\to X$. Next observe that given a map $f:\Spec k \to X$ with
+  $f(\eta)=\frakp$, then we obtain an associated map of stalks
+  $\calO_{X,\frakp} \to \calO_{k,\eta}$ which is a ring homomorphism
+  $\varphi:R_{\frakp} \to k$. Furthermore since $f$ is a morphism of
+  locally ringed spaces we must have the maximal ideal
+  $\frakp R_{\frakp}$ is the preimage of the maximal ideal of $k$,
+  which is the zero ideal, i.e. that
+  $\varphi^{-1}(0)=\frakp R_{\frakp}$. Thus $\varphi$ factors through
+  a map $R_{\frakp}/\frakp R_{\frakp}\to k$.
+
+  If $g:\Spec k^\prime\to X$ is another morphism, then for these to be
+  equivalent topological we require that $g(\mu)=\frakp$ where
+  $\textrm{sp}(\Spec k^\prime)=\{\mu\}$. The commutative triangle
+  gives rise to a commutative diagram:
+  \[
+    \begin{tikzcd}
+      R_{\frakp}/\frakp R_{\frakp}\arrow[r]\arrow[dr]& k\arrow[d]\\
+      & k^\prime
+    \end{tikzcd}
+  \]
+  where the homomorphisms are the obvious ones. {\color{blue} This
+    question has made me realize that I don't know fully what a point
+    of a scheme is...Part of me wants to take morphisms $\Spec k\to X$
+    to be a definition...}
+
+  \emph{(b)} Consider the preimage of $\{y\}$ which we shall denote by
+  $P$. Given an arbitrary point in $p\in P$ we obtain a morphism
+  $g_p:\Spec \kappa(y)\to X$ making the following commute:
+  
+  \[
+    \begin{tikzcd}
+      \Spec\kappa(y)\arrow[ddr,"g_p"',out=270,in=180]
+      \arrow[drr,"\id",out=0,in=140] &&\\
+      & f^{-1}(y)\arrow[r]\arrow[d] & \Spec \kappa(y)\arrow[d, "y"]\\
+      & X\arrow[r,"f"'] & Y
+    \end{tikzcd}
+  \]
+
+  By the universal property of the pullback we obtain a map
+  $h_p:\Spec \kappa(y)\to f^{-1}(y)$. We obtain such a map for every
+  $p$ in $P$. Similarly given a map $\Spec\kappa(y)\to f^{-1}(y)$, we
+  can extend this to a map $\Spec\kappa(y)\to X$ in the obvious
+  way. By part (a) we thus have a correspondence between points of $P$
+  and points in $f^{-1}(y)$.
+
+  \emph{(c)} Let $f:X\to S$ and $g:Y\to S$ be our defining
+  morphisms. Since we now know that $f^{-1}(s)$ and $g^{-1}(s)$ are
+  the preimages of a point $s\in S$ then we can consider two points
+  $x,y$ lying over $s$. These points give rise to morphisms
+  $x:\Spec \kappa(s)\to X$ and $y:\Spec \kappa(s)\to Y$. Furthermore
+  these fit into the following commutative diagram since
+  $f(x)=g(y)=s$:
+  
+  \[
+    \begin{tikzcd}
+      \Spec\kappa(s)\arrow[ddr,"x"',out=270,in=180]
+      \arrow[drr,"y",out=0,in=140] &&\\
+      & X\times_S Y \arrow[r]\arrow[d] & Y\arrow[d, "g"]\\
+      & X\arrow[r,"f"'] & Y
+    \end{tikzcd}
+  \]
+  
+  Thus we a map $\Spec \kappa(s)\to X\times_S Y$. Similarly given a
+  point $\Spec \kappa(s)\to X\times_S Y$ lying over $s$, we obtain
+  maps $\Spec \kappa(s)\to X$ and $\Spec\kappa(s)\to Y$ which both lie
+  over $s$. Thus we have shown that the set of pairs of points
+  $x\in X$ and $y\in Y$ lying over some common point $s\in S$ is in
+  correspondence with the points of $X\times_S Y$.
+
+  {\color{blue} \textbf{Remark:} I did this exercise last, and in
+    hindsight it would have helped a lot with some of the other
+    questions haha...}
+  
+\end{proof}
+
+
+\subsection*{Question 4}
+Hartshorne II.3.13 parts \emph{a,c,d,} and \emph{g}. In addition,
+prove that open immersions are always locally of finite type, and find
+an example of an open immersion, which is not of finite type.
+\begin{enumerate}[(a),topsep=-10pt]
+\item A closed immersion is a morphism of finite type.
+\item[(c)] A composition of two morphisms of finite type is of finite
+  type.
+\item[(d)] Morphisms of finite type are stable under base extension.
+\item[(e)] If $X$ and $Y$ are schemes of finite type over $S$, then
+  $X\times_S Y$ is finite type over $S$.
+\item[(g)] If $f:X\to Y$ is a morphism of finite type, and if $Y$ is
+  noetherian, then $X$ is noetherian.
+\end{enumerate}
+
+\begin{proof}
+  \emph{(a)} Let $U_i=\Spec B_i$ be an affine open cover for $Y$, and
+  choose $V_{ij}=\Spec A_{ij}$ to be an affine open cover for
+  $f^{-1}(U_i)$. Then $f^\#|_{V_{ij}}$ is a surjective ring
+  homomorphism $B_i\to A_{ij}$. In particular $A_{ij}\cong B_i/I$, and
+  thus the $A_{ij}$ are finitely generated $B_i$-modules. Finally note
+  that $f^{-1}(U_i)$ is quasi-compact since $f$ is a homeomorphism
+  $f^{-1}(U_i)\to U_i$ and $U_i$ is quasi-compact.
+
+  \emph{(c)} \,Consider the composition of two morphisms of finite
+  type:
+  \[\begin{tikzcd}
+      X\arrow[r, "f"] &Y \arrow[r,"g"]& Z.
+    \end{tikzcd}\]
+
+  If we choose some open affine cover $\{\Spec B_i\to Z\}$, then $g$
+  finite type allows us to choose some open cover
+  $\{\Spec A_{ij}\to Y\}$ such that the $\Spec A_{ij}$ form a
+  \emph{finite} cover of $g^{-1}(\Spec B_i)$, and $A_{ij}$ are
+  finitely generated $B_i$-modules. Since $g$ is finite type we can
+  choose some open cover $\{ \Spec C_{ijk}\to X\}$ such that the
+  $\Spec C_{ijk}$ form a finite cover of $f^{-1} (\Spec A_{ij})$ and
+  such that $C_{ijk}$ are finitely generated $A_{ij}$-modules. Clearly
+  $\Spec C_{ijk}$ form an finite cover of $(f\circ g)^{-1}(\Spec B_i)$
+  and since $C_{ijk}$ is a finitely generated $A_{ij}$-module, and
+  $A_{ij}$ is a finitely generated $B_i$-module, we get a finitely
+  generate $B$-module structure for $C_{ijk}$.
+
+  \textit{{(d)}} \,Given an $S$-scheme $X$ and a base extension
+  $g:T\to S$, consider the change-of-base:
+  \[
+    \begin{tikzcd}
+      X^\prime:=X\times_S T \arrow[r,"\pi_S"]\arrow[d,"\pi_T"] & X\arrow[d, "f"]\\
+      T\arrow[r,"g"] & S
+    \end{tikzcd}
+  \]
+  Choosing some open cover $\{\Spec B_i\to S\}$, and some cover
+  $\{\Spec A_{ij}\to X\}$ such that the $\Spec A_{ij}$ form an open
+  subcover of $f^{-1} (\Spec B_i)$ and each $A_{ij}$ is a finitely
+  $B_i$-module. Choose any open cover $\{\Spec C_{ik}\to T\}$ such
+  that the $\Spec C_{ik}$ cover $g^{-1}(\Spec B_i)$. The $C_{ij}$ come
+  automatically equipped with a $B_i$-module structure (although not
+  necessarily finitely generated). Then we get affine opens
+  \[U_{ijk}:=\Spec C_{ik}\times_{\Spec B_i} \Spec A_{ij}=\Spec
+    \left(C_{ik}\otimes_{B_i} A_{ij}\right)\subset X^\prime.
+  \]
+  Since the $A_{ij}$ are finitely generated as $B_i$-modules, the ring
+  $C_{ik}\otimes_{B_i} A_{ij}$ is finitely generated as a
+  $C_{ik}$-module. Furthermore by \emph{Step 4} of the proof of
+  Hartshorne Theorem II.3.3 (fibre products exist) we have that the
+  $\Spec \left(C_{ik}\otimes_{B_i} A_{ij}\right)$ cover the
+  $\pi_T^{-1}(\Spec C_{ik})$. (You look at the inclusion of
+  $\Spec C_{ik}$ into $T$ to get a map from
+  $\Spec\left(C_{ik}\otimes_{B_i} A_{ij}\right)\to X^\prime$ which
+  must be iso by uniqueness.)
+
+  \emph{(e)} \, This is the same as the proof of \emph{(d)} except now
+  we can choose $C_{ik}$ to be finitely generated $B_i$-modules. Then
+  $C_{ik}\otimes_{B_i} A_{ij}$ are in fact finitely generate
+  $B_i$-modules.
+
+  \emph{(g)} Choose a cover $\{\Spec B_i\to Y\}$ such that each $B_i$
+  is noetherian, and a corresponding finite type cover
+  $\{\Spec A_{ij}\to X\}$. {\color{blue} Do you reckon this is
+    reasonable language or do I need to spell it out everytime?} Since
+  each $A_{ij}$ is a finite $B_i$-module (i.e. $B_i$-algebra), and since
+  $B_i$ is noetherian, then the $A_{ij}$ must also be a noetherian ring.
+\end{proof}
+
+\subsection*{Question 6}
+Let $f : X → Y$ be any morphism. Prove that the diagonal $\Delta$ is a
+locally closed immersion, i.e. there is a factorization
+$j \circ \iota$ where $j$ is an open immersion, and $\iota$ is a
+closed immersion.
+\begin{proof}
+  Choose some cover $\{\Spec B_i\to Y\}$ and some cover
+  $\{\Spec A_{ij}\to X\}$ of $X$ such that the $\Spec A_{ij}$ cover
+  $f^{-1}(\Spec B_i)$ for each $i$. Then the $U_{ij}:=\Spec A_{ij}\times_{B_i}
+  \Spec A_{ij}= \Spec (A_{ij}\otimes_{B_i} A_{ij})$ form an open cover
+  of $\Delta(X)$. (See \emph{step 4} in Thm II.3.3 of Hartshorne. We
+  could also construct a pullback diagram similar to the ones in
+  Question 7 below to justify this.) These $U_{ij}$ are open in
+  $X\times_Y X$ since open immersions are stable under base change. We
+  can glue these to get a scheme $X^\prime$. Then $\Delta$ factors as
+  an closed immersion $\iota:X\to X^\prime$ followed by an open
+  immersion $j:X^\prime \to X\times_Y X$.
+
+  
+\end{proof}
+
+
+\subsection*{Question 7}
+Let $S$ be a scheme, let $X$ be a reduced scheme over $S$, and let $Y$
+be a separated scheme over $S$. Let $f$ and $g$ be two $S$-morphisms
+of $X$ to $Y$ which agree on an open dense subset of $X$. Show that
+$f = g$. Give examples to show that this result fails if either (a)
+$X$ is nonreduced, or \,(b) $Y$ is nonseparated. [Hint: Consider the
+map $h:X\to Y \times_S Y$ obtained from $f$ and $g$.]
+
+\begin{proof}
+  As per the hint consider the map $h=\overline{h}\circ \Delta_X$
+  where $\overline{h}$ is given by the fact universal property for
+  $Y\times_S Y$:
+  
+  \[
+    \begin{tikzcd}
+      X\times_S X \arrow[r] \arrow[d]\arrow[dr,dotted,"\overline{h}"]
+      &X\arrow[dr,
+      out=-5,in=120, "g"]&  \\
+      X\arrow[dr,out=-80, in=180, "f"'] & Y\times_S Y\arrow[r]
+      \arrow[d] & Y\arrow[d]\\
+      & Y\arrow[r] & S
+    \end{tikzcd}
+  \]
+  
+  Let $U$ denote the open subset of $X$ on which $f$ and $g$ agree.
+  Since $f=g$ on $U$ we have that the preimage
+  $h^{-1}(\Delta_Y(Y))\supset U$. This follows since we can factor
+  $\overline{h}|_U$ through $\Delta_Y$ by the uniqueness of the
+  morphism granted by the universal property, and the commutativity of
+  the following diagram:
+
+  \[
+    \begin{tikzcd}
+      U\times_S U \arrow[r,"q"] \arrow[dd,"p"]\arrow[dr,"f|_U\circ
+      p=g|_U\circ q"] &U\arrow[ddrr,
+      out=0,in=120, "g|_U"]&  \\
+      &Y\arrow[dr,"\Delta"]&&\\
+      U\arrow[drr,out=-50, in=180, "f|_U"'] && Y\times_S Y\arrow[r]
+      \arrow[d] & Y\arrow[d]\\
+      && Y\arrow[r] & S
+    \end{tikzcd}
+  \]
+  (Here of course we are using that fact that the $\Delta_Y$ followed
+  by either of the projection maps is a the identity on $Y$.)
+
+  Consider the topological case.  Since $Y$ is seperated,
+  $\Delta_Y(Y)$ is closed in $Y\times_S Y$, and since $h$ is
+  continuous $h^{-1}(\Delta_Y(Y))$ is closed in $X$. So
+  $h^{-1}(\Delta_Y(Y))$ is a closed subset of $X$ containing a dense
+  open $U$, and thus $h^{-1}(\Delta_Y(Y))=X$. Thus, topologically
+  $f=g$ since (maybe by considering the above diagram) the space where
+  $f=g$ exactly corresponds to $h^{-1}(\Delta_Y)$.
+
+  Now consider the sheaf case.
+  % Choose a cover $\{\Spec B_i\to Y\}$ of $Y$.
+  Choose a cover $\{\Spec A_{i}\to X\}$ such that each $A_i$ is
+  reduced. Given an arbitrary open $V\subset Y$ and an element
+  $x\in \calO_Y(V)$ we can consider $f^\sharp(x)$ and
+  $g^\sharp(x)$. Since $f=g$ on $U$ we have that
+  $f^\sharp(x)=g^\sharp(x)$ on $U\cap \Spec A_i$ for all $i$, i.e.
+  $U\cap\Spec A_i\subset V(f^\sharp(x)-g^\sharp(x))\subset \Spec
+  A_i$. Since $U$ is dense in $X$, then $U\cap \Spec A_i$ is dense in
+  $\Spec A_i$, and we have that
+  $V(f^\sharp(x)-g^\sharp(x))=X\cap \Spec A_i=\Spec A_i$. Thus
+  $f^\sharp|_{A_i}(x)-g^\sharp|_{A_i} (x)\in\sqrt{(0)}$, i.e.
+  $(f^\sharp|_{A_i}(x)-g^\sharp|_{A_i}(x))^{N_i}=0$ in $A_i$ for some
+  $N_i$ for all $i$. Since $A_i$ is reduced by assumption, we must have
+  $f^\sharp|_{A_i}(x)-g^\sharp|_{A_i}(x)=0$ for all $i$. By the
+  gluing property of sheaves we thus have that
+  $f^\sharp(x)-g^\sharp(x)=0$ globally. Thus on the level of sheaves
+  $f=g$ on $X$.
+
+  \emph{(a)} Consider $X=\Spec k[\varepsilon]/\varepsilon^2$ and
+  $Y=\Spec k[x]$. Let $f$ be the ring homomorphism corresponding to
+  the ring homomorphism defined by
+  $x\mapsto \varepsilon$ and $g$ defined by $x\mapsto 0$. Then $f$ and
+  $g$ agree on the generic point $(0)$ which is a dense open, however
+  $f\neq g$.
+
+  Next consider $Y$ to be the only nonseperated scheme I know of -- the
+  affine line over $k$ with a double point. I can't think of a counter
+  example with this though I'm sure it exists..
+
+  
+\end{proof}
+
+\end{document}

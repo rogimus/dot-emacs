@@ -1,0 +1,126 @@
+% Created 2022-03-04 Fri 16:52
+% Intended LaTeX compiler: pdflatex
+\documentclass[a5, 14pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{/Users/roger/_School/templateorg.tex}
+\author{Roger Murray}
+\date{2022-03-02}
+\title{Homework 4b}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={Homework 4b},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{}
+\label{sec:org3061043}
+
+\subsection*{Question 1}
+\label{sec:orgb146f1a}
+
+Compute \(\Tor_1^{\bbZ} (\bbZ/n, \bbZ/m)\).
+
+\begin{proof}
+A projective resolution for \(\bbZ/n\) is the following:
+\[ 0 \to \bbZ \xrightarrow{\times n} \bbZ\to \bbZ/n. \]
+Dropping the \(\bbZ/n\) term from the right, and tensoring with
+\(\bbZ/m\) gives us a chain complex 
+\[ 0 \to \bbZ/m \xrightarrow{\times n} \bbZ/m \to 0. \]
+Taking homology gives \(\Tor\) and we see that \(\Tor_1\) is simply the
+kernel of the multiplication by \(n\) map from \(\bbZ/m\) to itself.
+These are the elements \(a\in \bbZ/m\) such that \(m\) divides \(a\cdot
+   n\). These are the integers \(a\) such that \(\gcd(n,m)\) divide \(a\).
+In summary, if \(d=\gcd(n,m)\), then
+\[ \Tor_1^\bbZ (\bbZ/n, \bbZ/m) = \bbZ/d. \]
+\end{proof}
+
+\subsection*{Question 2}
+\label{sec:orga9b1ba7}
+
+A map \(f:S^n\to S^n\) satisfying \(f(x)=f(-x)\) for all \(x\in S^n\) is
+called an \emph{even map}. Show that every even map \(S^n\to S^n\) must
+have even degree, and that the degree must in fact be zero when \(n\) is
+even. When \(n\) is odd, show there exist even maps of any given even
+degree. [Hint: If \(f\) is even, it factors as a composition \(S^n\to
+   \RP^n \to S^n\). Using the computation of \(H_n(\RP^n)\) in
+the text, show that the induced map \(H_n(S^n)\to H_n(\RP^n)\)
+sends a generator to twice the generator when \(n\) is odd. It may be
+useful to show that the quotient map \(\RP^n \to\RP^n /
+   \RP^{n-1}\) induces an isomorphism on \(H_n\) when \(n\) is odd.]
+
+\begin{proof}
+
+
+Following the hint, observe that every even map \(f:S^n\to S^n\)
+factors through \(\RP^n\) via the quotient map \(S^n\to \RP^n\). In the case that \(n\) is even, we know
+that \(H_n(\RP^n) = 0\). Thus the induced map on homology
+\(f_*:H_n(S^n)\to H_n(S^n)\) factors through the trivial group,
+and is therefore the zero map.
+
+In the case that \(n\) is odd, we have that \(H_n(\RP^n)=\bbZ\). 
+Following the hint, let us show that the quotient map \(q:\RP^n \to
+   \RP^n/\RP^{n-1}\) induces an isomorphism on homology. To do this we
+observe that \(\RP^{n-1}\) can be constructed as a sub-complex of
+\(\RP^n\), i.e. \((\RP^n,\RP^{n-1})\) is a good pair, and thus we can
+use the LES of a pair and the fact that
+\(\widetilde{H}_i(\RP^n/\RP^{n-1}) \cong H_i(\RP^n,\RP^{n-1})\).
+Around degree \(n\) the LES looks like:
+
+\[\begin{tikzcd}
+      0\rar& H_n(\RP^{n-1}) \rar & H_n(\RP^n) \rar & H_n(\RP^n,\RP^{n-1})\rar &
+       H_{n-1}(\RP^{n-1})\rar & \cdots
+   \end{tikzcd}\]
+
+Since \(n\) is odd, then \(H_n(\RP^{n-1})=H_{n-1}(\RP^{n-1})=0\).
+In particular this says
+\[H_n(\RP^n)\cong H_n(\RP^n,\RP^{n-1})\cong \widetilde{
+   H}_n(\RP^n/\RP^{n-1})\] and thus  \(q\) induces  an isomorphism on
+homology. (We're intentionally omitting the discussion of \(n=0\) and
+\(\widetilde{H}_i (X) =H_i(X)\) for \(i>0\).)
+
+Now \(\RP^n/\RP^{n-1}\simeq D^n/ \partial D^n\) is homotopy
+equivalent to \(S^n\). In particular our work thus far has shown that
+\(H_n(\RP^n)\cong H_n(S^n)\) for \(n\) odd. Thus the degree of our map
+\(f\) is the degree of the map induced by the quotient map \(S^n\to
+   \RP^n\) and the map induced by \(\RP^n\to S^n\) sending \([x]\in \RP^n\)
+to \(f(x)\). Observe that the quotient map has degree 2. Indeed
+choose a regular value \([x]\in \RP^n\), for example the class
+represented by the north pole.
+Then some small neighbourhood of \([x]\) has preimage two
+small open neighbourhoods. One of these is around the north pole,
+where we do the identity map on \(T_x S^n\), and the other is around the
+south pole, where we apply the map induced by the antipodal map
+to \(T_{x} S^n\). This results is a map \(T_{x}S^n\to T_{-x}S^n\) which
+is orientation preserving (since \(n\) is odd). Thus the geometric
+degree at the north pole is 2. By the proposition proved in class
+the geometric degree of \(f\) at a regular point is the same as the
+algebraic degree of \(f\),  and thus the degree of \(q\) is 2.
+
+Finally, as we already remarked, the degree of \(f\) is the
+multiplication of the degrees of the map quotient map \(S^n\to
+   \RP^n\) and the map \(\RP^n \to S^n\) induced by \(f\). Since the degree
+of the quotient map is two, we can conclude the degree of \(f\) must
+be even. If we take the map \(\RP^n \to S^n\) which induces an
+isomorphism on homology (i.e. quotienting by \(\RP^{n-1}\)) then this
+gives us a map \(f_2:S^n\to S^n\) of degree 2. Since \(\deg f \circ g =
+   \deg f \times \deg g\), by composing \(f_2\) with itself \(n\) times, we
+get a map of degree \(2n\). 
+\end{proof}
+\end{document}

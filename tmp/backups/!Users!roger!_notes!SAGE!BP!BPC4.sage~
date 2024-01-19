@@ -1,0 +1,277 @@
+p = 2
+truncation = 4
+# m's are supposed to be rational things
+m = list(var('m%d' % i) for i in range(truncation))
+w = list(var('w%d' % i) for i in range(truncation))
+v = list(var('v%d' % i) for i in range(truncation))
+u = list(var('u%d' % i) for i in range(truncation))
+t = list(var('t%d' % i) for i in range(truncation))
+gt = list(var('gt%d' % i) for i in range(truncation))
+s = list(var('s%d' % i) for i in range(truncation))
+r = list(var('r%d' % i) for i in range(truncation))
+temp = list(var('temp%d' % i) for i in range(truncation))
+
+def l(n):
+    if n >= truncation or n<0:
+        return "wait a minute..."
+    if n == 0: 
+        return 1
+    return (1/p*( sum(l(i)*v[n-i]^(p^i) for i in range(n))))
+
+def etaRl(n):
+    final = (l(n)+sum(l(i) * t[n-i]^(p^i) for i in range(n)))
+    if final not in ZZ:
+        return final.expand()
+    return final
+
+def etaRv(n):
+    if n == 0:
+        return 1
+    final = (p*etaRl(n)-sum(etaRl(i)*etaRv(n-i)^(p^i) for i in range(1,n)))
+    if final not in ZZ:
+        return final.expand()
+    return final
+
+def diagt(n):
+    if n == 0:
+        return 1
+    temp1 = sum(sum(l(i)*t[j]^(p^i)*s[n-i-j]^(p^(i+j)) for j in range(0,n-i+1)) for i in range(0,n+1))
+    temp2 = sum(l(i)*diagt(n-i)^(p^i) for i in range(1,n+1))
+    final = (temp1-temp2).subs({t0 : 1, s0 :1}).expand()
+    if final not in ZZ:
+        return final.expand()
+    return final
+    
+def diags(n):
+    if n == 0:
+        return 1
+    temp1 = sum(sum(l(i)*s[j]^(p^i)*r[n-i-j]^(p^(i+j)) for j in range(0,n-i+1)) for i in range(0,n+1))
+    temp2 = sum(l(i)*diags(n-i)^(p^i) for i in range(1,n+1))
+    final = (temp1-temp2).subs({t0 : 1, s0 :1, r0:1}).expand()
+    if final not in ZZ:
+        return final.expand()
+    return final
+
+dict_v_etaRv = {v[i]:etaRv(i) for i in range(0, truncation)}
+dict_s_r = {s[i]:r[i] for i in range(0,truncation)}
+dict_t_diagt = {t[i]:diagt(i) for i in range(0,truncation)}
+dict_t_s = {t[i]:s[i] for i in range(0,truncation)}
+dict_s_diags = {s[i]:diags(i) for i in range(0,truncation)}
+dict_v_0 = {v[i]:0 for i in range(0,truncation)}
+dict_t_0 = {t[i]:0 for i in range(0,truncation)}
+dict_s_0 = {s[i]:0 for i in range(0,truncation)}
+dict_v_v = {v[i]:v[i] for i in range(0,truncation)}
+dict_v_temp = {v[i]:temp[i] for i in range(0,truncation)}
+dict_w_mv = {w[i]:-v[i] for i in range(0,truncation)}
+dict_temp_w = {temp[i]:w[i] for i in range(0,truncation)}
+    
+
+Zp = Localization(ZZ, 2)
+BP = PolynomialRing(Zp, v)
+C1BP = PolynomialRing(Zp, v+t)
+C2BP = PolynomialRing(Zp, v+t+s); C2BP
+
+#antiquated. defined below
+#def v1bockD(x):
+#    x = SR(str(x.polynomial(GF(2)))).subs({v1:0})
+#    term1 = x.subs({t1:0,t2:0})
+#    term2 = x-term1
+#    term11 = (term1.subs({v1:etaRv(1),v2:etaRv(2),t1:s1,t2:s2})-term1.subs({t1:s1,t2:s2}))
+#    term22 = ((term2.subs({v1:etaRv(1),v2:etaRv(2),t1:s1,t2:s2})-term2.subs({t1:s1,t2:s2}))+
+##                            (-term2.subs({t1:diagt(1),t2:diagt(2)})+term2+term2.subs({t1:s1,t2:s2})))
+ #   if term1 not in ZZ:
+#        term1 = term11.expand().polynomial(GF(2))
+#    if term2 not in ZZ:
+#        term2 = term22.expand().polynomial(GF(2))
+#    term11 = SR(str(term1))/v1
+#    term22 = SR(str(term2))/v1
+#    final = term11+term22
+#    if final not in ZZ:
+#        return final.expand()
+#    return final
+    
+etaRv1 = etaRv(1)
+etaRv2 = etaRv(2)
+diagt1 = diagt(1)
+diagt2 = diagt(2)
+
+def twobockD(x):
+    x = SR(str(x.polynomial(GF(2))))
+    term1 = x.subs({t1:0,t2:0})
+    term2 = x-term1
+    term11 = (term1.subs({v1:etaRv1,v2:etaRv2,t1:s1,t2:s2})-term1.subs({t1:s1,t2:s2}))
+    term22 = ((term2.subs({v1:etaRv1,v2:etaRv2,t1:s1,t2:s2})-term2.subs({t1:s1,t2:s2}))+
+                            (-term2.subs({t1:diagt1,t2:diagt2})+term2+term2.subs({t1:s1,t2:s2})))
+    if term1 not in ZZ:
+        term1 = term11.expand()
+    if term2 not in ZZ:
+        term2 = term22.expand()
+    term11 = SR(str(term1))/2
+    term22 = SR(str(term2))/2
+    final = term11+term22
+    if final not in ZZ:
+        return final.expand()
+    return final
+
+W = [etaRv(i) for i in range(0,truncation)]
+T = [(1/2*(w[i]-(W[i]-2*t[i]))).expand() for i in range(0,truncation)]
+#S = [(1/2*(u[i]-(U[i]-2*t[i]))).expand() for i in range(0,truncation)]
+S1 = (1/2*(u1-w1)).expand()
+
+def minresvw(x):
+    x = SR(str(x))
+    wx = x.subs({t2:T[2]}).subs({t1:T[1],s1:S1})
+    term1 = wx.subs({w1:v1,w2:v2,u1:w1,u2:w2})              #[1|gamma]
+    term2 = wx.subs({u1:-v1,u2:-v2})                          #[gamma|gamma]
+    term3 = wx.subs({w1:-v1,w2:-v2}).subs({u1:-w1,u2:-w2})    #[gamma^2|gamma]
+    term4 = wx.subs({w1:-w1,w2:-w2,u1:v1,u2:v2})              #[gamma^3|gamma]
+    final = term1+term2+term3+term4
+    if final not in ZZ:
+        return final.expand()
+    return final
+
+def gammaalt(x):
+    x = SR(str(x))
+    final = x.subs(dict_v_temp).subs(dict_w_mv).subs(dict_temp_w)
+    if final not in QQ:
+        return SR(str(final)).expand()
+    return final
+    
+
+def gamma(x):
+    x = SR(str(x))
+    R.<v1,v2,w1,w2> = PolynomialRing(QQ)
+    rat_x = R(x)
+    gamma = (rat_x.parent()).hom([w1,w2,-v1,-v2])
+    final = gamma(rat_x)
+    if final not in QQ:
+        return SR(str(final)).expand()
+    return final
+
+def minD2(x):
+    x = SR(str(x))
+    final = (gamma(x)-x)
+    if final not in ZZ:
+        return final.expand()
+    else:
+        return final
+
+def minD1(x):
+    x = SR(str(x))
+    final = (x+gamma(x)+gamma(gamma(x))+gamma(gamma(gamma(x))))
+    if final not in ZZ:
+        return final.expand()
+    else:
+        return final
+
+def beta2i2i(i):
+    final = twobockD1(v1^(-(2^i-1))*v1bockD1(v2^(2^i)))
+    if final not in ZZ:
+        return final.expand()
+    else:
+        return final
+
+def vw_to_tgt(x):
+    x = SR(str(x))
+    final = (x.subs({w1:W[1],w2:W[2]})).subs({v2:-gt2-t2-(-gt1^3 + 1/2*gt1^2*t1 - 3/2*gt1*t1^2 - 2*t1^3 - 5/2*t1^2*v1 - 3/2*t1*v1^2)}).subs({v1:-t1-gt1})
+    if final not in ZZ:
+        return SR(str(final)).expand()
+    return final
+
+
+def gammatgt(x):
+    x = SR(str(x))
+    R.<t1,t2,gt1,gt2> = PolynomialRing(QQ)
+    rat_x = R(x)
+    gamma = (rat_x.parent()).hom([gt1,gt2,-t1,-t2])
+    final = gamma(rat_x)
+    if final not in QQ:
+        return SR(str(final)).expand()
+    return final
+
+def minD2tgt(x):
+    x = SR(str(x))
+    final = (gammatgt(x)-x)
+    if final not in ZZ:
+        return final.expand()
+    else:
+        return final
+
+def minD1tgt(x):
+    x = SR(str(x))
+    final = (x+gammatgt(x)+gammatgt(gammatgt(x))+gammatgt(gammatgt(gammatgt(x))))
+    if final not in ZZ:
+        return final.expand()
+    else:
+        return final
+
+
+# this will only work if the coefficients for p are 2 divisible.
+
+def mod2n(p,n):
+    if n ==1:
+        final = SR(str(p.polynomial(GF(2))))
+        if final not in ZZ:
+            return final.expand()
+        return final
+    temp1 = mod2n(p,n-1)
+    temp2 = p-temp1
+    temp3 = 2^(n-1)*(SR(str((temp2/(2^(n-1))).polynomial(Integers(2)))))
+    final = temp1+temp3                                                      
+    if final not in ZZ:                                                     
+        return final.expand()                                                
+    return final1
+
+def D0(x):
+    x = SR(str(x))
+    final = x.subs(dict_v_etaRv)-x
+    if final in ZZ:
+        return final
+    return final.expand()
+
+def D1(x):
+    x = SR(str(x))
+    final = ((x.subs(dict_t_s).subs(dict_v_etaRv)-x.subs(dict_t_s))
+             +x.subs(dict_t_s)
+             -x.subs(dict_t_diagt)
+             +x)
+    if final in ZZ:
+        return final
+    return final.expand()
+
+def D2(x):
+    x = SR(str(x))
+    final = ((x.subs(dict_s_r).subs(dict_t_s).subs(dict_v_etaRv)-x.subs(dict_s_r).subs(dict_t_s))
+             +x.subs(dict_s_r)-x.subs(dict_s_r).subs(dict_t_diagt)+x.subs(dict_s_r).subs(dict_t_s)
+             +x.subs(dict_s_diags)-x.subs(dict_s_r)
+             -x)
+    if final in ZZ:
+        return final
+    return final.expand()
+
+dict_v_etaRv_mod2 = {v[i]:mod2n(SR(etaRv(i)),1) for i in range(0,truncation)}
+dict_t_diagt_mod2 = {t[i]:mod2n(SR(diagt(i)),1) for i in range(0,truncation)}
+dict_s_diags_mod2 = {s[i]:mod2n(SR(diags(i)),1) for i in range(0,truncation)}
+
+def v1bockD1(x):
+    x = modv1(mod2n(SR(str(x)),1))
+    final = mod2n((x.subs(dict_t_s).subs(dict_v_etaRv_mod2)-x.subs(dict_t_s))
+             +x.subs(dict_t_s)
+             -x.subs(dict_t_diagt_mod2)
+             +x)
+    if final in ZZ:
+        return final
+    return final.expand()
+
+def modv1(x,i,j):
+    x = SR(str(x))
+    v1_to_0 = {v1^k:0 for k in range(i,j)}
+    final = x.subs(v1_to_0)
+    if final in ZZ:
+        return final
+    return (final.expand())
+
+X0 = v2
+X1 = v2^2-v1^2*(v2^(-1))*v3
+X2 = (X1^2-v1^3*v2^3-v1^5*v3).expand()
+

@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       4ECD4490-42AF-4E4C-BABF-64D81ECBAB37
+:END:
+#+title: sometimes tensoring an A-module with A isn't free
+#+filetags: :algebra:
+
+In a lot of examples we care about 
+(i.e. \(A=\mathbb{Z}\) or $A=$ a field), if \(M\) is an \(A\)-module
+then \(M\otimes A\) is a /free/ \(A\)-module.
+

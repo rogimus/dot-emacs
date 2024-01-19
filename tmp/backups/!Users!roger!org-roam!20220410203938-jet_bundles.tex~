@@ -1,0 +1,60 @@
+% Created 2022-04-10 Sun 20:51
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Roger Murray}
+\date{\today}
+\title{Jet Bundles}
+\hypersetup{
+ pdfauthor={Roger Murray},
+ pdftitle={Jet Bundles},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Definition}
+\label{sec:org5d3be45}
+
+Given manifolds \(X,Y\) the \(r^{th}-\text{order}\) Jet space
+ \(J^r(X,Y)\) is defined as the equivalence classes of
+triples \((x,U,f)\) where
+\begin{itemize}
+\item \(x\in U\subset X\)
+\item and \(f:U\to Y\)
+\end{itemize}
+such that where \((x,U,f)\sim (y,V,g)\) if
+\(x=y\), \(f(x)=g(x)\) and the derivatives of
+\(f|_{U\cap V}\) and \(g|_{U\cap V}\) agree at \(x\) up to order \(r\)
+(in some i.e. any chart).
+
+And equivalence class in \(J^r(X,Y)\) is called
+an \emph{\(r\) -jet from \(X\) to \(Y\)}.
+
+We also define sets \(J^r(X,Y)_y\) and
+\({}_{x}J^r(X,Y)\)  as the \(r\) -jets such that
+\((x_0,U,f)\) such that \(f(x_0)=y\) in the first case
+and \(x_0=x\) in the second case.
+
+
+\section{examples}
+\label{sec:orge2aeb77}
+
+\({}_0J^1(\mathbb{R},Y) = TY\)
+\(J^1(X,\mathbb{R})_0 = T^*X\)
+\end{document}

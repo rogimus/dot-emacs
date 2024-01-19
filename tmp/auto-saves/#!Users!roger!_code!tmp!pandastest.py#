@@ -1,0 +1,87 @@
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame(index=pd.MultiIndex.from_product([list('ab'), list('cd'), list('e')]), columns=['Val'])
+
+df.loc[np.s_[:,'c',:]]
+
+
+   def test_loc_keep_second_level_index(self):
+        # GH#43599
+        df = DataFrame(
+            index=MultiIndex.from_product(
+                [list('ab'), list('cd'), list('e')]),
+            columns=['Val']
+        )
+        res = df.loc[np.s_[:,'c',:]]
+        expected = DataFrame(
+            index=pd.MultiIndex.from_product(
+                [list('ab'), list('e')]),
+            columns=['Val']
+        )
+        tm.assert_frame_equal(res, expected)
+
+
+
+
+  def test_loc_keep_second_level_index(self):
+        # GH#43599
+        df = DataFrame(
+            index = MultiIndex.from_product(
+                [list('ab'), list('cd'), list('e')]),
+            columns=['Val']
+            )
+        res = df.loc[np.s_[:,'c',:]]
+        expected = DataFrame(
+            index=pd.MultiIndex.from_product(
+                [list('ab'), list('c'), list('e')]),
+            columns=['Val']
+            )
+        tm.assert_frame_equal(res, expected)
+
+
+
+        # 34034
+        DataFrame(
+            [[20, "a"], [200, "a"], [200, "a"]],
+            columns=["col1", "col2"],
+            index=[10, 1, 1],
+        )
+        df.loc[1, "col1"] = np.arange(2)
+        expected = DataFrame(
+            [[20, "a"], [0, "a"], [1, "a"]], columns=["col1", "col2"], index=[10, 1, 1]
+        )
+        tm.assert_frame_equal(df, expected)
+
+
+# @Pytest.fixture
+# def single_level_multiindex():
+#     """single level MultiIndex"""
+#     return MultiIndex(
+#         levels=[["foo", "bar", "baz", "qux"]], codes=[[0, 1, 2, 3]], names=["first"]
+#     )
+
+
+# @pytest.fixture
+# def frame_random_data_integer_multi_index():
+#     levels = [[0, 1], [0, 1, 2]]
+#     codes = [[0, 0, 0, 1, 1, 1], [0, 1, 2, 0, 1, 2]]
+#     index = MultiIndex(levels=levels, codes=codes)
+#     return DataFrame(np.random.randn(6, 2), index=index)
+
+
+# class TestMultiIndexLoc:
+#     def test_loc_setitem_frame_with_multiindex(self, multiindex_dataframe_random_data):
+#         frame = multiindex_dataframe_random_data
+#         frame.loc[("bar", "two"), "B"] = 5
+#         assert frame.loc[("bar", "two"), "B"] == 5
+
+#         # with integer labels
+#         df = frame.copy()
+#         df.columns = list(range(3))
+#         df.loc[("bar", "two"), 1] = 7
+#         assert df.loc[("bar", "two"), 1] == 7
+
+#     def test_loc_peepoo(self):
+#         frame
+        

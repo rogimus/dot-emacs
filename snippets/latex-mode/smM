@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: smooth functions on M
+# key: smM
+# --
+C^\infty(M)

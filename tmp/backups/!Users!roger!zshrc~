@@ -1,0 +1,5 @@
+ZSH_THEME=bira
+
+export GOPATH="$(go env GOPATH)"
+export PATH="${PATH}:${GOPATH}/bin"
+export PATH="${PATH}:/Users/roger/go/bin"

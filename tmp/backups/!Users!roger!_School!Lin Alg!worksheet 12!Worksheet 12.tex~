@@ -1,0 +1,203 @@
+\documentclass[12pt]{exam}
+
+%----------- Showing Solution or Not ----------------------
+\newif\ifsoln    % establishes conditional
+\solnfalse       % defaults to false 
+
+%In order to "hide" the solutions, comment the line below
+\solntrue
+\ifsoln
+\printanswers    % what it says on the tin
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+
+%--- Load packages------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[none]{hyphenat}
+%----------------------- 
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 12/2/2021}
+ 
+ \headrule
+%-------------------------
+
+
+%--- Content ---
+\begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial}
+ \centerline{\bf Worksheet 12}
+ \vskip .2in
+ \noindent
+\begin{questions}
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%
+		\question The function $\displaystyle y_1(x)=x^2\cos(\ln x)$ is a solution of the given differential equation \[\displaystyle x^2y^{\prime\prime}-3xy^{\prime}+5y=0.
+		\]
+		Use reduction of order or the formula
+		$$\displaystyle y_2(x)=y_1(x)\int\frac{e^{\int-P(x)dx}}{y_1^2(x)}\,dx$$
+		to find a second solution $y_2(x)$ that is linearly independent with $y_1(x)$.
+		 
+		
+		\begin{solution}
+		First obtain standard form of the second order differential equation:
+		$$\displaystyle y^{\prime\prime}-\frac{3}{x}y^{\prime}+\frac{5}{x^2}y=0,$$
+		 hence $P(x)=\frac{3}{x}$. Now use the formula:
+			$$\displaystyle y_2(x)=y_1(x)\int\frac{e^{\int-P(x)dx}}{y_1^2(x)}dx$$
+			$$\displaystyle =x^2\cos(\ln x)\int\frac{e^{\int\frac{3}{x}dx}}{(x^2\cos(\ln x))^2}dx$$
+			$$\displaystyle =x^2\cos(\ln x)\int\frac{x^3}{(x^2\cos(\ln x))^2}dx$$
+			$$\displaystyle =x^2\cos(\ln
+                        x)\int\frac{1}{x\cos^2(\ln x)}dx$$
+                        $$\displaystyle = x^2\cos(\ln
+                        x)\int\frac{1}{\cos^2(u)}du$$
+			$$\displaystyle =x^2\cos(\ln x)(\tan(\ln x))$$
+			$$\displaystyle =x^2\sin(\ln x)$$
+		\end{solution}
+
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 2.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question
+Solve the following homogeneous linear differential equations with
+constant coefficient:
+\begin{parts}
+  \part $y^{\prime\prime}-8y^\prime+16y=0$.
+  \part $y^{\prime\prime}+y^\prime-6y^\prime=0$.
+  \part $y^{\prime\prime\prime}-3y^{\prime\prime}+2y^\prime=0$.
+\end{parts}
+
+
+
+\begin{solution}
+  (a) The auxiliary equation is $m^2+8m+16=(m-4)^2$. Thus we have a
+  repeated real root, and we obtain
+  the general solution $$y=c_1e^{4x}+c_2xe^{4x}.$$
+
+  (b) The auxiliary equation is $m^2+m-6m=(m-2)(m+3)$. Thus the general
+  solution is $$y=c_1e^{2x}+c_2e^{-3x}.$$
+
+  (c) The auxiliary equation is
+  $m^3-3m^2+2m=m(m^2-3m+2)=m(m-1)(m-2)$. Since these are distinct
+  roots a general solution is given by
+  
+
+
+
+  . We can factor the left hand side as $(x^2+1)(x+1)$. The roots are $ -1, i, -i$. Hence the solution is $c_1\cos x+c_2\sin x+c_3e^{-x}$.
+
+\end{solution}
+
+
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 3.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question 
+Give the form of a particular solution $y_p$ to each of the following nonhomogeneous linear differential equations. Do not find the values of the constants.
+\begin{enumerate}[(a)]
+	\item $y''+ 4y' + 4y = xe^{7x}$
+	\item $y''+9y = \sin(2x)$
+	\item $y''+9y = \sin(3x)$
+	\item $y''-6y'+9y=x^2 + e^x\cos(4x)$,
+	\item $y''-6y'+9y=3e^{3x}-xe^{3x}$
+\end{enumerate}	
+\begin{solution}
+	\begin{enumerate}[(a)]
+	    \item The characteristic equation is $r^2+4r+4$, so $r=-2$ is a double root, and the complementary solution is $y=c_1 e^{-2x}+c_2xe^{-2x}$. 
+	    
+	    The right hand side equals $xe^{7x}$, so a particular solution will have the form $Ae^{7x}+Bxe^{7x}.$
+	    
+	    \item The characteristic equation is $r^2+9$, so the roots are $r=3i$, $-3i$, and the complementary solution is $c_1 \cos(3x)+c_2\sin(3x)$.
+	    
+	    The right hand side equals $\sin(2x)$, so a particular solution will have the form $A\cos(2x)+B\sin(2x)$
+	    
+	    \item The right hand side $\sin(3x)$ matches with the complementary solution $c_1 \cos(3x)+c_2\sin(3x)$. To avoid redundancy, we must multiply by $x$ to obtain the particular solution's form, $Ax\cos(3x)+Bx\sin(3x)$
+	    
+	    \item The characteristic equation is $r^2-6r+9$, so $r=3$ is a double root, and the complementary solution is $y=c_1 e^{3x}+c_2xe^{3x}$.
+	    
+	    The right hand side is $x^2+e^x\cos(4x)$, so the particular solution has the form $A_1x^2 + A_2x + A_3 + B_1e^x\cos(4x) + B_2e^x\sin(4x)$
+	    
+	    \item The right hand side matches with the complementary solution. To avoid redundancy, we must multiply by $x^2$ to obtain the particular solution's form, $Ax^2e^{3x}+Bx^3e^{3x}$
+	    
+	  \end{enumerate}
+\end{solution}
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 4.
+%
+%
+%%%%%%%%%%%%%%%%%
+\newpage
+\question 
+Consider the differential equation
+$$y''+4y'+4y=xe^{-2x}$$
+Using the method of undetermined coefficients,
+\begin{enumerate}[(a)]
+	\item Find a particular solution $y_p$
+	\item Find the general solution.
+\end{enumerate}
+%SOLUTION----------------
+\begin{solution}
+	\begin{enumerate}[(a)]
+		\item The characteristic equation equals $(r+2)^2$, so the complementary solution is $y_c=c_1e^{-2x}+c_2xe^{-2x}$.
+		
+		Because this overlaps with the right hand side of the equation, we must multiply by $x^2$ to obtain the form 
+		
+		$y_p=Ax^2e^{-2x}+Bx^3e^{-2x}$.
+		
+		Taking derivatives and simplifying gives us
+		
+	    $y_p'=2Axe^{-2x}+(3B-2A)x^2e^{-2x}-2Bx^3e^{-2x}$
+	    
+	    $y_p''=2Ae^{-2x}+(6B-8A)xe^{-2x}+(4A-12B)x^2e^{-2x}+4Bx^3e^{-2x}$
+        
+        Plugging this into our differential equation yields 
+        
+        $y_p''+4y_p'+4y_p=2Ae^{-2x}+6Bxe^{-2x} = xe^{-2x}$.
+       
+       Therefore $A=0$, $B=1/6$, and $y_p=\dfrac{1}{6}x^3e^{-2x}$
+       \item To get the general solution, we simply add the complementary solution to the particular solution.
+       
+       $y=y_p+y_c=c_1e^{-2x}+c_2xe^{-2x}+\dfrac{1}{6}x^3e^{-2x}$
+
+	\end{enumerate}
+\end{solution}
+
+
+\end{questions}
+\end{document}

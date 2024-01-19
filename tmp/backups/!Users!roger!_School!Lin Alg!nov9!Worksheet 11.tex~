@@ -1,0 +1,264 @@
+\documentclass[12pt]{exam}
+
+%----------- Showing Solution or Not ----------------------
+\newif\ifsoln    % establishes conditional
+\solnfalse       % defaults to false 
+
+%In order to "hide" the solutions, comment the line below
+\solntrue
+\ifsoln
+\printanswers    % what it says on the tin
+%----------------------------------------------------------  
+
+
+%---------- Solution Environment -------------------------------------
+ \framedsolutions 
+ \renewcommand{\solutiontitle}{\noindent\textbf{\textit{Solution: }}}
+%---------------------------------------------------------------------
+ 
+ 
+
+%--- Load packages------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage[none]{hyphenat}
+\usepackage{tikz-cd}
+%----------------------- 
+ 
+%--- Set up the header ---
+ \pagestyle{head}
+  \header{Name: }{}{Date: 11/09/2023}
+ 
+ \headrule
+%-------------------------
+
+
+%--- Content ---
+\begin{document}
+ 
+ \centerline{\bf M20580 L.A. and D.E. Tutorial}
+ \centerline{\bf Worksheet 10}
+ \vskip .2in
+ \noindent
+\begin{questions}
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 1.
+%
+%
+%%%%%%%%%%%%%%%%%
+		\question Determine whether the statements are true or false, and justify your answer.
+		\begin{itemize}
+			\item If $A$ is a $m\times n$ the $QR$ factorization of $A$ always exists.
+			\item If $Ax = b$ is a consistent linear system, then $A^TAx = A^Tb$ is also consistent, with the same solution.
+			\item If $Ax = b$ is an inconsistent linear system, then $A^TAx = A^Tb$ is also inconsistent.
+			
+		\end{itemize}
+		
+		\begin{solution}
+			\begin{itemize}
+				\item False. It is a necessary additional hypothesis that the columns of $A$ are linearly independent.
+				
+				\item True. A solution to $A^TAx = A^Tb$ is a least squares solution to $Ax = b$.
+				If $Ax = b$ is consistent, then multiplying both sides on the left by $A^T$ gives
+				$A^TAx = A^Tb$. In other words, any solution to $Ax = b$ is also a solution to
+				$A^TAx = A^Tb$.
+				
+				\item False. $A^TAx = A^Tb$ is always consistent. A solution is a least squares solution
+				to $Ax = b$.
+				
+			\end{itemize}
+			
+		\end{solution}
+
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 2.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question
+Consider the matrices
+\[
+  \begin{tikzcd}
+  A=
+  \begin{bmatrix}
+    -1 &0\\
+    2  &3\\
+    -1 &2\\
+    4  &-1
+  \end{bmatrix}
+  &&
+  {\bf b}=
+  \begin{bmatrix}
+    17\\11\\6\\3
+  \end{bmatrix}.
+  \end{tikzcd}
+  \]
+\begin{parts}
+  \part Find the least squares solution $\overline{x}$ to the equation $Ax={\bf b}$.
+  \part Find the vector in the column space of $A$ which is closest to
+  $\bf b$. (Hint: recall that when the columns for $A$ are linearly
+  independent, then $\mathrm{proj}_{\mathrm{col}(A)}
+  v=A(A^TA)^{-1}A^Tv$ which from (a) is $A \overline{x}$.)
+\end{parts}
+
+\begin{solution}
+  (a)
+  Recall that if $\overline{x}$ is the least squares solution, then
+  $A^T A \overline{x}=A^Tb$.
+
+  We first compute \[A^TA=
+    \begin{bmatrix}
+      22&0\\0&14
+    \end{bmatrix}\]
+  and \[A^T{\bf b}=
+    \begin{bmatrix}
+      11\\42
+    \end{bmatrix}.\]
+  Solving for 
+  $A^T A \overline{x}=A^Tb$ gives
+  \[\overline{x}=
+    \begin{bmatrix}
+     1/2\\3
+    \end{bmatrix}
+  \]
+
+  (b) Note that \[
+    \begin{bmatrix}
+      -1\\2\\-1\\4
+    \end{bmatrix}\cdot
+    \begin{bmatrix}
+      0\\3\\2\\-1
+    \end{bmatrix}
+    =0+6-2-4=0\] so the two
+  columns for $A$ are already orthogonal. Thus $\mathrm{proj}_{\mathrm{col}(A)}{\bf
+    b}=\mathrm{proj}_{c_1}{\bf
+    b}+\mathrm{proj}_{c_2}{\bf b}$ where $c_1$ and $c_2$ are the two
+  columns of $A$ as column vectors.
+  \begin{align*}
+  \mathrm{proj}_{\mathrm{col}(A)}{\bf
+    b}=&\mathrm{proj}_{c_1}{\bf
+    b}+\mathrm{proj}_{c_2}{\bf b}= \frac{c_1\cdot {\bf b}}{c_1\cdot
+    c_1}c_1 + \frac{c_2\cdot {\bf b}}{c_2\cdot c_2}c_2\\
+    =&\frac{11}{22}c_1+\frac{42}{14}c_2\\=&\frac 1 2 c_1+3c_2.
+  \end{align*}
+  As per the hint we see that this is the same thing as $A
+  \overline{x}$.
+\end{solution}
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+%Question 3.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question Consider the matrices
+\[
+  \begin{tikzcd}
+    A =
+    \begin{bmatrix}
+      1&2\\
+      0&1\\
+      -1&2
+    \end{bmatrix}
+    && {\bf b}=
+    \begin{bmatrix}
+      2\sqrt 2\\
+      \sqrt 2\\
+      -\sqrt 2
+    \end{bmatrix}.
+  \end{tikzcd}
+\]
+\begin{parts}
+  \part Find the $QR$ factorization for $A$.
+  \part Use the $QR$ factorization for $A$ to find the least squares
+  solution to $Ax={\bf b}$.
+\end{parts}
+
+\begin{solution}
+  (a) Compute the $QR$ factorization as
+  \[QR=
+    \begin{bmatrix}
+      1/\sqrt{2}&2/3\\0&1/3\\-1/\sqrt{2} &2/3
+    \end{bmatrix}
+    \begin{bmatrix}
+      \sqrt 2&0\\0&3
+    \end{bmatrix}.\]
+
+  (b) Next recall that the least squares solution $\overline{x}$ is
+  given by $R^{-1}Q^T{\bf b}$. Using this we compute:
+  \[
+    \overline{x} =
+    \frac{1}{3\sqrt{2}}
+    \begin{bmatrix}
+      3&0\\0&\sqrt 2
+    \end{bmatrix}
+    \begin{bmatrix}
+      1/\sqrt 2& 0 & -1/\sqrt 2\\
+      2/3&1/3&2/3
+    \end{bmatrix}   \begin{bmatrix}
+      2\sqrt 2\\
+      \sqrt 2\\
+      -\sqrt 2
+    \end{bmatrix} =
+    \frac{1}{3\sqrt{2}}
+    \begin{bmatrix}
+      9\\2
+    \end{bmatrix} =
+    \begin{bmatrix}
+      3/\sqrt{2}\\
+      \sqrt{2}/3
+    \end{bmatrix}
+  \]
+\end{solution}
+
+
+\break
+%%%%%%%%%%%%%%%%%
+%
+%
+% Question 3.
+%
+%
+%%%%%%%%%%%%%%%%%
+\question Find an explicit solution for the separable differential
+equation
+\[ 3x^2\frac{\mathrm{d}y}{\mathrm{d}x}=y(x+4x^2)\] with the initial condition 
+$y(1)=2$.
+\begin{solution}
+  First separate the variables:
+  \[\frac 1 y
+    \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{3x}+\frac{4}{3}. \]
+  Next we integrate with respect to $x$ to get:
+  \[ \ln(y)=\frac{1}{3}\ln(x)+\frac{4x}{3}+C. \] Exponentiating both sides gives
+  \[y=e^{1/3\ln(x)+4/3x+C}.\]
+  Split up the right hand side as $e^{1/3\ln(x)}e^{4/3x+C}$ and
+  observe
+  that  \[e^{1/3\ln(x)}=\left(e^{\ln(x)}\right)^{1/3}=x^{1/3}=\sqrt[3]{x}.\]
+  Thus we can simplify this to get
+  \[ y = \sqrt[3]{x}e^{4/3x+C}.\]
+  Plugging in $x=1$ and $y=2$ gives $2=e^{4/3+C}$. Taking log of both
+  sides gives $\ln(2)=4/3+C$ and thus $C=\ln(2)-4/3$. Putting it all together we obtain
+  \[
+    y = \sqrt[3]{x} e^{4/3x+\ln(2)-4/3}.
+  \]
+  Again we can simplify by observing
+  that \[e^{4/3x+\ln(2)-4/3}=e^{\ln(2)}e^{4/3x-4/3}=2e^{4/3x-4/3}.\]
+  Thus our final answer is
+  \[ y = 2\sqrt[3]{x} e^{4/3x-4/3}.\]
+\end{solution}
+\end{questions}
+\end{document}

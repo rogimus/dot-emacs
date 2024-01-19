@@ -1,0 +1,19 @@
+#+LATEX_CLASS: amsart
+#+LATEX_CLASS_OPTIONS: [a5, 14pt]
+#+LATEX_HEADER: \input{/Users/roger/_School/templateorg.tex}
+#+TITLE: Test Doc
+#+AUTHOR: Roger Murray
+#+DATE: 2022-03-02
+#+OPTIONS: toc:nil
+#+OPTIONS: H:1 num:nil
+#+OPTIONS: H:2 num:nil
+
+* this is a test
+  testing testing
+** Question 2
+   This is a question
+ #+BEGIN_proof
+ this is a proof
+
+ 
+ #+END_proof

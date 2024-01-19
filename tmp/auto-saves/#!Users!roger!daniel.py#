@@ -1,0 +1,22 @@
+for i in range(1,10):
+    coins = {}
+    coins[(0,i)] = coins.get((0,i),0)+1
+    coins[(0,-i)] = coins.get((0,-i),0)+1
+    coins[(i,0)] = coins.get((i,0),0)+1
+    coins[(-i,0)] = coins.get((-i,0),0)+1
+    for j in range(1,i):
+        for sign in [(1,1),(-1,1),(1,-1),(-1,-1)]:
+            c = (sign[0]*j, sign[1]*(i-j))
+            coins[c] = coins.get(c,0) +1
+    print(i)
+    print(coins)
+    trueCoins ={}
+ #   for i in coins:
+ #       if coins[i] >1:
+ #           trueCoins[i] = 1
+ #   #print(coins)
+ #   print(trueCoins)
+
+   # gridsize^2/coins >= numCoins
+
+ #   coins[c] = coins.get(c,0) +1

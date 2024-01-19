@@ -1,0 +1,8 @@
+#+title: GTD tickler file
+#+author: Bingus Murray
+#+description: This file is to schedule specific task reminders in my implementation of GTD.
+
+For more info, this is based on [[https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html][this blog post]] by Nicolas Petton.
+
+* Put in grades for Calc1                                                :TA:
+DEADLINE: <2022-12-07 Wed>

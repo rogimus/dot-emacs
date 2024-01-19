@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       BB0A0A20-63BE-4DE1-A032-E4B058F23119
+:END:
+#+title: semisimplicial object
+#+filetags: :category theory:topology:
+
+A /semisimplicial object of \(\mathcal{C}\)/ is a functor
+\(\Delta_{inj}\to \mathcal{C}\) where \(\Delta_{inj}\) is defined [[id:F60ED86B-EE8F-465E-BAC9-221DA97AB073][here]]
+

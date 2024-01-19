@@ -1,0 +1,12 @@
+package dataAPI
+
+const baseURL = "https://data.exchange.coinjar.com/products/"
+
+type Trades []struct {
+	Value     string    `json:"value"`
+	Timestamp time.Time `json:"timestamp"`
+	Tid       int       `json:"tid"`
+	TakerSide string    `json:"taker_side"`
+	Size      string    `json:"size"`
+	Price     string    `json:"price"`
+}

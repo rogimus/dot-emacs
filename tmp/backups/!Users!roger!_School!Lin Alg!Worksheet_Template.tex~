@@ -1,0 +1,233 @@
+\documentclass[12pt]{exam}
+
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{microtype}
+%\usepackage{geometry}
+\usepackage[parfill]{parskip}
+
+\printanswers
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheadrule
+\firstpageheader{Names: }{}{Date: 08/24/2023}
+\runningheader{Names: }{}{Date: 08/24/2023}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \theoremstyle{theorem}                           %
+% \newtheorem{lemma}[theorem]{Lemma}               %
+% \newtheorem{proposition}[theorem]{Proposition}   %
+% \newtheorem{corollary}[theorem]{Corollary}       %
+% \newtheorem{fact}[theorem]{Fact}                 %
+% \newtheorem{claim}[theorem]{Claim}               %
+% \newtheorem{conjecture}[theorem]{Conjecture}     %
+%                                                  %
+% \theoremstyle{definition}                        %
+% \newtheorem{notation}[theorem]{Notation}         %
+% \newtheorem{definition}[theorem]{Definition}     %
+% \newtheorem{example}[theorem]{Example}           %
+% \newtheorem{construction}[theorem]{Construction} %
+% \newtheorem{warning}[theorem]{Warning}           %
+% \newtheorem{remark}[theorem]{Remark}             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\bf \normalsize Math 20580 Tutorial -- Worksheet 1}
+\end{center}
+\vspace{12pt}
+
+\begin{questions}
+
+  %%%%%%%%%%%%%%
+  % Question 1 %
+  %%%%%%%%%%%%%%
+
+
+  \question Circle which of the following matrices are in \textbf{row
+    echelon form}?
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ A=\left[
+        \begin{array}{c c c c}
+          1&4 &2 &3 \\
+          2&-1&7 &0                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ B=\left[
+        \begin{array}{c c c c}
+          1&0 &2 &0 \\
+          0&0&5 &-1                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  \begin{minipage}{0.45\textwidth}
+    \[ C=\left[
+        \begin{array}{c c c c}
+          0&3 &-1 &5 \\
+          2&8&16 &1                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ D=\left[
+        \begin{array}{c c c c}
+          1&7 &22 &9 \\
+          0&0&0 &0                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  \vspace{10pt}
+  \question Use Gaussian elimination to solve the following systems of
+  linear equations. What is the rank of the associated matrices?
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\,
+      \begin{cases}
+        2x+y-z=1\\
+        x+2y-z=-1 \\
+        3x+2y+z=9
+      \end{cases}\]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(b)}\,\,
+      \begin{cases}
+        x+y-z=0\\
+        3x+y-2z=0 \\
+        2x-6y+2z=0
+      \end{cases}\]
+  \end{minipage}
+
+
+  %%%%%%%%%%%%%%
+  % Question 3 %
+  %%%%%%%%%%%%%%
+  \newpage
+  \question Given the following augmented matrices corresponding to
+  some systems of linear equations,
+  determine how many solutions they have (\textbf{if any}). Also, if the
+  corresponding linear system is consistent, determine its rank and
+  the number of free variables it has.
+
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &0 &-2 &3 & 8 \\
+          0 &1 &2 & 0 & 3 \\
+          0 &-3 &-6 & 0 & 1 \\
+          0 &1 &-1 &4 & 0 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(b)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &1 &1 &1 & 14 \\
+          0 &1 & -3& 0 & 2 \\
+          0 &0 &1 & 1 & 3 \\
+          0 &0 &2 &2 & 6 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &5 & 2& -5 & 1 \\
+          0 &1 & 0 & 3 & 2 \\
+          0 &0 & 1 & 1 & 9 \\
+          0 & 0  & -1 & 1 & 3 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+\newpage
+\question
+\begin{parts}
+    \part Show that the following pair of matrices is \textbf{row
+      equivalent}, i.e. find a sequence of elementary row operations
+    converting one into the other.
+    \[
+      A=\left[
+          \begin{array}{c c }
+            1&3\\
+            3&4
+          \end{array}
+       \right]\quad\quad
+      B=\left[
+          \begin{array}{c c }
+            4&7\\
+            2&6
+          \end{array}
+        \right]
+    \]
+
+  
+    \part Do the same for the following pair.
+    \[
+      A=\left[
+          \begin{array}{c c c}
+            1&0&1\\
+            2&1&6\\
+            -3&1&1
+          \end{array}
+       \right]\quad\quad
+      B=\left[
+          \begin{array}{c c c}
+            2&1&6\\
+            1&1&5\\
+            5&1&9
+          \end{array}
+        \right]
+    \]
+  \end{parts}
+    \textbf{Hint:} put the matrices in row echelon form.
+
+
+  %%%%%%%%%%%%%%
+  % Question 3 %
+  %%%%%%%%%%%%%%
+  \newpage
+  \question Consider the following matrix:
+  \[ \left[
+      \begin{array}{c c c | c}
+        1 &2 & 4& 2h+k  \\
+        1 &1 & 1 & 2k \\
+        0 &1 & 3 & h 
+      \end{array}
+    \right]
+  \]
+  Find what conditions, if any, must be placed on $h$ and $k$ to
+  ensure that the corresponding system of equations is consistent.
+
+  
+\end{questions}
+
+\end{document}

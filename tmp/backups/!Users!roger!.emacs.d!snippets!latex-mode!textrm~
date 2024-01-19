@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rm
+# key: rm
+# --
+\textrm{$1}$0

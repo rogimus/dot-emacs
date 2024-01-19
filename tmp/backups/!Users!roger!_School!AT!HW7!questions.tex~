@@ -1,0 +1,223 @@
+\subsection*{Question 1}
+{\bf [Hatcher 3.3.6]}
+
+\noindent
+Lets $M_1$ and $M_2$ be two disjoint connected $n$-manifolds.
+\begin{enumerate}
+\item Show that if $M_1$ and $M_2$ are closed then there are
+  isomoprhisms $H_i(M_1\# M_2)\cong H_i(M_1)\oplus H_i(M_2)$ for
+  $0<i<n$, with one exception: If both $M_1$ and $M_2$ are
+  nonorientable, then $H_{n-1}(M_1\# M_2)$ is obtained from
+  $H_{n-1}(M_1)\oplus H_{n-1}(M_2)$ by replacing one of the two $\bbZ/2$
+  summands by a $\bbZ$ summand. [Euler characteristics may be helpful in
+  this case.]
+\item 
+  Show that $\chi(M_1 \# M_2) = \chi(M_1)+\chi(M_2)-\chi(S^n)$ if
+  $M_1$ and $M_2$ are closed.
+\end{enumerate}
+
+\begin{proof}
+  \phantom{ }\\
+  \noindent
+  (a) This follows quickly by considering the LES of the pair $(M_1\#
+  M_2, S^{n-1})$ where $S^{n-1}$ is the boundary of the disc on which $M_1$
+  and $M_2$ are glued. Since $H_i(S^{n-1})=0$ for $0<i<n-1$, we get that the
+  LES breaks into sequences
+  \[ \begin{tikzcd}
+      0\to 0\to H_i(M_1\# M_2) \to H_i(M_1\# M_2, S^{n-1}) \to 0
+    \end{tikzcd} \]
+  for $0<i<n-1$.
+  We also get another sequence
+  \[ 0 \to H_n(M_1\#M_2) \to H_n(M_1\# M_2, S^{n-1}) \to \bbZ \to
+    H_{n-1}(M_1\# M_2) \to H_{n-1}(M_1\# M_2, S^{n-1}) \to 0. \]
+  Since the $(M_1\# M_2, S^{n-1})$ is a good pair, we get
+  \[ H_i(M_1\# M_2, S^{n-1}) \cong H_i(M_1\# M_2 / S^{n-1}) \cong
+    H_i( M_1\vee M_2) = H_i(M_1)\oplus H_i(M_2).\]
+  In the case that both $M_1$ and $M_2$ are orientable we then get
+  \[ 0 \to \bbZ \to \bbZ\oplus\bbZ \to \bbZ \xrightarrow{i_*}
+    H_{n-1}(M_1\# M_2) \to H_{n-1}(M_1\# M_2, S^{n-1}) \to 0. \]
+  In this case $i_*$ must clearly be 0 for exactness, and thus
+  the result holds.
+
+  If only one of $M_1$ or $M_2$ is orientable (WLOG assume $M_1$)
+  then we obtain
+  \[ 0 \to 0 \to \bbZ \xrightarrow{\partial} \bbZ \xrightarrow{i_*}
+    H_{n-1}(M_1\# M_2) \to H_{n-1}(M_1\# M_2, S^n) \to 0. \]
+  The map $\partial$ must be the identity on $\bbZ$. That is, the the
+  fundamental class
+  for $M_1$ in $H_n(M_1)$ has boundary precisely the fundamental
+  class for 
+  $S^{n-1}$. This is essentially by definition of a fundamental
+  class. Indeed take the disc $D$ we cut out from $M_1$ and take a
+  point $x$ inside the disc. Then the fundamental class $[M]$ by
+  definition restricts to a generator of $H_n(M,M\setminus \{x\})
+  \cong H_n(D,D\setminus \{ x\}) \cong \widetilde{H}_{n-1} (S^{n-1})$.
+  Thus again, $i_*$
+  is 0 and the result holds.
+
+  Finally, if both $M_1$ and $M_2$ are nonorientable, then we obtain
+  \[ 0 \to  0 \to 0 \to \bbZ \xrightarrow{i_*}
+    H_{n-1}(M_1\# M_2) \to H_{n-1}(M_1)\oplus H_{n-1}(M_2) \to 0. \]
+  Here $H_{n-1}(M_1\# M_2) = \bbZ/2 \oplus \bbZ^n$ for some $n$ and
+  $H_{n-1}(M_1)\oplus H_{n-1}(M_2) = \bbZ/2\oplus \bbZ/2 \oplus
+  \bbZ^m$ for some $m$. (Here we've
+  used Cor 3.28 of Hatcher.)  Since the right map is surjective, at
+  least one of the $\bbZ$ must map onto a $\bbZ/2$. Furthermore, the
+  $\bbZ/2$ in $H_{n-1}(M_1\# M_2)$ \emph{must} map to a $\bbZ/2$
+  since otherwise it must map to 0, and hence must be hit by something
+  from $i_*$ which is impossible since $i_*$ is injective. By exactness, the
+  kernel of this map is the image of $i_*$. Thus we can write
+  $H_{n-1}(M_1\# M_2) = \bbZ/2 \oplus \bbZ \oplus \bbZ^{n-1}$ where
+  the first two terms map onto $\bbZ/2\oplus \bbZ/2$ and the first
+  $\bbZ$ is the image of $i_*$. Since $i_*$ maps $\bbZ$ into the
+  kernel, it must be multiplication by two on the $\bbZ$
+  term. Finally, the fact that this is a SES means  $H_{n-1}(M_1\#
+  M_2, S^{n-1}) \cong H_{n-1}(M_1\# M_2)/2\bbZ$ which says that
+  $n-1=m$ which gives the result.
+  \\
+  \\
+  \noindent
+  (b) This follows from a counting argument, and (a). In particular we
+  have that the ranks of $H_i(M_1\# M_2)$ is equal to $\rk
+  H_i(M_1)+\rk H_i(M_2)-\rk H_i(S^n)$ for $0<i<n-1$.
+  Since $M_1$ and $M_2$ are connected, we have
+  \[ 1= \rk H_0(M_1) +\rk H_0(M_2)-\rk H_0(S^n) = \rk H_0(M_1\#
+    M_2). \]
+  When $i=n-1$ we get $\rk H_i (S^n) = 1$. In the case $M_1$ and
+  $M_2$ are nonorientable, by (a) we have
+  \[ \rk H_{n-1}(M_1 \# M_2) = \rk H_{n-1}(M_1) + \rk H_{n-1}(M_2) +
+    1. \]
+  This $+1$ matches up with the 1 coming from $H_n(S^n)$ and we get
+  the result.
+
+  In the case that at least one of $M_1$ and $M_2$ is orientable, then by 
+  (a) we have $\rk H_{n-1} (M_1\# M_2) = \rk H_{n-1} (M_1) +\rk
+  H_{n-1}(M_2)$. If only one of them is orientable (assume WLOG it's
+  $M_1$) then we have +1
+  coming from $H_n(M_1)$ which cancels with the +1 coming from
+  $H_n(S^n)$.
+
+  In the case that both $M_1$ and $M_2$ are orientable, then so too is
+  $M_1\# M_2$ and we end up with
+  \[ \rk H_n(M_1\# M_2) = 1 = 1+1-1 = \rk H_n(M_1)+\rk H_n (M_2) - \rk
+    H_n(S^n). \] 
+\end{proof}
+
+
+
+
+\subsection*{Question 2}
+{\bf [Hatcher 3.3.7]}
+\\
+\noindent
+For a map $f:M\to N$ between connected closed orientable $n$-manifolds
+with fundamental classes $[M]$ and $[N]$, the \emph{degree} of $f$ is
+defined to be the integer $d$ such that $f_*([M]) = d[N]$, so the sign
+of the degree depends on the choice of fundamental classes. Show that
+for any connected closed orientable $n$-manifold $M$ there is a degree
+1 map $M\to S^n$.
+
+\begin{proof}
+  \phantom{ }
+  \\
+  \noindent
+  Take some $n$-disk $D$ in $M$. Construct $f$ as the map which sends
+  $D$ to $S^n\setminus \{N\}$ where $N$ is the north pole, and
+  which maps $M\setminus D$ to $N$. Then, by definition, $[M]$ maps to
+  the generator of $H_n(M,M\setminus D)$. The pair $(M, M\setminus D)$
+  is a good pair. To see this, we can replace $D$ with a slightly
+  smaller disk contained in $D$. This gives a neighbourhood
+  deformation onto $D$. In particular we then get an isomorphism
+  $H_n(M,M\setminus D)\cong H_n(M/(M\setminus D))$. Since $M/(M\setminus
+  D)\simeq D/\partial D \simeq S^n$ we have that $[M]$ maps to the
+  generator of $H_n(S^n)$. Thus $f$ is a map such that $f_*([M])= \pm
+  [S^n]$. If $f_*([M]) = -[S^n]$ then compose $f$ with an orientation
+  reversing map on the sphere, i.e.
+  \[
+    \begin{bmatrix}
+      1 & \ldots &  &  0  \\
+      0 & \ddots &  & \vdots \\
+      \vdots &  & 1 & 0  \\
+      0 & \cdots & 0 & -1 
+    \end{bmatrix}
+  \]
+\end{proof}
+
+
+
+
+
+
+\subsection*{Question 3}
+{\bf [Hatcher 3.3.24]}
+
+\noindent
+Let $M$ be a closed connected 3-manifold, and write $H_1(M)$ as
+$\bbZ^r\oplus F$, the direct sum of a free abelian group of rank $r$
+and a finite group $F$. Show that $H_2(M)$ is $\bbZ^r$ if $M$ is
+orientable, and $\bbZ^{r-1}\oplus \bbZ/2$ if $M$ is non-orientable. In
+particular, $r\geq 1$ when $M$ is non-orientable. Using 3.3.6,
+construct examples showing there are no other restrictions on homology
+groups of closed 3-manifolds. [In the non-orientable case, consider
+the manifold $N$ obtain from $S^2\times I$ by identifying $S^2\times
+\{0\}$ with $S^2 \times \{1\}$ via a reflection of $S^2$.]
+
+\begin{proof}
+  \phantom{ }\\
+  \noindent
+  By Corollary 3.28 of Hatcher, if $M$ is orientable the torsion
+  subgroup of $H_2(M)$ is trivial, and if $M$ is non-orientable it is
+  $\bbZ/2$. All that is left is to show that the free part of $H_2$ is
+  $\bbZ^{r-1}$ if $M$ is non-orientable, and $\bbZ^r$ if $M$ is
+  orientable.
+
+  First let us assume that $M$ is orientable. In this case
+  we can use Poincar\'e duality, which we use alongside the universal
+  coefficient theorem (UCT). Poincar\'e duality says that $H_1(M)\cong
+  H^2(M)$. The UCT says that the following is exact:
+  \[  0\to \Ext^1_\bbZ(H_1(M),\bbZ) \to H^2(M) \to \Hom_\bbZ
+    (H_2(M),\bbZ)\to 0. \]
+  To compute $\Ext^1(\bbZ^r\oplus F,\bbZ)$ we can take a projective
+  resolution
+  \[ 0 \to \bbZ^m \to \bbZ^m \oplus \bbZ^r \to \bbZ^r \oplus F \to
+    0. \]
+  Taking $\Hom_\bbZ(- ,\bbZ)$ and removing the first time gives a cochain
+  complex 
+  \[ 0 \to \Hom_\bbZ(\bbZ^m\oplus \bbZ^r, \bbZ) \to
+    \Hom_\bbZ(\bbZ^r,\bbZ)\to  0. \]
+  We have $\Hom_\bbZ(\bbZ^m\oplus\bbZ^r,\bbZ)\cong \bbZ^m\oplus
+  \bbZ^r$. To see this recall we have $\Hom_\bbZ(\oplus_n \bbZ,\bbZ)
+  \cong \bigoplus_n \Hom_\bbZ(\bbZ,\bbZ)$.
+  Taking homology at $\Hom_\bbZ(\bbZ^m\oplus \bbZ^r,\bbZ)$ gives
+  $\bbZ^m$. Then, by exactness we get that
+  $\Hom_\bbZ(H_2(M),\bbZ)\cong (\bbZ^m\oplus \bbZ^r) / \bbZ^m \cong
+  \bbZ^r$.
+
+  In thinking of a way to solve it for $M$ non-orientable, I've
+  realized we can simply use the Euler characteristc for $M$. Since
+  $M$ is odd dimensional, we have that $\chi(M)=0$. In the
+  non-orientable case this means $1-r+k-0=0$ where $k$ is $\rk
+  H_2(M)$. Thus $k=r-1$ and by our earlier discussion (involving Cor
+  3.28) we have $H_2(M)\cong \bbZ^{r-1}\oplus \bbZ/2$.
+
+  \begin{remark*}
+    This same argument provides a much simpler argument that if $M$ is
+    orientable then $H_2(M)=\bbZ^r$. I already typed this though and
+    this way is kind of fun. Secretly it's probably an equivalent
+    proof since Poincar\'e duality is the key to showing the Euler
+    characteristic is 0 (even for the case when $M$ is orientable). By
+    looking at the proof of $\chi(M)=0$ for $\dim M=3$, I
+    guess there might be a fun way of proving this question for the
+    non-orientable case by using the UCT and Poincar\'e duality with
+    coefficients in $\bbZ/2$. 
+  \end{remark*}
+
+  For the second part of the question, consider the 3-manifold
+  $S^2\times I$.
+\end{proof}
+
+\noindent
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "assignment7"
+%%% End:

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: emph
+# key: emph
+# --
+\textit{$1} $0

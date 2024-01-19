@@ -1,0 +1,271 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+% for \boxslash need stmaryrd.
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing} 
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.7in]{geometry}
+\usepackage[parfill]{parskip}
+\linespread{1.1}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition} 
+\newtheorem{notation}[theorem]{Notation} 
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{Goal}[theorem]{Goal}
+
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\GG}{\bG}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\Einf}{\bE_\infty}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+
+
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\BU}{BU}
+\newcommand{\MUR}{\MU_\bR}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\HH}{H}
+\DeclareMathOperator{\BP}{BP}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\coTor}{coTor}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\Coh}{Coh}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Funct}{Funct}
+\newcommand{\Functc}{\Funct_{\mathrm{cont}}}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Ch}{Ch}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Ho}{Ho}
+\DeclareMathOperator{\proj}{proj}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Alg}{\mathrm{Alg}}
+
+\newcommand{\Gal}{\mathrm{Gal}}
+
+
+
+\let\amsamp=&
+
+
+
+\begin{document}
+\title{\bf DG-category Lectures} \author{}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+
+\section*{Lecture 1}
+\setcounter{section}{1}
+\subsection{The Beginnings}
+
+The goal of these lectures is to introduce the
+foundations of the subject of DG-categories before looking at some
+examples and applications (such as to quasi-coherent sheaves). To get
+to derived categories we typically progress
+\[
+  \begin{tikzcd}[column sep = small]
+    \text{modules} \arrow[r, rightsquigarrow] & \text{resolutions of
+      modues} \ar[r, rightsquigarrow] & \text{arbitrary chain
+      complexes of modules} \ar[r,rightsquigarrow] & \text{derived
+      category}.
+  \end{tikzcd}
+\]
+Typically derived categories take the form of triangulated
+categories. We would like something more sophisticated like
+DG-categories, or stable $\infty$-categories. We choose DG-categories
+for this course. DG-categories, in comparison to triangulated
+categories, tend to behave much better when clumped together.
+
+For the rest of these notes fix a ground field $k$.
+\begin{remark}
+  Most of what is said generalises to commutative rings but you have
+  to be careful in some places.
+\end{remark}
+
+\begin{definition}
+  A DG-category $\cA$ consists of the following data:
+  \begin{enumerate}[(1)]
+  \item A set of objects.
+  \item For any pair of objects $X,Y\in \cA$ a chain complex
+    $\Hom_{\cA}(X,Y)\in \Ch(k)$.
+  \item For any three objects $X,Y,Z\in \cA$ a map:
+    \[ \circ:\Hom_{\cA}(X,Y)\otimes \Hom_{\cA}(Y,Z)\to
+      \Hom_{\cA}(X,Z) \] referred to as \emph{composition} such that
+    \begin{enumerate}[(i)]
+    \item composition is associative
+    \item For any $X\in \cA$ there is an element
+      $1_X\in \Hom_{\cA}(X,X)$ such that composition with $1_X$ either
+      on the left or on the right is the identity. Here we typically
+      mean $1_X$ is a zero cycle, $1_X\in Z^0(\Hom_{\cA}(X,X))$.
+    \end{enumerate}
+  \end{enumerate}
+\end{definition}
+\begin{question}
+  Why do we require $1_X$ to live in degree 0? Do we always assume
+  that composition has degree 0?
+\end{question}
+\begin{remark}
+  An example of when taking $k$ to be a commutative ring is more
+  subtle is already in the definition of a DG-category -- we want
+  $\otimes_k$ to be exact, and so perhaps we would instead want to
+  take $\otimes^\bL$ in $(3)$.
+\end{remark}
+\begin{example}
+  (1) Take $\Hom_\cA(X,Y)$ to be concetrated in degree zero. This is a
+  $k$-linear category.
+
+  (2) Let $R$ be a ring. Consider $\Ch(R)$ and with
+  $\Hom_{\Ch(R)}(M^\bullet,N^\bullet)^s = \prod_r
+  \Hom(M^r,N^{r+s})$. If
+  $f=(f_t)\in \Hom_{\Ch(R)}(M^\bullet,N^\bullet)^s$ then we define the
+  differential as $d_N\circ f+(-1)^s f\circ d_M$. Sometimes we might
+  denote this differential as $[d,-]$ where $[-,-]$ should indicate a
+  sort of commutator.
+An important class of examples is when you have standard complex in
+mind for computing $\Ext$. DG-categories make a lot of sense in these
+settings since you can define a particular DG-category where the
+$\Hom$-complexes are precisely these standard complexes you have in
+mind.
+
+(4)  Let $R$ be a ring (by which we will always mean a $k$-algebra)
+  and construct a DG-category $\cA$ with objects all $R$-modules, and
+  with $\Hom_{\cA}(M,N)$ the bar resolution.
+\begin{remark}
+  Think about this from the exercises. Do we really need like
+  projective flat or something on $M$?
+\end{remark}
+
+(4) A classical example which isn't partiularly in the spirit of this
+course is to take $k=\bC$, and $\cA$ to have objects the holomorphic
+vector bundles on a complex manifold. Then take ??? homsets.
+
+\end{example}
+
+\subsection{Functors between DG-categories}
+
+The naive definition works:
+\begin{definition}
+  A functor between DG-categories $\cA$ and $\cB$ is:
+  \begin{enumerate}
+  \item a map of sets $\Ob(\cA)\xrightarrow{F}\Ob(\cB)$.
+  \item A map $\Hom_\cA(X,Y)\to \Hom_{\cB}(F(X),F(Y))$ which preserves
+    the identity and is compatible with composition.
+  \end{enumerate}
+\end{definition}
+Equivalence is kind of subtle however. We can define a strict
+equivalence in the normal way: i.e. a functor which is fully faithful
+(an isom on homsets) and essentially surjective (every object in the
+target is isomorphic to something in the image). This notion is too
+restrictive for DG-categories however. For example as in (4) if we
+have two different DG-categories corresponding to two different
+standard complexes both used to compute the same $\Ext$ groups, then
+we want to think of them as the equivalent in a sense.
+
+\begin{definition}
+  A quasi-equivalence of DG-categories is a DG-functor $F:\cA\to\cB$
+  which is \emph{quasi}-fully faithful, and is
+  \emph{quasi}-essentially surjective, i.e. $\Hom_{\cA}(X,Y)\to
+  \Hom_{\cB} (F(X),F(Y))$ is a quasi-isomorphism, and for every $Y\in\cB$
+  there is an $X\in \cA$ and maps (zero cycles) $F(X)\to Y$ and $Y\to
+  F(X)$  which compose to something homotopic to the identity.
+\end{definition}
+
+\begin{exercise}
+  (1) Consider $\Ho(\cA)$ to have the same objects, but where
+  morphisms are $\HH^0(\Hom_\cA(X,Y))$.
+
+  (2) Show a functor $F:\cA\to\cB$ is quasi-essentially surjective if
+  and only if $\Ho(F):\Ho(\cA)\to \Ho(\cB)$ is essentially surjective.
+\end{exercise}
+
+
+
+
+\section*{Lecture 2}
+\setcounter{section}{2}
+
+\begin{example}
+  Consider $\cA$ where $\Ob(\cA)=\{\pt\}$ and where
+  $\Hom_{\cA}(\pt,\pt)=R$ where $R$ is a DG-algebra.
+\end{example}
+
+\begin{Goal}
+  Go from $\Ch(R)\to \cD(R)$ for $R\in \Alg_k$.
+\end{Goal}
+
+There are two main approaches to constructing $\cD(R)$.
+\begin{enumerate}
+\item Localisation by quisi-isomorphisms. [Drinfeld Quotient Notes]
+  \begin{remark}
+    localisation refers to inverting morphisms while quotient refers
+    to erasing objects so we might be concerned how Drinfeld's
+    approach works. However SOMETHING
+    $A\to B\to \text{cone}(A\to B)\to\cdots$ SOMETHING. So
+    localisation is equivalent to killing all cones of
+    quasi-isomorphisms.
+  \end{remark}
+\item Resolve everything (choose specific standard representatives for
+  quasi-isomorphism classes).
+\end{enumerate}
+\begin{example}
+  $\cD^{-}(R)\simeq \Ch^{-}(R)^{\proj}$
+\end{example}
+\subsection*{Classical Ideal}
+(Spaltenstein) (related to or referred to Cartan-Eilenberg systems)
+
+
+
+\end{document}

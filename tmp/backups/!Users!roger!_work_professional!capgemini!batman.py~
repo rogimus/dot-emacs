@@ -1,0 +1,25 @@
+first = "john"
+last = "doe"
+postcode = "54321"
+
+def part1(pc):
+    while len(pc) > 1:
+        s = 0
+        for i in pc:
+            s += int(i)
+        pc = str(s)
+    return pc
+
+print(part1(postcode))
+
+def part2(first, last):
+    if len(first) < len(last):
+        return first.upper()
+    return last
+
+
+    # if len(pc) == 1:
+    #     return 
+    
+    # for i in postcode:
+        

@@ -1,0 +1,13 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+  std::getline(std::cin, line){
+    if (line) {
+      
+    }
+
+  
+  return 0;
+}

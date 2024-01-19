@@ -1,0 +1,506 @@
+\documentclass[8pt, xcolor=dvipsnames]{beamer}
+% \input{gross}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{tcolorbox} \usepackage[T1]{fontenc} \usepackage{fontspec}
+\usepackage{unicode-math}
+% \setmainfont{TeX Gyre Schola}
+\setmathfont[FakeBold=0.5]{Latin Modern Math}
+% \setmathfont{Latin Modern Math} \usepackage[default,
+% scale=0.85]{droidsans} \setsansfont{Roboto}
+\setsansfont{Ubuntu}
+\addtobeamertemplate{navigation symbols}{}{%
+  \usebeamerfont{footline}%
+  \usebeamercolor[fg]{footline}%
+  \hspace{1em}%
+  \insertframenumber/\inserttotalframenumber }
+
+
+\newcommand{\bbF}{\mathbf{F}}
+\newcommand{\bbZ}{\mathbf{Z}}
+\newcommand{\bbS}{{S}}
+\newcommand{\bbG}{\mathbf{G}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Cotor}{\mathrm{CoTor}}
+\newcommand{\HH}{\mathrm{H}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\CAlg}{\mathrm{CAlg}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Comod}{\mathrm{CoMod}}
+\newcommand{\MU}{\mathrm{MU}}
+\newcommand{\BP}{\mathrm{BP}}
+\newcommand{\bo}{\mathrm{bo}}
+\newcommand{\bu}{\mathrm{bu}}
+\newcommand{\CP}{\mathbf{CP}}
+
+
+
+
+
+\title{The Adams and Adams-Novikov Spectral Sequences} \subtitle{Or:
+  how to compute stable homotopy groups of spheres} \author{Roger
+  Murray}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=Homotopy groups of Spheres, colback=white,
+    colframe=darkgray, colbacktitle=red, coltitle=black]
+    Computing the homotopy groups of spheres is a fundamental problem
+    in algebraic topology.  \vskip 8pt
+
+    \includegraphics[width=\textwidth]{homotopy.png}
+    {\raggedright\tiny\color{gray}\it Credit: Wikipedia page
+      ``Homotopy groups of spheres''}
+    
+    \vskip 8pt An interesting problem is studying the stable
+    behaviour, i.e. studying
+    \[ \pi_n^S:= \varinjlim_k \pi_{n+k} (S^n).\]
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  
+  \begin{tcolorbox}[title=Road map, colback=white, colframe=darkgray,
+    colbacktitle=green, coltitle=black]
+
+    \begin{enumerate}
+    \item $E$-Adams Spectral Sequence
+      \begin{enumerate}
+      \item Hopf algebroids, comodules, and homological algebra
+      \end{enumerate}
+    \item (Classical) Adams Spectral Sequence (ASS)
+      \begin{enumerate}
+      \item Dual Steenrod Algebra
+      \item Example calculations for $\mathrm{MU}$ and $\mathrm{bo}$
+      \item May Spectral Sequence (MSS)
+      \item Calculate some early stable stems
+      \end{enumerate}
+    \item Adams-Novikov Spectral Sequence (ANSS)
+      \begin{enumerate}
+      \item $\mathrm{MU}$, $\mathrm{BP}$, and formal group laws
+      \item Algebraic Novikov Spectral Sequence
+      \item $v_i$-Bockstein Spectral Sequence ($v_i$-BSS)
+      \item Computations!
+      \end{enumerate}
+    \end{enumerate}
+    
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}
+  \begin{tcolorbox}[title=Hopf Algebroids, colback=white,
+    colframe=darkgray, colbacktitle=yellow, coltitle=black]
+    \underline{Guiding Fact:} A Hopf algebroid over a commutative ring
+    $k$ is a cogroupoid object in $\CAlg_k$, i.e. a pair of
+    commutative $k$-algebras $(A,\Gamma)$ such that
+    \[\Big(\Hom_{\CAlg_k}(A,B),\,\,\Hom_k(\Gamma,B)\Big)\] is a
+    groupoid for any commutative $k$-algebra $B$.
+
+  \end{tcolorbox}
+  \begin{tcolorbox}[colframe=darkgray, colback=white]
+    Using the functor-of-points and the equivalence
+    $\Aff/k\simeq \CAlg_k^{\mathrm{op}}$ we can conclude
+    $\Spec(B)\simeq \Hom_{\CAlg_k}(B,-)$ for $\Spec(B)\in
+    \Aff/k$. Then a Hopf algebroid is equivalently $(A,\Gamma)$ such
+    that
+    \[(\Spec A, \,\,\Spec \Gamma)\] is a groupoid object in $\Aff/k$.
+
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=Definition:, colback=white,
+    colframe=darkgray, colbacktitle=teal, coltitle=white]
+    A (commutative) Hopf algebroid over a commutative ring $k$ is a
+    tuple $(A,\Gamma,\eta_L,\eta_R,\Delta,c,\varepsilon)$ with:
+    \begin{enumerate}
+    \item $A$ and $\Gamma$ both $k$-algebras
+    \item $\eta_L,\eta_R: A\to \Gamma$
+    \item $\Delta:\Gamma\to \Gamma\otimes_A \Gamma$
+    \item $c:\Gamma\to \Gamma$
+    \item $\varepsilon: \Gamma\to A$
+    \end{enumerate}
+    such that:
+    \begin{enumerate}
+    \item
+      $ \begin{tikzcd} A\arrow[r,"\eta_L"']\arrow[rr, out=30,
+        in=150,"\id"] & \Gamma\arrow[r]& A
+      \end{tikzcd}$ (and same for $\eta_R$),
+    \item
+      $ \begin{tikzcd} \Gamma\arrow[r,"\Delta"']\arrow[rr, out=30,
+        in=150,"\id"] & \Gamma\otimes_A \Gamma\arrow[r,
+        "\varepsilon\otimes 1"']& \Gamma
+      \end{tikzcd}$ (and same for $1\otimes \varepsilon$),
+    \item $
+      \begin{tikzcd} \Gamma\arrow[r,"\Delta"] & \Gamma\otimes_A \Gamma
+        \arrow[r,shift left=1,"1\otimes\Delta"] \arrow[r,shift
+        right=1,"\Delta\otimes 1"'] & \Gamma \otimes_A \Gamma
+        \otimes_A \Gamma,
+      \end{tikzcd}
+      $
+    \item \emph{etc}...
+    \end{enumerate}
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=Comodules, colback=white, colframe=darkgray,
+    colbacktitle=Fuchsia, coltitle=white]
+    $(A,\Gamma)$ a Hopf algebroid.
+
+    A (left) $\Gamma$-comodule is a left $A$-module $M$ with a
+    $\psi_M:M\to \Gamma\otimes_A M$ which is counital and
+    coassociative, i.e. the following commute:
+    
+    \begin{minipage}{0.4\linewidth}
+      $\begin{tikzcd} M\arrow[r,"\psi_M"']\arrow[rr, out=30,
+        in=150,"\id"] & \Gamma\otimes_A M \arrow[r,
+        "\varepsilon\otimes \id"']& M
+      \end{tikzcd}$
+    \end{minipage}
+    \begin{minipage}{0.6\linewidth}
+      \[
+        \begin{tikzcd}[row sep=0em]
+          & \Gamma\otimes_A M \arrow[dr, "\id\otimes \psi_M"] &
+          \\
+          M\arrow[ur, "\psi_M"]\arrow[dr,"\psi_M"'] & &
+          \Gamma\otimes_A
+          \Gamma\otimes_A M \\
+          & \Gamma\otimes_A M \arrow[ur, "\Delta\otimes \id"'] &
+        \end{tikzcd}
+      \]
+    \end{minipage}
+
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=Cotensor product, colback=white,
+    colframe=darkgray, colbacktitle=Fuchsia, coltitle=white]
+    Given a right $\Gamma$-comodule $M$ and a left $\Gamma$-comodule
+    $N$ their \emph{cotensor product} $M\,\square_\Gamma N$ is the
+    equalizer of
+    \[
+      \begin{tikzcd}
+        M\otimes_A N \arrow[r,shift left, "\psi_M\otimes \id"]
+        \arrow[r, shift right, "\id\otimes\psi_N"'] &
+        M\otimes_A\Gamma\otimes_A N.
+      \end{tikzcd}
+    \]
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=Homological algebra of comodules,
+    colback=white, colframe=darkgray, colbacktitle=green,
+    coltitle=black]
+    \emph{Prop:}\,\, If $\Gamma$ is flat as an $A$-module, then the
+    category of left $\Gamma$-comodules forms an abelian
+    category. \qed
+  \end{tcolorbox}
+    
+  \begin{tcolorbox}[title=Injective objects of $\Comod_\Gamma$,
+    colback=white, colframe=darkgray, colbacktitle=green,
+    coltitle=black]
+    
+    \[\begin{tikzcd} N\in \Mod_A \arrow[r, rightsquigarrow] &
+        \Gamma\otimes_A N\in\Comod_\Gamma
+      \end{tikzcd}\] \vskip 1em
+    
+    \[
+      \begin{tikzcd}[row sep=0em]
+        \Hom_{\Comod_\Gamma}(M,\Gamma\otimes_A N)\arrow[r,"\sim"]  &\Hom_{\Mod_A}(M,N) \\
+        \varphi\arrow[r,mapsto]& (\varepsilon\otimes \id)\varphi \\
+        (\id\otimes f) \psi_M &\arrow[l,mapsto] f
+      \end{tikzcd}
+    \]
+    
+    \vskip 2em
+
+    \emph{Cor:} If $I$ is injective in $\Mod_A$, then
+    $\Gamma\otimes_A I$ is injective in $\Comod_\Gamma$.
+  \end{tcolorbox}
+  \begin{tcolorbox}[colback=white, colframe=darkgray]
+    \emph{Punchline:} $\Comod_\Gamma$ has enough injectives.  \vskip
+    0.7em \phantom{}
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=$\Ext$ of Comodules, colback=white,
+    colframe=darkgray, colbacktitle=green, coltitle=black]
+
+    $\Ext^i_\Gamma(M,N)$ is the right derived functor of
+    $\Hom_{\Comod_\Gamma}(M,N)$ (in $N$).
+
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=The Cobar Complex, colback=white,
+    colframe=darkgray, colbacktitle=green, coltitle=black]
+    $M,N$ right and left $\Gamma$-comdules resp., define
+    $C^*_\Gamma(M,\Gamma,N)$ as
+    \[
+      \begin{tikzcd}
+        M\otimes_A N \arrow[r, shift left]\arrow[r,shift right] &
+        M\otimes_A \Gamma\otimes_A N \arrow[r,shift
+        left=.6em]\arrow[r]\arrow[r,shift right=.6em] & M\otimes_A
+        \Gamma\otimes_A\Gamma\otimes_A N \arrow[r,shift
+        left=.9em]\arrow[r,shift left=.3em]\arrow[r,shift right=.3em]
+        \arrow[r,shift right=.9em]&\cdots
+      \end{tikzcd}
+    \]
+    
+  \end{tcolorbox}
+  \begin{tcolorbox}[colback=white, colframe=darkgray, coltitle=black]
+    If $M$ is projective (as an $A$-module) then
+    \[\Ext^*(M,N) \cong
+      \HH^*(\Hom_{\Comod_\Gamma}(M,C^*(\Gamma,\Gamma,N)))\]
+    
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}
+  \begin{tcolorbox}[title=, colback=white,colframe=darkgray,
+    colbacktitle=cyan, coltitle=black]
+    
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=Our Favourite Hopf Algebroids,
+    colback=white,colframe=darkgray, colbacktitle=cyan,
+    coltitle=black]
+
+    For a ``nice'' spectrum $E$, the pair \,$(\pi_* (E),\,E_* (E))$\,
+    is a Hopf algebroid.  \vskip 4em \phantom{}
+    
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[title=The $E$-Adams Spectral Sequence,
+    colback=white,colframe=darkgray, colbacktitle=cyan,
+    coltitle=black]
+    For ``nice enough'' spectra $E,$ $X$, and $Y$, there is a spectral
+    sequence with
+    \[ E_2^{*,*}=\Ext_{E_*(E)}^{*,*}(E_*(Y),E_*(X))\implies
+      [Y,X_E^{\wedge}]. \] Differentials are $(r,r-1)$ graded.
+  \end{tcolorbox}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{tcolorbox}[title=The Dual Steenrod Algebra, colback=white,
+    colframe=darkgray, colbacktitle=purple, coltitle=white]
+    The $\textrm{mod }p$ dual Steenrod algebra $\mathcal{A}_*$ is Hopf
+    algebra of the following form:
+
+    \vskip 2pt
+    \begin{itemize}
+    \item As an $\bbF_p$-algebra, for
+      $p=2$, \[\mathcal{A}_*=P(\xi_0,\xi_1,\xi_2,\xi_3,\ldots)\] where
+      $|\xi_i|= 2^i-1$.  For $p>2$,
+      \[\mathcal{A}_*=P(\xi_0,\xi_1,\xi_2,\ldots)\otimes
+        E(\tau_0,\tau_1,\tau_2,\ldots)\] where $|\xi_i|=2(p^i-1)$ and
+      $|\tau_i|=2p^i-1$, and where $\xi_0=1$ in both cases.
+    \item $\Delta(\xi_n)=\sum_{i+j=n}\xi_i^{p^j}\otimes \xi_j$ and
+      $\Delta(\tau_n)=\tau_n\otimes 1+\sum_{i+j=n}
+      \xi_i^j\otimes\tau_j$.
+    \item Conjugation is defined resurively with $c(\xi_0)=1$, and
+      $\sum_{i+j=n}\xi_i^{p^j}c(\xi_j)=0$ and
+      $\tau_n+\sum_{i+j=n}\xi_i^{pj}c(\tau_j)=0$.
+    \item There is a unit $\bbF_p\xrightarrow{\eta} \calA_*$ defined
+      by $1\mapsto \xi_0$ and a counit
+      $\calA_*\xrightarrow{\varepsilon}\bbF_p$ defined by
+      $\xi_0\mapsto 1$ and all other generators map to 0.
+    \end{itemize}
+  \end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}
+  \begin{tcolorbox}[title=Notation, colback=white]
+    Let $\HH_*(X)$ denote $\HH_*(-;\bbZ/p)$ (similarly for
+    cohomology).
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=The Classical ASS,
+    colback=white,colframe=darkgray, colbacktitle=cyan,
+    coltitle=black]
+
+    Taking $E=\HH\bbZ/p$ and $Y=S$ gives a spectral sequence
+    \[ E_2^{s,t}=\Ext_{\calA_*}^{s,t}(\bbZ/p,\HH_*(X))\implies
+      \pi_{s+t}(X)_p^{\wedge} \] with
+    $d_r:E_r^{s,t}\to E_r^{s+r,t+r-1}$.
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}
+  \begin{tcolorbox}[title=Immediately Available Results,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+
+    $X=\MU$ gives $\pi_*(\MU)\cong \bbZ[x_1,x_2,\ldots]$ with
+    $|x_i|=2i$.  \vskip .8em $X=\bo,\bu$ gives Bott periodicity
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=Less Available Results...,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    $X=\bbS$ gives $\pi_*^S$
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}
+  \begin{tcolorbox}[title=May Spectral Sequence...,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+
+    Let $p=2$. There is a spectral sequence
+    \[ E_1^{***}=V^{***}=P(h_{i,j}\,:\, i>0, \,j\geq 0) \] with
+    differentials $d_r:E^{s,t,u}_r\to E_r^{s+1,t,u-r+1}$ with
+    $h_{i,j}\in V^{1,2^j(2^i-1),i}$.
+    
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=Formal Group Laws,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    A formal group law (FGL) over $R$ is a power series
+    $F(x)\in R[[x,y]]$ such that
+    \begin{enumerate}
+    \item $F(x,0)=F(0,x)=x$
+    \item $F(x,F(y,z))=F(F(x,y),z)$
+    \item $F(x,y)=F(y,x)$
+    \end{enumerate}
+
+    \vskip 0.8em A homomorphism of $f:F\to G$ is a power series
+    $f(x)\in R[[x]]$ such that
+    \begin{enumerate}
+    \item $f(0)=0$
+    \item $f(F(x,y))=G(f(x),f(y))$
+    \end{enumerate}
+    
+    \vskip 4em \phantom{}
+  \end{tcolorbox}
+  \begin{tcolorbox}[ colback=white,colframe=darkgray]
+    A logarithm for $F$ is an isomorphism $\log_F: F\to \bbG_a$.
+  \end{tcolorbox}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=Lazard Ring,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    \[L=\bbZ[c_{i,j}:i,j\geq 1]/I\]
+    \[
+      \begin{tikzcd}
+        \Big\{ \text{FGLs over } R \Big\}
+        \arrow[r,leftrightsquigarrow]& \Big\{
+        \begin{array}{c}
+          L\to R
+        \end{array}
+        \Big\}
+      \end{tikzcd}
+    \]
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=Lazard's Theorem,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    \[ L\cong \bbZ[x_1,x_2,\ldots]\]
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}[fragile]
+  \begin{tcolorbox}[title=Complex Orientation,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    $E$ ring spectrum. A \emph{complex orientation} is
+    $x_E\in E^2(\CP^\infty)$ which restricts to the unit via
+    \[E^2(\CP^\infty)\to E^2(\CP^1)\cong E^2(S^2)\cong E^0(S^0)\]
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=FGLs from Complex Orientations,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    \begin{enumerate}
+    \item $E^*(\CP^\infty)\cong \pi_*E[[x_E]]$
+    \item
+      $E^*(\CP^\infty\times \CP^\infty)\cong \pi_*E[[x_E\otimes
+      1,1\otimes x_E]]$
+    \item $\mu^*(x_E)$ is a FGL
+    \end{enumerate}
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}
+  \begin{tcolorbox}[title=complex orientation of $\MU$, colback=white,colframe=darkgray,
+    colbacktitle=pink, coltitle=black]
+    \begin{itemize}
+    \item $\MU(n)$ defined by $\mathrm{Th}(EU(n)\to BU(n))$
+    \item $\MU_*$ is a spectrum built from $\MU(n)$
+    \item $\MU_2\simeq MU(1)\simeq \CP^\infty$ gives a complex
+      orientation
+    \item ($\pi_* \MU,\MU_*\MU$) is a Hopf algebroid over $\bbZ/p$
+      which classifies FGLs and their isomorphisms
+    \end{itemize}
+  \end{tcolorbox}
+  \begin{tcolorbox}[title=Quillen's Theorem,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+    The map $L\cong \bbZ[x_1,x_2,\ldots]\to \pi_* \MU$ is an
+    isomorphism.
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}
+  \begin{tcolorbox}[title=$\BP$, colback=white,colframe=darkgray,
+    colbacktitle=pink, coltitle=black]
+    There is a spectrum $\BP$ which is a retract $r$ of $\MU_{(p)}$.
+    \begin{itemize}
+    \item $(\pi_* \BP,\BP_*\BP)$ is a Hopf algebroid which classifies
+      $p$-typical FGLs and their isomorphisms
+    \end{itemize}
+    \vskip 1em As a Hopf algebroid $(\pi_*\BP,\BP_*\BP)$ has the
+    following structure:
+    \begin{itemize}
+    \item $\pi_* \BP \cong \bbZ_{(p)}[v_1,v_2,v_3,\ldots]$ with
+      $|v_i|\in 2(p^i-1)$
+    \item $\BP_*\BP\cong \pi_*\BP[t_1,t_2,\ldots]$ with
+      $|t_i|=2(p^i-1)$
+    \item $\eta_L$
+    \end{itemize}
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=The Adams-Novikov Spectral Sequence,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+
+    The $E$-Adams spectral sequence for $E=\BP$ gives a spectral
+    sequence
+    \[ E_2^{s,t}=\Ext_{\BP_*\BP}(\BP_*,\BP_*)\implies \pi_{s+t}S \]
+    
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+  \begin{tcolorbox}[title=The Algebraic Novikov Spectral Sequence,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+
+  \end{tcolorbox}
+\end{frame}
+\begin{frame}
+  \begin{tcolorbox}[title=The $v_i$-Bockstein Spectral Sequence,
+    colback=white,colframe=darkgray, colbacktitle=pink,
+    coltitle=black]
+
+  \end{tcolorbox}
+\end{frame}
+\end{document}

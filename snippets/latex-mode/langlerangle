@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: langlerangle
+# key: lang
+# --
+\langle $1 \rangle $0

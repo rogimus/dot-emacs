@@ -1,0 +1,484 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{microtype}
+\usepackage[parfill]{parskip}
+
+\printanswers
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheadrule
+\firstpageheader{Names: }{}{Date: 08/24/2023}
+\runningheader{Names:}{}{Date: 08/24/2023}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+
+
+
+
+\begin{document}
+
+\begin{center}
+  {\bf \normalsize Math 20580 Tutorial -- Worksheet 1}
+\end{center}
+\vspace{12pt}
+
+\begin{questions}
+
+  %%%%%%%%%%%%%%
+  % Question 1 %
+  %%%%%%%%%%%%%%
+  \question Circle which of the following matrices are in \textbf{row
+    echelon form}?
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ A=\left[
+        \begin{array}{c c c c}
+          1&4 &2 &3 \\
+          2&-1&7 &0                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ B=\left[
+        \begin{array}{c c c c}
+          1&0 &2 &0 \\
+          0&0&5 &-1                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  \begin{minipage}{0.45\textwidth}
+    \[ C=\left[
+        \begin{array}{c c c c}
+          0&3 &-1 &5 \\
+          2&8&16 &1                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ D=\left[
+        \begin{array}{c c c c}
+          1&7 &22 &9 \\
+          0&0&0 &0                 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  \begin{solution}
+    $B$ and $D$ are both in row echelon form.
+  \end{solution}
+
+  %%%%%%%%%%%%%%
+  % Question 2 %
+  %%%%%%%%%%%%%%
+  \vspace{10pt}
+  \question Use Gaussian elimination to solve the following systems of
+  linear equations. What is the rank of the associated matrices?
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\,
+      \begin{cases}
+        2x+y-z=1\\
+        x+2y-z=-1 \\
+        3x+2y+z=9
+      \end{cases}\]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(b)}\,\,
+      \begin{cases}
+        x+y-z=0\\
+        3x+y-2z=0 \\
+        2x-6y+2z=0
+      \end{cases}\]
+  \end{minipage}
+
+  \begin{solution}
+    \begin{parts}
+      \part The augmented matrix for this system of linear equations
+      is
+      \[
+        \left[
+          \begin{array}{c c c | c}
+            2&1&-1&1\\
+            1&2&-1&-1\\
+            3&2&1&9
+          \end{array}\right]
+      \]
+      Using Gaussian elimination gives:
+      \[
+        \left[
+          \begin{array}{c c c | c}
+            2&1&-1&1\\
+            1&2&-1&-1\\
+            3&2&1&9
+          \end{array}\right]
+        \xrightarrow{R_1\leftrightarrow R_2} \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            2&1&-1&1\\
+            3&2&1&9
+          \end{array}\right]
+        \xrightarrow{R_2-2R_1,R_3-3R_1}
+      \]\[ \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            0&-3&1&3\\
+            0&2&4&12
+          \end{array}\right]
+        \xrightarrow{\frac 1 2 R_3} \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            0&-3&1&3\\
+            0&1&2&6
+          \end{array}\right]
+        \xrightarrow{R_2\leftrightarrow R_3}
+      \]\[ \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            0&1&2&6\\
+            0&-3&1&3
+          \end{array}\right]
+        \xrightarrow{R_3+3R_2} \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            0&1&2&6\\
+            0&0&7&21
+          \end{array}\right]
+        \xrightarrow{\frac 1 7 R_3} \left[
+          \begin{array}{c c c | c}
+            1&2&-1&-1\\
+            0&1&2&6\\
+            0&0&1&3
+          \end{array}\right]
+      \]
+      Thus we can conclude that the original system of equations has
+      the same solutions as the following system of equations:
+      \[
+        \begin{cases}
+          x+2y-z=-1 \\
+          y+2z=6\\
+          z=3
+        \end{cases}
+      \]
+      Use back-substitution to see that $y+6=6$, i.e. $y=0$. Again
+      using back substitution we see that $x+0-3=-1$, i.e. $x=2$. So
+      we obtain the sole solution
+      \[
+        \left[
+          \begin{array}{c}
+            x\\y\\z
+          \end{array}
+        \right] = \left[
+          \begin{array}{c}
+            2\\0\\3
+          \end{array}
+        \right]
+      \]
+    
+      \part The augmented matrix for this system of linear equations
+      is
+      \[
+        \left[
+          \begin{array}{c c c | c}
+            1&1&-1&0\\
+            3&1&-2&0\\
+            2&-6&2&0
+          \end{array}\right]
+      \]
+      Using Gaussian elimination gives:
+      \[
+        \left[
+          \begin{array}{c c c | c}
+            1&1&-1&0\\
+            3&1&-2&0\\
+            2&-6&2&0
+          \end{array}\right]
+        \xrightarrow{R_2-3R_1,\,R_3-2R_1} \left[
+          \begin{array}{c c c | c}
+            1&1&-1&0\\
+            0&-2&1&0\\
+            0&-8&4&0
+          \end{array}\right]
+        \xrightarrow{R_3-4R_2}
+      \]\[ \left[
+          \begin{array}{c c c | c}
+            1&1&-1&0\\
+            0&-2&1&0\\
+            0&0&0&0
+          \end{array}\right]
+        \xrightarrow{\frac{-1}{2} R_2} \left[
+          \begin{array}{c c c | c}
+            1&1&-1&0\\
+            0&1&\frac{-1}{2}&0\\
+            0&0&0&0
+          \end{array}\right]
+      \]
+      Thus we can conclude that the original system of equations has
+      the same solutions as the following system of equations:
+      \[
+        \begin{cases}
+          x+y-z =0 \\
+          y-\frac 1 2 z = 0
+        \end{cases}
+      \]
+      Assign the parameter $z(t)=t$. Then using back-substitution we
+      have that $y=\frac 1 2 t$, and $x+\frac 12t -t = 0$,
+      i.e. $x=\frac 12t$.  Thus there are infinitely many solutions to
+      the system of equations, and they are parametrised by $t$ as
+      \[
+        \left[
+          \begin{array}{c}
+            x\\y\\z
+          \end{array}
+        \right] = t\left[
+          \begin{array}{c}
+            1/2\\1/2\\1
+          \end{array}
+        \right]
+      \]
+      
+    \end{parts}
+  \end{solution}
+
+  %%%%%%%%%%%%%%
+  % Question 3 %
+  %%%%%%%%%%%%%%
+  \newpage
+  \question Given the following augmented matrices corresponding to
+  some systems of linear equations, determine how many solutions they
+  have (\textbf{if any}). Also, if the corresponding linear system is
+  consistent, determine its rank and the number of free variables it
+  has.
+
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &0 &-2 &3 & 8 \\
+          0 &1 &2 & 0 & 3 \\
+          0 &-3 &-6 & 0 & 1 \\
+          0 &1 &-1 &4 & 0 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(b)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &1 &1 &1 & 14 \\
+          0 &1 & -3& 0 & 2 \\
+          0 &0 &1 & 1 & 3 \\
+          0 &0 &2 &2 & 6 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  
+  \begin{minipage}{0.45\textwidth}
+    \[ \text{(a)}\,\, \left[
+        \begin{array}{c c c c | c}
+          1 &5 & 2& -5 & 1 \\
+          0 &1 & 0 & 3 & 2 \\
+          0 &0 & 1 & 1 & 9 \\
+          0 & 0  & -1 & 1 & 3 
+        \end{array}
+      \right]
+    \]
+  \end{minipage}
+
+  \begin{solution}
+    \begin{parts}
+      \part
+      \[
+        \left[
+          \begin{array}{c c c c | c}
+            1 &0 &-2 &3 & 8 \\
+            0 &1 &2 & 0 & 3 \\
+            0 &-3 &-6 & 0 & 1 \\
+            0 &1 &-1 &4 & 0 
+          \end{array}\right]
+        \xrightarrow{R_3+3R_2} \left[
+          \begin{array}{c c c c | c}
+            1 &0 &-2 &3 & 8 \\
+            0 &1 &2 & 0 & 3 \\
+            0 &0 &0 & 0 & 10 \\
+            0 &1 &-1 &4 & 0 
+          \end{array}\right]
+      \]
+      The third row represents the equation $0x_1+0x_2+0x_3+0x_4=10$,
+      i.e. $0=10$. Thus there are no solutions and it is inconsistent.
+
+
+      \part
+      \[
+        \left[
+          \begin{array}{c c c c | c}
+            1 &1 &1 &1 & 14 \\
+            0 &1 & -3& 0 & 2 \\
+            0 &0 &1 & 1 & 3 \\
+            0 &0 &2 &2 & 6 
+          \end{array}\right]
+        \xrightarrow{R_4-2R_3} \left[
+          \begin{array}{c c c c | c}
+            1 &1 &1 &1 & 14 \\
+            0 &1 & -3& 0 & 2 \\
+            0 &0 &1 & 1 & 3 \\
+            0 &0 &0 &0 & 0 
+          \end{array}\right]
+      \]
+
+      This system is consistent. The rank of the augmented matrix is
+      three and, since there are four variables, one of the variables
+      must be free. Thus there are infinitely many solutions.
+    
+      \part
+      \[
+        \left[
+          \begin{array}{c c c c | c}
+            1 &5 & 2& -5 & 1 \\
+            0 &1 & 0 & 3 & 2 \\
+            0 &0 & 1 & 1 & 9 \\
+            0 & 0  & -1 & 1 & 3 
+          \end{array}
+        \right] \xrightarrow{R_4+R_3} \left[
+          \begin{array}{c c c c | c}
+            1 &5 & 2& -5 & 1 \\
+            0 &1 & 0 & 3 & 2 \\
+            0 &0 & 1 & 1 & 9 \\
+            0 & 0  & 0 & 2 & 12 
+          \end{array}
+        \right]
+      \]
+      This system is consistent. It has rank four and there are four
+      variables. Thus there is a unique solution.
+    \end{parts}
+  \end{solution}
+
+
+  %%%%%%%%%%%%%%
+  % Question 4 %
+  %%%%%%%%%%%%%%
+  \newpage
+  \question
+  \begin{parts}
+    \part Show that the following pair of matrices is \textbf{row
+      equivalent}, i.e. find a sequence of elementary row operations
+    converting one into the other.
+    \[
+      A=\left[
+        \begin{array}{c c }
+          1&3\\
+          3&4
+        \end{array}
+      \right]\quad\quad B=\left[
+        \begin{array}{c c }
+          4&7\\
+          2&6
+        \end{array}
+      \right]
+    \]
+
+  
+    \part Do the same for the following pair.
+    \[
+      A=\left[
+        \begin{array}{c c c}
+          1&0&1\\
+          2&1&6\\
+          -3&1&1
+        \end{array}
+      \right]\quad\quad B=\left[
+        \begin{array}{c c c}
+          2&1&6\\
+          1&1&5\\
+          5&1&9
+        \end{array}
+      \right]
+    \]
+  \end{parts}
+  \textbf{Hint:} put the matrices in row echelon form.
+
+  \begin{solution}
+    \begin{parts}
+      \part An example, starting with $A$ is the following sequence:
+      $R_2+R_1$, $2 R_1$, $R_1\leftrightarrow R_2$.
+      
+
+      \part Perform the following row operations on the matrix $A$:
+      $R_2-2R_1$, $R3+3R_1$, $R_3-R_2$. This gives the row echelon
+      form for $A$ as the matrix
+      \[C=\begin{bmatrix}
+          1 & 0 & 1\\
+          0&1&4\\0&0&0
+        \end{bmatrix}\] Perform the following sequence of row
+      operations on $B$: $R_2\leftrightarrow R_1$, $R_2-2R_1$,
+      $R_3-5R_1$, $R_3-4R_2$, $-R_2$, $R_1-R_2$. This results in the
+      same matrix as above. Since they have the same row echelon form
+      they are row equivalent. To see this recall that elementary row
+      operations are reversible. In particular we can perform the
+      first sequence to get to $C$ and then perform the reverse of the
+      second sequence to get to $B$. I.e. here is a sequence that goes
+      from $A$ to $B$:
+    
+      $R_2-2R_1$, $R3+3R_1$, $R_3-R_2$, $R_1+R_2$, $-R_2$, $R_3+4R_2$,
+      $R_3+5R_1$, $R_2+2R_1$, $R_2\leftrightarrow R_1$.
+    \end{parts}
+  \end{solution}
+
+  %%%%%%%%%%%%%%
+  % Question 5 %
+  %%%%%%%%%%%%%%
+  \newpage
+  \question Consider the following matrix:
+  \[ \left[
+      \begin{array}{c c c | c}
+        1 &2 & 4& 2h+k  \\
+        1 &1 & 1 & 2k \\
+        0 &1 & 3 & h 
+      \end{array}
+    \right]
+  \]
+  Find what conditions, if any, must be placed on $h$ and $k$ to
+  ensure that the corresponding system of equations is consistent.
+
+  \begin{solution}
+    Let us first try to get to row echelon form:
+    \[
+      \left[
+        \begin{array}{c c c | c}
+          1 &2 & 4& 2h+k  \\
+          1 &1 & 1 & 2k \\
+          0 &1 & 3 & h 
+        \end{array}
+      \right] \xrightarrow{R_2-R_1} \left[
+        \begin{array}{c c c | c}
+          1 &2 & 4& 2h+k  \\
+          0 &-1 & -3 & k-2h \\
+          0 &1 & 3 & h 
+        \end{array}
+      \right] \xrightarrow{R_3+R_2}\]\[ \left[
+        \begin{array}{c c c | c}
+          1 &2 & 4& 2h+k  \\
+          0 &-1 & -3 & k-2h \\
+          0 &0 & 0 & k-h 
+        \end{array}
+      \right]
+    \]
+    Thus the system is consistent if and only if $k-h=0$, i.e. $k=h$.
+  \end{solution}
+  
+\end{questions}
+
+\end{document}

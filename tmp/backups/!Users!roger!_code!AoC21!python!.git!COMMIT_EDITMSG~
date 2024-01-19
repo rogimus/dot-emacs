@@ -1,0 +1,26 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   day1.py
+#	new file:   day2.py
+#	new file:   day3.py
+#	new file:   day4.py
+#	new file:   day4bad.py
+#	new file:   day5.py
+#	new file:   day6.py
+#	new file:   day7.py
+#	new file:   day7.txt
+#	new file:   day8p1.py
+#	new file:   day8p2.py
+#	new file:   day9.py
+#
+# Untracked files:
+#	.DS_Store
+#	prefix.py
+#
